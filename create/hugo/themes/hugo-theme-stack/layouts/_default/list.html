@@ -1,0 +1,17 @@
+{{ define "main" }}
+    <h3 class="section-title">{{ .Title }}</h3>
+
+    <section class="article-list--compact">
+        {{ range .Paginator.Pages }}
+            {{ partial "article-list/compact" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partialCached "sidebar/right.html" . }}
+{{ end }}
