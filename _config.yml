@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 灵溪驿站
 subtitle: ''
-description: ''
+description: 千磨万击还坚劲，任尔东西南北风
 keywords:
-author: John Doe
-language: en
+author: 吴朝阳
+language: zh-CN
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: https://www.creekwater.cn
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -98,9 +98,30 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: hexo-theme-bamboo
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# 全文搜索
+search:
+  path: search.xml
+  field: post
+
+# 中文链接转拼音
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+
+# RSS订阅
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
