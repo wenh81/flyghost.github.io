@@ -103,8 +103,10 @@ theme: hexo-theme-bamboo
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
-
+  type: git
+  repo: https://github.com/flyghost/flyghost.github.io.git
+  branch: public
+  
 # 全文搜索
 search:
   path: search.xml
