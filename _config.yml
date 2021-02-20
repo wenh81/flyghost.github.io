@@ -107,7 +107,7 @@ theme: LiveForCode
 deploy:
   type: git
   repo: https://github.com/flyghost/flyghost.github.io.git
-  branch: master
+  branch: public
 
 # Feed Atom
 feed:
