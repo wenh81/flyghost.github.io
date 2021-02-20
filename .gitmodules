@@ -1,0 +1,3 @@
+[submodule "source/_posts/creekwater-blog-file"]
+	path = source/_posts/creekwater-blog-file
+	url = https://github.com/flyghost/creekwater-blog-file.git
