@@ -1,3 +1,6 @@
 [submodule "themes/hexo-theme-bamboo"]
 	path = themes/hexo-theme-bamboo
 	url = https://github.com/flyghost/hexo-theme-bamboo.git
+[submodule "creekwater-blog-file"]
+	path = creekwater-blog-file
+	url = https://github.com/flyghost/creekwater-blog-file.git
