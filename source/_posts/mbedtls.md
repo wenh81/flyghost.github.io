@@ -1,8 +1,9 @@
 ---
 title: mbedtls
 date: 2021-01-05 00:00:00
-swiper: true
-swiperImg: 'https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/c080ff4434354e35af9dab0a3ee1b9f7.jpg!sswm'
+swiper: false
+swiperImg: '/medias/3.jpg'
+tags: bbbb
 ---
 
 # 一、伪随机数生成器（ctr_drbg）的配置与使用
