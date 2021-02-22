@@ -1,9 +1,9 @@
 ---
 title: hexo博客搭建
 date: 2021-02-23 00:00:00
-swiper: true
+swiper: false
 swiperImg: '/medias/11.jpg'
-top: true
+top: false
 tags: 博客
 ---
 

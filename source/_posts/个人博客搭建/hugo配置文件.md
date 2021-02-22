@@ -1,9 +1,9 @@
 ---
 title: hugo配置文件
 date: 2021-01-05 00:00:00
-swiper: true
+swiper: false
 swiperImg: '/medias/5.jpg'
-top: true
+top: false
 tags: 博客
 ---
 
