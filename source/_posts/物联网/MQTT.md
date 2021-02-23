@@ -17,12 +17,9 @@ MQTT协议全称是Message Queuing Telemetry Transport，翻译过来就是消�
 
 MQTT 协议提供一对多的消息发布，可以降低应用程序的耦合性，用户只需要编写极少量的应用代码就能完成一对多的消息发布与订阅，该协议是基于<客户端-服务器>模型，在协议中主要有三种身份：发布者（Publisher）、服务器（Broker）以及订阅者（Subscriber）。其中，MQTT消息的发布者和订阅者都是客户端，服务器只是作为一个中转的存在，将发布者发布的消息进行转发给所有订阅该主题的订阅者；发布者可以发布在其权限之内的所有主题，并且消息发布者可以同时是订阅者，实现了生产者与消费者的脱耦，发布的消息可以同时被多个订阅者订阅。
 
-![图 21‑1MQTT通信模型](https://doc.embedfire.com/net/lwip/zh/latest/_images/image119.png)
-
-图 21‑1MQTT通信模型
+![MQTT通信模型](./MQTT/MQTT通信模型.png)
 
 MQTT客户端的功能：
-
 1. 发布消息给其它相关的客户端。
 2. 订阅主题请求接收相关的应用消息。
 3. 取消订阅主题请求移除接收应用消息。
@@ -57,13 +54,15 @@ MQTT协议工作在TCP协议之上，因为客户端和服务器都是应用层�
 
 固定报头占据两字节的空间，具体见图 [固定报头](固定报头.png)。
 
-![固定报头](固定报头.png)
+![固定报头](MQTT/固定报头.png)
 
-固定报头的第一个字节分为控制报文的类型（4bit），以及控制报文类型的标志位，控制类型共有14种，其中0与15被系统保留出来，其他的类型具体见表格固定报头类型。
+固定报头的第一个字节分为**控制报文的类型**（4bit），以及控**制报文类型的标志位**。
+
+控制类型共有14种，其中0与15被系统保留出来，其他的类型具体见表格固定报头类型。
 
 | 类型        | 值   | 说明                      |
 | ----------- | ---- | ------------------------- |
-| Reserved    | 0    | 系统保留                  |
+| Reserved    | 0    | **系统保留**              |
 | CONNECT     | 1    | 客户端请求连接服务端      |
 | CONNACK     | 2    | 连接报文确认              |
 | PUBLISH     | 3    | 发布消息                  |
@@ -78,13 +77,15 @@ MQTT协议工作在TCP协议之上，因为客户端和服务器都是应用层�
 | PINGREQ     | 12   | 心跳请求                  |
 | PINGRESP    | 13   | 心跳响应                  |
 | DISCONNECT  | 14   | 客户端断开连接            |
-| Reserved    | 15   | 系统保留                  |
+| Reserved    | 15   | **系统保留**              |
 
-固定报头的bit0-bit3为标志位，依照报文类型有不同的含义，事实上，除了PUBLISH类型报文以外，其他报文的标志位均为系统保留，PUBLISH报文的第一字节bit3是控制报文的重复分发标志（DUP），bit1-bit2是服务质量等级，bit0是PUBLISH报文的保留标志，用于标识PUBLISH是否保留，当客户端发送一个PUBLISH消息到服务器，如果保留标识位置1，那么服务器应该保留这条消息，当一个新的订阅者订阅这个主题的时候，最后保留的主题消息应被发送到新订阅的用户。
+固定报头的bit0-bit3为标志位，依照报文类型有不同的含义。
 
-固定报头的第二个字节开始是剩余长度字段，是用于记录剩余报文长度的，表示当前的消息剩余的字节数，包括可变报头和有效载荷区域（如果存在），但剩余长度不包括用于编码剩余长度字段本身的字节数。
+事实上，**除了PUBLISH类型报文以外，其他报文的标志位均为系统保留**，PUBLISH报文的第一字节**bit3是控制报文的重复分发标志**（DUP），**bit1-bit2是服务质量等级**，**bit0是PUBLISH报文的保留标志**，用于标识PUBLISH是否保留，当客户端发送一个PUBLISH消息到服务器，如果保留标识位置1，那么服务器应该保留这条消息，当一个新的订阅者订阅这个主题的时候，最后保留的主题消息应被发送到新订阅的用户。
 
-剩余长度字段使用一个变长度编码方案，对小于128的值它使用单字节编码，而对于更大的数值则按下面的方式处理：每个字节的低7位用于编码数据长度，最高位（bit7）用于标识剩余长度字段是否有更多的字节，且按照大端模式进行编码，因此每个字节可以编码128个数值和一个延续位，剩余长度字段最大可拥有4个字节。
+固定报头的第二个字节开始是**剩余长度字段**，是用于记录剩余报文长度的，表示当前的消息剩余的字节数，包括可变报头和有效载荷区域（如果存在），但剩余长度**不包括用于编码剩余长度字段本身的字节数**。
+
+剩余长度字段使用一个**变长度编码**方案，对小于128的值它使用单字节编码，而对于更大的数值则按下面的方式处理：每个字节的低7位用于编码数据长度，最高位（bit7）用于标识剩余长度字段是否有更多的字节，且按照大端模式进行编码，因此每个字节可以编码128个数值和一个延续位，剩余长度字段最大可拥有4个字节。
 
 当剩余长度使用1个字节存储时，其取值范围为0(0x00)~127(0x7f)。
 
@@ -98,9 +99,9 @@ MQTT协议工作在TCP协议之上，因为客户端和服务器都是应用层�
 
 ### 可变报头
 
-可变报头并不是所有的MQTT报文都带有的（比如PINGREQ心跳请求与PINGRESP心跳响应报文就没有可变报头），只有某些报文才拥有可变报头，它在固定报头和有效负载之间，可变报头的内容会根据报文类型的不同而有所不同，但可变报头的报文标识符（Packet Identifier）字段存在于在多个类型的报文里，而有一些报文又没有报文标识符字段，具体见表格 21‑2，报文标识符结构具体见 [图21_3](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id9)。
+可变报头并不是所有的MQTT报文都带有的（比如PINGREQ心跳请求与PINGRESP心跳响应报文就没有可变报头），只有某些报文才拥有可变报头，它在固定报头和有效负载之间，可变报头的内容会根据报文类型的不同而有所不同，但可变报头的报文标识符（Packet Identifier）字段存在于在多个类型的报文里，而有一些报文又没有报文标识符字段，具体见表格，报文标识符结构具体见图 [报文标识符](报文标识符.png)。
 
-表格 21‑2需要报文标识符字段的报文类型
+![报文标识符](./MQTT/报文标识符.png)
 
 | 报文类型    | 是否需要报文标识符字段 |
 | ----------- | ---------------------- |
@@ -119,29 +120,23 @@ MQTT协议工作在TCP协议之上，因为客户端和服务器都是应用层�
 | PINGRESP    | 不需要                 |
 | DISCONNECT  | 不需要                 |
 
-![图 21‑3报文标识符](https://doc.embedfire.com/net/lwip/zh/latest/_images/image39.png)
-
-图 21‑3报文标识符
-
 因为对于不同的报文，可变报头是不一样的，下面就简单讲解几个报文的可变报头。
 
 #### CONNECT
 
 在一个会话中，客户端只能发送一次CONNECT报文，它是客户端用于请求连接服务器的报文，常称之为连接报文，如果客户端发送多次连接报文，那么服务端必须将客户端发送的第二个CONNECT报文当作协议违规处理并断开客户端的连接。
 
-CONNECT报文的可变报头包含四个字段：协议名（Protocol Name）、协议级别（Protocol Level）、连接标志（Connect Flags）以及保持连接（Keep Alive）字段。
+CONNECT报文的可变报头包含四个字段：**协议名**（Protocol Name）、**协议级别**（Protocol Level）、**连接标志**（Connect Flags）以及**保持连接**（Keep Alive）字段。
 
 协议名是MQTT 的UTF-8编码的字符串，其中还包含用于记录协议名长度的两字节字段MSB与LSB。
 
 在协议名之后的是协议级别，MQTT协议使用8位的无符号值表示协议的修订版本，对于MQTT3.1版的协议，协议级别字段的值是3(0x03)，而对于MQTT3.1.1版的协议，协议级别字段的值是4(0x04)。如果服务器发现连接报文中的协议级别字段是不支持的协议级别，服务端必须给发送一个返回码为0x01（不支持的协议级别）的CONNACK响应连接报文，然后终止客户端的连接请求。
 
-连接标志字段涉及的内容比较多，它在协议级别之后使用一个字节表示，但分成很多个标志位，具体见 [图21_4](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id10)。
+连接标志字段涉及的内容比较多，它在协议级别之后使用一个字节表示，但分成很多个标志位，具体见 [连接标识字段](连接标识字段.png)。
 
-![图 21‑4连接标志字段](https://doc.embedfire.com/net/lwip/zh/latest/_images/image49.png)
+![连接标志字段](./MQTT/连接标识字段.png)
 
-图 21‑4连接标志字段
-
-bit0是MQTT保留的标志位，在连接过程中，服务器会检测连接标志的bit0是否为0，如果不为0则服务器任务这个连接报文是不合法的，会终止连接请求。
+bit0是MQTT保留的标志位，在连接过程中，服务器会检测连接标志的bit0是否为0，如果不为0则服务器认为这个连接报文是不合法的，会终止连接请求。
 
 bit1是清除会话标志Clean Session，一般来说，客户端在请求连接服务器时总是将清除会话标志设置为0或1，在建立会话连接后，这个值就固定了，当然这个值的选择取决于具体的应用，如果清除会话标志设置为1，那么客户端不会收到旧的应用消息，而且在每次连接成功后都需要重新订阅相关的主题。清除会话标志设置为0的客户端在重新连接后会收到所有在它连接断开期间（其他发布者）发布的QoS1和QoS2级别的消息。因此，要确保不丢失连接断开期间的消息，需要使用QoS1或 QoS2级别，同时将清除会话标志设置为0。
 
@@ -157,11 +152,9 @@ bit6是用户名标志位User Name Flag，如果用户名标志被设置为0，�
 
 保持连接字段是一个以秒为单位的时间间隔，它使用了两个字节来记录允许客户端最大空闲时间间隔，简单来说就是，客户端必须在这段时间中与服务器进行通信，让服务器知道客户端还处于连接状态而不是断开了，当然，如果没有任何其它的控制报文可以发送，客户端也必须要发送一个PINGREQ报文，以告知服务器还是处于连接状态的。
 
-总的来说，整个CONNECT报文可变报头的内容如下，具体见 [图21_5](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id11)。
+总的来说，整个CONNECT报文可变报头的内容如下，具体见 [报文可变报头](报文可变报头.png)。
 
-![图 21‑5CONNECT报文可变报头](https://doc.embedfire.com/net/lwip/zh/latest/_images/image58.png)
-
-图 21‑5CONNECT报文可变报头
+![报文可变报头](./MQTT/报文可变报头.png)
 
 #### CONNACK
 
@@ -185,11 +178,9 @@ bit6是用户名标志位User Name Flag，如果用户名标志被设置为0，�
 
 提示：如果服务端收到清理会话（CleanSession）标志为1的连接，除了将CONNACK报文中的返回码设置为0之外，还必须将CONNACK报文中的当前会话设置（Session Present）标志为0。
 
-那么总的来说，CONNACK报文的可变报头部分内容具体见 [图21_6](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id12)。
+那么总的来说，CONNACK报文的可变报头部分内容具体见 [CONNACK可变报头](CONNACK可变报头.png)。
 
-![图 21‑6CONNACK可变报头](https://doc.embedfire.com/net/lwip/zh/latest/_images/image65.png)
-
-图 21‑6CONNACK可变报头
+![CONNACK可变报头](./MQTT/CONNACK可变报头.png)
 
 在此，就不再对MQTT报文的可变报头部分过多赘述，大家可以参考MQTT协议手册，里面有很详细的描述。
 
@@ -209,17 +200,15 @@ SUBSCRIBE报文的有效载荷包含了一个主题过滤器列表，它们标�
 
 首先下载MQTT的库： https://github.com/eclipse/paho.mqtt.embedded-c。
 
-然后创建一个MQTT文件夹，再将MQTTPacketsrc目录下的文件添加到工程目录MQTT文件夹， 再将MQTTPacketsamples目录下的transport.c、transport.h添加到这个文件夹下， 添加完成后文件夹内容具体见 [图21_7](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id15)。
+然后创建一个MQTT文件夹，再将MQTTPacketsrc目录下的文件添加到工程目录MQTT文件夹， 再将MQTTPacketsamples目录下的transport.c、transport.h添加到这个文件夹下， 添加完成后文件夹内容具体见 [MQTT文件夹下的内容](MQTT文件夹下的内容.png)。
 
-![图 21‑7MQTT文件夹下的内容](https://doc.embedfire.com/net/lwip/zh/latest/_images/image75.png)
+![MQTT文件夹下的内容](MQTT/MQTT文件夹下的内容.png)
 
-图 21‑7MQTT文件夹下的内容
+我们把这些文件加入我们的工程之中，并且指定头文件路径，然后实现transport.c文件的移植层接口，其内容具体见代码清单
 
-我们把这些文件加入我们的工程之中，并且指定头文件路径，然后实现transport.c文件的移植层接口，其内容具体见 [代码清单21_1](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id16)
+代码清单 transport.c文件内容
 
-代码清单 21‑1transport.c文件内容
-
-```
+```c
  #include "transport.h"
  #include "lwip/opt.h"
  #include "lwip/arch.h"
@@ -320,21 +309,21 @@ SUBSCRIBE报文的有效载荷包含了一个主题过滤器列表，它们标�
  }
 ```
 
-代码清单 21‑1**(1)**：添加头文件，我们使用Socket API就添加LwIP中对应的头文件。
+代码清单 **(1)**：添加头文件，我们使用Socket API就添加LwIP中对应的头文件。
 
-代码清单 21‑1**(2)**：transport_sendPacketBuffer()函数是MQTT发送数据函数，这个函数必须以TCP协议发送数据， 参数buf指定数据缓冲区，buflen指定了数据长度，调用write()函数进行发送数据，并且返回发送状态。
+代码清单 (2)**：transport_sendPacketBuffer()函数是MQTT发送数据函数，这个函数必须以TCP协议发送数据， 参数buf指定数据缓冲区，buflen指定了数据长度，调用write()函数进行发送数据，并且返回发送状态。
 
-代码清单 21‑1**(3)**：transport_getdata()函数是MQTT接收数据的函数，需要我们用Socket API获取接收到的数据，参数buf指定数据缓冲区，count指定了获取数据长度，我们只要调用recv()将数据获取回来即可。
+代码清单 **(3)**：transport_getdata()函数是MQTT接收数据的函数，需要我们用Socket API获取接收到的数据，参数buf指定数据缓冲区，count指定了获取数据长度，我们只要调用recv()将数据获取回来即可。
 
-代码清单 21‑1**(4)(5)**：transport_open()函数用于打开一个连接接口，并且让客户端和服务器建立连接， 这个函数是实现MQTT的前提，必须产生TCP连接才能进入下一步操作，因此我们在函数中需要根据配置信息连接到服务器中， socket()用于创建一个套接字，并且调用connect()函数连接到服务器上，如果连接失败则关闭套接字，返回-1。
+代码清单 **(4)(5)**：transport_open()函数用于打开一个连接接口，并且让客户端和服务器建立连接， 这个函数是实现MQTT的前提，必须产生TCP连接才能进入下一步操作，因此我们在函数中需要根据配置信息连接到服务器中， socket()用于创建一个套接字，并且调用connect()函数连接到服务器上，如果连接失败则关闭套接字，返回-1。
 
-代码清单 21‑1**(6)**：transport_close()是MQTT与服务器断开的时候会调用的函数，它用来关闭一个套接字的。
+代码清单 (6)**：transport_close()是MQTT与服务器断开的时候会调用的函数，它用来关闭一个套接字的。
 
-然后我们在工程中实现两个线程，一个是MQTT发送线程，另一个是MQTT接收线程，这样子的话，我们的MQTT协议就在开发板中跑起来了， 我们提供了完整的MQTT客户端连接到服务器demo，下面简单实现两个线程的处理，更多的代码请参考我们的工程，我们首先在USER目录下创建一个mqttclient.c文件，然后加入 [代码清单21_2](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id17) 所示代码。
+然后我们在工程中实现两个线程，一个是MQTT发送线程，另一个是MQTT接收线程，这样子的话，我们的MQTT协议就在开发板中跑起来了， 我们提供了完整的MQTT客户端连接到服务器demo，下面简单实现两个线程的处理，更多的代码请参考我们的工程，我们首先在USER目录下创建一个mqttclient.c文件，然后加入 代码清单所示代码。
 
-代码清单 21‑2mqttclient.c文件内容（部分）
+代码清单mqttclient.c文件内容（部分）
 
-```
+```c
  void mqtt_recv_thread(void *pvParameters)
  {
      uint32_t curtick;
@@ -420,12 +409,13 @@ SUBSCRIBE报文的有效载荷包含了一个主题过滤器列表，它们标�
      /* 定义一个创建信息返回值，默认为pdTRUE */
      BaseType_t xReturn = pdTRUE;
      /* 定义一个接收消息的变量 */
- //    uint32_t* r_data;
+ 	 // uint32_t* r_data;
      DHT11_Data_TypeDef* recv_data;
      //初始化json数据
      cJSON* cJSON_Data = NULL;
      cJSON_Data = cJSON_Data_Init();
      double a,b;
+     
  MQTT_SEND_START:
 
      while (1)
@@ -486,6 +476,7 @@ SUBSCRIBE报文的有效载荷包含了一个主题过滤器列表，它们标�
              no_mqtt_msg_exchange = 0;
          }
      }
+     
  MQTT_SEND_CLOSE:
      //关闭链接
      transport_close();
@@ -494,8 +485,7 @@ SUBSCRIBE报文的有效载荷包含了一个主题过滤器列表，它们标�
      goto MQTT_SEND_START;
  }
 
- void
- mqtt_thread_init(void)
+ void mqtt_thread_init(void)
  {
      sys_thread_new("mqtt_recv_thread", mqtt_recv_thread, NULL, 2048, 6);
      sys_thread_new("mqtt_send_thread", mqtt_send_thread, NULL, 2048, 7);
@@ -508,11 +498,11 @@ SUBSCRIBE报文的有效载荷包含了一个主题过滤器列表，它们标�
 
 cJSON的移植很简单，首先我们首先下载到cJSON的源码文件：https://github.com/DaveGamble/cJSON。
 
-然后在文件目录下找到cJSON.c和cJSON.h，将它们拷贝到我们的工程目录下的cJSON文件夹下（如果没有就创建它）， 然后添加到工程中，并且指定头文件路径即可，因为我们使用的是FreeRTOS操作系统，那么cJSON中的动态内存分配、 释放函数就需要配合操作系统的动态内存分配函数与释放函数，在cJSON.c文件中修改 [代码清单21_3](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id18) 所示的代码即可， 当然还需要注意包含FreeRTOS相关的头文件。
+然后在文件目录下找到cJSON.c和cJSON.h，将它们拷贝到我们的工程目录下的cJSON文件夹下（如果没有就创建它）， 然后添加到工程中，并且指定头文件路径即可，因为我们使用的是FreeRTOS操作系统，那么cJSON中的动态内存分配、 释放函数就需要配合操作系统的动态内存分配函数与释放函数，在cJSON.c文件中修改 代码清单所示的代码即可， 当然还需要注意包含FreeRTOS相关的头文件。
 
-代码清单 21‑3cJSON.c文件修改的内容
+代码清单 cJSON.c文件修改的内容
 
-```
+```c
  static void * CJSON_CDECL internal_malloc(size_t size)
  {
  //    return malloc(size);
@@ -536,11 +526,11 @@ cJSON的移植很简单，首先我们首先下载到cJSON的源码文件：http
  #endif
 ```
 
-为了更好利用cJSON提供的函数来处理我们的程序，我们简单对cJSON进行了封装，包含cJSON格式数据的初始化、更新、解析等，当然大家也可以自行封装使用，我们创建一个cJSON_Process.c文件，并添加以下代码，具体见 [代码清单21_4](https://doc.embedfire.com/net/lwip/zh/latest/doc/chapter21/chapter21.html#id19)。
+为了更好利用cJSON提供的函数来处理我们的程序，我们简单对cJSON进行了封装，包含cJSON格式数据的初始化、更新、解析等，当然大家也可以自行封装使用，我们创建一个cJSON_Process.c文件，并添加以下代码，具体见 代码清单。
 
-代码清单 21‑4 cJSON_Process.c文件内容
+代码清单 cJSON_Process.c文件内容
 
-```
+```c
  #include "cJSON_Process.h"
  #include "main.h"
 
@@ -620,3 +610,4 @@ cJSON的移植很简单，首先我们首先下载到cJSON的源码文件：http
 ```
 
 到了这里，我们的整个MQTT的程序框架基本完成了，下面我们就开始使用MQTT程序
+
