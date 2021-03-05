@@ -1,3 +1,12 @@
+---
+title: WLAN从入门到精通-WiFi6
+date: 2021-03-05 00:00:00
+swiper: true
+swiperImg: '/medias/3.jpg'
+top: true
+tags: WLAN
+---
+
 # Wi-Fi 6的前世今生
 
 ## 什么是Wi-Fi 6
