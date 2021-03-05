@@ -1,5 +1,5 @@
 ---
-title: MQTT协议
+title: MQTT协议详解
 date: 2021-02-01 00:00:00
 swiper: true
 swiperImg: '/medias/8.jpg'

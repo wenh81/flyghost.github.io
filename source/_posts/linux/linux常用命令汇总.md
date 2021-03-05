@@ -1,9 +1,9 @@
 ---
-title: python版本设置
+title: linux常用命令汇总
 date: 2021-01-05 00:00:00
 swiper: true
 swiperImg: '/medias/2.jpg'
-top: true
+top: false
 tags: Linux
 ---
 
