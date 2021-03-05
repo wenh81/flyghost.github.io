@@ -7,13 +7,13 @@ title: 灵溪驿站
 subtitle: ''
 description: 千磨万击还坚劲，任尔东西南北风
 keywords:
-author: 吴朝阳
+author: creekwater
 language: zh-CN
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://flyghost.github.io/ #https://www.creekwater.cn
+url: https://www.creekwater.cn
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
