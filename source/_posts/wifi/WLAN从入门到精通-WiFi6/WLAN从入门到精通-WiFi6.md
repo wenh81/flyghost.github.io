@@ -5,6 +5,7 @@ swiper: true
 swiperImg: '/medias/3.jpg'
 top: true
 tags: WLAN
+categories: wifi6
 ---
 
 # Wi-Fi 6的前世今生
