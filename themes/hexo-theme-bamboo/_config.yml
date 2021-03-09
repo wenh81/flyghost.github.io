@@ -202,7 +202,7 @@ aboutImg: "/medias/about.jpg"
 # 关于我
 baseInfo:
     on: true # 是否显示
-    age: 27 # 年龄
+    age: 3 # 年龄
     sex: "男" # 性别
     coordinate: "南京" # 坐标
     status: "划水中" # 状态
