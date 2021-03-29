@@ -1,3 +1,13 @@
+---
+title: OpenWRT实践
+date: 2021-03-15 00:00:00
+swiper: true
+swiperImg: '/medias/wifi6.jpg'
+top: false
+tags: WLAN
+categories: wifi6
+---
+
 ###### OpenWRT实践
 # 开发环境构建
 

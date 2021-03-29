@@ -1,3 +1,13 @@
+---
+title: ADI PLUTO
+date: 2021-03-15 00:00:00
+swiper: true
+swiperImg: '/medias/wifi6.jpg'
+top: false
+tags: WLAN
+categories: wifi6
+---
+
 ###### ADI PLUTO
 
 # 基本介绍
