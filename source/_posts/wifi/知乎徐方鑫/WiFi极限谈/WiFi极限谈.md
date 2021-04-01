@@ -1,8 +1,8 @@
 ---
 title: WiFi极限谈
 date: 2021-03-15 00:00:00
-swiper: true
-swiperImg: '/medias/wifi6.jpg'
+swiper: false
+swiperImg: '/medias/16.jpg'
 top: false
 tags: WLAN
 categories: wifi6

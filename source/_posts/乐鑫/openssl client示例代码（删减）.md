@@ -1,9 +1,9 @@
 ---
 title: TLS
 date: 2021-03-01 00:00:00
-swiper: true
+swiper: false
 swiperImg: '/medias/14.jpg'
-top: true
+top: false
 tags: 乐鑫
 ---
 # 例程
