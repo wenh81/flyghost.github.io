@@ -1,11 +1,12 @@
 ---
 title: WLAN从入门到精通-WiFi6(华为)
-date: 2021-03-05 00:00:00
 swiper: false
-swiperImg: '/medias/3.jpg'
+swiperImg: /medias/3.jpg
 top: false
 tags: WLAN
 categories: wifi6
+abbrlink: 4f79269
+date: 2021-03-05 00:00:00
 ---
 
 # Wi-Fi 6的前世今生

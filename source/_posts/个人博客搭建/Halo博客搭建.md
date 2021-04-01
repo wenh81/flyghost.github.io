@@ -1,10 +1,11 @@
 ---
 title: Halo博客搭建
-date: 2021-01-05 00:00:00
 swiper: false
-swiperImg: '/medias/5.jpg'
+swiperImg: /medias/5.jpg
 top: false
 tags: 博客
+abbrlink: 4d966b64
+date: 2021-01-05 00:00:00
 ---
 # halo博客搭建
 

@@ -1,11 +1,12 @@
 ---
 title: OpenWRT实践
-date: 2021-03-15 00:00:00
 swiper: false
-swiperImg: '/medias/11.jpg'
+swiperImg: /medias/11.jpg
 top: false
 tags: WLAN
 categories: wifi6
+abbrlink: eabb5bc4
+date: 2021-03-15 00:00:00
 ---
 
 ###### OpenWRT实践

@@ -1,10 +1,11 @@
 ---
 title: linux常用命令汇总
-date: 2021-01-05 00:00:00
 swiper: true
-swiperImg: '/medias/2.jpg'
+swiperImg: /medias/2.jpg
 top: false
 tags: Linux
+abbrlink: 337fc13d
+date: 2021-01-05 00:00:00
 ---
 
 

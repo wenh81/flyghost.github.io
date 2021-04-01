@@ -1,10 +1,11 @@
 ---
 title: hugo配置文件
-date: 2021-01-05 00:00:00
 swiper: false
-swiperImg: '/medias/5.jpg'
+swiperImg: /medias/5.jpg
 top: false
 tags: 博客
+abbrlink: f2ed0f51
+date: 2021-01-05 00:00:00
 ---
 
 # author

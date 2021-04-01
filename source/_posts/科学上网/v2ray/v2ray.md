@@ -1,10 +1,11 @@
 ---
 title: v2ray科学上网
-date: 2021-01-05 00:00:00
 swiper: true
-swiperImg: '/medias/4.jpg'
+swiperImg: /medias/4.jpg
 top: true
 tags: vps搭建
+abbrlink: '4461482'
+date: 2021-01-05 00:00:00
 ---
 
 

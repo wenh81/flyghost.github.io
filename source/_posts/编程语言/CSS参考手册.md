@@ -1,11 +1,12 @@
 ---
 title: CSS参考手册
-date: 2021-03-15 00:00:00
 swiper: true
-swiperImg: '/medias/4.jpg'
+swiperImg: /medias/4.jpg
 top: false
 tags: CSS
 categories: CSS
+abbrlink: 3ec6640a
+date: 2021-03-15 00:00:00
 ---
 
 ## CSS 属性

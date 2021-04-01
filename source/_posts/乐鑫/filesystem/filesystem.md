@@ -1,10 +1,11 @@
 ---
 title: filesystem
-date: 2021-01-05 00:00:00
 swiper: false
-swiperImg: '/medias/5.jpg'
+swiperImg: /medias/5.jpg
 top: false
 tags: 乐鑫
+abbrlink: e9f64d20
+date: 2021-01-05 00:00:00
 ---
 
 # littleFS

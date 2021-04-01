@@ -1,11 +1,12 @@
 ---
 title: CSS教程
-date: 2021-03-15 00:00:00
 swiper: true
-swiperImg: '/medias/11.jpg'
+swiperImg: /medias/11.jpg
 top: false
 tags: CSS
 categories: CSS
+abbrlink: 612878de
+date: 2021-03-15 00:00:00
 ---
 # CSS 教程
 

@@ -1,11 +1,12 @@
 ---
 title: WiFi极限谈
-date: 2021-03-15 00:00:00
 swiper: false
-swiperImg: '/medias/16.jpg'
+swiperImg: /medias/16.jpg
 top: false
 tags: WLAN
 categories: wifi6
+abbrlink: 7074a8fd
+date: 2021-03-15 00:00:00
 ---
 
 ###### WiFi极限谈

@@ -1,10 +1,11 @@
 ---
 title: hexo博客搭建
-date: 2021-02-23 00:00:00
 swiper: false
-swiperImg: '/medias/11.jpg'
+swiperImg: /medias/11.jpg
 top: false
 tags: 博客
+abbrlink: afcbc60d
+date: 2021-02-23 00:00:00
 ---
 
 # 安装 Node.js和npm
