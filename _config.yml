@@ -132,3 +132,12 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+
+# 正文标题添加序号
+heading_index:
+  enable: true
+  index_styles: "{1} {1} {1} {1} {1} {1}"
+  connector: "."
+  global_prefix: ""
+  global_suffix: ". "
