@@ -195,3 +195,33 @@ server {
 nginx -s reload
 ```
 
+# 常见问题
+
+## 解决图片显示和typora显示
+
+安装hexo-asset-image，使用相对路径
+
+## 文章路径显示为固定的加密字符串
+
+安装hexo-abbrlink
+
+在hexo根目录下的_config.yml中，修改为如下代码
+
+```
+permalink: posts/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+```
+
+
+
+## hexo-abbrlink和hexo-asset-image冲突导致图片显示不出来
+
+- 打开```\node_modules\hexo-asset-image\index.js```
+- 修改```var endPos = link.length-1;```为```var endPos = link.length-5;```
+
