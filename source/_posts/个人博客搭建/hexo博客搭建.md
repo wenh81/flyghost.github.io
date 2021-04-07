@@ -225,3 +225,12 @@ pretty_urls:
 - 打开```\node_modules\hexo-asset-image\index.js```
 - 修改```var endPos = link.length-1;```为```var endPos = link.length-5;```
 
+## 添加PDF链接
+
+- ```
+    npm install --save hexo-pdf
+    ```
+
+- 在source文件夹下新建一个books文件夹，并将PDF文件放入
+
+- 使用方法：在markdown文件中使用链接，譬如```[Future-and-Indoor-Networks](/books/Future-and-Indoor-Networks.pdf)```
