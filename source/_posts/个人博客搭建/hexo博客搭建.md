@@ -201,6 +201,10 @@ nginx -s reload
 
 安装hexo-asset-image，使用相对路径
 
+```
+npm install hexo-asset-image --save
+```
+
 ## 文章路径显示为固定的加密字符串
 
 安装hexo-abbrlink
