@@ -209,6 +209,10 @@ npm install hexo-asset-image --save
 
 安装hexo-abbrlink
 
+```
+npm install hexo-abbrlink --save
+```
+
 在hexo根目录下的_config.yml中，修改为如下代码
 
 ```
