@@ -242,3 +242,13 @@ pretty_urls:
 - 在source文件夹下新建一个books文件夹，并将PDF文件放入
 
 - 使用方法：在markdown文件中使用链接，譬如```[Future-and-Indoor-Networks](/books/Future-and-Indoor-Networks.pdf)```
+
+## 修改文稿后网页实时预览
+
+安装插件
+
+```
+npm install hexo-browsersync --save
+```
+
+其中 3001 端口是 browsersync 的配置页面, 4000 端口就是我们的调试页面了.
