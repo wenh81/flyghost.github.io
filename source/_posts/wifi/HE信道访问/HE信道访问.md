@@ -24,5 +24,7 @@ HE AP发送的HE operation element中，将HE operation parameters字段中的TX
 STA接收到的PPDU满足下述任意一个条件就是inter-BSS PPDU
 
 - RXVECTOR中参数BSS_COLOR不为0，并且不是STA所属BSS的颜色
-- PPDU是VHT PPDU的话，其RXVECTOR参数PARTIAL_AID不等于与STA关联的BSS的BSSID[39:47]
+- 如果PPDU是VHT PPDU，其RXVECTOR参数PARTIAL_AID不等于与STA关联的BSS的BSSID[39:47]，或者在相同的多个BSSID集或共同托管的BSSID中的其他BSS的BSSID[39:47]，并且RXVECTOR中参数GROUP_ID为0（0或者63代表是一个VHT SU PPDU，否则代表VHT MU PPDU）
+- 如果PPDU是VHT PPDU，其RXVECTOR参数PARTIAL_AID不等于dot11PartialBSSColorImplemented为真的STA所属的BSS宣布的颜色的4 LSBs，同时，当最新HE Operation element中的Partial BSS Color字段为1时，RXVECTOR参数的GROUP_ID等于63
+- 如果PPDU是VHT MU PPDU或者HE MU PPDU，RXVECTOR参数中UPLINIK_FLAG等于0，并且这个STA是一个AP
 
