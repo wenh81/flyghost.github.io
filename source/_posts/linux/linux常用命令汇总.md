@@ -24,19 +24,24 @@ sudo apt install python-is-python3
 
 # macOS 下设置python3为默认python
 
-#### 方法一（不建议）：alias
+## 方法一（不建议）：alias
 
-#### 方法二（不建议）：关闭sip来设置
+## 方法二（不建议）：关闭sip来设置
 
 在新版macos系统下，系统默认设置需要关闭sip来进行修改。
 
-#### 方法三（推荐）：软连接
+## 方法三（推荐）：软连接
 
 在```/usr/local/bin```下新建一个python的软连接，由于PATH中该路径是优先的，在寻找python时优先在该路径下寻找，所以这个路径下有python软连接会覆盖```/usr/bin```中的python软连接，实现修改默认python
 
 - 确保PATH中包含```/usr/local/bin``` ，使用```cat $PATH```查看，不是的话设置```export PATH=/usr/local/bin:$PATH```
-
 - 添加软连接 ```ln -s /usr/local/bin/python3 /usr/local/bin/python```
+
+如果在M1平台，可以将Python3连接到homebrew平台下
+
+- ``ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python``
+
+
 
 # Ubuntu更换阿里源
 
