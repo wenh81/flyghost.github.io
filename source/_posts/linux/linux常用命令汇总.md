@@ -123,3 +123,59 @@ wsl --set-default-version 2
 
 # 在商店安装ubuntu20
 ```
+
+# linux 交叉编译链
+
+```
+# 安装arm-linux-gcc
+sudo apt-get install g++-arm-linux-gnueabihf
+
+# 安装arm-linux-g++
+sudo apt-get install g++-arm-linux-gnueabihf
+```
+
+```shell
+# 卸载arm-linux-gcc
+sudo apt-get remove gcc-arm-linux-gnueabihf
+
+# 卸载arm-linux-g++
+sudo apt-get remove g++-arm-linux-gnueabihf
+```
+
+# mac访问linux文件
+
+```shell
+# ubuntu开启FTP服务
+sudo apt-get install vsftpd
+
+sudo vim /etc/vsftpd.conf
+```
+
+打开 vsftpd.conf 文件以后找到如下两行
+
+```shell
+local_enable=YES
+write_enable=YES
+```
+
+确保上面两行前面没有“#”，有的话就取消掉
+
+```shell
+sudo /etc/init.d/vsftpd restart
+```
+
+mac打开浏览器，输入：
+
+```shell
+# 下面的IP是Linux的IP地址
+ftp://192.168.0.112/
+```
+
+然后会自动打开finder，填入linux的用户名和密码即可
+
+# mac安装CH340驱动
+
+```shell
+http://www.wch.cn/download/CH341SER_MAC_ZIP.html
+```
+
