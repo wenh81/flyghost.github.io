@@ -1,5 +1,5 @@
 ---
-title: panic
+title: 1、esp32 panic详解
 swiper: false
 swiperImg: /medias/5.jpg
 top: false
@@ -65,8 +65,8 @@ call4 panicHandler：传递(XtExcFrame *)frame
     const void* addr;                       // 触发异常的指令地址
     const void* frame;                      // 参考框架，直接从汇编传过来的
     bool pseudo_excause;                    // 表示异常原因有特殊含义的标志
-} panic_info_t;
-
+  } panic_info_t;
+  
   info->core = cpu_hal_get_core_id();
   info->exception = PANIC_EXCEPTION_FAULT;
   info->details = NULL;   

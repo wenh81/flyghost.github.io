@@ -1,5 +1,5 @@
 ---
-title: coredump
+title: 乐鑫coredump分析
 swiper: false
 swiperImg: /medias/5.jpg
 top: false

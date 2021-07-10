@@ -1,5 +1,5 @@
 ---
-title: gdb
+title: gdb组件分析
 swiper: false
 swiperImg: /medias/5.jpg
 top: false
