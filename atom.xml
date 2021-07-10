@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>灵溪驿站</title>
+  
+  
+  <link href="https://www.creekwater.cn/atom.xml" rel="self"/>
+  
+  <link href="https://www.creekwater.cn/"/>
+  <updated>2021-06-20T12:42:23.000Z</updated>
+  <id>https://www.creekwater.cn/</id>
+  
+  <author>
+    <name>creekwater</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>uboot</title>
+    <link href="https://www.creekwater.cn/posts/90b9e97a.html"/>
+    <id>https://www.creekwater.cn/posts/90b9e97a.html</id>
+    <published>2021-06-18T16:00:00.000Z</published>
+    <updated>2021-06-20T12:42:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;U-Boot简介&quot;&gt;1 U-Boot简介&lt;/h1&gt;&lt;p&gt;uboot 官网为 &lt;a href=&quot;http://www.denx.de/wiki/U-Boot/&quot;&gt;http://www.denx.de/wiki/U-Boot/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;NXP 就 维</summary>
+        
+      
+    
+    
+    
+    
+    <category term="uboot" scheme="https://www.creekwater.cn/tags/uboot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IMX6ULL</title>
+    <link href="https://www.creekwater.cn/posts/6bcb34f8.html"/>
+    <id>https://www.creekwater.cn/posts/6bcb34f8.html</id>
+    <published>2021-06-06T16:00:00.000Z</published>
+    <updated>2021-06-16T09:34:19.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Cortex-A-处理器运行模型&quot;&gt;1 Cortex-A 处理器运行模型&lt;/h1&gt;&lt;p&gt;以前的 ARM 处理器有 7 中运行模型：User、FIQ、IRQ、Supervisor(SVC)、Abort、Undef和 System，其中 User 是非特权模式，其余</summary>
+        
+      
+    
+    
+    
+    
+    <category term="IMX6ULL" scheme="https://www.creekwater.cn/tags/IMX6ULL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>汇编</title>
+    <link href="https://www.creekwater.cn/posts/d147e7fa.html"/>
+    <id>https://www.creekwater.cn/posts/d147e7fa.html</id>
+    <published>2021-06-06T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;汇编基本格式&quot;&gt;1 汇编基本格式&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+    <category term="汇编" scheme="https://www.creekwater.cn/tags/%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux内核源码</title>
+    <link href="https://www.creekwater.cn/posts/ead4f553.html"/>
+    <id>https://www.creekwater.cn/posts/ead4f553.html</id>
+    <published>2021-05-09T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;发包过程俯瞰&quot;&gt;1 发包过程俯瞰&lt;/h1&gt;&lt;p&gt;本文将拿&lt;strong&gt;Intel I350&lt;/strong&gt;网卡的 &lt;code&gt;igb&lt;/code&gt; 驱动作为参考，网卡的 data sheet 这里可以下载 &lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="https://www.creekwater.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11ax 帧格式</title>
+    <link href="https://www.creekwater.cn/posts/f75076df.html"/>
+    <id>https://www.creekwater.cn/posts/f75076df.html</id>
+    <published>2021-04-29T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Element&quot;&gt;1 Element&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/posts/f75076df/image-20210430141137899.png&quot; alt=&quot;Element IDs&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="wifi6" scheme="https://www.creekwater.cn/categories/wifi6/"/>
+    
+    
+    <category term="WLAN" scheme="https://www.creekwater.cn/tags/WLAN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HE信道访问26.2</title>
+    <link href="https://www.creekwater.cn/posts/cceb2019.html"/>
+    <id>https://www.creekwater.cn/posts/cceb2019.html</id>
+    <published>2021-04-28T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;基于TXOP持续时间的RTS-CTS&quot;&gt;1 基于TXOP持续时间的RTS / CTS&lt;/h1&gt;&lt;p&gt;在HE BSS中，RTS/CTS基于TXOP 持续时间（duration）或者PSDU长度，对于非AP HE STA，AP可以将其配置为基于TXOP</summary>
+        
+      
+    
+    
+    
+    <category term="wifi6" scheme="https://www.creekwater.cn/categories/wifi6/"/>
+    
+    
+    <category term="WLAN" scheme="https://www.creekwater.cn/tags/WLAN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Control OBSS/PD Sensitivity Threshold for IEEE 802.11ax BSS Color</title>
+    <link href="https://www.creekwater.cn/posts/b9e0ade6.html"/>
+    <id>https://www.creekwater.cn/posts/b9e0ade6.html</id>
+    <published>2021-04-24T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="wifi6" scheme="https://www.creekwater.cn/categories/wifi6/"/>
+    
+    
+    <category term="WLAN" scheme="https://www.creekwater.cn/tags/WLAN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11ax</title>
+    <link href="https://www.creekwater.cn/posts/f22bd777.html"/>
+    <id>https://www.creekwater.cn/posts/f22bd777.html</id>
+    <published>2021-03-31T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;协议简介&quot;&gt;1 协议简介&lt;/h1&gt;&lt;h2 id=&quot;序言&quot;&gt;1.1 序言&lt;/h2&gt;&lt;p&gt;参考资料：&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="wifi6" scheme="https://www.creekwater.cn/categories/wifi6/"/>
+    
+    
+    <category term="WLAN" scheme="https://www.creekwater.cn/tags/WLAN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>typora css 语法</title>
+    <link href="https://www.creekwater.cn/posts/a487ab94.html"/>
+    <id>https://www.creekwater.cn/posts/a487ab94.html</id>
+    <published>2021-03-14T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;typora每级标题生成序号&quot;&gt;1 typora每级标题生成序号&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;在主题根目录新建一个base.user.css文件，写入如下代码，重启typora即可生效。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    <category term="markdown" scheme="https://www.creekwater.cn/categories/markdown/"/>
+    
+    
+    <category term="markdown" scheme="https://www.creekwater.cn/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS参考手册</title>
+    <link href="https://www.creekwater.cn/posts/3ec6640a.html"/>
+    <id>https://www.creekwater.cn/posts/3ec6640a.html</id>
+    <published>2021-03-14T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;CSS-属性&quot;&gt;0.1 CSS 属性&lt;/h2&gt;&lt;h3 id=&quot;A&quot;&gt;0.1.1 A&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CSS" scheme="https://www.creekwater.cn/categories/CSS/"/>
+    
+    
+    <category term="CSS" scheme="https://www.creekwater.cn/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS教程</title>
+    <link href="https://www.creekwater.cn/posts/612878de.html"/>
+    <id>https://www.creekwater.cn/posts/612878de.html</id>
+    <published>2021-03-14T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;CSS-教程&quot;&gt;1 CSS 教程&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;CSS 是一种描述 HTML 文档样式的语言。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;CSS 描述应该如何显示 HTML 元素。&lt;/p&gt;
+&lt;p&gt;本教程将从零起点的基础教程开始，一直到 CSS3</summary>
+        
+      
+    
+    
+    
+    <category term="CSS" scheme="https://www.creekwater.cn/categories/CSS/"/>
+    
+    
+    <category term="CSS" scheme="https://www.creekwater.cn/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TLS</title>
+    <link href="https://www.creekwater.cn/posts/3a5a5f39.html"/>
+    <id>https://www.creekwater.cn/posts/3a5a5f39.html</id>
+    <published>2021-02-28T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;例程&quot;&gt;1</summary>
+        
+      
+    
+    
+    
+    
+    <category term="乐鑫" scheme="https://www.creekwater.cn/tags/%E4%B9%90%E9%91%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo博客搭建</title>
+    <link href="https://www.creekwater.cn/posts/afcbc60d.html"/>
+    <id>https://www.creekwater.cn/posts/afcbc60d.html</id>
+    <published>2021-02-22T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;安装-Node-js和npm&quot;&gt;1 安装 Node.js和npm&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;sudo apt-get update&lt;br&gt;sudo apt-get install nodejs&lt;br&gt;sudo apt-get install</summary>
+        
+      
+    
+    
+    
+    
+    <category term="博客" scheme="https://www.creekwater.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MQTT协议简介及移植</title>
+    <link href="https://www.creekwater.cn/posts/41fa605b.html"/>
+    <id>https://www.creekwater.cn/posts/41fa605b.html</id>
+    <published>2021-02-05T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MQTT协议&quot;&gt;1 MQTT协议&lt;/h1&gt;&lt;h2 id=&quot;MQTT协议简介&quot;&gt;1.1 MQTT协议简介&lt;/h2&gt;&lt;p&gt;MQTT协议全称是Message Queuing Telemetry</summary>
+        
+      
+    
+    
+    
+    
+    <category term="IOT" scheme="https://www.creekwater.cn/tags/IOT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MQTT协议详解</title>
+    <link href="https://www.creekwater.cn/posts/308177ca.html"/>
+    <id>https://www.creekwater.cn/posts/308177ca.html</id>
+    <published>2021-01-31T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;第一章-概述-Introduction&quot;&gt;1 第一章 概述 Introduction&lt;/h1&gt;&lt;h2 id=&quot;1-1-MQTT协议的组织结构-Organization-of-MQTT&quot;&gt;1.1 1.1 MQTT协议的组织结构 Organization of</summary>
+        
+      
+    
+    
+    
+    
+    <category term="乐鑫" scheme="https://www.creekwater.cn/tags/%E4%B9%90%E9%91%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git大全</title>
+    <link href="https://www.creekwater.cn/posts/a93bf28c.html"/>
+    <id>https://www.creekwater.cn/posts/a93bf28c.html</id>
+    <published>2021-01-04T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Git-GUI-客户端&quot;&gt;1 Git GUI 客户端&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.oschina.net/p/git&quot;&gt;Git 客户端下载（Windows）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="git" scheme="https://www.creekwater.cn/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux常用命令汇总</title>
+    <link href="https://www.creekwater.cn/posts/337fc13d.html"/>
+    <id>https://www.creekwater.cn/posts/337fc13d.html</id>
+    <published>2021-01-04T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Ubuntu20设置python2为默认python&quot;&gt;1 Ubuntu20设置python2为默认python&lt;/h1&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="https://www.creekwater.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Halo博客搭建</title>
+    <link href="https://www.creekwater.cn/posts/4d966b64.html"/>
+    <id>https://www.creekwater.cn/posts/4d966b64.html</id>
+    <published>2021-01-04T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;halo博客搭建&quot;&gt;1 halo博客搭建&lt;/h1&gt;&lt;h2 id=&quot;1、介绍&quot;&gt;1.1 1、介绍&lt;/h2&gt;&lt;p&gt;Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配置，它放在任何目录都是可行的。需要注意的是，Halo 的整个额外文件全部存放在</summary>
+        
+      
+    
+    
+    
+    
+    <category term="博客" scheme="https://www.creekwater.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hugo配置文件</title>
+    <link href="https://www.creekwater.cn/posts/f2ed0f51.html"/>
+    <id>https://www.creekwater.cn/posts/f2ed0f51.html</id>
+    <published>2021-01-04T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;author&quot;&gt;1 author&lt;/h1&gt;&lt;p&gt;作者&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;author = “creekwater”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;title&quot;&gt;2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="博客" scheme="https://www.creekwater.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coredump</title>
+    <link href="https://www.creekwater.cn/posts/37a8bef3.html"/>
+    <id>https://www.creekwater.cn/posts/37a8bef3.html</id>
+    <published>2021-01-04T16:00:00.000Z</published>
+    <updated>2021-06-14T09:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;UART-、ELF-FORMAT-、CRC32&quot;&gt;1 UART 、ELF FORMAT</summary>
+        
+      
+    
+    
+    
+    
+    <category term="乐鑫" scheme="https://www.creekwater.cn/tags/%E4%B9%90%E9%91%AB/"/>
+    
+  </entry>
+  
+</feed>
