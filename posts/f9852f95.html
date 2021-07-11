@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Linux根文件系统移植 | 灵溪驿站</title>
+  <title>Linux根文件系统搭建 | 灵溪驿站</title>
 
   
     
@@ -539,7 +539,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/13.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0"></canvas>
@@ -550,7 +550,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['Linux根文件系统移植'],
+              strings: ['Linux根文件系统搭建'],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -699,7 +699,11 @@
 </tbody></table>
 <p>参考 busybox 的 examples/inittab 文件，创建一个/etc/inittab，输入如下内容</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">etc/inittab</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 系统运行以后运行这个rcS脚本</span></span><br><span class="line">::sysinit:/etc/init.d/rcS</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将console作为控制台终端</span></span><br><span class="line">console::askfirst:-/bin/sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启的话运行/sbin/init</span></span><br><span class="line">::restart:/sbin/init</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 按下ctrl+alt+del组合键的话就运行/sbin/reboot，所以该组合键可以重启系统</span></span><br><span class="line">::ctrlaltdel:/sbin/reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关机的时候执行/bin/umount，卸载各个文件系统</span></span><br><span class="line">::shutdown:/bin/umount -a -r</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关机的时候执行/sbin/swapoff，关闭交换分区</span></span><br><span class="line">::shutdown:/sbin/swapoff -a</span><br></pre></td></tr></table></figure>
-<h2 id="测试软件">2.12 测试软件</h2><p>在根文件系统中创建hello.c文件</p>
+<h2 id="外网测试">2.12 外网测试</h2><p>在 rootfs 中新建文件/etc/resolv.conf，然后在里面输入如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 114.114.114.114</span><br><span class="line">nameserver 8.8.8.8</span><br></pre></td></tr></table></figure>
+<p>设置域名服务器，保存后重启开发板，ping百度可以成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
+<h2 id="测试软件">2.13 测试软件</h2><p>在根文件系统中创建hello.c文件</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;hello world!\r\n&quot;</span>);</span><br><span class="line">		sleep(<span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译代码</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arm-linux-gnueabihf-gcc hello.c -o hello</span><br></pre></td></tr></table></figure>
@@ -715,7 +719,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/posts/f9852f95.html" target="_blank" title="Linux根文件系统移植">https://www.creekwater.cn/posts/f9852f95.html</a>
+    <a href="/posts/f9852f95.html" target="_blank" title="Linux根文件系统搭建">https://www.creekwater.cn/posts/f9852f95.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -737,16 +741,16 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/3.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/230b852d.html" class="post-nav-link">
+    <a href="/posts/54ee180f.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>Linux根文件系统搭建</div>
+        <div>uboot移植</div>
       </div>
       <!-- <div class="content">
-        
+        1 nxp uboot1.1 官方uboot编译123make ARCH=arm CROSS_COMPILE=arm-l
       </div> -->
     </a>
   </div>
