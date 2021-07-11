@@ -1,8 +1,5 @@
 ---
 title: CSS教程
-swiper: true
-swiperImg: /medias/11.jpg
-top: false
 tags: CSS
 categories: CSS
 abbrlink: 612878de

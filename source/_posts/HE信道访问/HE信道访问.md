@@ -1,7 +1,7 @@
 ---
 title: HE信道访问26.2
-tags: WLAN
-categories: wifi6
+tags: WIFI
+categories: WIFI
 abbrlink: cceb2019
 date: 2021-04-29 00:00:00
 ---

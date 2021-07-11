@@ -1,8 +1,5 @@
 ---
 title: CSS参考手册
-swiper: true
-swiperImg: /medias/4.jpg
-top: false
 tags: CSS
 categories: CSS
 abbrlink: 3ec6640a

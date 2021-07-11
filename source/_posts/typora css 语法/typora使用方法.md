@@ -1,10 +1,9 @@
 ---
 title: typora css 语法
 swiper: true
-swiperImg: /medias/9.jpg
 top: true
-tags: markdown
-categories: markdown
+tags: MARKDOWN
+categories: MARKDOWN
 abbrlink: a487ab94
 date: 2021-03-15 00:00:00
 ---

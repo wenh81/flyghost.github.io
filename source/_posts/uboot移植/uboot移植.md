@@ -1,6 +1,7 @@
 ---
 title: uboot移植
-tags: Linux
+tags: ARM
+categories: ARM
 abbrlink: 54ee180f
 date: 2021-07-05 00:00:00
 ---

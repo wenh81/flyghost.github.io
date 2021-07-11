@@ -1,9 +1,7 @@
 ---
 title: gdb组件分析
-swiper: false
-swiperImg: /medias/5.jpg
-top: false
-tags: 乐鑫
+tags: ESP
+categories: ESP
 abbrlink: 10f4aa60
 date: 2021-01-05 00:00:00
 ---

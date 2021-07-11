@@ -1,9 +1,9 @@
 ---
 title: v2ray科学上网
 swiper: true
-swiperImg: /medias/4.jpg
 top: true
-tags: vps搭建
+tags: LINUX
+categories: LINUX
 abbrlink: '4461482'
 date: 2021-01-05 00:00:00
 ---

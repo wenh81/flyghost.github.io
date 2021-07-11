@@ -1,9 +1,7 @@
 ---
 title: hugo配置文件
-swiper: false
-swiperImg: /medias/5.jpg
-top: false
-tags: 博客
+tags: BLOG
+categories: BLOG
 abbrlink: f2ed0f51
 date: 2021-01-05 00:00:00
 ---

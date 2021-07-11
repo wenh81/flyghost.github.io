@@ -1,9 +1,9 @@
 ---
 title: Git大全
 swiper: true
-swiperImg: /medias/1.jpg
 top: true
-tags: git
+tags: LINUX
+categories: LINUX
 abbrlink: a93bf28c
 date: 2021-01-05 00:00:00
 ---

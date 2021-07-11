@@ -1,9 +1,7 @@
 ---
 title: Halo博客搭建
-swiper: false
-swiperImg: /medias/5.jpg
-top: false
-tags: 博客
+tags: BLOG
+categories: BLOG
 abbrlink: 4d966b64
 date: 2021-01-05 00:00:00
 ---

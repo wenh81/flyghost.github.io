@@ -1,9 +1,7 @@
 ---
 title: 几个开源文件系统分析
-swiper: false
-swiperImg: /medias/5.jpg
-top: false
-tags: 乐鑫
+tags: ESP
+categories: ESP
 abbrlink: e9f64d20
 date: 2021-01-05 00:00:00
 ---

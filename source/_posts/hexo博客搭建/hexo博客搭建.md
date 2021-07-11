@@ -1,9 +1,7 @@
 ---
 title: hexo博客搭建
-swiper: false
-swiperImg: /medias/11.jpg
-top: false
-tags: 博客
+tags: BLOG
+categories: BLOG
 abbrlink: afcbc60d
 date: 2021-02-23 00:00:00
 ---

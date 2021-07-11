@@ -1,9 +1,8 @@
 ---
 title: MQTT协议详解
 swiper: true
-swiperImg: /medias/8.jpg
-top: false
-tags: 乐鑫
+tags: ESP
+categories: ESP
 abbrlink: 308177ca
 date: 2021-02-01 00:00:00
 ---

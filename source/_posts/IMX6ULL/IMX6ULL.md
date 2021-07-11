@@ -1,6 +1,7 @@
 ---
-title: IMX6ULL
-tags: IMX6ULL
+title: IMX6ULL芯片简介
+tags: ARM
+categories: ARM
 abbrlink: 6bcb34f8
 date: 2021-06-07 00:00:00
 ---

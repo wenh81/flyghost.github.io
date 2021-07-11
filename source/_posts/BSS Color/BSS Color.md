@@ -1,7 +1,7 @@
 ---
 title: Control OBSS/PD Sensitivity Threshold for IEEE 802.11ax BSS Color
-tags: WLAN
-categories: wifi6
+tags: WIFI
+categories: WIFI
 abbrlink: b9e0ade6
 date: 2021-04-25 00:00:00
 ---

@@ -1,9 +1,7 @@
 ---
 title: mbedtls加密组件分析
-swiper: false
-swiperImg: /medias/5.jpg
-top: false
-tags: 乐鑫
+tags: ESP
+categories: ESP
 abbrlink: 841b00c2
 date: 2021-01-05 00:00:00
 ---
