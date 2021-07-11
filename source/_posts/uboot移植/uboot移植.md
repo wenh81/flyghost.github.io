@@ -5,7 +5,7 @@ abbrlink: 54ee180f
 date: 2021-07-05 00:00:00
 ---
 
-# nxp uboot
+# nxp uboot编译测试
 
 ## 官方uboot编译
 
@@ -82,6 +82,8 @@ uboot启动时有网络驱动错误提示
 
 ## 添加开发板默认配置文件
 
+添加config路径下的配置文件
+
 ```shell
 cd configs
 cp mx6ull_14x14_evk_emmc_defconfig mx6ull_alientek_emmc_defconfig
@@ -98,6 +100,8 @@ CONFIG_CMD_GPIO=y
 ```
 
 ## 添加开发板对应的头文件
+
+添加include/configs/路径下对应的头文件
 
 ```shell
 cp include/configs/mx6ullevk.h mx6ull_alientek_emmc.h
@@ -492,4 +496,224 @@ cp include/configs/mx6ullevk.h mx6ull_alientek_emmc.h
 
 #endif
 ```
+
+## 添加开发板对应的板级文件夹
+
+首先需要创建对应的文件夹，可以直接从已有的复制一个
+
+```shell
+# 复制一个板级文件夹
+cp board/freescale/mx6ullevk/ -r board/freescale/mx6ull_alientek_emmc
+
+# 重命名文件
+mv board/freescale/mx6ull_alientek_emmc/mx6ullevk.c mx6ull_alientek_emmc.c
+```
+
+### 修改Makefile
+
+```makefile
+obj-y  := mx6ull_alientek_emmc.o      # 修改为这个文件名
+
+extra-$(CONFIG_USE_PLUGIN) :=  plugin.bin
+$(obj)/plugin.bin: $(obj)/plugin.o
+	$(OBJCOPY) -O binary --gap-fill 0xff $< $@
+```
+
+### 修改imximage.cfg
+
+```makefile
+PLUGIN board/freescale/mx6ullevk/plugin.bin 0x00907000
+```
+
+上述代码修改为
+
+```makefile
+PLUGIN board/freescale/mx6ull_alientek_emmc /plugin.bin 0x00907000
+```
+
+### 修改Kconfig文件
+
+修改kconfig文件为如下代码
+
+```makefile
+if TARGET_MX6ULL_ALIENTEK_EMMC
+
+config SYS_BOARD
+	default "mx6ull_alientek_emmc"
+
+config SYS_VENDOR
+	default "freescale"
+
+config SYS_SOC
+	default "mx6"
+
+config SYS_CONFIG_NAME
+	default "mx6ull_alientek_emmc"
+
+endif
+```
+
+### 修改MAINTAINERS文件
+
+修改为如下代码
+
+```makefile
+MX6ULL_ALIENTEK_EMMC BOARD
+M:	Peng Fan <peng.fan@nxp.com>
+S:	Maintained
+F:	board/freescale/mx6ull_alientek_emmc/
+F:	include/configs/mx6ull_alientek_emmc.h
+F:	configs/mx6ull_alientek_emmc_defconfig
+```
+
+## 修改uboot图形界面配置文件
+
+修改arch/arm/cpu/armv7/mx6/Kconfig文件或者arch/arm/Kconfig文件
+
+在 207 行加入如下内容：
+
+```
+config TARGET_MX6ULL_ALIENTEK_EMMC
+	bool "Support mx6ull_alientek_emmc"
+	select MX6ULL
+	select DM
+	select DM_THERMAL
+```
+
+在最后一行的 endif 的前一行添加如下内容：
+
+```
+source "board/freescale/mx6ull_alientek_emmc/Kconfig"
+```
+
+这样对应的开发板就添加到Uboot中了
+
+## 使用新添加的板子编译uboot
+
+uboot根目录下新建一个编译脚本mx6ull_alientek_emmc.sh
+
+```bash
+#!/bin/bash
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mx6ull_alientek_emmc_defconfig
+make V=0  ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j16
+```
+
+执行编译脚本
+
+```shell
+chmod 777 mx6ull_alientek_emmc.sh # 给予可执行权限，一次即可
+./mx6ull_alientek_emmc.sh         # 运行脚本编译 uboot
+```
+
+烧入开发板可以运行
+
+## LCD驱动修改
+
+未用到，暂时不修改
+
+## 网络驱动修改
+
+- 修改PHY地址
+- 删除 uboot 中 74LV595 的驱动代码
+
+- 添加开发板网络复位引脚驱动
+- 修改 drivers/net/phy/phy.c 文件中的函数 genphy_update_link
+
+## 测试
+
+编译uboot后烧入代码，启动后可以看到“Net： FEC1”这一行，提示当前使用的 FEC1 这个网口，也就是 ENET2
+
+设置开发板环境变量
+
+```shell
+setenv ipaddr 192.168.1.55       # 开发板 IP 地址
+setenv ethaddr 00:04:9f:04:d2:35 # 开发板网卡 MAC 地址
+setenv gatewayip 192.168.1.1     # 开发板默认网关
+setenv netmask 255.255.255.0     # 开发板子网掩码
+setenv serverip 192.168.1.250    # 服务器地址，也就是 Ubuntu 地址
+saveenv                          # 保存环境变量
+```
+
+ping主机可以Ping通
+
+```
+ping 192.168.1.250
+```
+
+再来测试一下 ENET1 的网络是否正常工作，打开 mx6ull_alientek_emmc.h， 将 CONFIG_FEC_ENET_DEV 改为 0，然后重新编译一下 uboot 并烧写到 SD 卡中重启，也可以Ping通
+
+>CONFIG_FEC_ENET_DEV 设置为 0，使用的是ENET1
+>
+>CONFIG_FEC_ENET_DEV 设置为 1，使用的是ENET2，建议设置这个为Uboot默认网口
+
+## 修改uboot启动时输出的开发板名称
+
+修改 mx6ull_alientek_emmc.c文件
+
+```c
+int checkboard(void)
+{
+	if (is_mx6ull_9x9_evk())
+		puts("Board: MX6ULL 9x9 EVK\n");
+	else
+		puts("Board: MX6ULL ALIENTEK EMMC\n");
+
+	return 0;
+}
+```
+
+## 设置bootcmd和bootargs环境变量
+
+bootcmd 保存着 uboot 默认命令，uboot 倒计时结束以后就会执行 bootcmd 中的命令。这些命令一般都是用来启动 Linux 内核的，比如读取 EMMC 或 者 NAND Flash 中的 Linux 内核镜像文件和设备树文件到 DRAM 中，然后启动 Linux 内核。
+
+可以在 uboot 启动以后进入命令行设置 bootcmd 环境变量的值。
+
+如果 EMMC 或者 NAND 中没有保存 bootcmd 的值，那么 uboot 就会使用默认的值，板子第一次运行 uboot 的时候都会使用默认值来设置 bootcmd 环境变量。
+
+ include/env_default.h中，bootcmd 的默认值就是CONFIG_BOOTCOMMAND，bootargs 的默认值就是 CONFIG_BOOTARGS。mx6ull_alientek_emmc.h 文件中通过设置宏 CONFIG_BOOTCOMMAND 来设置 bootcmd 的默认值。
+
+### bootcmd
+
+### bootargs
+
+bootargs 保存着 uboot 传递给 Linux 内核的参数
+
+- console：设置 linux 终端(或者叫控制台)
+- root：设置根文件系统的位置
+- rootfstype：于指定根文件系统类型
+
+# uboot启动Linux测试
+
+## 从EMMC启动Linux系统
+
+将Linux镜像文件zImage和设备树文件保存在EMMC中，检查下EMMC中是否有zImage文件和设备树文件
+
+```
+ls mmc 1:1
+```
+
+设置 bootargs 和 bootcmd这两个环境变量
+
+```shell
+setenv bootargs 'console=ttymxc0,115200 root=/dev/mmcblk1p2 rootwait rw'
+setenv bootcmd 'mmc dev 1; fatload mmc 1:1 80800000 zImage; fatload mmc 1:1 83000000 imx6ull-alientek-emmc.dtb; bootz 80800000 - 83000000;'
+saveenv
+```
+
+输入**boot**或者**run bootcmd**可以启动Linux内核
+
+## 从网络启动Linux系统
+
+设置 bootargs 和 bootcmd 这两个环境变量，设置如下：
+
+```shell
+setenv bootargs 'console=ttymxc0,115200 root=/dev/mmcblk1p2 rootwait rw'
+setenv bootcmd 'tftp 80800000 zImage; tftp 83000000 imx6ull-alientek-emmc.dtb; bootz 80800000 - 83000000'
+saveenv
+```
+
+一开始是通过tftp下载zImage和imx6ull-alientek-emmc.dtb这两个文件
+
+下载完成以后就是启动 Linux 内核
 
