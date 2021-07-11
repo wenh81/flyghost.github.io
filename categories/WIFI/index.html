@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>标签: IOT | 灵溪驿站</title>
+  <title>分类: wifi | 灵溪驿站</title>
 
   
     
@@ -418,128 +418,12 @@
       
 
 <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="lazyload tag-header" data-original="/medias/tagDetail.jpg" style="width: 100%;height: 50vh;overflow: hidden;background-size: cover; 
+<div class="lazyload category-header" data-original="/medias/categoryDetail.jpg" style="width: 100%;height: 50vh;overflow: hidden;background-size: cover; 
 background-position: center center;">
 </div>
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;" :style="{'background-color': bgColor ? bgColor : 'transparent'}">
-    <transition-group tag="ul" :name="names">
-        <li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-            <img :src="image" class="bg-swiper-img">
-        </li>
-    </transition-group>
-</div>
-<script>
-    var vm = new Vue({
-        el: '#appBgSwiper',
-        data: {
-            names: '' || 'fade' || 'fade', // translate-fade fade
-            mark: 0,
-            img: [],
-            bgColor: '',
-            time: null
-        },
-        methods: {   //添加方法
-            change(i, m) {
-                if (i > m) {
-                    // this.names = 'fade';
-                } else if (i < m) {
-                    // this.names = 'fade';
-                } else {
-                    return;
-                }
-                this.mark = i;
-            },
-            prev() {
-                // this.names = 'fade';
-                this.mark--;
-                if (this.mark === -1) {
-                    this.mark = 3;
-                    return
-                }
-            },
-            next() {
-                // this.names = 'fade';
-                this.mark++;
-                if (this.mark === this.img.length) {
-                    this.mark = 0;
-                    return
-                }
-            },
-            autoPlay() {
-                // this.names = 'fade';
-                this.mark++;
-                if (this.mark === this.img.length) {
-                    this.mark = 0;
-                    return
-                }
-            },
-            play() {
-                let bgImgDelay = '' || '180000'
-                let delay = parseInt(bgImgDelay) || 180000;
-                this.time = setInterval(this.autoPlay, delay);
-            },
-            enter() {
-                clearInterval(this.time);
-            },
-            leave() {
-                this.play();
-            }
-        },
-        created() {
-            this.play()
-        },
-        beforeDestroy() {
-            clearInterval(this.time);
-        },
-        mounted() {
-            let prop = ''|| '/medias/post_background.png';
-            let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg')
-            if (isImg) {
-                let img = prop.split(',');
-                let configRoot = '/'
-                let arrImg = [];
-                img.forEach(el => {
-                    var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-			        var objExp = new RegExp(Expression);
-
-                    if(objExp.test(el)) {
-                        // http or https
-                        arrImg.push(el);
-                    } else {
-                        // 非http or https开头
-                        // 本地文件
-                        let firstStr = el.charAt(0);
-                        if (firstStr == '/') {
-                            el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-                        }
-                        el = configRoot + el;
-                        arrImg.push(el);
-                    }
-                })
-                this.img = arrImg;
-            } else {
-                this.bgColor = prop;
-            }
-        }
-    })
-</script>
-
-<style>
-    .bg-swiper-box {
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-    .bg-swiper-img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-<div class="tag">
-  <div class="tag-name">
-    <div class="name" style="background-color: #E8F8F5;">IOT 分类</div>
+<div class="category">
+  <div class="category-name">
+    <div class="name" style="background-color: #82E0AA;">wifi 分类</div>
   </div>
   <section class="posts">
     
@@ -549,39 +433,100 @@ background-position: center center;">
         <div class="post-info">
           <div class="post-time">
             <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <span class="post-time">2021-02-06</span>
+            <span class="post-time">2021-04-30</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/posts/41fa605b.html">MQTT协议简介及移植</a>
+            <a class="post-title-link" href="/posts/f75076df.html">802.11ax 帧格式</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
               
     <i class="iconfont icontag"></i>
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/" rel="tag">IOT</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi/" rel="tag">wifi</a></li></ul>
 
             </div>
             <div class="post-categories">
               
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/wifi/">wifi</a>
+</div>
+
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/posts/41fa605b.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+            <a href="/posts/f75076df.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
               background-position: center center;">
             </a>
           </div>
           <div class="post-content">
-            1 MQTT协议1.1 MQTT协议简介MQTT协议全称是Message Queuing Telemetry Transport，翻译过来就是消息队列遥测传输协议，它是物联网常用的应用层协议，运行在TCP/IP中的应用层中，依赖TCP协议，
+            1 Element
+
+2 HE Capabilities elementHE STA通过发送HE Capabilities element来声明它是HE STA。HE Capabilities element包含许多字段，用于通告HE ST
           </div>
         </div>
         <div class="post-more">
-          <a href="/posts/41fa605b.html">
+          <a href="/posts/f75076df.html">
             <i class="iconfont iconmore" style="float: right;" title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/posts/41fa605b.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+        <a href="/posts/f75076df.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+          background-position: center center;">
+        </a>
+      </div>
+    </article>
+    
+    <article class="post" data-aos="fade-up"
+      style="">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <span class="post-time">2021-04-01</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/posts/f22bd777.html">802.11ax</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi/" rel="tag">wifi</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/wifi/">wifi</a>
+</div>
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/posts/f22bd777.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+              background-position: center center;">
+            </a>
+          </div>
+          <div class="post-content">
+            [TOC]
+1 协议简介1.1 序言参考资料：
+Introduction to 802.11ax High-Efficiency Wireless
+WLAN从入门到精通-WIFI6
+What is 802.11ax (Wi-Fi 6)?
+1
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/posts/f22bd777.html">
+            <i class="iconfont iconmore" style="" title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/posts/f22bd777.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
           background-position: center center;">
         </a>
       </div>

@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>标签: WLAN | 灵溪驿站</title>
+  <title>分类: ARM | 灵溪驿站</title>
 
   
     
@@ -418,128 +418,12 @@
       
 
 <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="lazyload tag-header" data-original="/medias/tagDetail.jpg" style="width: 100%;height: 50vh;overflow: hidden;background-size: cover; 
+<div class="lazyload category-header" data-original="/medias/categoryDetail.jpg" style="width: 100%;height: 50vh;overflow: hidden;background-size: cover; 
 background-position: center center;">
 </div>
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;" :style="{'background-color': bgColor ? bgColor : 'transparent'}">
-    <transition-group tag="ul" :name="names">
-        <li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-            <img :src="image" class="bg-swiper-img">
-        </li>
-    </transition-group>
-</div>
-<script>
-    var vm = new Vue({
-        el: '#appBgSwiper',
-        data: {
-            names: '' || 'fade' || 'fade', // translate-fade fade
-            mark: 0,
-            img: [],
-            bgColor: '',
-            time: null
-        },
-        methods: {   //添加方法
-            change(i, m) {
-                if (i > m) {
-                    // this.names = 'fade';
-                } else if (i < m) {
-                    // this.names = 'fade';
-                } else {
-                    return;
-                }
-                this.mark = i;
-            },
-            prev() {
-                // this.names = 'fade';
-                this.mark--;
-                if (this.mark === -1) {
-                    this.mark = 3;
-                    return
-                }
-            },
-            next() {
-                // this.names = 'fade';
-                this.mark++;
-                if (this.mark === this.img.length) {
-                    this.mark = 0;
-                    return
-                }
-            },
-            autoPlay() {
-                // this.names = 'fade';
-                this.mark++;
-                if (this.mark === this.img.length) {
-                    this.mark = 0;
-                    return
-                }
-            },
-            play() {
-                let bgImgDelay = '' || '180000'
-                let delay = parseInt(bgImgDelay) || 180000;
-                this.time = setInterval(this.autoPlay, delay);
-            },
-            enter() {
-                clearInterval(this.time);
-            },
-            leave() {
-                this.play();
-            }
-        },
-        created() {
-            this.play()
-        },
-        beforeDestroy() {
-            clearInterval(this.time);
-        },
-        mounted() {
-            let prop = ''|| '/medias/post_background.png';
-            let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg')
-            if (isImg) {
-                let img = prop.split(',');
-                let configRoot = '/'
-                let arrImg = [];
-                img.forEach(el => {
-                    var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-			        var objExp = new RegExp(Expression);
-
-                    if(objExp.test(el)) {
-                        // http or https
-                        arrImg.push(el);
-                    } else {
-                        // 非http or https开头
-                        // 本地文件
-                        let firstStr = el.charAt(0);
-                        if (firstStr == '/') {
-                            el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-                        }
-                        el = configRoot + el;
-                        arrImg.push(el);
-                    }
-                })
-                this.img = arrImg;
-            } else {
-                this.bgColor = prop;
-            }
-        }
-    })
-</script>
-
-<style>
-    .bg-swiper-box {
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-    .bg-swiper-img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-<div class="tag">
-  <div class="tag-name">
-    <div class="name" style="background-color: #85C1E9;">WLAN 分类</div>
+<div class="category">
+  <div class="category-name">
+    <div class="name" style="background-color: #82E0AA;">ARM 分类</div>
   </div>
   <section class="posts">
     
@@ -549,46 +433,47 @@ background-position: center center;">
         <div class="post-info">
           <div class="post-time">
             <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <span class="post-time">2021-04-30</span>
+            <span class="post-time">2021-07-11</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/posts/f75076df.html">802.11ax 帧格式</a>
+            <a class="post-title-link" href="/posts/f9852f95.html">Linux根文件系统搭建</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
               
     <i class="iconfont icontag"></i>
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARM/" rel="tag">ARM</a></li></ul>
 
             </div>
             <div class="post-categories">
               
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
-  <a class="article-category-link" href="/categories/wifi6/">wifi6</a>
+  <a class="article-category-link" href="/categories/ARM/">ARM</a>
 </div>
 
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/posts/f75076df.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+            <a href="/posts/f9852f95.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
               background-position: center center;">
             </a>
           </div>
           <div class="post-content">
-            1 Element
-
-2 HE Capabilities elementHE STA通过发送HE Capabilities element来声明它是HE STA。HE Capabilities element包含许多字段，用于通告HE ST
+            1 简介1.1 /bin 目录存放着系统需要的可执行文件，例如ls，mv等命令，该目录下所有用户都可以使用
+1.2 /dev 目录device 的缩写，该目录下存放的文件都是和设备有关的，都是设备文件
+1.3 /etc 目录存放配置文件
+1
           </div>
         </div>
         <div class="post-more">
-          <a href="/posts/f75076df.html">
+          <a href="/posts/f9852f95.html">
             <i class="iconfont iconmore" style="float: right;" title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/posts/f75076df.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+        <a href="/posts/f9852f95.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
           background-position: center center;">
         </a>
       </div>
@@ -600,44 +485,44 @@ background-position: center center;">
         <div class="post-info">
           <div class="post-time">
             <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <span class="post-time">2021-04-29</span>
+            <span class="post-time">2021-07-05</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/posts/cceb2019.html">HE信道访问26.2</a>
+            <a class="post-title-link" href="/posts/54ee180f.html">uboot移植</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
               
     <i class="iconfont icontag"></i>
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARM/" rel="tag">ARM</a></li></ul>
 
             </div>
             <div class="post-categories">
               
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
-  <a class="article-category-link" href="/categories/wifi6/">wifi6</a>
+  <a class="article-category-link" href="/categories/ARM/">ARM</a>
 </div>
 
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/posts/cceb2019.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+            <a href="/posts/54ee180f.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
               background-position: center center;">
             </a>
           </div>
           <div class="post-content">
-            1 基于TXOP持续时间的RTS / CTS在HE BSS中，RTS/CTS基于TXOP 持续时间（duration）或者PSDU长度，对于非AP HE STA，AP可以将其配置为基于TXOP Duration的RTS/CTS交换来降低密集
+            1 nxp uboot编译测试1.1 官方uboot编译123make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distcleanmake ARCH=arm CROSS_COMPILE=arm
           </div>
         </div>
         <div class="post-more">
-          <a href="/posts/cceb2019.html">
+          <a href="/posts/54ee180f.html">
             <i class="iconfont iconmore" style="" title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/posts/cceb2019.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+        <a href="/posts/54ee180f.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
           background-position: center center;">
         </a>
       </div>
@@ -649,45 +534,45 @@ background-position: center center;">
         <div class="post-info">
           <div class="post-time">
             <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <span class="post-time">2021-04-25</span>
+            <span class="post-time">2021-06-19</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/posts/b9e0ade6.html">Control OBSS/PD Sensitivity Threshold for IEEE 802.11ax BSS Color</a>
+            <a class="post-title-link" href="/posts/90b9e97a.html">uboot</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
               
     <i class="iconfont icontag"></i>
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARM/" rel="tag">ARM</a></li></ul>
 
             </div>
             <div class="post-categories">
               
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
-  <a class="article-category-link" href="/categories/wifi6/">wifi6</a>
+  <a class="article-category-link" href="/categories/ARM/">ARM</a>
 </div>
 
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/posts/b9e0ade6.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+            <a href="/posts/90b9e97a.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
               background-position: center center;">
             </a>
           </div>
           <div class="post-content">
-            参考资料：Control_OBSS-PD_Sensitivity_Threshold_for_IEEE_802.11ax_BSS_Color.pdf
-摘要：IEEE 802.11ax空间重用（SR）是IEEE 802.11系列中的新类别，旨
+            1 U-Boot简介uboot 官网为 http://www.denx.de/wiki/U-Boot/
+NXP 就 维 护 的 2016.03 这 个 版 本 的 uboot ， 下 载 地 址 为 ：http://git.freescal
           </div>
         </div>
         <div class="post-more">
-          <a href="/posts/b9e0ade6.html">
+          <a href="/posts/90b9e97a.html">
             <i class="iconfont iconmore" style="float: right;" title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/posts/b9e0ade6.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+        <a href="/posts/90b9e97a.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
           background-position: center center;">
         </a>
       </div>
@@ -699,49 +584,94 @@ background-position: center center;">
         <div class="post-info">
           <div class="post-time">
             <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <span class="post-time">2021-04-01</span>
+            <span class="post-time">2021-06-07</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/posts/f22bd777.html">802.11ax</a>
+            <a class="post-title-link" href="/posts/6bcb34f8.html">IMX6ULL芯片简介</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
               
     <i class="iconfont icontag"></i>
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARM/" rel="tag">ARM</a></li></ul>
 
             </div>
             <div class="post-categories">
               
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
-  <a class="article-category-link" href="/categories/wifi6/">wifi6</a>
+  <a class="article-category-link" href="/categories/ARM/">ARM</a>
 </div>
 
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/posts/f22bd777.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+            <a href="/posts/6bcb34f8.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
               background-position: center center;">
             </a>
           </div>
           <div class="post-content">
-            [TOC]
-1 协议简介1.1 序言参考资料：
-Introduction to 802.11ax High-Efficiency Wireless
-WLAN从入门到精通-WIFI6
-What is 802.11ax (Wi-Fi 6)?
-1
+            1 Cortex-A 处理器运行模型以前的 ARM 处理器有 7 中运行模型：User、FIQ、IRQ、Supervisor(SVC)、Abort、Undef和 System，其中 User 是非特权模式，其余 6 中都是特权模式。但新的 
           </div>
         </div>
         <div class="post-more">
-          <a href="/posts/f22bd777.html">
+          <a href="/posts/6bcb34f8.html">
             <i class="iconfont iconmore" style="" title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/posts/f22bd777.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+        <a href="/posts/6bcb34f8.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+          background-position: center center;">
+        </a>
+      </div>
+    </article>
+    
+    <article class="post" data-aos="fade-up"
+      style="flex-direction: row-reverse;">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <span class="post-time">2021-06-07</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/posts/d147e7fa.html">汇编</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARM/" rel="tag">ARM</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/ARM/">ARM</a>
+</div>
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/posts/d147e7fa.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
+              background-position: center center;">
+            </a>
+          </div>
+          <div class="post-content">
+            1 汇编基本格式1label：instruction @ comment
+label 即标号，表示地址位置，有些指令前面可能会有标号，这样就可以通过这个标号得到指令的地址，标号也可以用来表示数据地址。注意 label 后面的“：”，任何以“
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/posts/d147e7fa.html">
+            <i class="iconfont iconmore" style="float: right;" title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/posts/d147e7fa.html" style="background: url('https://ssyerv1.oss-cn-hangzhou.aliyuncs.com/picture/56d7b34ee52046a3af719a1c9b1e0753.jpg!sswm');background-size: cover; 
           background-position: center center;">
         </a>
       </div>
