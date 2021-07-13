@@ -7,7 +7,7 @@ categories:
   - QT
 toc: false
 abbrlink: dacd2817
-date: 2021-07-13 20:06:58
+date: 2016-07-13 20:06:58
 ---
 
 **界面如图所示，源代码如下**

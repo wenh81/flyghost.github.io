@@ -7,7 +7,7 @@ categories:
   - vscode
 toc: false
 abbrlink: e9b78b5f
-date: 2021-07-13 20:04:52
+date: 2016-07-13 20:04:52
 ---
 
 Bracket Pair Colorizer  括号颜色
@@ -24,7 +24,7 @@ translate to chinese 翻译
 ```
 如果配置完后，编辑器的内容没什么变化的话，重启一下就可以了
 
-## VisualStudio代码无法监视此大工作区中的文件更改”(错误ENOSPC)
+# VisualStudio代码无法监视此大工作区中的文件更改”(错误ENOSPC)
 当您看到此通知时，它指示VS代码文件监视程序正在耗尽句柄，因为工作区很大，并且包含许多文件。运行以下命令可以查看当前限制：
 
 ```
