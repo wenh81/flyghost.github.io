@@ -562,7 +562,7 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="简介">1 简介</h1><p>MU-MIMO是基于多天线技术的，这个技术的物理层是多天线技术。多天线可以实现多种技术，不仅仅是MU-MIMO，如下图所示：</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>MU-MIMO是基于多天线技术的，这个技术的物理层是多天线技术。多天线可以实现多种技术，不仅仅是MU-MIMO，如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="https://pic2.zhimg.com/80/v2-7b82d624afda64bdea78879ad6778095_720w.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img">参考：aruba的802.11ax白皮书</p>
 <p>上图中，我们可以看到多天线可以做CSD，TxBF，STBC，SDM，MRC等等，这些技术全部在802.11协议中都有应用。这里细节很多，本文不展开了，相关技术我可能会在该技术用到地方再提到。</p>
 <p>MU-MIMO的实现是结合波束成型的，波束成型有两种实现方式，一种是智能天线波束成型，一种是基于全向天线的波束成型。在CWNA一书中，已经给出了其定义。</p>
@@ -582,7 +582,7 @@
 <p>MIMO是两根天线同时发，同时在物理上两根天线需要差半个波长距离，另外两根天线不能够发送相同的信息，要编码之后，否则就会存在默认的干涉效果，对通信无意义。经过预编码后，两根天线才可以同时发送（编码后的对应两根天线上的数据不同）。</p>
 <p>LTE，5G NR和Wi-Fi相比，在波束这一块思想差不多，不过具体实现的时候取目标函数会有点区别，前两者可能偏向波束追踪，也就是目标接收功率最大化，Wi-Fi里面是偏向对其他人的干扰最小化（比如interference nulling技术），用干扰抵消的原理来说明，就是前两者偏向干涉叠加最大，后者偏向干涉抵消最强，这会影响一些预编码结构的设计。所以Wi-Fi强调的是多个波束覆盖到多个用户，各个用户之间不会进行干扰。</p>
 <p>在Wi-Fi中，802.11ac仅仅支持下行的MU-MIMO传输。到802.11ax，也就是wi-fi 6以后才支持上行的MU-MIMO传输。</p>
-<h1 id="MU-MIMO和OFDMA">2 MU-MIMO和OFDMA</h1><p>在MAC层协议部分，MU-MIMO的传输和OFDMA传输的过程很像，都是一开始一个TF帧，然后开始一个传输。两个可以叠加，不过先导过程不一样。</p>
+<h1 id="MU-MIMO和OFDMA"><a href="#MU-MIMO和OFDMA" class="headerlink" title="MU-MIMO和OFDMA"></a>MU-MIMO和OFDMA</h1><p>在MAC层协议部分，MU-MIMO的传输和OFDMA传输的过程很像，都是一开始一个TF帧，然后开始一个传输。两个可以叠加，不过先导过程不一样。</p>
 <ul>
 <li>OFDMA过程的先导是BSRP,BSR过程，就是问缓存情况，然后做OFDMA资源分配。如果没有先导过程的话就是UORA，基于随机接入的竞争模式。协议中还有一个BQRP，类似于BSRP但是关注的参数不一样，这也是用来做资源分配预判的，这里就不展开了。</li>
 <li>MU-MIMO的先导过程是NDPA,NDP,beamforming reporting，这样的过程是一个测量过程，测量每一个节点的信道状态，也就是CSI，然后基于该CSI做预编码（协议里面要旋转矩阵）。</li>
@@ -639,8 +639,8 @@
       
       <!-- <div class="content">
         [TOC]
-1 序言在802.11ax以前，MAC的接入机制是典型的CSMA机制（即DCF中所采用的CSMA/CA）。
-
+序言在802.11ax以前，MAC的接入机制是典型的CSMA机制（即DCF中所采用的CSMA/CA）。
+在引
       </div> -->
     </a>
   </div>
@@ -659,9 +659,9 @@
       </div>
       <!-- <div class="content">
         [TOC]
-1 序言参考资料：
+序言参考资料：
 What are OFDMA Resource Units in 802.11ax?
-W
+Wi-
       </div> -->
     </a>
   </div>

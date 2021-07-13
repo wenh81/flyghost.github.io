@@ -562,12 +562,12 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言">1 序言</h1><p>在802.11ax以前，协议仅仅支持过下行的多用户接入，比如说MU-MIMO技术（在802.11ac中仅仅支持下行），为了进一步增加并发传输的能力，在802.11ax中引入了上行OFDMA技术和上行的MU-MIMO接入。在协议中上行OFDMA和上行MU-MIMO是组合出现的，其是采用同一种接入思想，区别只在于触发帧内的参数以及数据帧的物理层头部上，本文仅介绍上行OFDMA接入机制。</p>
+<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>在802.11ax以前，协议仅仅支持过下行的多用户接入，比如说MU-MIMO技术（在802.11ac中仅仅支持下行），为了进一步增加并发传输的能力，在802.11ax中引入了上行OFDMA技术和上行的MU-MIMO接入。在协议中上行OFDMA和上行MU-MIMO是组合出现的，其是采用同一种接入思想，区别只在于触发帧内的参数以及数据帧的物理层头部上，本文仅介绍上行OFDMA接入机制。</p>
 <p>参考资料：<a href="/books/Wi-Fi_6_FD_Extreme_Networks_Special_Edition.pdf">Wi-Fi_6_FD_Extreme_Networks_Special_Edition</a></p>
-<h1 id="上行OFDMA和PCF的区别">2 上行OFDMA和PCF的区别</h1><p>在802.11ax中，UL-OFDMA的接入机制也是基于触发帧（Trigger Frames）的，这一种机制和传统802.11中的PCF机制有一些类似，但是也有点区别。</p>
+<h1 id="上行OFDMA和PCF的区别"><a href="#上行OFDMA和PCF的区别" class="headerlink" title="上行OFDMA和PCF的区别"></a>上行OFDMA和PCF的区别</h1><p>在802.11ax中，UL-OFDMA的接入机制也是基于触发帧（Trigger Frames）的，这一种机制和传统802.11中的PCF机制有一些类似，但是也有点区别。</p>
 <p>在传统的802.11标准中定义了一种PCF工作模式（Point Coordination Function），该模式是一种基于轮询的工作模式。AP执行轮询者的角色（point coordinator ），其可以在CFP时间范围内（contention-free period ），轮询客户端并执行上下行的传输。在PCF之后，802.11e修正案中为了整体解决无线网络中QoS的问题，定义了一种HCCA的方式（HCF Controlled Channel Access）。在HCCA中，AP作为具有QoS的中心调度器（Hybrid Coordinator ，HC），其在接入网络时默认具有比较高的优先级。利用该优先级，其可以将TXOP分给自身或者其他的节点，以提供一个受控的接入时间段，该时间段也被称为CAP时间（Controlled Access Phase ）。在这段时间内，QoS数据可以无需竞争，直接传输。PCF以及HCCA直至目前也很少在实际产品中实现过，有传言指该机制有可能会在将来的802.11标准中被逐步淘汰。</p>
 <p>在802.11ax中，AP可以控制信道并调度上行OFDMA（UL-OFDMA）的接入。这一种控制和PCF或者HCCA时有区别的。基于CSMA/CA的竞争规则在UL-OFDMA中还是使用的，<strong>只有当802.11ax AP首先竞争胜利，并开启一个TXOP时间之后，其才可以占据并调度信道上其他的节点执行UL-OFDMA</strong>。在UL-OFDMA中，也会类似HCCA一样轮询终端的buffer情况以及其对应数据的QoS情况，但是和HCCA的区别在于，HCCA是主动轮询的，而802.11ax终端可以隐式的反馈其缓存的信息，无需主动轮询。另外还有一点区别在于802.11ax中引入了资源分配，即<strong>AP还需要为UL-OFDMA调度的时候，为多用户分配分配RU资源</strong>。在UL-OFDMA传输之前，AP会通过触发帧来指示每一个终端其对应的RU资源，以及对应RU资源上的传输模式（包含空间流数量，MCS速率等）。</p>
-<h1 id="Scheduled-UL-OFDMA">3 Scheduled UL-OFDMA</h1><p>下面介绍上行OFDMA的工作机制（UL-OFDMA），其基本思想是802.11ax AP通过竞争获取信道后，发起一次TXOP传输时间，并在该时间内通过触发帧调度对应的节点进行并发的上行OFDMA传输。具体过程中UL-OFDMA比DL-OFDMA更为复杂一些，其会采用三个触发帧进行交互，每个触发帧都是AP向节点获取特定的信息反馈。UL-OFDMA中AP会要求终端反馈缓存情况（即Buffer Status Report, BSR）。BSR中包含了终端缓存数据的多少以及对应的QoS类别信息，这些信息会帮助AP优化RU的资源分配。AP将利用这些信息分配对应的RU，上行传输的时间，以及终端传输时对应的速率和功率。BSR信息是可以AP轮询请求的，也可以是非请求（也就是隐式反馈的）。</p>
+<h1 id="Scheduled-UL-OFDMA"><a href="#Scheduled-UL-OFDMA" class="headerlink" title="Scheduled UL-OFDMA"></a>Scheduled UL-OFDMA</h1><p>下面介绍上行OFDMA的工作机制（UL-OFDMA），其基本思想是802.11ax AP通过竞争获取信道后，发起一次TXOP传输时间，并在该时间内通过触发帧调度对应的节点进行并发的上行OFDMA传输。具体过程中UL-OFDMA比DL-OFDMA更为复杂一些，其会采用三个触发帧进行交互，每个触发帧都是AP向节点获取特定的信息反馈。UL-OFDMA中AP会要求终端反馈缓存情况（即Buffer Status Report, BSR）。BSR中包含了终端缓存数据的多少以及对应的QoS类别信息，这些信息会帮助AP优化RU的资源分配。AP将利用这些信息分配对应的RU，上行传输的时间，以及终端传输时对应的速率和功率。BSR信息是可以AP轮询请求的，也可以是非请求（也就是隐式反馈的）。</p>
 <p>![Uplink OFDMA](802.11AX UL-OFDMA/image-20210413174859455.png)</p>
 <p>以上图作为示例简单说明，当802.11ax竞争成功后，其首先会发送第一个触发帧（即Trigger #1），该触发帧类型是BSRP（Buffer Status Report Poll ），其用于请求终端的Buffer信息。当终端收到BSRP以后，其会反馈BSR（Buffer Status Reports）信息，就如之前我们提到的，该信息用于辅助AP进行UL-OFDMA中RU资源的分配。</p>
 <p>当BSRP,BSR交互后，如果网络中存在传统的802.11客户端，那么AP还需要发送MU-RTS帧（即Trigger #2），该帧也是一种触发帧，并采用传统的OFDM技术进行发送，所有的终端（包含802.11ax和非802.11ax）都可以接收。非802.11ax的终端会通过接收MU-RTS帧中的Duration/ID字段，设置本地的NAV计时器，以保证在剩余UL-OFDMA时间内不会发起主动竞争。同时该MU-RTS帧中还包含了RU资源分配内容。</p>
@@ -582,7 +582,7 @@
 <blockquote>
 <p>并不是所有的上行链路传输需要三个触发帧，仅仅出于对传统客户端的保护机制的目的才需要MU-RTS触发帧。</p>
 </blockquote>
-<h1 id="UL-OFDMA-Random-Access-UORA">4 UL-OFDMA Random Access (UORA)</h1><p>前面所介绍的802.11ax的接入机制中，都是由AP通过获取全局的缓存情况，然后为上行和下行传输统一分配RU资源。然而，如果缓存情况未知的情况下，协议如果需要工作的话，那么就需要引入随机接入机制，该随机接入机制就是UORA（UL-OFDMA Random Access）。本文将会对UORA做一个简单介绍。在介绍TF-R机制中，提过UORA机制。</p>
+<h1 id="UL-OFDMA-Random-Access-UORA"><a href="#UL-OFDMA-Random-Access-UORA" class="headerlink" title="UL-OFDMA Random Access (UORA)"></a>UL-OFDMA Random Access (UORA)</h1><p>前面所介绍的802.11ax的接入机制中，都是由AP通过获取全局的缓存情况，然后为上行和下行传输统一分配RU资源。然而，如果缓存情况未知的情况下，协议如果需要工作的话，那么就需要引入随机接入机制，该随机接入机制就是UORA（UL-OFDMA Random Access）。本文将会对UORA做一个简单介绍。在介绍TF-R机制中，提过UORA机制。</p>
 <p>在802.11ax中，AP利用OFDMA技术，将信道分成多个RU，不同终端可以通过占据不同的RU，从而并行的执行多用户传输。AP可以在上行和下行传输中，站在全局的角度，进行RU资源的最优化分配。在分配过程中，AP可以通过显式请求的方式，或者被动收集的方式，获取节点的缓存情况（即BSR反馈）。AP会根据BSR信息，做全局资源的分配，当分配完成后，AP通过触发帧机制启动一次传输过程。</p>
 <p>在802.11ax中还存在一种可选的随机接入机制（UORA），在该方法下，上行UL-OFDMA链路中RU资源的分配不是由AP决定的，而式通过随机接入机制UORA来竞争的。这种接入机制不需要终端侧实时的反馈BSR信息，对于AP不知道终端缓存情况下是有利的。</p>
 <p>在UORA中，会使用一种频域的back-off技术（即OFDMA back-off，OBO）。在OBO中，一开始终端会选择一个随机数，然后AP会发送一个竞争类型的触发帧，其中还包含了本轮可用的RU数量。终端会将自己的随机数减去本轮的RU数量，直到减为0。如果终端利用随机数相减之后，本轮值为0的话，那么相当于竞争成功，终端将会随机选择一个RU进行占据。如果本轮相减后，没有为0，那么相当于本轮竞争失败，那么会保持这个数值，下一轮进行继续相减。</p>
@@ -670,7 +670,7 @@
       
       <!-- <div class="content">
         [TOC]
-1 序言上文叙述了上行OFDMA接入机制。该机制的基本思想就是通过AP竞争，获得TXOP传输时间后，根据各个
+序言上文叙述了上行OFDMA接入机制。该机制的基本思想就是通过AP竞争，获得TXOP传输时间后，根据各个终端
       </div> -->
     </a>
   </div>
@@ -689,7 +689,7 @@
       </div>
       <!-- <div class="content">
         [TOC]
-1 序言在介绍完802.11ax的信道接入以及其触发帧机制后，本文着重介绍下行OFDMA的接入机制（即DL-
+序言在介绍完802.11ax的信道接入以及其触发帧机制后，本文着重介绍下行OFDMA的接入机制（即DL-OF
       </div> -->
     </a>
   </div>

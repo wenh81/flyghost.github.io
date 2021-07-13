@@ -562,13 +562,13 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言">1 序言</h1><p>NAV是802.11中最基本的MAC层元素之一，在802.11协议中起着非常重要的功能，而且先行协议下，基本上所有的兼容性机制都围绕的NAV展开。在802.11ax中，引入了双重NAV技术（Dueling NAVs）进一步扩展其功能，本文即针对这项技术做一个展开。</p>
+<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>NAV是802.11中最基本的MAC层元素之一，在802.11协议中起着非常重要的功能，而且先行协议下，基本上所有的兼容性机制都围绕的NAV展开。在802.11ax中，引入了双重NAV技术（Dueling NAVs）进一步扩展其功能，本文即针对这项技术做一个展开。</p>
 <p>参考资料：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://note-on-clouds.blogspot.com/2019/07/new-wifi-dueling-navs-in-80211ax.html">Dueling NAVs in 802.11ax</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.programmersought.com/article/19873582929/">802.11ax Preview 9: Dual NAV technology (Dueling NAVs)</a></li>
 </ul>
-<h1 id="802-11ax中的双重NAV技术（Dueling-NAVs）">2 802.11ax中的双重NAV技术（Dueling NAVs）</h1><p>Wi-Fi使用两种载波侦听方法来确定信道是否繁忙，若繁忙那么要延迟进行传输。空闲信道评估（clear channel assessment，CCA）是检测信道是否繁忙的物理机制，同时在WiFi中，还存在一种虚拟载波监听机制，其和物理载波监听机制并行工作。虚拟载波侦听机制的核心是网络分配矢量（network allocation vector ，NAV）的定时器机制。</p>
+<h1 id="802-11ax中的双重NAV技术（Dueling-NAVs）"><a href="#802-11ax中的双重NAV技术（Dueling-NAVs）" class="headerlink" title="802.11ax中的双重NAV技术（Dueling NAVs）"></a>802.11ax中的双重NAV技术（Dueling NAVs）</h1><p>Wi-Fi使用两种载波侦听方法来确定信道是否繁忙，若繁忙那么要延迟进行传输。空闲信道评估（clear channel assessment，CCA）是检测信道是否繁忙的物理机制，同时在WiFi中，还存在一种虚拟载波监听机制，其和物理载波监听机制并行工作。虚拟载波侦听机制的核心是网络分配矢量（network allocation vector ，NAV）的定时器机制。</p>
 <p>在802.11ax中已经引入了BSS Coloring机制，以适应在OBSS环境下，自适应调节空闲信道评估阈值（即adaptive CCA)，以增加空间信道的复用率，提供更多并行传输的可能性。</p>
 <p>在BSS Coloring中引入的adaptive CCA也可以和虚拟载波监听的NAV组合使用，由于adaptive CCA中已经引入了两个不同的监测阈值，那么意味着其和NAV机制组合使用时，也需要两个独立的NAV定时器。在802.11ax中，目前已经新定义了两个NAV定时器：BSS内部的NAV定时器（intra-BSS NAV timer），和基本NAV定时器（basic NAV timer）。</p>
 <ul>
@@ -620,7 +620,7 @@
       
       <!-- <div class="content">
         [TOC]
-1 序言关于802.11协议的节能机制，包含了PSM，APSD，PSMP以及SMPS。在802.11ax中，
+序言关于802.11协议的节能机制，包含了PSM，APSD，PSMP以及SMPS。在802.11ax中，为了
       </div> -->
     </a>
   </div>
@@ -639,7 +639,7 @@
       </div>
       <!-- <div class="content">
         [TOC]
-1 序言帧聚合（Frame Aggregation）是802.11中为了提升传输效率的一种方式，自802.1
+序言帧聚合（Frame Aggregation）是802.11中为了提升传输效率的一种方式，自802.11n
       </div> -->
     </a>
   </div>

@@ -561,13 +561,13 @@
         
       </div>
       <div class="post-content">
-        <h1 id="littleFS">1 littleFS</h1><h2 id="功能">1.1 功能</h2><ul>
+        <h1 id="littleFS"><a href="#littleFS" class="headerlink" title="littleFS"></a>littleFS</h1><h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
 <li><strong>Power-loss resilience 断电恢复能力</strong> - littlefs设计用于处理随机电源故障。所有文件操作都有强的“写时拷贝”保证，如果断电，文件系统将恢复到上一次已知的良好状态。</li>
 <li><strong>Dynamic wear leveling 动态磨损均衡</strong> - littlefs设计时考虑了闪存，并提供动态块上的磨损均衡。此外，littlefs可以检测坏块并在它们周围工作。</li>
 <li><strong>Bounded RAM/ROM 有界RAM/ROM</strong> - littlefs设计目的使用少量内存。RAM的使用是有严格限制的，这意味着RAM消耗不会随着文件系统的增长而改变。文件系统不包含无限递归，动态内存仅限于静态提供的可配置缓冲区。</li>
 </ul>
-<h1 id="SPIFFS">2 SPIFFS</h1><p>Spiffs是一个用于嵌入式目标上的SPI NOR flash设备的文件系统。</p>
-<h2 id="介绍">2.1 介绍</h2><ul>
+<h1 id="SPIFFS"><a href="#SPIFFS" class="headerlink" title="SPIFFS"></a>SPIFFS</h1><p>Spiffs是一个用于嵌入式目标上的SPI NOR flash设备的文件系统。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
 <li>小(嵌入式)目标，没有堆的少量RAM</li>
 <li>只有大范围的数据(块)才能被删除</li>
 <li>擦除将把所有块中的位重置为1</li>
@@ -575,7 +575,7 @@
 <li>0只能被擦除成1</li>
 <li>静态磨损均衡</li>
 </ul>
-<h2 id="功能-1">2.2 功能</h2><p>能做：</p>
+<h2 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h2><p>能做：</p>
 <ul>
 <li><p>使用<strong>静态大小的ram缓冲区</strong>，与文件的数量无关</p>
 </li>
@@ -601,7 +601,7 @@
 <li><p>一个配置，一个二进制。没有通用的spiffs二进制可以处理所有类型的配置。</p>
 </li>
 </ul>
-<h1 id="littleFS-SPIFFS-FATFS">3 littleFS-SPIFFS-FATFS</h1><h2 id="静态系统资源">3.1 静态系统资源</h2><h3 id="littleFS-SPIFFS">3.1.1 littleFS-SPIFFS</h3><p>对比静态系统资源，主要比较编译后的bin文件的text/data/bss段的大小。</p>
+<h1 id="littleFS-SPIFFS-FATFS"><a href="#littleFS-SPIFFS-FATFS" class="headerlink" title="littleFS-SPIFFS-FATFS"></a>littleFS-SPIFFS-FATFS</h1><h2 id="静态系统资源"><a href="#静态系统资源" class="headerlink" title="静态系统资源"></a>静态系统资源</h2><h3 id="littleFS-SPIFFS"><a href="#littleFS-SPIFFS" class="headerlink" title="littleFS-SPIFFS"></a>littleFS-SPIFFS</h3><p>对比静态系统资源，主要比较编译后的bin文件的text/data/bss段的大小。</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text段：存放代码执行语句 </span><br><span class="line">data段：存放已初始化的全局变量和局部静态变量 </span><br><span class="line">bss段：未初始化的全局变量和局部静态变量</span><br></pre></td></tr></table></figure>
 <p>设计了下面的Shell命令统计静态信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">find -name <span class="string">&quot;*.o&quot;</span> -<span class="built_in">exec</span> size &#123;&#125; \; | awk <span class="string">&#x27;</span></span><br><span class="line"><span class="string">	BEGIN&#123;</span></span><br><span class="line"><span class="string">		datasum = 0;</span></span><br><span class="line"><span class="string">		textsum = 0;</span></span><br><span class="line"><span class="string">		bsssum = 0;</span></span><br><span class="line"><span class="string">	&#125;;</span></span><br><span class="line"><span class="string">	/data/&#123;</span></span><br><span class="line"><span class="string">		getline;</span></span><br><span class="line"><span class="string">		textsum += $1;</span></span><br><span class="line"><span class="string">		datasum += $2;</span></span><br><span class="line"><span class="string">		bsssum += $3;</span></span><br><span class="line"><span class="string">	&#125;;</span></span><br><span class="line"><span class="string">	END&#123;</span></span><br><span class="line"><span class="string">		printf &quot;text %d\ndata %d\nbss %d\n&quot;, textsum, datasum, bsssum</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
@@ -631,11 +631,11 @@
 <blockquote>
 <p>可以发现，SPIFFS的代码量比LittleFS多53%，也就意味着SPIFFS需要更多的内存存放代码。</p>
 </blockquote>
-<h3 id="littleFS-FATFS">3.1.2 littleFS-FATFS</h3><p><img "" class="lazyload placeholder" data-original="/posts/e9f64d20/fatfs_littlefs_romram.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="filesystem.md"></p>
+<h3 id="littleFS-FATFS"><a href="#littleFS-FATFS" class="headerlink" title="littleFS-FATFS"></a>littleFS-FATFS</h3><p><img "" class="lazyload placeholder" data-original="/posts/e9f64d20/fatfs_littlefs_romram.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="filesystem.md"></p>
 <blockquote>
 <p>littleFS最小的资源占用</p>
 </blockquote>
-<h2 id="空间利用率-littleFS-SPIFFS">3.2 空间利用率(littleFS-SPIFFS)</h2><p>文件系统需要额外空间存放一些元数据，因此用户可用的空间实际大小并不直接等于分区大小。在 4896KB 的分区上分别挂载SPIFFS和Littlefs两个文件系统，他们的可用空间是多少呢？</p>
+<h2 id="空间利用率-littleFS-SPIFFS"><a href="#空间利用率-littleFS-SPIFFS" class="headerlink" title="空间利用率(littleFS-SPIFFS)"></a>空间利用率(littleFS-SPIFFS)</h2><p>文件系统需要额外空间存放一些元数据，因此用户可用的空间实际大小并不直接等于分区大小。在 4896KB 的分区上分别挂载SPIFFS和Littlefs两个文件系统，他们的可用空间是多少呢？</p>
 <p>空的文件系统体现不出来，我们试着往不同文件系统中存放一些资源文件，再观察使用情况。</p>
 <p>这些资源文件在ubuntu的ext4 (块大小为4K）中统计有2794KB的大小。以此为标准，我们看看SPIFFS和LittleFS的空间使用情况</p>
 <table>
@@ -670,7 +670,7 @@
 <blockquote>
 <p>从空间利用率来看，SPIFFS略优于LittleFS。</p>
 </blockquote>
-<h2 id="掉电安全与修复（littleFS-SPIFFS-FATFS）">3.3 掉电安全与修复（littleFS-SPIFFS-FATFS）</h2><p>文件系统的掉电安全指在任意一时刻掉电，文件系统依然能保证其一致性，文件系统允许丢失掉电时没写完整的数据，但不能奔溃。</p>
+<h2 id="掉电安全与修复（littleFS-SPIFFS-FATFS）"><a href="#掉电安全与修复（littleFS-SPIFFS-FATFS）" class="headerlink" title="掉电安全与修复（littleFS-SPIFFS-FATFS）"></a>掉电安全与修复（littleFS-SPIFFS-FATFS）</h2><p>文件系统的掉电安全指在任意一时刻掉电，文件系统依然能保证其一致性，文件系统允许丢失掉电时没写完整的数据，但不能奔溃。</p>
 <p>通过读写掉电的方式验证掉电安全，即在读写压测时随机时间掉电，再次上电后需要保证文件系统正常运行且已写入的文件数据不丢失。</p>
 <p>SPIFFS掉电后需要调用<code>SPIFFS_check()</code>进行修复，否则无法保证文件系统一致性。这就类似于ext4与e2fsck的关系。</p>
 <p>在实测中，4896KB的空间，SPIFFS的修复需要510s，在项目中已经放弃对其的掉电压测。</p>
@@ -691,7 +691,7 @@
 <td align="center">无</td>
 </tr>
 </tbody></table>
-<h2 id="读写性能">3.4 读写性能</h2><p>当空间使用率不同，测试的性能有可能不一样，在SPIFFS中尤其明显。</p>
+<h2 id="读写性能"><a href="#读写性能" class="headerlink" title="读写性能"></a>读写性能</h2><p>当空间使用率不同，测试的性能有可能不一样，在SPIFFS中尤其明显。</p>
 <table>
 <thead>
 <tr>
@@ -734,7 +734,7 @@
 <blockquote>
 <p>在读写性能表现上，SPIFFS最差，且剩余空间越少，SPIFFS写性能越差。LittleFS的性能相对比较高和稳定，块大小会直接影响到写性能。</p>
 </blockquote>
-<h2 id="动态内存">3.5 动态内存</h2><p>动态内存指通过<code>malloc</code>申请分配的堆内存大小。不管是SPIFFS还是LittleFS都是为小系统设计的，其内存使用情况都经过精心设计，内存占用非常小。</p>
+<h2 id="动态内存"><a href="#动态内存" class="headerlink" title="动态内存"></a>动态内存</h2><p>动态内存指通过<code>malloc</code>申请分配的堆内存大小。不管是SPIFFS还是LittleFS都是为小系统设计的，其内存使用情况都经过精心设计，内存占用非常小。</p>
 <p>LittleFS会为每个打开的文件单独申请一个<code>cache_size</code>的内存，在测试时，cache_size 为256B。为了对比的公平性，我们假设SPIFFS和LittleFS打开相同数量的文件情况下统计内存。</p>
 <table>
 <thead>
@@ -750,7 +750,7 @@
 </tbody></table>
 <p>两者使用动态内存的情况相近，在最大打开数量的情况下，SPIFFS使用动态内存略少。</p>
 <p>由于SPIFFS的内存使用并不会随着打开文件增加而增加，也就意味着，在打开少量文件的情况下，LittleFS会比SPIFFS更少的动态内存使用量。</p>
-<h2 id="CPU占用">3.6 CPU占用</h2><p>在读写压测时，统计进程使用的CPU资源百分比</p>
+<h2 id="CPU占用"><a href="#CPU占用" class="headerlink" title="CPU占用"></a>CPU占用</h2><p>在读写压测时，统计进程使用的CPU资源百分比</p>
 <table>
 <thead>
 <tr>
@@ -766,7 +766,7 @@
 </tr>
 </tbody></table>
 <p>可以发现，在相同情况下，LittleFS的CPU占用率会比SPIFFS少。</p>
-<h2 id="磨损均衡（littleFS-SPIFFS-FATFS）">3.7 磨损均衡（littleFS-SPIFFS-FATFS）</h2><p><img "" class="lazyload placeholder" data-original="/posts/e9f64d20/dynamic_wear_leveling.gif" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="filesystem.md"></p>
+<h2 id="磨损均衡（littleFS-SPIFFS-FATFS）"><a href="#磨损均衡（littleFS-SPIFFS-FATFS）" class="headerlink" title="磨损均衡（littleFS-SPIFFS-FATFS）"></a>磨损均衡（littleFS-SPIFFS-FATFS）</h2><p><img "" class="lazyload placeholder" data-original="/posts/e9f64d20/dynamic_wear_leveling.gif" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="filesystem.md"></p>
 <table>
 <thead>
 <tr>
@@ -781,14 +781,14 @@
 <td align="center">无</td>
 </tr>
 </tbody></table>
-<h1 id="littleFS-SPIFFS-FATFS在ESP上对比">4 littleFS-SPIFFS-FATFS在ESP上对比</h1><h2 id="格式化一个512K的分区">4.1 格式化一个512K的分区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FAT:         963,766 us</span><br><span class="line">SPIFFS:   10,824,054 us</span><br><span class="line">LittleFS:  2,067,845 us</span><br></pre></td></tr></table></figure>
-<h2 id="写入588K的文件">4.2 写入588K的文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FAT:         13,601,171 us</span><br><span class="line">SPIFFS*:    118,883,197 us</span><br><span class="line">LittleFS**:   6,582,045 us</span><br><span class="line">LittleFS***:  5,734,811 us</span><br><span class="line">*Only wrote 374,784 bytes instead of the benchmark 440,000, so this value is extrapolated</span><br><span class="line">**CONFIG_LITTLEFS_CACHE_SIZE&#x3D;128</span><br><span class="line">***CONFIG_LITTLEFS_CACHE_SIZE&#x3D;512 (default value)</span><br></pre></td></tr></table></figure>
+<h1 id="littleFS-SPIFFS-FATFS在ESP上对比"><a href="#littleFS-SPIFFS-FATFS在ESP上对比" class="headerlink" title="littleFS-SPIFFS-FATFS在ESP上对比"></a>littleFS-SPIFFS-FATFS在ESP上对比</h1><h2 id="格式化一个512K的分区"><a href="#格式化一个512K的分区" class="headerlink" title="格式化一个512K的分区"></a>格式化一个512K的分区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FAT:         963,766 us</span><br><span class="line">SPIFFS:   10,824,054 us</span><br><span class="line">LittleFS:  2,067,845 us</span><br></pre></td></tr></table></figure>
+<h2 id="写入588K的文件"><a href="#写入588K的文件" class="headerlink" title="写入588K的文件"></a>写入588K的文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FAT:         13,601,171 us</span><br><span class="line">SPIFFS*:    118,883,197 us</span><br><span class="line">LittleFS**:   6,582,045 us</span><br><span class="line">LittleFS***:  5,734,811 us</span><br><span class="line">*Only wrote 374,784 bytes instead of the benchmark 440,000, so this value is extrapolated</span><br><span class="line">**CONFIG_LITTLEFS_CACHE_SIZE&#x3D;128</span><br><span class="line">***CONFIG_LITTLEFS_CACHE_SIZE&#x3D;512 (default value)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>当SPIFFS写满的时候，速度会急剧下降，如下是SPIFFS不同剩余内存写入时间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">88000 bytes written in 1325371 us</span><br><span class="line">88000 bytes written in 1327848 us</span><br><span class="line">88000 bytes written in 5292095 us</span><br><span class="line">88000 bytes written in 19191680 us</span><br><span class="line">22784 bytes written in 74082963 us</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="读取588K的文件">4.3 读取588K的文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FAT:          3,111,817 us</span><br><span class="line">SPIFFS*:      3,392,886 us</span><br><span class="line">LittleFS**:   3,425,796 us</span><br><span class="line">LittleFS***:  3,210,140 us</span><br><span class="line">*Only read 374,784 bytes instead of the benchmark 440,000, so this value is extrapolated</span><br><span class="line">**CONFIG_LITTLEFS_CACHE_SIZE&#x3D;128</span><br><span class="line">***CONFIG_LITTLEFS_CACHE_SIZE&#x3D;512 (default value)</span><br></pre></td></tr></table></figure>
-<h2 id="删除588K的文件">4.4 删除588K的文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FAT:         934,769 us</span><br><span class="line">SPIFFS*:      822,730 us</span><br><span class="line">LittleFS**:   31,502 us</span><br><span class="line">LittleFS***:  20,063 us</span><br><span class="line">*The 5th file was smaller, did not extrapolate value.</span><br><span class="line">**CONFIG_LITTLEFS_CACHE_SIZE&#x3D;128</span><br><span class="line">***CONFIG_LITTLEFS_CACHE_SIZE&#x3D;512 (default value)</span><br></pre></td></tr></table></figure>
+<h2 id="读取588K的文件"><a href="#读取588K的文件" class="headerlink" title="读取588K的文件"></a>读取588K的文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FAT:          3,111,817 us</span><br><span class="line">SPIFFS*:      3,392,886 us</span><br><span class="line">LittleFS**:   3,425,796 us</span><br><span class="line">LittleFS***:  3,210,140 us</span><br><span class="line">*Only read 374,784 bytes instead of the benchmark 440,000, so this value is extrapolated</span><br><span class="line">**CONFIG_LITTLEFS_CACHE_SIZE&#x3D;128</span><br><span class="line">***CONFIG_LITTLEFS_CACHE_SIZE&#x3D;512 (default value)</span><br></pre></td></tr></table></figure>
+<h2 id="删除588K的文件"><a href="#删除588K的文件" class="headerlink" title="删除588K的文件"></a>删除588K的文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FAT:         934,769 us</span><br><span class="line">SPIFFS*:      822,730 us</span><br><span class="line">LittleFS**:   31,502 us</span><br><span class="line">LittleFS***:  20,063 us</span><br><span class="line">*The 5th file was smaller, did not extrapolate value.</span><br><span class="line">**CONFIG_LITTLEFS_CACHE_SIZE&#x3D;128</span><br><span class="line">***CONFIG_LITTLEFS_CACHE_SIZE&#x3D;512 (default value)</span><br></pre></td></tr></table></figure>
       </div>
       
         <div class="copyright">
@@ -828,7 +828,7 @@
       </div>
       
       <!-- <div class="content">
-        1 UART 、ELF FORMAT 、CRC32
+        UART 、ELF FORMAT 、CRC32
 
 
 text
@@ -837,6 +837,8 @@ bss
 dec
 hex
 filename
+
+
 
 
       </div> -->
@@ -856,8 +858,8 @@ filename
         <div>配置终端走代理</div>
       </div>
       <!-- <div class="content">
-        1 配置终端使用代理1.1 临时（只在该终端生效）
-第一种方法：走http12export http_proxy=htt
+        配置终端使用代理临时（只在该终端生效）
+第一种方法：走http12export http_proxy=http://12
       </div> -->
     </a>
   </div>

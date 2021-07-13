@@ -564,7 +564,7 @@
         <p>Bracket Pair Colorizer  括号颜色<br>c/c++ 支持<br>Chinese 中文支持<br>vscode-icons 设置文件图标主题<br>translate to chinese 翻译<br>下载字体：<a target="_blank" rel="noopener" href="https://github.com/tonsky/FiraCode">https://github.com/tonsky/FiraCode</a><br>把下载的压缩包解压，然后找到ttf文件夹，全部选中，右键安装即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;editor.fontFamily&quot;: &quot;&#39;Fira Code&#39;, Consolas, &#39;Courier New&#39;, monospace&quot;,&#x2F;&#x2F;添加上FiraCode字体</span><br><span class="line">&quot;editor.fontLigatures&quot;: true,&#x2F;&#x2F;开启连体字</span><br></pre></td></tr></table></figure>
 <p>如果配置完后，编辑器的内容没什么变化的话，重启一下就可以了</p>
-<h1 id="VisualStudio代码无法监视此大工作区中的文件更改”-错误ENOSPC">1 VisualStudio代码无法监视此大工作区中的文件更改”(错误ENOSPC)</h1><p>当您看到此通知时，它指示VS代码文件监视程序正在耗尽句柄，因为工作区很大，并且包含许多文件。运行以下命令可以查看当前限制：</p>
+<h1 id="VisualStudio代码无法监视此大工作区中的文件更改”-错误ENOSPC"><a href="#VisualStudio代码无法监视此大工作区中的文件更改”-错误ENOSPC" class="headerlink" title="VisualStudio代码无法监视此大工作区中的文件更改”(错误ENOSPC)"></a>VisualStudio代码无法监视此大工作区中的文件更改”(错误ENOSPC)</h1><p>当您看到此通知时，它指示VS代码文件监视程序正在耗尽句柄，因为工作区很大，并且包含许多文件。运行以下命令可以查看当前限制：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;proc&#x2F;sys&#x2F;fs&#x2F;inotify&#x2F;max_user_watches</span><br></pre></td></tr></table></figure>
 <p>通过编辑，可以将限制提高到其最大值。/etc/sysctl.conf并将这一行添加到文件的末尾：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#打开</span><br><span class="line">sudo vim &#x2F;etc&#x2F;sysctl.conf</span><br></pre></td></tr></table></figure>
@@ -610,7 +610,7 @@
       
       <!-- <div class="content">
         这里先给出官方的教程px4环境搭建由于个人按照官方的教程总是有各种问题，故总结几个必要的安装命令，环境也成功搭建
-1 安
+安装p
       </div> -->
     </a>
   </div>
@@ -629,7 +629,7 @@
       </div>
       <!-- <div class="content">
         如果下载速度特别慢，可以使用手机的4G网络
-1 位置确定12mkdir -p ~&#x2F;srccd ~&#x2F;s
+位置确定12mkdir -p ~&#x2F;srccd ~&#x2F;src
       </div> -->
     </a>
   </div>

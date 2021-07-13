@@ -562,7 +562,7 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言">1 序言</h1><p>关于802.11协议的节能机制，包含了PSM，APSD，PSMP以及SMPS。在802.11ax中，为了在速率提高的场景下，降低所花费的功耗，协议采用了一种新的节能机制TWT（Target Wake Time）。TWT首先是在802.11ah中被引入的，在802.11ax中又经过一些改良。本文就针对于TWT技术做一个介绍。</p>
+<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>关于802.11协议的节能机制，包含了PSM，APSD，PSMP以及SMPS。在802.11ax中，为了在速率提高的场景下，降低所花费的功耗，协议采用了一种新的节能机制TWT（Target Wake Time）。TWT首先是在802.11ah中被引入的，在802.11ax中又经过一些改良。本文就针对于TWT技术做一个介绍。</p>
 <p>本文参考：</p>
 <ul>
 <li><p><a target="_blank" rel="noopener" href="https://www.commscope.com/blog/2018/802.11ax-fundamentals-target-wake-time-twt/?utm_source=ruckus&utm_medium=redirect">802.11ax fundamentals: Target Wake Time (TWT)</a></p>
@@ -572,11 +572,11 @@
 <li><p><a href>Aruba 802.11ax White Paper</a></p>
 </li>
 </ul>
-<h1 id="简介（Target-Wake-Time）">2 简介（Target Wake Time）</h1><p>  TWT定时唤醒机制（<strong>Target Wake Time</strong>，<strong>TWT</strong>）首次出现在802.11ah “Wi-Fi HaLow”标准中，其用于支持大规模物联网环境下的节能工作。随着IEEE 802.11ax标准的发展，TWT的功能获得了进一步的扩展，这使得IEEE 802.11ax标准能够更加优化设备的节能机制，提供更可靠，更节能的传输机制。在802.11ax中，TWT机制在ah的基础上，已经被修改为支持基于触发的上行链路传输，从而扩展了TWT工作的范围。</p>
+<h1 id="简介（Target-Wake-Time）"><a href="#简介（Target-Wake-Time）" class="headerlink" title="简介（Target Wake Time）"></a>简介（Target Wake Time）</h1><p>  TWT定时唤醒机制（<strong>Target Wake Time</strong>，<strong>TWT</strong>）首次出现在802.11ah “Wi-Fi HaLow”标准中，其用于支持大规模物联网环境下的节能工作。随着IEEE 802.11ax标准的发展，TWT的功能获得了进一步的扩展，这使得IEEE 802.11ax标准能够更加优化设备的节能机制，提供更可靠，更节能的传输机制。在802.11ax中，TWT机制在ah的基础上，已经被修改为支持基于触发的上行链路传输，从而扩展了TWT工作的范围。</p>
 <p>  在TWT中，终端和AP之间建立了一张时间表（该时间表是终端和AP协定的），时间表是由TWT时间周期所组成的。通常终端和AP所协商的TWT时间周期包含一个或者多个beacon周期（总体时间比如几分钟，几小时，甚至高达几天）。当终端和AP所协商的时间周期到达后，终端会醒来，并等待AP发送的触发帧，并进行一次数据交换。当本次传输完成后，返回睡眠状态。每一个终端和AP都会进行独立的协商，每一个终端都具有单独的TWT时间周期。AP也可以将终端们根据设定的TWT时间周期进行分组，一次和多个终端进行连接，从而提高节能效率。</p>
 <p>  ![The Target Wake Time mechanism first appeared in the IEEE](802.11AX TWT节能机制/medium.png)</p>
 <p>  如上图所示，User 1和User 2分别和AP协定了两个TWT时间周期，分别为TW1和TW2。终端User 1和User 2默认就工作在睡眠模式下（sleep mode），保持一个较低的功耗。当TWT时间周期到达时，AP会发送一个触发帧（Trigger）给终端，终端进而苏醒并和AP执行数据交换，当数据交换完成后，终端恢复睡眠模式。TWT和传统PSM模式的差别是，终端只在TWT时间开始的时候苏醒，而在PSM模式中，从该beacon周期开始，终端就会通过该beacon帧中的DTIM信息，观察是否AP是否由缓存自己的数据帧，如果有的话，那么就保持苏醒，直到接收完成后，才恢复到睡眠模式。在上图中，如果是传统的PSM的话，若本轮beacon帧中提示有User 1的信息，那么其不会在TW1时间内睡眠，会保持苏醒，直到数据交换完成后，才恢复睡眠。</p>
-<h1 id="三种工作模式">3 三种工作模式</h1><h2 id="Individual-TWT">3.1 Individual TWT</h2><p>  该模式下终端会和AP协商特定的TWT时间，该时间会被存放在AP的时间表中。终端会在特定的时间醒来并和AP进行帧交换。每一个终端仅仅直到自己和AP协商的TWT时间，不需要知道其他终端的TWT时间。Individual TWT还有多种工作模式，比如说显式工作模式。</p>
+<h1 id="三种工作模式"><a href="#三种工作模式" class="headerlink" title="三种工作模式"></a>三种工作模式</h1><h2 id="Individual-TWT"><a href="#Individual-TWT" class="headerlink" title="Individual TWT"></a>Individual TWT</h2><p>  该模式下终端会和AP协商特定的TWT时间，该时间会被存放在AP的时间表中。终端会在特定的时间醒来并和AP进行帧交换。每一个终端仅仅直到自己和AP协商的TWT时间，不需要知道其他终端的TWT时间。Individual TWT还有多种工作模式，比如说显式工作模式。</p>
 <p>  其大致工作流程如下：</p>
 <p>  1、终端想要建立一个TWT连接，其会将自己的节能调度信息告知给AP</p>
 <p>  2、AP将会分配TWT周期，并将该周期反馈给终端</p>
@@ -591,13 +591,13 @@
 <p>  如上图所示，终端会在苏醒的时候，首先和AP发起一个TWT建立请求，终端和AP协商一个TWT时间（即图中Negotiate a schedule），当协商完成后，终端就进入睡眠状态。在该图上，AP发送Beacon时，也会包含了公开的TWT信息，在Individual TWT工作模式下，该信息终端时不需要的。终端一直保持睡眠状态，直到TWT时间到达。终端苏醒，并接收AP的触发帧，即TWT Trigger。当终端接收到该触发后，其会和AP进行数据帧交互。于此同时，AP会告知终端下一次的TWT时间（在显式TWT中，睡眠间隔是逐次设定的），终端会在新的TWT时间上，定时苏醒，并执行数据帧交换。TWT的一次苏醒间隔有可能是小于一个beacon周期，也有可能是大于一个beacon周期的，相比于传统的PSM，APSD之类的节能方式，更加具有一般性。</p>
 <p>  ![img](802.11AX TWT节能机制/v2-87f88e9269bcd820138de1cd9145e96b_720w.jpg)</p>
 <p>  终端和AP可以关于TWT时间周期进行协商，终端可以要求取消TWT参数，或者向AP请求特定的TWT时间。如果AP统一终端的请求，其会反馈“Accept TWT”。还有多种协商的具体参数，可以参考上图。</p>
-<h2 id="Broadcast-TWT">3.2 Broadcast TWT</h2><p>  广播TWT机制是一种由AP负责管理的工作机制。在该机制下，TWT时间周期是由AP宣告，通常AP会在每一个beacon帧中宣告本轮的TWT时间周期。在一些特殊的情况下，AP也会在其他的管理帧中宣告，比如Association帧，Reassociation帧或者Probe Response帧等等。我们需要注意在Broadcast TWT中，存在加入组和离开组的交互动作，终端需要向AP申请加组才可以执行Broadcast TWT，这个加组交互动作也是通过在终端和AP交换管理帧中，通过携带TWT elements完成的。当终端完成加组后，终端会按照最近接收到的TWT时间周期进行工作，此时这一类型的终端也被叫做“TWT Scheduled STA”，AP被称为“TWT Scheduling AP”。终端在TWT时间周期到达后进行苏醒，AP会发送广播的触发帧，发现哪些终端正在处于苏醒状态（加组后的终端们），并向这些终端发送数据帧，这里由于是广播通信，所以只有AP向节点发送。当AP发送完成后，终端恢复到睡眠状态，直到下一次广播TWT时间到达。通常，这种广播TWT中的时间间隔，我们也称为“TWT SP (Service Period)”。</p>
+<h2 id="Broadcast-TWT"><a href="#Broadcast-TWT" class="headerlink" title="Broadcast TWT"></a>Broadcast TWT</h2><p>  广播TWT机制是一种由AP负责管理的工作机制。在该机制下，TWT时间周期是由AP宣告，通常AP会在每一个beacon帧中宣告本轮的TWT时间周期。在一些特殊的情况下，AP也会在其他的管理帧中宣告，比如Association帧，Reassociation帧或者Probe Response帧等等。我们需要注意在Broadcast TWT中，存在加入组和离开组的交互动作，终端需要向AP申请加组才可以执行Broadcast TWT，这个加组交互动作也是通过在终端和AP交换管理帧中，通过携带TWT elements完成的。当终端完成加组后，终端会按照最近接收到的TWT时间周期进行工作，此时这一类型的终端也被叫做“TWT Scheduled STA”，AP被称为“TWT Scheduling AP”。终端在TWT时间周期到达后进行苏醒，AP会发送广播的触发帧，发现哪些终端正在处于苏醒状态（加组后的终端们），并向这些终端发送数据帧，这里由于是广播通信，所以只有AP向节点发送。当AP发送完成后，终端恢复到睡眠状态，直到下一次广播TWT时间到达。通常，这种广播TWT中的时间间隔，我们也称为“TWT SP (Service Period)”。</p>
 <p>  ![img](802.11AX TWT节能机制/v2-64658809cffd8f6a8013f41949ba8a5f_720w.png)</p>
 <p>  如上图所示，AP会在Beacon帧中，进行TWT Broadcast时间周期（即TWT SP时间）的宣告。终端们苏醒并接收该Beacon信息。然后在对应的TWT时间到达时，对应的终端们会提前苏醒，接收AP发送的TWT trigger，以及AP发送的下行数据帧，在此过程中，AP也由可能发送新的一次的TWT Broadcast时间周期（即TWT SP时间）。终端接收完成后，进入睡眠状态，并在新的TWT SP时间到达时，再次苏醒，以后以此类推。</p>
-<h2 id="Opportunistic-PS">3.3 Opportunistic PS</h2><p>  机会PS模式和前面两种工作模式是类似的，但是没有AP和节点的协商过程。AP会在每一个Beacon内，公开宣告一个TWT时间。任意终端可以选择在这个公开TWT时间内进行苏醒，并和AP执行数据帧交换。这个交换可以是单个节点的，也可以是采用OFDMA机制进行交换。</p>
+<h2 id="Opportunistic-PS"><a href="#Opportunistic-PS" class="headerlink" title="Opportunistic PS"></a>Opportunistic PS</h2><p>  机会PS模式和前面两种工作模式是类似的，但是没有AP和节点的协商过程。AP会在每一个Beacon内，公开宣告一个TWT时间。任意终端可以选择在这个公开TWT时间内进行苏醒，并和AP执行数据帧交换。这个交换可以是单个节点的，也可以是采用OFDMA机制进行交换。</p>
 <p>  ![img](802.11AX TWT节能机制/v2-9c1d1b7a9da20b7c1f9de1c06b23b7be_720w.png)</p>
 <p>  如上图所示，AP在Beacon帧中宣告了一个公开的TWT时间，任意终端都可以直到该TWT时间。当该TWT公开时间到达后，AP会发送触发帧，此时苏醒的节点可以和AP进行交互，并执行数据帧的交换。在图中，由多个节点苏醒，从而触发了一次OFDMA类型的数据帧交互。</p>
-<h1 id="其他节能机制">4 其他节能机制</h1><p>  802.11ax协议对于功耗这一面是很关注的，除了TWT以外，还包含了一些其他的特殊设计，用以节能，并延长终端的电池寿命。这些在IoT场景中都是非常重要的。</p>
+<h1 id="其他节能机制"><a href="#其他节能机制" class="headerlink" title="其他节能机制"></a>其他节能机制</h1><p>  802.11ax协议对于功耗这一面是很关注的，除了TWT以外，还包含了一些其他的特殊设计，用以节能，并延长终端的电池寿命。这些在IoT场景中都是非常重要的。</p>
 <ul>
 <li><strong>选择性的接收数据帧</strong>：在传统的802.11中，节点需要接收所有的数据帧，即使该数据帧不是自己的，那么也需要接收完成后，检查MAC地址（即BSSID），判断之后才可以丢包。接收无用的数据帧也是要耗费能量的，所以在802.11ax中，节点可以在数据帧的物理层头部就判断，该帧是不是要进行接收的，如果不是需要接收的，那么就可以停止接收，从而节约能量。</li>
 </ul>
@@ -628,7 +628,7 @@
 <p>  ![20 MHz-only Wi-Fi 6 Client](802.11AX TWT节能机制/image-20210420171548215.png)</p>
 <p>  ![img](802.11AX TWT节能机制/v2-81c02ffb80b19412961417ccda6574b0_720w.jpg)</p>
 <p>  如上图所示，我们认为这里有4个20MHz的信道，对于接入者而言，只有1个主信道（即Primary Channel）是信道3，然后还有3个从信道（secondary Channel)。当节点启用20MHz-only时，其只会在Primary 20MHz信道上工作，该工作可以是采用OFDM技术，也可以使用OFDMA技术，即占据部分的子载波。在Secondary Channel上，节点不会进行工作。</p>
-<h1 id="帧格式">5 帧格式</h1><p>  ![image-20210421161836600](802.11AX TWT节能机制/image-20210421161836600.png)</p>
+<h1 id="帧格式"><a href="#帧格式" class="headerlink" title="帧格式"></a>帧格式</h1><p>  ![image-20210421161836600](802.11AX TWT节能机制/image-20210421161836600.png)</p>
 <p>  ![image-20210421161824717](802.11AX TWT节能机制/image-20210421161824717.png)</p>
 <p>  ![image-20210421161805490](802.11AX TWT节能机制/image-20210421161805490.png)</p>
 <p>  ![image-20210421161853921](802.11AX TWT节能机制/image-20210421161853921.png)</p>
@@ -675,7 +675,7 @@
       
       <!-- <div class="content">
         [TOC]
-1 序言前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1)
+序言前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1) 允
       </div> -->
     </a>
   </div>
@@ -694,7 +694,7 @@
       </div>
       <!-- <div class="content">
         [TOC]
-1 序言NAV是802.11中最基本的MAC层元素之一，在802.11协议中起着非常重要的功能，而且先行协议
+序言NAV是802.11中最基本的MAC层元素之一，在802.11协议中起着非常重要的功能，而且先行协议下，
       </div> -->
     </a>
   </div>

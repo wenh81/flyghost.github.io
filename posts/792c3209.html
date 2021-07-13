@@ -562,12 +562,12 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言">1 序言</h1><p>参考资料：</p>
+<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>参考资料：</p>
 <p><a target="_blank" rel="noopener" href="https://www.extremenetworks.com/extreme-networks-blog/">What are OFDMA Resource Units in 802.11ax?</a></p>
 <p><a href="/books/Wi-Fi_6_FD_Extreme_Networks_Special_Edition.pdf">Wi-Fi_6_FD_Extreme_Networks_Special_Edition</a></p>
 <p><a href="/books/Draft_P802.11ax_D8.0.pdf">Draft P802.11ax_D8.0.pdf</a>第27.3.2节(Subcarrier and resource allocation)</p>
 <p><a target="_blank" rel="noopener" href="https://www.extremenetworks.com/extreme-networks-blog/ofdm-and-ofdma-subcarriers-what-are-the-differences/">OFDM and OFDMA Subcarriers – What Are the Differences?</a></p>
-<h1 id="简介">2 简介</h1><p>无线和有线通信不同。有线通信中信息是承载在线缆上，通过高低电平来标识不同的信息010010。但是在无线通信中，信息的载体就变成了高频信号，这种将信息加载到某个高频信号进行传播的过程就叫做载波调制，而承载着信息的高频信号，我们也称之为载波。拿日常生活中的例子来说，Wi-Fi通信类似快递送货，载波就像是送货的小车，发送方通过载波调制将货物(信息)放到小车上再送达到接收方。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>无线和有线通信不同。有线通信中信息是承载在线缆上，通过高低电平来标识不同的信息010010。但是在无线通信中，信息的载体就变成了高频信号，这种将信息加载到某个高频信号进行传播的过程就叫做载波调制，而承载着信息的高频信号，我们也称之为载波。拿日常生活中的例子来说，Wi-Fi通信类似快递送货，载波就像是送货的小车，发送方通过载波调制将货物(信息)放到小车上再送达到接收方。</p>
 <img "" class="lazyload placeholder" data-original="/posts/792c3209/093931auljualk348u3gik.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="载波调制" style="zoom:50%;">
 
 <p>不过这些频段不仅Wi-Fi可以用，其他短距无线传输技术比如RFID、蓝牙等，也都可以使用，所以干扰也很多。</p>
@@ -598,7 +598,7 @@
 <p>目前OFDMA在Wi-Fi 6里面是一次性添加了上行和下行，下行在整个接入过程中很简单，AP抢到的信道，然后发送即可。上行接入的时候包含了有两种接入方式，一共是基于竞争的（就是UORA），一种是基于非竞争的，也就是基于BSR的，缓存情况，根据节点的缓存情况，AP进行资源分配，然后告知。其实搞两种接入方式也是和LTE类似的，LTE中在PRACH信道上也有两种接入模式，基于竞争和基于非竞争，基于竞争的是随机选择竞争序列（也就是竞争所采用的Code），而非竞争的则是通过eNodeB指定。这点上LTE和WiFi 6在框架上是类似的。</p>
 <p>在这里还需要注意的一个是，OFDMA和CDMA一样，存在远近效应。其含义是接收方，也就是AP，在接收信号的时候，需要所有节点发送到AP处的信号功率，近似相等。如果功率差异过大，那么就不能够很好解调了。（功率差异大就是用SIC技术，而不是OFDMA技术了）。</p>
 <p>所以在上行发送的时候，触发帧实际上包含了三个重要信息，1）资源分配，2）发送速率指定，3）功率指定。通过以上技术，在OFDMA的场景下，Wi-Fi基本和LTE能够做到的差不多了，精准的频谱资源分配。</p>
-<h1 id="子载波">3 子载波</h1><p>在传统的802.11a/g/n/ac中，采用了正交频分复用（OFDM，Orthogonal Frequency Division Multiplexing）作为单用户传输的物理层技术。</p>
+<h1 id="子载波"><a href="#子载波" class="headerlink" title="子载波"></a>子载波</h1><p>在传统的802.11a/g/n/ac中，采用了正交频分复用（OFDM，Orthogonal Frequency Division Multiplexing）作为单用户传输的物理层技术。</p>
 <p>在802.11ax中，引入了一种新型的基于OFDM的OFDMA技术，其是OFDMA对应的多用户版本，其将信道划分成更小的时频资源单元，即RU（Resource Unit）。</p>
 <p>通过OFMDA的划分，多个用户可以并行进行传输，提高信道利用率。</p>
 <p>每一个RU内的数据和导频，在OFDMA子信道内都是相邻而且连续的。</p>
@@ -652,7 +652,7 @@
 <p><img "" class="lazyload placeholder" data-original="/posts/792c3209/image-20210412181104053.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="Data and pilot subcarrier indices for RUs in a 20 MHz HE PPDU and in a non-OFDMA 20 MHz HE PPDU"></p>
 <p>如上图所示带宽为20MHZ，RU为26时，-116号子载波为导频子载波，102号子载波为导频子载波。也就是每个RU的第6个子载波为导频子载波，倒数第七个为导频子载波。</p>
 <p>在RU为26个子载波的情况下，每一个RU中都包含了2个pilot，在RU为52个子载波的情况下，每一个RU包含4个pilot。通过这些pilot的设置，在传输过程中，接收方才可以有效地估计信道，并完成解调的工作。</p>
-<h1 id="OFDMA资源块RU（Resource-unit）">4 OFDMA资源块RU（Resource unit）</h1><p>在802.11ax中，一个最小的时频单位为RU。与LTE中的RE（Resource Element）和RB（Resource Block）不同，LTE中的RE和RB都是一个固定值。</p>
+<h1 id="OFDMA资源块RU（Resource-unit）"><a href="#OFDMA资源块RU（Resource-unit）" class="headerlink" title="OFDMA资源块RU（Resource unit）"></a>OFDMA资源块RU（Resource unit）</h1><p>在802.11ax中，一个最小的时频单位为RU。与LTE中的RE（Resource Element）和RB（Resource Block）不同，LTE中的RE和RB都是一个固定值。</p>
 <p>在802.11ax中RU是一个相对的概念，即存在很多种不同大小的RU，如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/792c3209/image-20210412142128738.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="Maximum number of RUs for each channel width"></p>
 <p>图中，一共定义了6中RU类型，分别是26，52，106，242，484以及996个子载波。</p>
@@ -714,7 +714,7 @@
       
       <!-- <div class="content">
         [TOC]
-1 简介MU-MIMO是基于多天线技术的，这个技术的物理层是多天线技术。多天线可以实现多种技术，不仅仅是MU
+简介MU-MIMO是基于多天线技术的，这个技术的物理层是多天线技术。多天线可以实现多种技术，不仅仅是MU-M
       </div> -->
     </a>
   </div>
@@ -732,9 +732,9 @@
         <div>802.11AX协议简介</div>
       </div>
       <!-- <div class="content">
-        1 序言参考资料：
+        序言参考资料：
 Introduction to 802.11ax High-Efficiency Wireless
-
+WL
       </div> -->
     </a>
   </div>

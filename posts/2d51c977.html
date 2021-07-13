@@ -562,9 +562,9 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言">1 序言</h1><p>在介绍完802.11ax的信道接入以及其触发帧机制后，本文着重介绍下行OFDMA的接入机制（即DL-OFDMA）。</p>
+<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>在介绍完802.11ax的信道接入以及其触发帧机制后，本文着重介绍下行OFDMA的接入机制（即DL-OFDMA）。</p>
 <p>参考资料：<a href="/books/Wi-Fi_6_FD_Extreme_Networks_Special_Edition.pdf">Wi-Fi_6_FD_Extreme_Networks_Special_Edition</a></p>
-<h1 id="下行OFDMA接入机制（DL-OFDMA）">2 下行OFDMA接入机制（DL-OFDMA）</h1><p>OFDMA是一种多用户通信机制，其只适用于802.11ax AP和802.11ax用户之间的数据帧交换。为了保证协议的兼容，在802.11ax中，管理和控制帧还是按照传统的单用户OFDM进行传输。在此之中，OFDMA和OFDM的工作切换需要进行一系列的特定帧交换，比如之前提到的触发帧（Trigger Frame），这种机制在下行OFDMA（DL-OFDMA）和上行OFDMA（UL-OFDMA）中都需要被引入。</p>
+<h1 id="下行OFDMA接入机制（DL-OFDMA）"><a href="#下行OFDMA接入机制（DL-OFDMA）" class="headerlink" title="下行OFDMA接入机制（DL-OFDMA）"></a>下行OFDMA接入机制（DL-OFDMA）</h1><p>OFDMA是一种多用户通信机制，其只适用于802.11ax AP和802.11ax用户之间的数据帧交换。为了保证协议的兼容，在802.11ax中，管理和控制帧还是按照传统的单用户OFDM进行传输。在此之中，OFDMA和OFDM的工作切换需要进行一系列的特定帧交换，比如之前提到的触发帧（Trigger Frame），这种机制在下行OFDMA（DL-OFDMA）和上行OFDMA（UL-OFDMA）中都需要被引入。</p>
 <p>![Downlink OFDMA](802.11AX DL-OFDMA/image-20210413172631964.png)</p>
 <p>接下来分析一下触发帧（Trigger Frames）机制是如何用户DL-OFDMA通信，即802.11ax AP向802.11ax终端们进行多用户下行传输。</p>
 <p>首先，802.11ax AP需要通过竞争（即CSMA/CA的竞争过程），竞争胜利后，其发起一个TXOP传输时间，相当于这一段TXOP时间内，信道都是被AP所预约占据的，其余所有节点都会被延迟。如上图所示，一旦802.11ax AP获得了TXOP传输时间，AP可以给多个目标终端发送MU-RTS帧，这也是一种类型的触发帧。该MU-RTS帧有以下两个目的：</p>
@@ -618,7 +618,7 @@
       
       <!-- <div class="content">
         [TOC]
-1 序言在802.11ax以前，协议仅仅支持过下行的多用户接入，比如说MU-MIMO技术（在802.11ac
+序言在802.11ax以前，协议仅仅支持过下行的多用户接入，比如说MU-MIMO技术（在802.11ac中仅
       </div> -->
     </a>
   </div>
@@ -637,7 +637,7 @@
       </div>
       <!-- <div class="content">
         [TOC]
-1 序言**Operating Mode Indication (OMI)**是802.11ax MAC层运
+序言**Operating Mode Indication (OMI)**是802.11ax MAC层运行的
       </div> -->
     </a>
   </div>

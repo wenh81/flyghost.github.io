@@ -562,14 +562,14 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言">1 序言</h1><p>在802.11ax以前，MAC的接入机制是典型的CSMA机制（即DCF中所采用的CSMA/CA）。</p>
+<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>在802.11ax以前，MAC的接入机制是典型的CSMA机制（即DCF中所采用的CSMA/CA）。</p>
 <p>在引入了OFDMA的需求之后，802.11ax的MAC层随机接入机制也发生了变化，在协议中，代替传统的CSMA思想，802.11ax采用了基于ALOHA思想设计了竞争协议。其基本思想已经从强调分布式的场景，逐渐变成了强调中心式，高密度，优化资源分配上了。</p>
 <p>本节主要就是介绍802.11ax中所采用的TF（Trigger Frame）以及TF-R（Trigger Frame for Random access）机制。</p>
 <p>参考资料：</p>
 <ul>
 <li><a href>Wi-Fi_6_FD_Extreme_Networks_Special_Edition</a></li>
 </ul>
-<h1 id="MAC层接入机制">2 MAC层接入机制</h1><p>  802.11ax提升效率的秘诀之一就是OFDMA技术。OFDMA是OFDM技术的多用户版本，在诸如LTE等的其他无线技术中已经被广泛采用。在OFDMA中，信道被细分称更小的单元，称为资源单元（Resource Units，RU） 。通过细分信道，OFDMA通过分配不同的RU给多终端，从而允许多个终端执行并行传输，同时接入无线网络。即总结而言，OFDMA是一种多用户传输技术。</p>
+<h1 id="MAC层接入机制"><a href="#MAC层接入机制" class="headerlink" title="MAC层接入机制"></a>MAC层接入机制</h1><p>  802.11ax提升效率的秘诀之一就是OFDMA技术。OFDMA是OFDM技术的多用户版本，在诸如LTE等的其他无线技术中已经被广泛采用。在OFDMA中，信道被细分称更小的单元，称为资源单元（Resource Units，RU） 。通过细分信道，OFDMA通过分配不同的RU给多终端，从而允许多个终端执行并行传输，同时接入无线网络。即总结而言，OFDMA是一种多用户传输技术。</p>
 <p>  ![OFDMA传输过程](802.11AX MAC层接入机制/image-20210412150306471.png)</p>
 <p>  如上图所示，在802.11ax中，1个802.11ax AP将1个20 MHz信道划分为多个资源单元（RU），每一个RU被分配给不同的终端，802.11ax AP同时向这些终端进行下行传输。</p>
 <p>  同时，802.11ax AP还可以同步调度802.11终端，让其执行并行的上行传输。</p>
@@ -579,7 +579,7 @@
 <p>  针对于不同的TXOP，其RU的数量也是不一样的。对于上行接入（UL-OFDMA），AP采用触发帧机制（Trigger Frames），向802.11ax的终端进行调度和RU资源的分配。</p>
 <p>  <img "" class="lazyload placeholder" data-original="https://pic4.zhimg.com/80/v2-e90b62f696539d2e138501fef5ce205f_720w.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <p>  在802.11ax中，还存在一个OMI机制，这个机制是为了解决802.11终端是采用竞争接入信道（即单用户接入）还是采用OFDMA调度接入信道的（即多用户接入）。在OMI中，终端可以向AP发送信息，通知AP其支持的上下行所支持的最大空间流数目以及信道带宽。如上图所示，802.11ax终端采用OM控制字段（在数据帧或者管理帧中），来指示传输模式或者接收模式的变化。比如802.11ax终端可以在单用户接入或者多用户接入模式间切换。</p>
-<h1 id="TF机制（Trigger-Frame）">3 TF机制（Trigger Frame）</h1><p>  802.11ax与传统的DCF所需求的MAC层机制是不同的。传统的DCF同一个时刻只有一个用户接入信道，而由于802.11ax采用OFDMA技术，其需求多个用户可以同一时间接入信道（选择的RU是正交的）。</p>
+<h1 id="TF机制（Trigger-Frame）"><a href="#TF机制（Trigger-Frame）" class="headerlink" title="TF机制（Trigger Frame）"></a>TF机制（Trigger Frame）</h1><p>  802.11ax与传统的DCF所需求的MAC层机制是不同的。传统的DCF同一个时刻只有一个用户接入信道，而由于802.11ax采用OFDMA技术，其需求多个用户可以同一时间接入信道（选择的RU是正交的）。</p>
 <p>  本节所介绍的TF机制，主要是用在UL MU（Uplink Multi-users）这种上行传输的场景下的。</p>
 <p>  TF机制是一个<strong>上行传输</strong>的框架，其具体的随机接入的方法是TF-R机制。</p>
 <p>  ![TF机制](802.11AX MAC层接入机制/v2-36dd8f6976d4c1dbc024e4af7a6a4ad9_720w.png)</p>
@@ -602,7 +602,7 @@
 <blockquote>
 <p>注：802.11ax中不是完全把DCF删除，而是分时采用不同的模式。TF机制主要是用在上行接入这一部分的。</p>
 </blockquote>
-<h1 id="TF-R机制（Trigger-Frame-for-Random-access）">4 TF-R机制（Trigger Frame for Random access）</h1><p>  TF-R是基于TF的进一步扩展，是在TF机制中，引入了竞争的机制，其基本思想是Slot-Aloha。</p>
+<h1 id="TF-R机制（Trigger-Frame-for-Random-access）"><a href="#TF-R机制（Trigger-Frame-for-Random-access）" class="headerlink" title="TF-R机制（Trigger Frame for Random access）"></a>TF-R机制（Trigger Frame for Random access）</h1><p>  TF-R是基于TF的进一步扩展，是在TF机制中，引入了竞争的机制，其基本思想是Slot-Aloha。</p>
 <p>  ![TF-R接入机制](802.11AX MAC层接入机制/v2-c5996e9a2c4a167b20f559a9e1483238_720w.png)</p>
 <p>  TF-R是将原来时域竞争转为频域竞争（如左边红色竖线上所示）。</p>
 <p>  TF-R是在前面所述的TF过程之前执行的，在每一次接入时，AP首先发送TF-R帧，在该帧中的部分RU其相应AID=X，这个X代表这个RU是供节点竞争接入的。节点在识别到TF-R帧之后，具体是采用OBO（UL-OFDMA Backoff）的机制竞争（TF-R的接入思想是基于Aloha而不是CSMA的主要原因也在这里）。</p>
@@ -618,7 +618,7 @@
 <blockquote>
 <p>注：Slot-Aloha的思想是用来判断节点在这个时刻可不可以发送，并没有包含在哪个位置具体传输的机制。故OBO主要是用来判断，节点能不能发的，至于使用哪个信道具体发送，那么这里是随机的。这一块可能有性能评估的问题，不过目前协议是这样设定的。</p>
 </blockquote>
-<h1 id="TF帧">5 TF帧</h1><p>  当进行上行（UL-OFDMA）或者下行（DL-OFDMA）传输时，都需要触发帧（Trigger Frame）来实现多用户通信间，调度信息的交换。触发帧也用户MU-MIMO间帧的交换。例如，AP使用触发帧将OFDMA RU分配给WiFi6客户端。</p>
+<h1 id="TF帧"><a href="#TF帧" class="headerlink" title="TF帧"></a>TF帧</h1><p>  当进行上行（UL-OFDMA）或者下行（DL-OFDMA）传输时，都需要触发帧（Trigger Frame）来实现多用户通信间，调度信息的交换。触发帧也用户MU-MIMO间帧的交换。例如，AP使用触发帧将OFDMA RU分配给WiFi6客户端。</p>
 <p>  ![Trigger Type subfield encoding](802.11AX MAC层接入机制/image-20210413145008785.png)</p>
 <p>  触发帧包含了多种子类型，其在802.11ax中提供了很多重要的功能。上图列举了802.11ax中触发帧具体对应的子类型。</p>
 <p>  触发帧中包含了有关RU资源分配的信息，RU分配信息分别存放在PHY和MAC层来发送给客户端。</p>
@@ -673,7 +673,7 @@
       
       <!-- <div class="content">
         [TOC]
-1 序言**Operating Mode Indication (OMI)**是802.11ax MAC层运
+序言**Operating Mode Indication (OMI)**是802.11ax MAC层运行的
       </div> -->
     </a>
   </div>
@@ -692,7 +692,7 @@
       </div>
       <!-- <div class="content">
         [TOC]
-1 简介MU-MIMO是基于多天线技术的，这个技术的物理层是多天线技术。多天线可以实现多种技术，不仅仅是MU
+简介MU-MIMO是基于多天线技术的，这个技术的物理层是多天线技术。多天线可以实现多种技术，不仅仅是MU-M
       </div> -->
     </a>
   </div>
