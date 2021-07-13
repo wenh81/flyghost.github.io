@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuang01/hexo-theme-bamboo.git"
+    "url": "git+https://github.com/flyghost/"
   },
   "keywords": [
     "hexo",
     "theme",
     "bamboo"
   ],
-  "author": "yuang01  (https://github.com/yuang01/)",
+  "author": "creekwater  (https://github.com/flyghost/)",
   "license": "",
   "bugs": {
-    "url": "https://github.com/yuang01/hexo-theme-bamboo/issues"
+    "url": "https://github.com/flyghost/"
   },
-  "homepage": "https://yuang01.github.io",
+  "homepage": "www.creekwater.cn",
   "devDependencies": {
   }
 }
