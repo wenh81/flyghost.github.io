@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <!-- meta/link... -->
   
 
 
@@ -67,22 +68,30 @@
 <meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="灵溪驿站" type="application/atom+xml">
 </head>
 
+  
+  <!-- 依赖于jquery和vue -->
   <script src="/js/jquery3.5.1.js"></script>
   <script src="/js/vue2.6.11.js"></script>
-  <link href="/js/danmu/barrager.css" rel="stylesheet">
-<script src="/js/danmu/jquery.barrager.js"></script>
+  
   <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+    
+    <!-- 判断是否为暗黑风格 -->
     <!-- 判断是否为黑夜模式 -->
-    <script>
-      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
 
-      if (isDark) {
-        $(document.body).addClass('darkModel');
-      }
-    </script>
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
 
-    <header class="header bg-color" 
-  style="position: fixed; 
+    <!-- 头部导航等 -->
+    
+<header class="header " id="navHeader"
+  style="position: fixed;
   left: 0; top: 0; z-index: 10;width: 100%;"
 >
   <div class="header-content">
@@ -99,65 +108,113 @@
       <h3 class="drawer-box-head_title">灵溪驿站</h3>
       <h5 class="drawer-box-head_desc">千磨万击还坚劲，任尔东西南北风</h5>
     </div>
+    
     <div class="drawer-box-content">
       <ul class="drawer-box-content_menu">
         
-          <li class="drawer-box-content_item">
-            <a href="/" class="menu-item-link">
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-home" aria-hidden="true"></i>
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
               
-              <span>首页</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/archives" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-home" aria-hidden="true"></i>
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
               
-              <span>归档</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/tags" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-tags" aria-hidden="true"></i>
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
               
-              <span>标签</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/categories" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
               
-              <span>分类</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/about" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <a href="/about" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
               
-              <span>关于</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/friends" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-link" aria-hidden="true"></i>
+                <a href="/friends" class="drawer-menu-item-link">
+                  
+                  <span class="name">友情链接</span>
+                </a>
               
-              <span>友情链接</span>
-            </a>
-          </li>
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                  <span>
+                    
+                      <i class="fa fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fa fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                  
+                  <li>
+                    <a href="/books">
+                      
+                      <i class="fa fa-book" style="margin-top: -20px;"></i>
+                      
+                      <span>图书馆</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/flyghost/">
+                      
+                      <i class="fa fa-git" style="margin-top: -20px;"></i>
+                      
+                      <span>代码仓</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
         
         <li class="drawer-box-content_item">
-          <a target="_blank" rel="noopener" href="https://github.com/flyghost">
+          <a target="_blank" rel="noopener" href="https://github.com/flyghost/">
             <i class="fa fa-github" aria-hidden="true"></i>
             <span>Github</span>
           </a>
@@ -174,17 +231,33 @@
     data: {
       visible: false,
       top: 0,
+      openArr: [],
     },
     computed: {
     },
     mounted() {
     },
     methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
       showDialogDrawer() {
         this.visible = true;
         // 防止页面滚动，只能让弹框滚动
         this.top = $(document).scrollTop()
-        body.style.cssText = 'width: 100%; height: 100%; position: fixed; top: -' + this.top  + 'px; left: 0; overflow: hidden;';
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
       },
       cancelDialogDrawer() {
         this.visible = false;
@@ -195,131 +268,135 @@
     created() {}
   })
 </script>
+
     </div>
     <div class="blog-title" id="author-avatar">
-      <div class="avatar">
-        <img src="/medias/logo.png" alt="logo">
-      </div>
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" alt="logo">
+        </div>
+      
       <a href="/" class="logo">灵溪驿站</a>
     </div>
     <nav class="navbar">
       <ul class="menu">
         
-          <li class="menu-item">
-            <a href="/" class="menu-item-link">
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-home" aria-hidden="true"></i>
+                <a href="/" class="menu-item-link">
+                  
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
               
-              <span>首页</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/archives" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-archive" aria-hidden="true"></i>
+                <a href="/archives" class="menu-item-link">
+                  
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
               
-              <span>归档</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/tags" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-tags" aria-hidden="true"></i>
+                <a href="/tags" class="menu-item-link">
+                  
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
               
-              <span>标签</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/categories" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <a href="/categories" class="menu-item-link">
+                  
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
               
-              <span>分类</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/about" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <a href="/about" class="menu-item-link">
+                  
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
               
-              <span>关于</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/friends" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-link" aria-hidden="true"></i>
+                <a href="/friends" class="menu-item-link">
+                  
+                  <span class="name">友情链接</span>
+                </a>
               
-              <span>友情链接</span>
-            </a>
-          </li>
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link">
+                  
+                    <i class="fa fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fa fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/books">
+                      
+                      <i class="fa fa-book" style="margin-top: -20px;"></i>
+                      
+                      <span>图书馆</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/flyghost/">
+                      
+                      <i class="fa fa-git" style="margin-top: -20px;"></i>
+                      
+                      <span>代码仓</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
         
       </ul>
       
-        <div class="dark">
-  <div class="dark-content">
-    <i class="fa fa-moon-o" aria-hidden="true"></i>
-    <!-- <span>关灯</span> -->
-  </div>
-  
-</div>
-
-<script>
-  $(function() {
-    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
-    if (isDark) {
-      $(".dark-content").replaceWith(
-          `
-          <div class='dark-content'>
-            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-          </div>
-          `
-        );
-    }
-    $('.dark').click(function() {
-      if ($(document.body).is('.darkModel')) {
-        $(document.body).removeClass('darkModel');
-        localStorage.setItem('dark', false);
-        $(".dark-content").replaceWith(
-          `
-          <div class='dark-content'>
-            <i class="fa fa-moon-o" aria-hidden="true"></i>
-          </div>
-          `
-        );
-      } else {
-        $(document.body).addClass('darkModel');
-        localStorage.setItem('dark', true);
-        $(".dark-content").replaceWith(
-          `
-          <div class='dark-content'>
-            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-          </div>
-          `
-        );
-      }
-    })
-  })
-</script>
-        
       
         <div id="appSearch">
   <div class="search"  @click="showDialog()"><i class="fa fa-search" aria-hidden="true"></i></div>
   <transition name="fade">
     <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
       <div class="message-box animated bounceInDown">
-        <div class="close" style="overflow: hidden;">
+        <!-- <div class="close" style="overflow: hidden;">
           <i class="fa fa-close" aria-hidden="true" style="float:right;" @click.self="cancelDialogVisible()"></i>
-        </div>
+        </div> -->
         <h2>
-          <i class="fa fa-search" aria-hidden="true"></i>
-          <span class="title">本地搜索</span>
-          <!-- <i class="fa fa-close" style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i> -->
+          <span>
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fa fa-close close" style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
         </h2>
         <form class="site-search-form">
           <input type="text"
@@ -385,7 +462,7 @@
     </nav>
   </div>
   
-  <a target="_blank" rel="noopener" href="https://github.com/flyghost" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  <a target="_blank" rel="noopener" href="https://github.com/flyghost/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
   
     <div id="he-plugin-simple"></div>
     <script>
@@ -413,154 +490,37 @@
     </script>
     <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
     
+
+    <!-- 当头部导航设置为背景透明的时候  -->
+    
+      <script src="/js/header/index.js"></script>
+    
 </header>
-    <main class="main" style="margin-top: 60px;">
+
+    <!-- 内容区域 -->
+    <main class="main" style="margin-top: 0;">
       
  <!-- prismjs 代码高亮 -->
  
 
+
 <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;" :style="{'background-color': bgColor ? bgColor : 'transparent'}">
-    <transition-group tag="ul" :name="names">
-        <li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-            <img :src="image" class="bg-swiper-img">
-        </li>
-    </transition-group>
-</div>
-<script>
-    var vm = new Vue({
-        el: '#appBgSwiper',
-        data: {
-            names: '' || 'fade' || 'fade', // translate-fade fade
-            mark: 0,
-            img: [],
-            bgColor: '',
-            time: null
-        },
-        methods: {   //添加方法
-            change(i, m) {
-                if (i > m) {
-                    // this.names = 'fade';
-                } else if (i < m) {
-                    // this.names = 'fade';
-                } else {
-                    return;
-                }
-                this.mark = i;
-            },
-            prev() {
-                // this.names = 'fade';
-                this.mark--;
-                if (this.mark === -1) {
-                    this.mark = 3;
-                    return
-                }
-            },
-            next() {
-                // this.names = 'fade';
-                this.mark++;
-                if (this.mark === this.img.length) {
-                    this.mark = 0;
-                    return
-                }
-            },
-            autoPlay() {
-                // this.names = 'fade';
-                this.mark++;
-                if (this.mark === this.img.length) {
-                    this.mark = 0;
-                    return
-                }
-            },
-            play() {
-                let bgImgDelay = '' || '180000'
-                let delay = parseInt(bgImgDelay) || 180000;
-                this.time = setInterval(this.autoPlay, delay);
-            },
-            enter() {
-                clearInterval(this.time);
-            },
-            leave() {
-                this.play();
-            }
-        },
-        created() {
-            this.play()
-        },
-        beforeDestroy() {
-            clearInterval(this.time);
-        },
-        mounted() {
-            let prop = ''|| '/medias/post_background.png';
-            let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg')
-            if (isImg) {
-                let img = prop.split(',');
-                let configRoot = '/'
-                let arrImg = [];
-                img.forEach(el => {
-                    var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-			        var objExp = new RegExp(Expression);
 
-                    if(objExp.test(el)) {
-                        // http or https
-                        arrImg.push(el);
-                    } else {
-                        // 非http or https开头
-                        // 本地文件
-                        let firstStr = el.charAt(0);
-                        if (firstStr == '/') {
-                            el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-                        }
-                        el = configRoot + el;
-                        arrImg.push(el);
-                    }
-                })
-                this.img = arrImg;
-            } else {
-                this.bgColor = prop;
-            }
-        }
-    })
-</script>
+<!-- 文章详情页顶部图片和标题 -->
 
-<style>
-    .bg-swiper-box {
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-    .bg-swiper-img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
-</style>
 
 
 
 <div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/11.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
-  <canvas id="header_canvas"style="position:absolute;bottom:0"></canvas>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
-    <div class="title-box">
-      
-        <span class="title" id="post-detail-header-title"></span>
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-          <script>
-            var typed = new Typed("#post-detail-header-title", {
-              strings: ['mbedtls加密组件分析'],
-              startDelay: 100,
-              typeSpeed: 100,
-              loop: false,
-              backSpeed: 50,
-              showCursor: false
-            });
-          </script>
-        
-    </div>
-  
+  <div class="title-box">
+    <span class="title">
+      mbedtls加密组件分析
+    </span>
+  </div>
   
   
     <script src="/js/bubble/bubble.js"></script>
@@ -568,10 +528,10 @@
 </div>
 
 
+
 <div class="row justify-position">
   <div class="main-content">
     <article class="post post-detail">
-      
       
       <div class="post-meta">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -908,7 +868,7 @@
 <p>然后在main函数中调用：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 3. hamc test */</span></span><br><span class="line">mbedtls_hmac_test(MBEDTLS_MD_SHA256);</span><br></pre></td></tr></table></figure>
 <p>编译、下载、测试结果如图：</p>
-<p>在MDK中配置：<br><img src="https://img-blog.csdnimg.cn/20200926151128537.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>在MDK中配置：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200926151128537.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h2 id="GCM功能模块相关的API说明">4.8 GCM功能模块相关的API说明</h2><p>① cipher认证加密：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mbedtls_cipher_auth_encrypt</span><span class="params">( <span class="keyword">mbedtls_cipher_context_t</span> *ctx,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *iv, <span class="keyword">size_t</span> iv_len,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *ad, <span class="keyword">size_t</span> ad_len,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *input, <span class="keyword">size_t</span> ilen,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">unsigned</span> <span class="keyword">char</span> *output, <span class="keyword">size_t</span> *olen,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">unsigned</span> <span class="keyword">char</span> *tag, <span class="keyword">size_t</span> tag_len )</span></span>;</span><br></pre></td></tr></table></figure>
 <p>② cipher认证解密</p>
@@ -919,7 +879,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Private user code ---------------------------------------------------------*/</span></span><br><span class="line"><span class="comment">/* USER CODE BEGIN 0 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/cipher.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcm_test</span><span class="params">(<span class="keyword">mbedtls_cipher_type_t</span> cipher_type)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* USER CODE END 0 */</span></span><br></pre></td></tr></table></figure>
 <p>接着在main函数中调用测试函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 4.gcm test */</span></span><br><span class="line">gcm_test(MBEDTLS_CIPHER_AES_128_GCM);</span><br></pre></td></tr></table></figure>
-<p>编译、下载，测试结果为：<br><img src="https://img-blog.csdnimg.cn/20200926151709761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>编译、下载，测试结果为：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200926151709761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h1 id="五、非对称加密算法的配置与使用（RSA算法）">5 五、非对称加密算法的配置与使用（RSA算法）</h1><h2 id="非对称加密算法——RSA">5.1 非对称加密算法——RSA</h2><h3 id="对称加密算法和非对称加密算法">5.1.1 对称加密算法和非对称加密算法</h3><p>对称加密算法，比如AES算法，在发送端（加密）和接收端（解密）使用相同的一份秘钥，称为共享秘钥。</p>
 <p>非对称加密算法，比如RSA算法，在加密使用<strong>公钥</strong>，而在解密时使用<strong>私钥</strong>。</p>
 <h3 id="RSA算法">5.1.2 RSA算法</h3><p>RSA算法是一种常用的非对称加密算法。</p>
@@ -1009,7 +969,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * \def MBEDTLS_PKCS1_V21</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Enable support for PKCS#1 v2.1 encoding.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Requires: MBEDTLS_MD_C, MBEDTLS_RSA_C</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This enables support for RSAES-OAEP and RSASSA-PSS operations.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_PKCS1_V21</span></span><br></pre></td></tr></table></figure>
 <p>编辑针对本实验的配置文件<code>mbedtls_config_rsa.h</code>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _MBEDTLS_CONFIG_RSA_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _MBEDTLS_CONFIG_RSA_H_</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* System support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_HAVE_ASM</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_HAVE_TIME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed feature support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_HARDWARE_ALT</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_NO_PLATFORM_ENTROPY</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed modules */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_AES_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_AES_ROM_TABLES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_CTR_DRBG_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_SHA256_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_MD_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_BIGNUM_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_GENPRIME</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_OID_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_RSA_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_PKCS1_V21</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/check_config.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _MBEDTLS_CONFIG_RSA_H_ */</span></span></span><br></pre></td></tr></table></figure>
-<p>在MDK配置mbedtls使用该配置文件：<br><img src="https://img-blog.csdnimg.cn/20200927110342915.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>在MDK配置mbedtls使用该配置文件：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200927110342915.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h3 id="RSA功能模块API说明">5.2.2 RSA功能模块API说明</h3><p>使用该功能模块需要包含头文件：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/rsa.h&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>① 初始化RSA结构体：</p>
@@ -1030,10 +990,10 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 5. rsa test */</span></span><br><span class="line">mbedtls_rsa_test();</span><br></pre></td></tr></table></figure>
 <h3 id="堆内存空间的设置">5.2.5 堆内存空间的设置</h3><p><strong>特别注意：</strong></p>
 <p>mbedtls RSA算法中的生成秘钥对比较占用空间，再加上RSA算法计算过程涉及到大数运算，所以RSA算法对内存的消耗比较大。</p>
-<p>mbedtls使用的是动态内存，从堆空间中分配，所以要在STM32启动文件中将堆空间设置的大一点：<br><img src="https://img-blog.csdnimg.cn/20200928201926696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>mbedtls使用的是动态内存，从堆空间中分配，所以要在STM32启动文件中将堆空间设置的大一点：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200928201926696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h3 id="测试结果-4">5.2.6 测试结果</h3><p>编译、下载到开发板中，可以看到：</p>
-<p>① 秘钥对生成结果（花费大概5min左右，主控芯片STM32L431主频为80Mhz）：<br><img src="https://img-blog.csdnimg.cn/20200927143614723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
-<p>② 使用公钥加密结果（因为RSA算法中的特性，所以同一份程序，同一份明文，每次重新运行生成的密文也不同）：<br><img src="https://img-blog.csdnimg.cn/20200927143637213.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>③ 使用私钥解密结果：<br><img src="https://img-blog.csdnimg.cn/20200927143743879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>① 秘钥对生成结果（花费大概5min左右，主控芯片STM32L431主频为80Mhz）：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200927143614723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
+<p>② 使用公钥加密结果（因为RSA算法中的特性，所以同一份程序，同一份明文，每次重新运行生成的密文也不同）：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200927143637213.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>③ 使用私钥解密结果：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200927143743879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h1 id="六、DH秘钥协商算法的配置与使用">6 六、DH秘钥协商算法的配置与使用</h1><h2 id="DH秘钥协商算法">6.1 DH秘钥协商算法</h2><p>DH是一种秘钥协商算法，使得通信双方在不安全通道交换共享参数，从而协商出一个会话秘钥。</p>
 <p>DH秘钥协商的过程如下：</p>
 <p>① 通信双方A和B确认共享参数；<br>② A生成随机秘钥x；<br>③ B生成随机秘钥y；<br>④ A计算共享秘钥；<br>⑤ B计算共享秘钥；</p>
@@ -1097,7 +1057,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * \def MBEDTLS_DHM_C</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Enable the Diffie-Hellman-Merkle module.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Module:  library/dhm.c</span></span><br><span class="line"><span class="comment"> * Caller:  library/ssl_cli.c</span></span><br><span class="line"><span class="comment"> *          library/ssl_srv.c</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This module is used by the following key exchanges:</span></span><br><span class="line"><span class="comment"> *      DHE-RSA, DHE-PSK</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * \warning    Using DHE constitutes a security risk as it</span></span><br><span class="line"><span class="comment"> *             is not possible to validate custom DH parameters.</span></span><br><span class="line"><span class="comment"> *             If possible, it is recommended users should consider</span></span><br><span class="line"><span class="comment"> *             preferring other methods of key exchange.</span></span><br><span class="line"><span class="comment"> *             See dhm.h for more details.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_DHM_C</span></span><br></pre></td></tr></table></figure>
 <p>编辑针对本实验的配置文件<code>mbedtls_config_dhm.h</code>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   Minimal configuration for DHM Function</span></span><br><span class="line"><span class="comment"> * @author  mculover666</span></span><br><span class="line"><span class="comment"> * @date    2020/09/28</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _MBEDTLS_CONFIG_DHM_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _MBEDTLS_CONFIG_DHM_H_</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* System support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_HAVE_ASM</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_HAVE_TIME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed feature support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_HARDWARE_ALT</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_NO_PLATFORM_ENTROPY</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed modules */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_AES_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_AES_ROM_TABLES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_CTR_DRBG_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_SHA256_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_MD_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_BIGNUM_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_GENPRIME</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_DHM_C</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/check_config.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _MBEDTLS_CONFIG_DHM_H_ */</span></span></span><br></pre></td></tr></table></figure>
-<p>在MDK配置mbedtls使用该配置文件：<br><img src="https://img-blog.csdnimg.cn/20200928201900998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>在MDK配置mbedtls使用该配置文件：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200928201900998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h3 id="DH秘钥协商功能API说明">6.2.2 DH秘钥协商功能API说明</h3><p>使用该功能模块需要包含头文件：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/dhm.h&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>① 初始化DH结构体：</p>
@@ -1118,8 +1078,8 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">mbedtls_dhm_test</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>然后在main函数中调用测试函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 6. dh test */</span></span><br><span class="line">mbedtls_dhm_test();</span><br></pre></td></tr></table></figure>
-<p>因为本实验内存消耗较大，需要加大堆空间：<br><img src="https://img-blog.csdnimg.cn/20200929152619282.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>编译、下载、测试结果如下。</p>
-<p>① 服务端生成的公开参数：<br><img src="https://img-blog.csdnimg.cn/20200929152724594.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>② 客户端生成的公开参数（<strong>可以看到与服务端的公开参数不同</strong>）：<br><img src="https://img-blog.csdnimg.cn/20200929152750286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>③ 服务端计算共享秘钥：<br><img src="https://img-blog.csdnimg.cn/20200929152846684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>④ 客户端计算共享秘钥（<strong>可以看到与服务端相同</strong>）：<br><img src="https://img-blog.csdnimg.cn/20200929152907206.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>因为本实验内存消耗较大，需要加大堆空间：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200929152619282.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>编译、下载、测试结果如下。</p>
+<p>① 服务端生成的公开参数：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200929152724594.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>② 客户端生成的公开参数（<strong>可以看到与服务端的公开参数不同</strong>）：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200929152750286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>③ 服务端计算共享秘钥：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200929152846684.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>④ 客户端计算共享秘钥（<strong>可以看到与服务端相同</strong>）：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200929152907206.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h1 id="七、ECDH秘钥协商算法的配置与使用">7 七、ECDH秘钥协商算法的配置与使用</h1><h2 id="ECDH秘钥协商算法">7.1 ECDH秘钥协商算法</h2><p>ECDH是一种秘钥协商算法，使得通信双方在不安全通道交换共享参数，从而使用共享参数和自身私密参数计算出一个会话秘钥。</p>
 <p>ECDH秘钥协商算法基于椭圆曲线密码系统（ECC），使用较短的秘钥长度可提供与RSA或DH算法同样的安全等级，<strong>秘钥长度为160-256bit的椭圆曲线算法，与1024-3072bit的非ECC算法安全强度相同</strong>。</p>
 <p>ECDH秘钥协商的过程如下：</p>
@@ -1216,7 +1176,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">mbedtls_ecdh_test</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>在 main 函数中调用此测试函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 7. ecdh test */</span></span><br><span class="line">mbedtls_ecdh_test();</span><br></pre></td></tr></table></figure>
-<p>编译、下载、在串口助手查看结果：<br><img src="https://img-blog.csdnimg.cn/20200930161558673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>编译、下载、在串口助手查看结果：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20200930161558673.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h1 id="八、数字签名算法的配置与使用（RSA数字签名算法、ECDSA数字签名算法）">8 八、数字签名算法的配置与使用（RSA数字签名算法、ECDSA数字签名算法）</h1><h2 id="数字签名算法">8.1 数字签名算法</h2><h3 id="什么是数字签名">8.1.1 什么是数字签名</h3><p>数字签名类似于盖章和签字，数字签名可以检查消息是否被篡改、并验证消息的可靠性，因为私钥只有签名者持有，所以还可以防止否认。</p>
 <h3 id="数字签名算法-1">8.1.2 数字签名算法</h3><p>① <strong>RSA数字签名</strong></p>
 <p>RSA数字签名算法基于RSA非对称加密算法，在用于数字签名时公钥和私钥的用法刚好相反：</p>
@@ -1292,7 +1252,7 @@
 </tbody></table>
 <p>新建配置文件<code>mbedtls_config_rsa_sign.h</code>，编写以下内容：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _MBEDTLS_CONFIG_RSA_SIGN_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _MBEDTLS_CONFIG_RSA_SIGN_H_</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* System support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_HAVE_ASM</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_HAVE_TIME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed feature support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_HARDWARE_ALT</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_NO_PLATFORM_ENTROPY</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed modules */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_AES_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_AES_ROM_TABLES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_CTR_DRBG_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_SHA256_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_MD_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_BIGNUM_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_GENPRIME</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_OID_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_RSA_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_PKCS1_V21</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/check_config.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _MBEDTLS_CONFIG_RSA_SIGN_H_ */</span></span></span><br></pre></td></tr></table></figure>
-<p>在MDK中设置使用该配置文件：<br><img src="https://img-blog.csdnimg.cn/20201003110740288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>在MDK中设置使用该配置文件：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003110740288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h3 id="RSA数字签名功能模块API说明">8.2.2 RSA数字签名功能模块API说明</h3><p>使用该功能模块需要包含头文件：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/rsa.h&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>① RSA签名接口</p>
@@ -1306,7 +1266,7 @@
 <p>在main函数中调用该测试函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 8. rsa sign test */</span></span><br><span class="line">mbedtls_rsa_sign_test();</span><br></pre></td></tr></table></figure>
 <p>编译、下载，在串口助手中查看测试结果：</p>
-<p>① 生成秘钥对成功（需要几min的时间）：<br><img src="https://img-blog.csdnimg.cn/20201003113344994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>② 生成签名和验证签名成功：<br><img src="https://img-blog.csdnimg.cn/20201003113416619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>① 生成秘钥对成功（需要几min的时间）：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003113344994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>② 生成签名和验证签名成功：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003113416619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h2 id="ECDSA数字签名功能模块的配置与使用">8.3 ECDSA数字签名功能模块的配置与使用</h2><h3 id="配置宏-6">8.3.1 配置宏</h3><p>使用ECDSA秘钥协商功能需要提前开启伪随机数生成器（依赖AES算法、SHA256算法、MD通用接口），其中伪随机数生成器的硬件适配移植实现已经讲述，请参考对应的第二篇博客，不再赘述。</p>
 <p>综合上述，本实验中需要开启的宏如下表：</p>
 <table>
@@ -1382,7 +1342,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * \def MBEDTLS_ASN1_PARSE_C</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Enable the generic ASN1 parser.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Module:  library/asn1.c</span></span><br><span class="line"><span class="comment"> * Caller:  library/x509.c</span></span><br><span class="line"><span class="comment"> *          library/dhm.c</span></span><br><span class="line"><span class="comment"> *          library/pkcs12.c</span></span><br><span class="line"><span class="comment"> *          library/pkcs5.c</span></span><br><span class="line"><span class="comment"> *          library/pkparse.c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ASN1_PARSE_C</span></span><br></pre></td></tr></table></figure>
 <p>新建配置文件<code>mbedtls_config_ecdsa.h</code>，编写以下内容：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _MBEDTLS_CONFIG_ECDSA_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _MBEDTLS_CONFIG_ECDSA_H_</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* System support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_HAVE_ASM</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_HAVE_TIME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed feature support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_HARDWARE_ALT</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_NO_PLATFORM_ENTROPY</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed modules */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_AES_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_AES_ROM_TABLES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_CTR_DRBG_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_SHA256_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_MD_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_BIGNUM_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ECP_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ECP_DP_SECP256R1_ENABLED</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ECDSA_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ASN1_WRITE_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ASN1_PARSE_C</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/check_config.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _MBEDTLS_CONFIG_ECDSA_H_ */</span></span></span><br></pre></td></tr></table></figure>
-<p>在MDK中配置使用该配置文件：<img src="https://img-blog.csdnimg.cn/20201003170538611.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>在MDK中配置使用该配置文件：<img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003170538611.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h3 id="ECDSA签名功能API说明">8.3.2 ECDSA签名功能API说明</h3><p>① 初始化ECDSA结构体：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * \brief           This function initializes an ECDSA context.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * \param ctx       The ECDSA context to initialize.</span></span><br><span class="line"><span class="comment"> *                  This must not be \c NULL.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mbedtls_ecdsa_init</span><span class="params">( mbedtls_ecdsa_context *ctx )</span></span>;</span><br></pre></td></tr></table></figure>
 <p>② ECDSA生成秘钥接口：</p>
@@ -1399,7 +1359,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">mbedtls_ecdsa_test</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>在main函数中调用该函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 9. ecdsa sign test */</span></span><br><span class="line">mbedtls_ecdsa_test();</span><br></pre></td></tr></table></figure>
-<p>编译、下载，在串口助手中查看结果：<br><img src="https://img-blog.csdnimg.cn/20201003193818564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>编译、下载，在串口助手中查看结果：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003193818564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h1 id="九、数字证书及-X-509-证书标准">9 九、数字证书及 X.509 证书标准</h1><h2 id="X-509证书标准">9.1 X.509证书标准</h2><p>X.509是数字证书的一种标准格式，由国际电信联盟的标准化部分定义。</p>
 <h3 id="X-509证书的结构">9.1.1 X.509证书的结构</h3><p>X.509证书主要包括12个字段，如下表：</p>
 <table>
@@ -1472,10 +1432,10 @@
 </tr>
 </tbody></table>
 <h3 id="获取证书示例（百度）">9.1.2 获取证书示例（百度）</h3><p>下面以百度的证书为例讲解X.509证书标准。</p>
-<p>使用浏览器访问百度首页：<a target="_blank" rel="noopener" href="https://www.baidu.com/%EF%BC%8C%E7%82%B9%E5%87%BB%E5%9F%9F%E5%90%8D%E6%97%81%E8%BE%B9%E7%9A%84%E3%80%90%E5%B0%8F%E7%BB%BF%E9%94%81%E3%80%91%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90%E8%AF%81%E4%B9%A6%E3%80%91%E3%80%82">https://www.baidu.com/，点击域名旁边的【小绿锁】，点击【证书】。</a><br><img src="https://img-blog.csdnimg.cn/20201003204805665.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>点击之后即可查看到百度的证书：<br><img src="https://img-blog.csdnimg.cn/20201003204907406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>① 点击【证书路径】，将一级证书（根证书）导出：<br><img src="https://img-blog.csdnimg.cn/20201003205037671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>点击【详细信息】，将此证书内容【复制到文件】：<br><img src="https://img-blog.csdnimg.cn/20201003205127263.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="、"><br>进入证书导出向导：<br><img src="https://img-blog.csdnimg.cn/2020100320522449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>选择使用【Base64编码】导出：<br><img src="https://img-blog.csdnimg.cn/2020100320531961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>选择导出文件路径：<br><img src="https://img-blog.csdnimg.cn/20201003205427731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>导出成功：<img src="https://img-blog.csdnimg.cn/20201003205524237.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>② 同样的方法，将二级证书导出为baidu_2.cer：<br><img src="https://img-blog.csdnimg.cn/20201003205629372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>③ 同样的方法，将三级证书导出为baidu_3.cer：<br><img src="https://img-blog.csdnimg.cn/20201003205710197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>三份证书如图：<br><img src="https://img-blog.csdnimg.cn/2020100320581770.png#pic_center" alt="img"><br>使用记事本打开任意一份，可以看到该证书内容：<img src="https://img-blog.csdnimg.cn/20201003205912844.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br><strong>新建一个空文件<code>baidu_ca.txt</code>，将三份内容按照次序复制到该文件中，后续使用</strong>。<br><img src="https://img-blog.csdnimg.cn/20201003210126170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>使用浏览器访问百度首页：<a target="_blank" rel="noopener" href="https://www.baidu.com/%EF%BC%8C%E7%82%B9%E5%87%BB%E5%9F%9F%E5%90%8D%E6%97%81%E8%BE%B9%E7%9A%84%E3%80%90%E5%B0%8F%E7%BB%BF%E9%94%81%E3%80%91%EF%BC%8C%E7%82%B9%E5%87%BB%E3%80%90%E8%AF%81%E4%B9%A6%E3%80%91%E3%80%82">https://www.baidu.com/，点击域名旁边的【小绿锁】，点击【证书】。</a><br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003204805665.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>点击之后即可查看到百度的证书：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003204907406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>① 点击【证书路径】，将一级证书（根证书）导出：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003205037671.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>点击【详细信息】，将此证书内容【复制到文件】：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003205127263.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="、"><br>进入证书导出向导：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/2020100320522449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>选择使用【Base64编码】导出：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/2020100320531961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>选择导出文件路径：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003205427731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>导出成功：<img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003205524237.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>② 同样的方法，将二级证书导出为baidu_2.cer：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003205629372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>③ 同样的方法，将三级证书导出为baidu_3.cer：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003205710197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>三份证书如图：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/2020100320581770.png#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>使用记事本打开任意一份，可以看到该证书内容：<img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003205912844.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br><strong>新建一个空文件<code>baidu_ca.txt</code>，将三份内容按照次序复制到该文件中，后续使用</strong>。<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201003210126170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h3 id="查看百度证书内容">9.1.3 查看百度证书内容</h3><p>使用openssl工具查看刚刚获取的百度证书内容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -text -<span class="keyword">in</span> baidu_3.cer -noout</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-<p>① 证书颁发者和使用者信息：<br><img src="https://img-blog.csdnimg.cn/20201004102053366.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>② 公钥算法和公钥内容：<br><img src="https://img-blog.csdnimg.cn/20201004101257191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>③ 签名算法和内容：<br><img src="https://img-blog.csdnimg.cn/2020100410141193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"><br>同样的方法可以查看百度二级证书和百度一级证书（根证书）的内容。</p>
+<p>① 证书颁发者和使用者信息：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201004102053366.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>② 公钥算法和公钥内容：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201004101257191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>③ 签名算法和内容：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/2020100410141193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"><br>同样的方法可以查看百度二级证书和百度一级证书（根证书）的内容。</p>
 <h2 id="X509证书解析验证功能的配置与使用">9.2 X509证书解析验证功能的配置与使用</h2><h3 id="配置宏-7">9.2.1 配置宏</h3><p>①</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_PK_C</span></span><br></pre></td></tr></table></figure>
 <p>②</p>
@@ -1494,7 +1454,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_X509_CRT_PARSE_C</span></span><br></pre></td></tr></table></figure>
 <p>新建配置文件<code>mbedtls_config_x509.h</code>，编辑以下内容：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _MBEDTLS_CONFIG_X509_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _MBEDTLS_CONFIG_X509_H_</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* System support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_HAVE_ASM</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_HAVE_TIME</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed feature support */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ENTROPY_HARDWARE_ALT</span></span><br><span class="line"><span class="comment">//#define MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_NO_PLATFORM_ENTROPY</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* mbed modules */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_SHA1_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_SHA256_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_MD_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_BIGNUM_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_OID_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_RSA_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_PKCS1_V21</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_PK_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_PK_PARSE_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ASN1_PARSE_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_ASN1_WRITE_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_X509_USE_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_BASE64_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_PEM_PARSE_C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MBEDTLS_X509_CRT_PARSE_C</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/check_config.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _MBEDTLS_CONFIG_X509_H_ */</span></span></span><br></pre></td></tr></table></figure>
-<p>在MDK中配置使用该文件：<br><img src="https://img-blog.csdnimg.cn/20201004132201128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>在MDK中配置使用该文件：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201004132201128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <h3 id="API说明-1">9.2.2 API说明</h3><p>使用时需要包含头文件：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;mbedtls/x509_crt.h&quot;</span></span></span><br></pre></td></tr></table></figure>
 <p>① 初始化证书结构体</p>
@@ -1519,7 +1479,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">mbedtls_x509_test</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>在main函数中调用该测试函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 10. x509 test */</span></span><br><span class="line">mbedtls_x509_test();</span><br></pre></td></tr></table></figure>
-<p>编译、下载、测试结果为：<br><img src="https://img-blog.csdnimg.cn/20201004131906865.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p>
+<p>编译、下载、测试结果为：<br><img "" class="lazyload placeholder" data-original="https://img-blog.csdnimg.cn/20201004131906865.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01jdWxvdmVyNjY2,size_16,color_FFFFFF,t_70#pic_center" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 
       </div>
       
@@ -1543,27 +1503,24 @@
     </article>
     <!-- 上一篇文章和下一篇文章 -->
     
-      
+      <!-- 文章详情页的上一页和下一页 -->
 <div class="post-nav">
 
 
 
   
   <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/12.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/4e4cdbae.html" class="post-nav-link">
+    <a href="/posts/9ea78192.html" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
-        <div>2、panic写入串口</div>
+        <div>1、esp32 panic详解</div>
       </div>
       
       <!-- <div class="content">
-        1 elfhdr初始化，写到串口或者flash2 处理task reg，写入信息，并计算其长度
-获取当前任务索引
-
-判断
+        1 1. dport_panic_highint_hdl.Scall4 panicHandler：传递(XtExcFra
       </div> -->
     </a>
   </div>
@@ -1572,16 +1529,19 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/12.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/4461482.html" class="post-nav-link">
+    <a href="/posts/4e4cdbae.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>v2ray科学上网</div>
+        <div>2、panic写入串口</div>
       </div>
       <!-- <div class="content">
-        1 安装和更新 V2Ray12&#x2F;&#x2F; 安装可执行文件和 .dat 数据文件# bash &lt;(cu
+        1 elfhdr初始化，写到串口或者flash2 处理task reg，写入信息，并计算其长度
+获取当前任务索引
+
+判断
       </div> -->
     </a>
   </div>
@@ -1680,7 +1640,7 @@
     <!-- 分享 -->
     
       <!-- https://github.com/overtrue/share.js -->
-
+<!-- 文章详情页的分享 -->
 <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
 
 <script src="/js/shareJs/social-share.min.js"></script>
@@ -1696,10 +1656,20 @@
     
     
     <!-- 评论 -->
-      
-        <div id="myComment">
-          
-            <section id="comments" style="padding: 1em; margin: 15px auto;"
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <!-- 弹幕所需的css和js -->
+
+  <!-- 弹幕插件 -->
+  <link href="/js/danmu/barrager.css" rel="stylesheet">
+  <script src="/js/danmu/jquery.barrager.js"></script>
+
+<!-- 具体js，请前往valine.ejs查看 -->
+
+
+<section id="comments" style="padding: 1em; margin: 15px auto;"
 	class="animated bounceInUp">
 	<div id="vcomment" class="comment"></div>
 	<script src="/js/valine/av-min@3.0.4.js"></script>
@@ -2578,26 +2548,29 @@
 		box-shadow: none;
 	}
 </style>
-          
-        </div>
-      
+    
   </div>
 
-  
-    <div class="toc-aside">
-      <div class="toc-main">
-        <div class="toc-aside-title">
-          <i class="fa fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
-          <div class="toc-open-close">本文目录</div>
-        </div>
-        <div class="toc-content">
-          <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fa fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        <div class="toc-open-close">本文目录</div>
+      </div>
+      <div class="toc-content">
+        <link href="/js/tocbot/tocbot.css" rel="stylesheet">
 <script src="/js/tocbot/tocbot.min.js"></script>
 <div class="toc"></div>
 
 <script>
   if ($('.toc').length > 0) {
-    var headerEl = 'h1, h2, h3, h4, h5, h6',  //headers 
+    var headerEl = 'h2, h3, h4',  //headers 
       content = '.post-detail',//文章容器
       idArr = {};  //标题数组以确定是否增加索引id
       //add #id
@@ -2628,7 +2601,7 @@
       headingSelector: headerEl,
       scrollSmooth: true,
       scrollSmoothOffset: -80,
-      headingsOffset: 130,
+      headingsOffset: -($(window).height() * 0.4 - 45),
       positionFixedSelector: '.toc-main',
       positionFixedClass: 'is-position-fixed',
       fixedSidebarOffset: 'auto',
@@ -2639,8 +2612,8 @@
 
 <style>
 .is-position-fixed {
-  position:fixed !important;
-  top: 64px;
+  position:sticky !important;
+  top: 74px;
 }
 .toc-main ul {
   counter-reset: show-list;
@@ -2662,63 +2635,220 @@
   padding-left: 25px;
 }
 </style>
-        </div>
       </div>
     </div>
+  </div>
 
-    
-
-    <script>
-      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
-      let open = eval('' || 'true');
-      openOrCloseBtn.click(function() {
-        if (open === true) {
-          $(".toc-aside").css({'width': 0, 'padding': 0});
-          $(".toc-content").css({'width': 0});
-          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
-          $(".main-content").css({'width': '75%', 'margin': '10px auto'});
-          open = false;
-        } else {
-          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
-          $(".toc-content").css({'width': '300px'});
-          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
-          $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
-          open = true;
-        }
-      });
-    </script>
   
+
+  <script>
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open === true) {
+        $(".toc-aside").css({'width': 0, 'padding': 0});
+        $(".toc-content").css({'width': 0});
+        $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+        $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+        open = false;
+      } else {
+        $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+        $(".toc-content").css({'width': '300px'});
+        $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+        $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+        open = true;
+      }
+    });
+  </script>
+
+
+  <!-- 渲染issues标签里的内容 -->
+  <script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) return;
+    document.write('<script type="text/javascript" src="/js/issues/index.js"><\/script>');
+  };
+  loadIssuesJS();
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
 </div>
 
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;" :style="{'background-color': bgColor ? bgColor : 'transparent'}">
+    <transition-group tag="ul" :name="names">
+        <li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+            <img :src="image" class="bg-swiper-img">
+        </li>
+    </transition-group>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#appBgSwiper',
+        data: {
+            names: '' || 'fade' || 'fade', // translate-fade fade
+            mark: 0,
+            img: [],
+            bgColor: '',
+            time: null
+        },
+        methods: {   //添加方法
+            change(i, m) {
+                if (i > m) {
+                    // this.names = 'fade';
+                } else if (i < m) {
+                    // this.names = 'fade';
+                } else {
+                    return;
+                }
+                this.mark = i;
+            },
+            prev() {
+                // this.names = 'fade';
+                this.mark--;
+                if (this.mark === -1) {
+                    this.mark = 3;
+                    return
+                }
+            },
+            next() {
+                // this.names = 'fade';
+                this.mark++;
+                if (this.mark === this.img.length) {
+                    this.mark = 0;
+                    return
+                }
+            },
+            autoPlay() {
+                // this.names = 'fade';
+                this.mark++;
+                if (this.mark === this.img.length) {
+                    this.mark = 0;
+                    return
+                }
+            },
+            play() {
+                let bgImgDelay = '' || '180000'
+                let delay = parseInt(bgImgDelay) || 180000;
+                this.time = setInterval(this.autoPlay, delay);
+            },
+            enter() {
+                clearInterval(this.time);
+            },
+            leave() {
+                this.play();
+            }
+        },
+        created() {
+            this.play()
+        },
+        beforeDestroy() {
+            clearInterval(this.time);
+        },
+        mounted() {
+            let prop = ''|| '/medias/post_background.png';
+            let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://') 
+            if (isImg) {
+                let img = prop.split(',');
+                let configRoot = '/'
+                let arrImg = [];
+                img.forEach(el => {
+                    var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+			        var objExp = new RegExp(Expression);
+
+                    if(objExp.test(el)) {
+                        // http or https
+                        arrImg.push(el);
+                    } else {
+                        // 非http or https开头
+                        // 本地文件
+                        let firstStr = el.charAt(0);
+                        if (firstStr == '/') {
+                            el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+                        }
+                        el = configRoot + el;
+                        arrImg.push(el);
+                    }
+                })
+                this.img = arrImg;
+            } else {
+                this.bgColor = prop;
+            }
+        }
+    })
+</script>
+
+<style>
+    .bg-swiper-box {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .bg-swiper-img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+</style>
 
     </main>
+
+    <!-- 页脚 -->
     <div class="footer bg-color">
-    <div class="footer-main">
-        <div class="link">
-            <a target="_blank" rel="noopener" href="https://github.com/flyghost/">
-                <i class="fa fa-github" aria-hidden="true"></i>
-            </a>
-            <a href="mailto:1307095684@qq.com">
-                <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </a>
-            <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1307095684">
-                <i class="fa fa-qq" aria-hidden="true"></i>
-            </a>
-            <a href="/atom.xml" target="_blank">
-                <i class="fa fa-rss" aria-hidden="true"></i>
-            </a>
-        </div>
-        <div class="footer-copyright">
-            Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/flyghost">flyghost</a> | Powered by <a href="https://www.creekwater.cn">creekwater</a>
-        </div>
+  <div class="footer-main">
+    <div class="link">
+      
         
+          <a href="/atom.xml" class="social">
             
+              <i class="fa fa-rss" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a href="mailto:zhaoyang_wu@foxmail.com" class="social">
+            
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a target="_blank" rel="noopener" href="https://github.com/flyghost/" class="social">
+            
+              <i class="fa fa-github" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=892821534" class="social">
+            
+              <i class="fa fa-qq" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+    </div>
+    <div class="footer-copyright">
+      <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/flyghost">creekwater</a> | Powered by <a target="_blank" rel="noopener" href="https://github.com/flyghost">flyghost</a> </p>
+
+    </div>
+    <div class="footer-custom">
+      
+    </div>
+    <!-- 不蒜子统计 -->
+    
+      
   <!-- 不蒜子统计 -->
   <span id="busuanzi_container_site_pv">
-        <i class="fa fa-book" aria-hidden="true"></i>该页面总阅读量：<span id="busuanzi_value_page_pv"></span> 次
+        <i class="fa fa-book" aria-hidden="true"></i>本站总阅读量：<span id="busuanzi_value_page_pv"></span> 次
   </span>
   <span id="busuanzi_container_site_pv">
-        <i class="fa fa-eye" aria-hidden="true"></i>本站点击量：<span id="busuanzi_value_site_pv"></span> 次
+        <i class="fa fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
   </span>
   <span class="post-meta-divider">|</span>
   <span id="busuanzi_container_site_uv" style='display:none'>
@@ -2726,33 +2856,84 @@
   </span>
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-                
-    </div>
+    
+  </div>
 </div>
 
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fa fa-moon-o" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-moon-o" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
     
       <div class="goTop top-btn-color border-color">
   <i class="fa fa-arrow-up" aria-hidden="true"></i>
 </div>
 <script src="/js/goTop.js"></script>
     
-
+    <!-- 渲染左下角音乐播放器 -->
     
 
     <!-- 图片放大 -->
     
       <script src="/js/fancybox/jquery.fancybox.min.js"></script>
     
-
-    <script src="/js/wrapImage.js"></script>
     
+    <!-- 鼠标点击特效 -->
     <!-- 爱心点击 -->
-    
-       
-        <script src="/js/cursor/clicklove.js"></script> 
-      
-    
 
+	 
+		<script src="/js/cursor/clicklove.js"></script> 
+	
+
+
+
+    <!-- 百度解析 -->
     <!-- Baidu Analytics -->
 
     <!-- Baidu Push -->
@@ -2772,132 +2953,140 @@
 </script>
 
     
+    <!-- 背景彩带 -->
     <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
     
-      <script src="/js/aos/aos.js"></script>
-      <script>
-        // https://github.com/michalsnik/aos
-        const themeOffset = parseInt('120') || 120;
-        const themeDelay = parseInt('0')|| 0;
-        const themeDuration = parseInt('400') || 400;
-        const themeEasing = 'ease' || 'ease';
-        const themeOnce = eval('true') || false;
-        const themeMirror = eval('false') || false;
-        const themeAnchorPlacement = 'top-bottom' || 'top-bottom';
-        AOS.init({
-          // Global settings:
-          disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-          startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
-          initClassName: 'aos-init', // class applied after initialization
-          animatedClassName: 'aos-animate', // class applied on animation
-          useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-          disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-          debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-          throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-
-          // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-          offset: themeOffset, // offset (in px) from the original trigger point
-          delay: themeDelay, // values from 0 to 3000, with step 50ms
-          duration: themeDuration, // values from 0 to 3000, with step 50ms
-          easing: themeEasing, // default easing for AOS animations
-          once: themeOnce, // whether animation should happen only once - while scrolling down
-          mirror: themeMirror, // whether elements should animate out while scrolling past them
-          anchorPlacement: themeAnchorPlacement, // defines which position of the element regarding to window should trigger the animation
-
-        });
-      </script>
+    <!-- div滚动到显示区域的动画 -->
     
+  <script src="/js/aos/aos.js"></script>
+  <script>
+    // https://github.com/michalsnik/aos
+    const themeOffset = parseInt('120') || 120;
+    const themeDelay = parseInt('0') || 0;
+    const themeDuration = parseInt('400') || 400;
+    const themeEasing = 'ease' || 'ease';
+    const themeOnce = eval('true') || false;
+    const themeMirror = eval('false') || false;
+    const themeAnchorPlacement = 'top-bottom' || 'top-bottom';
+    AOS.init({
+      // Global settings:
+      disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+      startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+      initClassName: 'aos-init', // class applied after initialization
+      animatedClassName: 'aos-animate', // class applied on animation
+      useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+      disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+      debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+      throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: themeOffset, // offset (in px) from the original trigger point
+      delay: themeDelay, // values from 0 to 3000, with step 50ms
+      duration: themeDuration, // values from 0 to 3000, with step 50ms
+      easing: themeEasing, // default easing for AOS animations
+      once: themeOnce, // whether animation should happen only once - while scrolling down
+      mirror: themeMirror, // whether elements should animate out while scrolling past them
+      anchorPlacement: themeAnchorPlacement, // defines which position of the element regarding to window should trigger the animation
+
+    });
+  </script>
 
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
-<script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
-<div id="appCopy">
-</div>
-<script>
-  var vm = new Vue({
-    el: '#appCopy',
-    data: {
-    },
-    computed: {
-    },
-    mounted() {
-      const that = this;
-      //  监听 ctrl + c事件  
-      $(document).unbind('keypress').bind('keypress', function (e) {
-        if (e.ctrlKey && e.keyCode == 67) {
-          doSomething();
-          // 返回false, 防止重复触发copy事件  
-          return false;
-        }
-      })
-
-      // 鼠标右键的复制事件  
-      $(document).unbind('copy').bind('copy', function (e) {
-        doSomething();
-        // console.log('右键复制 监听成功');
-      });
-
-      function doSomething() {
-        that.$notify({
-          title: "成功",
-          content: "已复制，请遵守相关授权协议。",
-          type: 'success'
+    <!-- 复制提示 -->
+    
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
+  <script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        //  监听 ctrl + c事件  
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+            // 返回false, 防止重复触发copy事件  
+            return false;
+          }
         })
-        // console.log('ctrl + c 监听成功');  
-      }
-    },
-    methods: {
-    },
-    created() { }
-  })
-</script>
-    
+
+        // 鼠标右键的复制事件  
+        $(document).unbind('copy').bind('copy', function (e) {
+          doSomething();
+          // console.log('右键复制 监听成功');
+        });
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+          // console.log('ctrl + c 监听成功');  
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+
 
     <!-- 输入框打字特效 -->
-    
-      <script src="/js/activate-power-mode.js"></script>
-      <script>
-          POWERMODE.colorful = true;  // 打开随机颜色特效
-          POWERMODE.shake = false;    // 关闭输入框抖动
-          document.body.addEventListener('input', POWERMODE);//监听打字事件
-      </script>
-    
+    <!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
 
     <!-- markdown代码一键复制功能 -->
-    <script src="/js/clipboard/clipboard.min.js"></script>
-    <script>
-      !function (e, t, a) {
-        var copy = '复制';
-        /* code */
-        var initCopyCode = function(){
-          var copyHtml = '';
-          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
-          copyHtml += '<i class="fa fa-copy"></i><span>' + copy + '</span>';
-          copyHtml += '</button>';
-          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
-          $(".post-detail pre").not('.gutter pre').before(copyHtml);
-          new ClipboardJS('.btn-copy', {
-              target: function(trigger) {
-                  return trigger.nextElementSibling;
-              }
-          });
+    <!-- markdown代码一键复制功能 -->
+<script src="/js/clipboard/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var copy = '复制';
+    /* code */
+    var initCopyCode = function () {
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+      copyHtml += '<i class="fa fa-copy"></i><span>' + copy + '</span>';
+      copyHtml += '</button>';
+      $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+      $(".post-detail pre").not('.gutter pre').before(copyHtml);
+      new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+          return trigger.nextElementSibling;
         }
-        initCopyCode();
-      }(window, document);
-    </script>
-
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+    
+    <!-- 图片懒加载 -->
     <script src="/js/lazyload/lazyload@1.9.1.js"></script>
-    <script>
-      $(function() {
-        $("div.lazyload, img.lazyload, a.lazyload").lazyload(
-            {
-                effect: "fadeIn",
-                placeholder: "/medias/loading.gif"    //图片未加载出来时显示的占位图
-            }
-        );
-    });
-    </script>
+<script>
+  $(function () {
+    $("div.lazyload, img.lazyload, a.lazyload").lazyload(
+      {
+        effect: "fadeIn",
+        placeholder: "/medias/loading.gif"    //图片未加载出来时显示的占位图
+      }
+    );
+  });
+</script>
     
     <script src="/js/app.js"></script>
+
   </body>
 </html>

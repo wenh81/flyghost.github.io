@@ -6,7 +6,7 @@
   <link href="https://www.creekwater.cn/atom.xml" rel="self"/>
   
   <link href="https://www.creekwater.cn/"/>
-  <updated>2021-07-11T14:42:35.000Z</updated>
+  <updated>2021-07-13T11:33:21.000Z</updated>
   <id>https://www.creekwater.cn/</id>
   
   <author>
@@ -17,79 +17,397 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Linux根文件系统搭建</title>
-    <link href="https://www.creekwater.cn/posts/f9852f95.html"/>
-    <id>https://www.creekwater.cn/posts/f9852f95.html</id>
-    <published>2021-07-10T16:00:00.000Z</published>
-    <updated>2021-07-11T14:42:35.000Z</updated>
+    <title>802.11AX QTP（Quiet Time Period）和QP</title>
+    <link href="https://www.creekwater.cn/posts/3b63b924.html"/>
+    <id>https://www.creekwater.cn/posts/3b63b924.html</id>
+    <published>2021-06-07T07:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;1 简介&lt;/h1&gt;&lt;h2 id=&quot;bin-目录&quot;&gt;1.1 /bin 目录&lt;/h2&gt;&lt;p&gt;存放着系统需要的可执行文件，例如&lt;code&gt;ls&lt;/code&gt;，&lt;code&gt;mv&lt;/code&gt;等命令，该目录下所有用户都可以使用&lt;/p&gt;
-&lt;h2</summary>
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;QTP（Quiet Time Period）是802.11ax中新引入的技术，而QP（Quiet</summary>
         
       
     
     
     
-    <category term="ARM" scheme="https://www.creekwater.cn/categories/ARM/"/>
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
     
     
-    <category term="ARM" scheme="https://www.creekwater.cn/tags/ARM/"/>
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
     
   </entry>
   
   <entry>
-    <title>uboot移植</title>
-    <link href="https://www.creekwater.cn/posts/54ee180f.html"/>
-    <id>https://www.creekwater.cn/posts/54ee180f.html</id>
-    <published>2021-07-04T16:00:00.000Z</published>
-    <updated>2021-07-11T14:49:48.000Z</updated>
+    <title>802.11AX TXOP时间设置和动态分片技术</title>
+    <link href="https://www.creekwater.cn/posts/a86949a4.html"/>
+    <id>https://www.creekwater.cn/posts/a86949a4.html</id>
+    <published>2021-06-07T06:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;nxp-uboot编译测试&quot;&gt;1 nxp uboot编译测试&lt;/h1&gt;&lt;h2 id=&quot;官方uboot编译&quot;&gt;1.1 官方uboot编译&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1) 允许竞争的UORA; (2)</summary>
         
       
     
     
     
-    <category term="ARM" scheme="https://www.creekwater.cn/categories/ARM/"/>
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
     
     
-    <category term="ARM" scheme="https://www.creekwater.cn/tags/ARM/"/>
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
     
   </entry>
   
   <entry>
-    <title>uboot</title>
-    <link href="https://www.creekwater.cn/posts/90b9e97a.html"/>
-    <id>https://www.creekwater.cn/posts/90b9e97a.html</id>
-    <published>2021-06-18T16:00:00.000Z</published>
-    <updated>2021-07-11T14:47:07.000Z</updated>
+    <title>802.11AX TWT节能机制</title>
+    <link href="https://www.creekwater.cn/posts/58ddbf13.html"/>
+    <id>https://www.creekwater.cn/posts/58ddbf13.html</id>
+    <published>2021-06-07T05:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;U-Boot简介&quot;&gt;1 U-Boot简介&lt;/h1&gt;&lt;p&gt;uboot 官网为 &lt;a href=&quot;http://www.denx.de/wiki/U-Boot/&quot;&gt;http://www.denx.de/wiki/U-Boot/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;NXP 就 维</summary>
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;关于802.11协议的节能机制，包含了PSM，APSD，PSMP以及SMPS。在802.11ax中，为了在速率提高的场景下，降低所花费的功耗，协议采用了一种新的节能机制TWT（Target Wake</summary>
         
       
     
     
     
-    <category term="ARM" scheme="https://www.creekwater.cn/categories/ARM/"/>
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
     
     
-    <category term="ARM" scheme="https://www.creekwater.cn/tags/ARM/"/>
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX 双重NAV技术</title>
+    <link href="https://www.creekwater.cn/posts/30d166dc.html"/>
+    <id>https://www.creekwater.cn/posts/30d166dc.html</id>
+    <published>2021-06-07T04:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;NAV是802.11中最基本的MAC层元素之一，在802.11协议中起着非常重要的功能，而且先行协议下，基本上所有的兼容性机制都围绕的NAV展开。在802.11ax中，引入了双重NAV技术（Dueling</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX AMPDU</title>
+    <link href="https://www.creekwater.cn/posts/c12a6ff1.html"/>
+    <id>https://www.creekwater.cn/posts/c12a6ff1.html</id>
+    <published>2021-06-07T03:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;帧聚合（Frame</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX SRP空间复用和Adaptive-CCA</title>
+    <link href="https://www.creekwater.cn/posts/cef8c64f.html"/>
+    <id>https://www.creekwater.cn/posts/cef8c64f.html</id>
+    <published>2021-06-07T02:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;BSS Coloring技术是802.11ax中引入，目的进一步优化空间复用（Spatial Reuse Parameter）。在前文讨论过关于BSS Coloring技术，但是关于如何基于BSS</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX BSS Color</title>
+    <link href="https://www.creekwater.cn/posts/bc6a848b.html"/>
+    <id>https://www.creekwater.cn/posts/bc6a848b.html</id>
+    <published>2021-06-07T01:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.extremenetworks.com/extreme-networks-blog/&quot;&gt;What Is BSS</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX Buffer Status Report</title>
+    <link href="https://www.creekwater.cn/posts/e017b6e6.html"/>
+    <id>https://www.creekwater.cn/posts/e017b6e6.html</id>
+    <published>2021-06-07T00:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX UL-OFDMA</title>
+    <link href="https://www.creekwater.cn/posts/9d40f8c2.html"/>
+    <id>https://www.creekwater.cn/posts/9d40f8c2.html</id>
+    <published>2021-06-06T23:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX DL-OFDMA</title>
+    <link href="https://www.creekwater.cn/posts/2d51c977.html"/>
+    <id>https://www.creekwater.cn/posts/2d51c977.html</id>
+    <published>2021-06-06T22:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;在介绍完802.11ax的信道接入以及其触发帧机制后，本文着重介绍下行OFDMA的接入机制（即DL-OFDMA）。&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX OMI技术</title>
+    <link href="https://www.creekwater.cn/posts/792c3209.html"/>
+    <id>https://www.creekwater.cn/posts/792c3209.html</id>
+    <published>2021-06-06T21:00:00.000Z</published>
+    <updated>2021-07-13T11:37:16.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;**Operating Mode Indication (OMI)**是802.11ax</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX MAC层接入机制</title>
+    <link href="https://www.creekwater.cn/posts/e5853641.html"/>
+    <id>https://www.creekwater.cn/posts/e5853641.html</id>
+    <published>2021-06-06T20:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX MU-MIMO</title>
+    <link href="https://www.creekwater.cn/posts/7394c9cb.html"/>
+    <id>https://www.creekwater.cn/posts/7394c9cb.html</id>
+    <published>2021-06-06T19:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;简介&quot;&gt;1 简介&lt;/h1&gt;&lt;p&gt;MU-MIMO是基于多天线技术的，这个技术的物理层是多天线技术。多天线可以实现多种技术，不仅仅是MU-MIMO，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img &quot;&quot; class=&quot;lazyload</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX OFDMA</title>
+    <link href="https://www.creekwater.cn/posts/792c3209.html"/>
+    <id>https://www.creekwater.cn/posts/792c3209.html</id>
+    <published>2021-06-06T18:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.extremenetworks.com/extreme-networks-blog/&quot;&gt;What are OFDMA Resource</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11AX协议简介</title>
+    <link href="https://www.creekwater.cn/posts/49182bdb.html"/>
+    <id>https://www.creekwater.cn/posts/49182bdb.html</id>
+    <published>2021-06-06T17:00:00.000Z</published>
+    <updated>2021-07-13T11:33:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
+    
+    
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
     
   </entry>
   
@@ -173,24 +491,23 @@
     <link href="https://www.creekwater.cn/posts/f75076df.html"/>
     <id>https://www.creekwater.cn/posts/f75076df.html</id>
     <published>2021-04-29T16:00:00.000Z</published>
-    <updated>2021-07-11T14:34:54.000Z</updated>
+    <updated>2021-07-13T11:48:25.000Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Element&quot;&gt;1 Element&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/posts/f75076df/image-20210430141137899.png&quot; alt=&quot;Element IDs&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
+    <summary type="html">&lt;h1 id=&quot;Element&quot;&gt;1 Element&lt;/h1&gt;&lt;p&gt;&lt;img &quot;&quot; class=&quot;lazyload placeholder&quot; data-original=&quot;/posts/f75076df/image-20210430141137899.png&quot;</summary>
         
       
     
     
     
-    <category term="wifi" scheme="https://www.creekwater.cn/categories/wifi/"/>
+    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
     
     
-    <category term="wifi" scheme="https://www.creekwater.cn/tags/wifi/"/>
+    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
     
   </entry>
   
@@ -216,318 +533,6 @@
     
     
     <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Control OBSS/PD Sensitivity Threshold for IEEE 802.11ax BSS Color</title>
-    <link href="https://www.creekwater.cn/posts/b9e0ade6.html"/>
-    <id>https://www.creekwater.cn/posts/b9e0ade6.html</id>
-    <published>2021-04-24T16:00:00.000Z</published>
-    <updated>2021-07-11T14:37:38.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="WIFI" scheme="https://www.creekwater.cn/categories/WIFI/"/>
-    
-    
-    <category term="WIFI" scheme="https://www.creekwater.cn/tags/WIFI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>802.11ax</title>
-    <link href="https://www.creekwater.cn/posts/f22bd777.html"/>
-    <id>https://www.creekwater.cn/posts/f22bd777.html</id>
-    <published>2021-03-31T16:00:00.000Z</published>
-    <updated>2021-07-11T14:34:33.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;协议简介&quot;&gt;1 协议简介&lt;/h1&gt;&lt;h2 id=&quot;序言&quot;&gt;1.1 序言&lt;/h2&gt;&lt;p&gt;参考资料：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="wifi" scheme="https://www.creekwater.cn/categories/wifi/"/>
-    
-    
-    <category term="wifi" scheme="https://www.creekwater.cn/tags/wifi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS教程</title>
-    <link href="https://www.creekwater.cn/posts/612878de.html"/>
-    <id>https://www.creekwater.cn/posts/612878de.html</id>
-    <published>2021-03-14T16:00:00.000Z</published>
-    <updated>2021-07-11T14:38:37.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;CSS-教程&quot;&gt;1 CSS 教程&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;CSS 是一种描述 HTML 文档样式的语言。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;CSS 描述应该如何显示 HTML 元素。&lt;/p&gt;
-&lt;p&gt;本教程将从零起点的基础教程开始，一直到 CSS3</summary>
-        
-      
-    
-    
-    
-    <category term="CSS" scheme="https://www.creekwater.cn/categories/CSS/"/>
-    
-    
-    <category term="CSS" scheme="https://www.creekwater.cn/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS参考手册</title>
-    <link href="https://www.creekwater.cn/posts/3ec6640a.html"/>
-    <id>https://www.creekwater.cn/posts/3ec6640a.html</id>
-    <published>2021-03-14T16:00:00.000Z</published>
-    <updated>2021-07-11T14:38:03.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;CSS-属性&quot;&gt;0.1 CSS 属性&lt;/h2&gt;&lt;h3 id=&quot;A&quot;&gt;0.1.1 A&lt;/h3&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="CSS" scheme="https://www.creekwater.cn/categories/CSS/"/>
-    
-    
-    <category term="CSS" scheme="https://www.creekwater.cn/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>typora css 语法</title>
-    <link href="https://www.creekwater.cn/posts/a487ab94.html"/>
-    <id>https://www.creekwater.cn/posts/a487ab94.html</id>
-    <published>2021-03-14T16:00:00.000Z</published>
-    <updated>2021-07-11T14:46:47.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;typora每级标题生成序号&quot;&gt;1 typora每级标题生成序号&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;在主题根目录新建一个base.user.css文件，写入如下代码，重启typora即可生效。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight</summary>
-        
-      
-    
-    
-    
-    <category term="MARKDOWN" scheme="https://www.creekwater.cn/categories/MARKDOWN/"/>
-    
-    
-    <category term="MARKDOWN" scheme="https://www.creekwater.cn/tags/MARKDOWN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TLS、OPENSSL代码分析</title>
-    <link href="https://www.creekwater.cn/posts/3a5a5f39.html"/>
-    <id>https://www.creekwater.cn/posts/3a5a5f39.html</id>
-    <published>2021-02-28T16:00:00.000Z</published>
-    <updated>2021-07-11T14:45:33.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;例程&quot;&gt;1</summary>
-        
-      
-    
-    
-    
-    <category term="ESP" scheme="https://www.creekwater.cn/categories/ESP/"/>
-    
-    
-    <category term="ESP" scheme="https://www.creekwater.cn/tags/ESP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo博客搭建</title>
-    <link href="https://www.creekwater.cn/posts/afcbc60d.html"/>
-    <id>https://www.creekwater.cn/posts/afcbc60d.html</id>
-    <published>2021-02-22T16:00:00.000Z</published>
-    <updated>2021-07-11T14:40:39.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;安装-Node-js和npm&quot;&gt;1 安装 Node.js和npm&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;sudo apt-get update&lt;br&gt;sudo apt-get install nodejs&lt;br&gt;sudo apt-get install</summary>
-        
-      
-    
-    
-    
-    <category term="BLOG" scheme="https://www.creekwater.cn/categories/BLOG/"/>
-    
-    
-    <category term="BLOG" scheme="https://www.creekwater.cn/tags/BLOG/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MQTT协议简介及移植</title>
-    <link href="https://www.creekwater.cn/posts/41fa605b.html"/>
-    <id>https://www.creekwater.cn/posts/41fa605b.html</id>
-    <published>2021-02-05T16:00:00.000Z</published>
-    <updated>2021-07-11T14:44:44.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;MQTT协议&quot;&gt;1 MQTT协议&lt;/h1&gt;&lt;h2 id=&quot;MQTT协议简介&quot;&gt;1.1 MQTT协议简介&lt;/h2&gt;&lt;p&gt;MQTT协议全称是Message Queuing Telemetry</summary>
-        
-      
-    
-    
-    
-    <category term="ESP" scheme="https://www.creekwater.cn/categories/ESP/"/>
-    
-    
-    <category term="ESP" scheme="https://www.creekwater.cn/tags/ESP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MQTT协议详解</title>
-    <link href="https://www.creekwater.cn/posts/308177ca.html"/>
-    <id>https://www.creekwater.cn/posts/308177ca.html</id>
-    <published>2021-01-31T16:00:00.000Z</published>
-    <updated>2021-07-11T14:45:09.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;第一章-概述-Introduction&quot;&gt;1 第一章 概述 Introduction&lt;/h1&gt;&lt;h2 id=&quot;1-1-MQTT协议的组织结构-Organization-of-MQTT&quot;&gt;1.1 1.1 MQTT协议的组织结构 Organization of</summary>
-        
-      
-    
-    
-    
-    <category term="ESP" scheme="https://www.creekwater.cn/categories/ESP/"/>
-    
-    
-    <category term="ESP" scheme="https://www.creekwater.cn/tags/ESP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gdb组件分析</title>
-    <link href="https://www.creekwater.cn/posts/10f4aa60.html"/>
-    <id>https://www.creekwater.cn/posts/10f4aa60.html</id>
-    <published>2021-01-04T16:00:00.000Z</published>
-    <updated>2021-07-11T14:39:03.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1、GDB-RSP-GDB-Remote-Serial-Protocol&quot;&gt;1 1、GDB RSP(GDB Remote Serial</summary>
-        
-      
-    
-    
-    
-    <category term="ESP" scheme="https://www.creekwater.cn/categories/ESP/"/>
-    
-    
-    <category term="ESP" scheme="https://www.creekwater.cn/tags/ESP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git大全</title>
-    <link href="https://www.creekwater.cn/posts/a93bf28c.html"/>
-    <id>https://www.creekwater.cn/posts/a93bf28c.html</id>
-    <published>2021-01-04T16:00:00.000Z</published>
-    <updated>2021-07-11T14:39:32.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Git-GUI-客户端&quot;&gt;1 Git GUI 客户端&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.oschina.net/p/git&quot;&gt;Git 客户端下载（Windows）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="LINUX" scheme="https://www.creekwater.cn/categories/LINUX/"/>
-    
-    
-    <category term="LINUX" scheme="https://www.creekwater.cn/tags/LINUX/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Halo博客搭建</title>
-    <link href="https://www.creekwater.cn/posts/4d966b64.html"/>
-    <id>https://www.creekwater.cn/posts/4d966b64.html</id>
-    <published>2021-01-04T16:00:00.000Z</published>
-    <updated>2021-07-11T14:40:01.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;halo博客搭建&quot;&gt;1 halo博客搭建&lt;/h1&gt;&lt;h2 id=&quot;1、介绍&quot;&gt;1.1 1、介绍&lt;/h2&gt;&lt;p&gt;Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配置，它放在任何目录都是可行的。需要注意的是，Halo 的整个额外文件全部存放在</summary>
-        
-      
-    
-    
-    
-    <category term="BLOG" scheme="https://www.creekwater.cn/categories/BLOG/"/>
-    
-    
-    <category term="BLOG" scheme="https://www.creekwater.cn/tags/BLOG/"/>
     
   </entry>
   

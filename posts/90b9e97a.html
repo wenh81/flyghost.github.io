@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <!-- meta/link... -->
   
 
 
@@ -67,22 +68,30 @@
 <meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="灵溪驿站" type="application/atom+xml">
 </head>
 
+  
+  <!-- 依赖于jquery和vue -->
   <script src="/js/jquery3.5.1.js"></script>
   <script src="/js/vue2.6.11.js"></script>
-  <link href="/js/danmu/barrager.css" rel="stylesheet">
-<script src="/js/danmu/jquery.barrager.js"></script>
+  
   <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+    
+    <!-- 判断是否为暗黑风格 -->
     <!-- 判断是否为黑夜模式 -->
-    <script>
-      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
 
-      if (isDark) {
-        $(document.body).addClass('darkModel');
-      }
-    </script>
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
 
-    <header class="header bg-color" 
-  style="position: fixed; 
+    <!-- 头部导航等 -->
+    
+<header class="header " id="navHeader"
+  style="position: fixed;
   left: 0; top: 0; z-index: 10;width: 100%;"
 >
   <div class="header-content">
@@ -99,65 +108,113 @@
       <h3 class="drawer-box-head_title">灵溪驿站</h3>
       <h5 class="drawer-box-head_desc">千磨万击还坚劲，任尔东西南北风</h5>
     </div>
+    
     <div class="drawer-box-content">
       <ul class="drawer-box-content_menu">
         
-          <li class="drawer-box-content_item">
-            <a href="/" class="menu-item-link">
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-home" aria-hidden="true"></i>
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
               
-              <span>首页</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/archives" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-home" aria-hidden="true"></i>
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
               
-              <span>归档</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/tags" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-tags" aria-hidden="true"></i>
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
               
-              <span>标签</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/categories" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
               
-              <span>分类</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/about" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <a href="/about" class="drawer-menu-item-link">
+                  
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
               
-              <span>关于</span>
-            </a>
-          </li>
-        
-          <li class="drawer-box-content_item">
-            <a href="/friends" class="menu-item-link">
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
               
-                <i class="fa fa-link" aria-hidden="true"></i>
+                <a href="/friends" class="drawer-menu-item-link">
+                  
+                  <span class="name">友情链接</span>
+                </a>
               
-              <span>友情链接</span>
-            </a>
-          </li>
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                  <span>
+                    
+                      <i class="fa fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fa fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                  
+                  <li>
+                    <a href="/books">
+                      
+                      <i class="fa fa-book" style="margin-top: -20px;"></i>
+                      
+                      <span>图书馆</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/flyghost/">
+                      
+                      <i class="fa fa-git" style="margin-top: -20px;"></i>
+                      
+                      <span>代码仓</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
         
         <li class="drawer-box-content_item">
-          <a target="_blank" rel="noopener" href="https://github.com/flyghost">
+          <a target="_blank" rel="noopener" href="https://github.com/flyghost/">
             <i class="fa fa-github" aria-hidden="true"></i>
             <span>Github</span>
           </a>
@@ -174,17 +231,33 @@
     data: {
       visible: false,
       top: 0,
+      openArr: [],
     },
     computed: {
     },
     mounted() {
     },
     methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
       showDialogDrawer() {
         this.visible = true;
         // 防止页面滚动，只能让弹框滚动
         this.top = $(document).scrollTop()
-        body.style.cssText = 'width: 100%; height: 100%; position: fixed; top: -' + this.top  + 'px; left: 0; overflow: hidden;';
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
       },
       cancelDialogDrawer() {
         this.visible = false;
@@ -195,131 +268,135 @@
     created() {}
   })
 </script>
+
     </div>
     <div class="blog-title" id="author-avatar">
-      <div class="avatar">
-        <img src="/medias/logo.png" alt="logo">
-      </div>
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" alt="logo">
+        </div>
+      
       <a href="/" class="logo">灵溪驿站</a>
     </div>
     <nav class="navbar">
       <ul class="menu">
         
-          <li class="menu-item">
-            <a href="/" class="menu-item-link">
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-home" aria-hidden="true"></i>
+                <a href="/" class="menu-item-link">
+                  
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
               
-              <span>首页</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/archives" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-archive" aria-hidden="true"></i>
+                <a href="/archives" class="menu-item-link">
+                  
+                    <i class="fa fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
               
-              <span>归档</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/tags" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-tags" aria-hidden="true"></i>
+                <a href="/tags" class="menu-item-link">
+                  
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
               
-              <span>标签</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/categories" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <a href="/categories" class="menu-item-link">
+                  
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
               
-              <span>分类</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/about" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <a href="/about" class="menu-item-link">
+                  
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
               
-              <span>关于</span>
-            </a>
-          </li>
-        
-          <li class="menu-item">
-            <a href="/friends" class="menu-item-link">
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
               
-                <i class="fa fa-link" aria-hidden="true"></i>
+                <a href="/friends" class="menu-item-link">
+                  
+                  <span class="name">友情链接</span>
+                </a>
               
-              <span>友情链接</span>
-            </a>
-          </li>
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link">
+                  
+                    <i class="fa fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fa fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/books">
+                      
+                      <i class="fa fa-book" style="margin-top: -20px;"></i>
+                      
+                      <span>图书馆</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/flyghost/">
+                      
+                      <i class="fa fa-git" style="margin-top: -20px;"></i>
+                      
+                      <span>代码仓</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
         
       </ul>
       
-        <div class="dark">
-  <div class="dark-content">
-    <i class="fa fa-moon-o" aria-hidden="true"></i>
-    <!-- <span>关灯</span> -->
-  </div>
-  
-</div>
-
-<script>
-  $(function() {
-    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
-    if (isDark) {
-      $(".dark-content").replaceWith(
-          `
-          <div class='dark-content'>
-            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-          </div>
-          `
-        );
-    }
-    $('.dark').click(function() {
-      if ($(document.body).is('.darkModel')) {
-        $(document.body).removeClass('darkModel');
-        localStorage.setItem('dark', false);
-        $(".dark-content").replaceWith(
-          `
-          <div class='dark-content'>
-            <i class="fa fa-moon-o" aria-hidden="true"></i>
-          </div>
-          `
-        );
-      } else {
-        $(document.body).addClass('darkModel');
-        localStorage.setItem('dark', true);
-        $(".dark-content").replaceWith(
-          `
-          <div class='dark-content'>
-            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-          </div>
-          `
-        );
-      }
-    })
-  })
-</script>
-        
       
         <div id="appSearch">
   <div class="search"  @click="showDialog()"><i class="fa fa-search" aria-hidden="true"></i></div>
   <transition name="fade">
     <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
       <div class="message-box animated bounceInDown">
-        <div class="close" style="overflow: hidden;">
+        <!-- <div class="close" style="overflow: hidden;">
           <i class="fa fa-close" aria-hidden="true" style="float:right;" @click.self="cancelDialogVisible()"></i>
-        </div>
+        </div> -->
         <h2>
-          <i class="fa fa-search" aria-hidden="true"></i>
-          <span class="title">本地搜索</span>
-          <!-- <i class="fa fa-close" style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i> -->
+          <span>
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fa fa-close close" style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
         </h2>
         <form class="site-search-form">
           <input type="text"
@@ -385,7 +462,7 @@
     </nav>
   </div>
   
-  <a target="_blank" rel="noopener" href="https://github.com/flyghost" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  <a target="_blank" rel="noopener" href="https://github.com/flyghost/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
   
     <div id="he-plugin-simple"></div>
     <script>
@@ -413,154 +490,37 @@
     </script>
     <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
     
+
+    <!-- 当头部导航设置为背景透明的时候  -->
+    
+      <script src="/js/header/index.js"></script>
+    
 </header>
-    <main class="main" style="margin-top: 60px;">
+
+    <!-- 内容区域 -->
+    <main class="main" style="margin-top: 0;">
       
  <!-- prismjs 代码高亮 -->
  
 
+
 <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;" :style="{'background-color': bgColor ? bgColor : 'transparent'}">
-    <transition-group tag="ul" :name="names">
-        <li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-            <img :src="image" class="bg-swiper-img">
-        </li>
-    </transition-group>
-</div>
-<script>
-    var vm = new Vue({
-        el: '#appBgSwiper',
-        data: {
-            names: '' || 'fade' || 'fade', // translate-fade fade
-            mark: 0,
-            img: [],
-            bgColor: '',
-            time: null
-        },
-        methods: {   //添加方法
-            change(i, m) {
-                if (i > m) {
-                    // this.names = 'fade';
-                } else if (i < m) {
-                    // this.names = 'fade';
-                } else {
-                    return;
-                }
-                this.mark = i;
-            },
-            prev() {
-                // this.names = 'fade';
-                this.mark--;
-                if (this.mark === -1) {
-                    this.mark = 3;
-                    return
-                }
-            },
-            next() {
-                // this.names = 'fade';
-                this.mark++;
-                if (this.mark === this.img.length) {
-                    this.mark = 0;
-                    return
-                }
-            },
-            autoPlay() {
-                // this.names = 'fade';
-                this.mark++;
-                if (this.mark === this.img.length) {
-                    this.mark = 0;
-                    return
-                }
-            },
-            play() {
-                let bgImgDelay = '' || '180000'
-                let delay = parseInt(bgImgDelay) || 180000;
-                this.time = setInterval(this.autoPlay, delay);
-            },
-            enter() {
-                clearInterval(this.time);
-            },
-            leave() {
-                this.play();
-            }
-        },
-        created() {
-            this.play()
-        },
-        beforeDestroy() {
-            clearInterval(this.time);
-        },
-        mounted() {
-            let prop = ''|| '/medias/post_background.png';
-            let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg')
-            if (isImg) {
-                let img = prop.split(',');
-                let configRoot = '/'
-                let arrImg = [];
-                img.forEach(el => {
-                    var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-			        var objExp = new RegExp(Expression);
 
-                    if(objExp.test(el)) {
-                        // http or https
-                        arrImg.push(el);
-                    } else {
-                        // 非http or https开头
-                        // 本地文件
-                        let firstStr = el.charAt(0);
-                        if (firstStr == '/') {
-                            el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-                        }
-                        el = configRoot + el;
-                        arrImg.push(el);
-                    }
-                })
-                this.img = arrImg;
-            } else {
-                this.bgColor = prop;
-            }
-        }
-    })
-</script>
+<!-- 文章详情页顶部图片和标题 -->
 
-<style>
-    .bg-swiper-box {
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-    .bg-swiper-img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
-</style>
 
 
 
 <div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/14.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
-  <canvas id="header_canvas"style="position:absolute;bottom:0"></canvas>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
-    <div class="title-box">
-      
-        <span class="title" id="post-detail-header-title"></span>
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-          <script>
-            var typed = new Typed("#post-detail-header-title", {
-              strings: ['uboot'],
-              startDelay: 100,
-              typeSpeed: 100,
-              loop: false,
-              backSpeed: 50,
-              showCursor: false
-            });
-          </script>
-        
-    </div>
-  
+  <div class="title-box">
+    <span class="title">
+      uboot
+    </span>
+  </div>
   
   
     <script src="/js/bubble/bubble.js"></script>
@@ -568,14 +528,14 @@
 </div>
 
 
+
 <div class="row justify-position">
   <div class="main-content">
     <article class="post post-detail">
       
-      
       <div class="post-meta">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
-        <span class="post-time">2021-06-19</span>
+        <span class="post-time">2019-06-19</span>
       </div>
       
       <div class="post-tags-categories">
@@ -624,26 +584,26 @@
 <p>第 20 行提示正常启动，也就是说 uboot 要从 emmc 里面读取环境变量和参数信息启动 Linux内核了。</p>
 <p>第 21 行是倒计时提示，默认倒计时 3 秒，倒计时结束之前按下回车键就会进入 Linux 命令行模式。如果在倒计时结束以后没有按下回车键，那么 Linux 内核就会启动，Linux 内核一旦启动，uboot 就会寿终正寝。</p>
 <h1 id="U-Boot命令">5 U-Boot命令</h1><p>进入 uboot 的命令行模式以后输入“help”或者“？”，然后按下回车即可查看当前 uboot 所支持的命令，如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210619224146998.png" alt="uboot命令列表" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619224146998.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="uboot命令列表" style="zoom:50%;">
 
 <h2 id="查看命令的详细用法">5.1 查看命令的详细用法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">? bootz </span><br><span class="line"><span class="meta">#</span><span class="bash"> 或</span> </span><br><span class="line">help bootz</span><br></pre></td></tr></table></figure>
-<img src="/posts/90b9e97a/image-20210619225750059.png" alt="bootz 命令使用说明" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619225750059.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="bootz 命令使用说明" style="zoom:50%;">
 
-<h2 id="信息查询命令">5.2 信息查询命令</h2><h3 id="bdinfo">5.2.1 bdinfo</h3><img src="/posts/90b9e97a/image-20210619225932043.png" alt="bdinfo 命令" style="zoom:50%;">
+<h2 id="信息查询命令">5.2 信息查询命令</h2><h3 id="bdinfo">5.2.1 bdinfo</h3><img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619225932043.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="bdinfo 命令" style="zoom:50%;">
 
 <p>可以得出 DRAM 的起始地址和大小、启动参数保存起始地址、波特率、sp(堆栈指针)起始地址等信息。</p>
 <h3 id="printenv">5.2.2 printenv</h3><p>命令“printenv”用于输出环境变量信息，uboot 也支持 TAB 键自动补全功能，输入“print”然后按下 TAB 键就会自动补全命令，直接输入“print”也可以。输入“print”，然后按下回车键，环境变量如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210619230103790.png" alt="printenv 命令结果" style="zoom: 50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619230103790.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="printenv 命令结果" style="zoom: 50%;">
 
 <h3 id="version">5.2.3 version</h3><p>命令 version 用于查看 uboot 的版本号</p>
-<img src="/posts/90b9e97a/image-20210619230859876.png" alt="version 命令结果" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619230859876.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="version 命令结果" style="zoom:50%;">
 
 <p>当前 uboot 版本号为 2016.03，2020 年 8 月 7 日编译的，编译器为arm-poky-linux-gnueabi-gcc，这是 NXP 官方提供的编译器</p>
 <h2 id="环境变量">5.3 环境变量</h2><h3 id="setenv-修改环境变量">5.3.1 setenv 修改环境变量</h3><p>将环境变量 bootdelay 改为 5，就可以使用如下所示命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setenv bootdelay 5</span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
-<img src="/posts/90b9e97a/image-20210619232814961.png" alt="环境变量修改" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619232814961.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="环境变量修改" style="zoom:50%;">
 
-<img src="/posts/90b9e97a/image-20210619232832014.png" alt="5秒倒计时" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619232832014.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="5秒倒计时" style="zoom:50%;">
 
 <p>有时候我们修改的环境变量值可能会有空格，比如 bootcmd、bootargs 等，这个时候环境变量值就得用单引号括起来，比如下面修改环境变量 bootargs 的值：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setenv bootargs &#x27;console=ttymxc0,115200 root=/dev/mmcblk1p2 rootwait rw&#x27;</span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
@@ -651,7 +611,7 @@
 <h3 id="setenv-新建环境变量">5.3.2 setenv 新建环境变量</h3><p>命令 setenv 也可以用于新建命令，用法就是修改环境变量一样，比如我们新建一个环境变量 author，author 的值为creekwater，那么就可以使用如下命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setenv author creekwater</span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
 <p>新建环境变量 creekwater 完成以后重启 uboot，然后使用命令 printenv 查看当前环境变量。</p>
-<img src="/posts/90b9e97a/image-20210620180856303.png" alt="环境变量" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620180856303.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="环境变量" style="zoom:50%;">
 
 <h3 id="setevn-删除环境变量">5.3.3 setevn 删除环境变量</h3><p>既然可以新建环境变量，那么就可以删除环境变量，删除环境变量也是使用命令 setenv，要删除一个环境变量只要给这个环境变量赋空值即可，比如我们删除掉上面新建的 author 这个环境变量，命令如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setenv creekwater</span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
@@ -674,28 +634,28 @@
 <p>第二个命令以.w 格式显示，长度为 0x10，也就是 16*2=32个字节；</p>
 <p>最后一个命令以.l 格式显示，长度也是 0x10，也就是 16*4=64 个字节。</p>
 <p>这三个命令的执行结果如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210619234336918.png" alt="md 命令使用示意" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619234336918.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="md 命令使用示意" style="zoom:50%;">
 
 <h3 id="nm-修改内存值">5.4.2 nm 修改内存值</h3><p>nm 命令用于修改指定地址的内存值，命令格式如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nm [.b, .w, .l] address</span><br></pre></td></tr></table></figure>
 <p>nm 命令同样可以以.b、.w 和.l 来指定操作格式，比如现在以.l 格式修改 0x80000000 地址的数据为 0x12345678。输入命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nm.l 80000000</span><br></pre></td></tr></table></figure>
 <p>输入上述命令以后如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210619234758340.png" alt="nm 命令" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619234758340.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="nm 命令" style="zoom:50%;">
 
 <p>在上图中，80000000 表示现在要修改的内存地址，0500e031 表示地址 0x80000000 现在的数据，？后面就可以输入要修改后的数据 0x12345678，输入完成以后按下回车，然后再输</p>
 <p>入‘q’即可退出，如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210619234918951.png" alt="修改内存数据" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619234918951.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="修改内存数据" style="zoom:50%;">
 
 <p>修改完成以后在使用命令 md 来查看一下有没有修改成功，如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210619235122533.png" alt="查看修改后的值" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619235122533.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="查看修改后的值" style="zoom:50%;">
 
 <p>此时地址 0X80000000 的值变为了 0x12345678。</p>
 <h3 id="mm-修改内存值">5.4.3 mm 修改内存值</h3><p>mm 命令也是修改指定地址内存值的，使用 mm 修改内存值的时候地址会自增，而使用命令 nm 的话地址不会自增。比如以.l 格式修改从地址 0x80000000 开始的连续 3 个内存块(3*4=12个字节)的数据为 0X05050505，操作如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210619235235921.png" alt="mm 命令" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619235235921.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="mm 命令" style="zoom:50%;">
 
 <p>从上图可以看出，修改了地址 0X80000000、0X80000004 和 0X8000000C 的内容为0x05050505。使用命令 md 查看修改后的值，结果如图所示：</p>
-<img src="/posts/90b9e97a/image-20210619235312726.png" alt="查看修改后的内存数据" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210619235312726.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="查看修改后的内存数据" style="zoom:50%;">
 
 <p>可以看出内存数据修改成功。</p>
 <h3 id="mw-填充内存">5.4.4 mw 填充内存</h3><p>命令 mw 用于使用一个指定的数据填充一段内存，命令格式如下：</p>
@@ -703,14 +663,14 @@
 <p>mw 命令同样可以以.b、.w 和.l 来指定操作格式，address 表示要填充的内存起始地址，value为要填充的数据，count 是填充的长度。比如使用.l 格式将以 0X80000000 为起始地址的 0x10 个内存块(0x10 * 4=64 字节)填充为 0X0A0A0A0A，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mw.l 80000000 0A0A0A0A 10</span><br></pre></td></tr></table></figure>
 <p>然后使用命令 md 来查看，如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210620180352686.png" alt="查看修改后的内存数据" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620180352686.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="查看修改后的内存数据" style="zoom:50%;">
 
 <h3 id="cp-数据拷贝">5.4.5 cp 数据拷贝</h3><p>cp 是数据拷贝命令，用于将 DRAM 中的数据从一段内存拷贝到另一段内存中，或者把 Nor Flash 中的数据拷贝到 DRAM 中。命令格式如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp [.b, .w, .l] source target count</span><br></pre></td></tr></table></figure>
 <p>cp 命令同样可以以.b、.w 和.l 来指定操作格式，source 为源地址，target 为目的地址，count 为拷贝的长度。我们使用.l 格式将 0x80000000 处的地址拷贝到 0X80000100 处，长度为 0x10 个内存块(0x10 * 4=64 个字节)，命令如下所示：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp.l 80000000 80000100 10</span><br></pre></td></tr></table></figure>
 <p>结果如图所示：</p>
-<img src="/posts/90b9e97a/image-20210620181625687.png" alt="cp 命令操作结果" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620181625687.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="cp 命令操作结果" style="zoom:50%;">
 
 <p>在上图中，先使用 md.l 命令打印出地址 0x80000000 和 0x80000100 处的数据，然后使用命令cp.l将0x80000100处的数据拷贝到0x80000100处。最后使用命令md.l查看0x80000100处的数据有没有变化，检查拷贝是否成功。</p>
 <h3 id="cmp-内存数据比较">5.4.6 cmp 内存数据比较</h3><p>cmp 是比较命令，用于比较两段内存的数据是否相等，命令格式如下：</p>
@@ -718,15 +678,15 @@
 <p>cmp 命令同样可以以.b、.w 和.l 来指定操作格式，addr1 为第一段内存首地址，addr2 为第二段内存首地址，count 为要比较的长度。我们使用.l 格式来比较 0x80000000 和 0X80000100 这两个地址数据是否相等，比较长度为 0x10 个内存块(16 * 4=64 个字节)，命令如下所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmp.l 80000000 80000100 10</span><br></pre></td></tr></table></figure>
 <p>结果如图</p>
-<img src="/posts/90b9e97a/image-20210620181935193.png" alt="cmp 命令比较结果" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620181935193.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="cmp 命令比较结果" style="zoom:50%;">
 
 <p>从上图可以看出两段内存的数据相等。我们再随便挑两段内存比较一下，比如地址 0x80002000 和 0x800003000，长度为 0X10，比较结果下图所示：</p>
-<img src="/posts/90b9e97a/image-20210620182043861.png" alt="cmp 命令比较结果" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620182043861.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="cmp 命令比较结果" style="zoom:50%;">
 
 <p>从上图可以看出，0x80002000 处的数据和 0x80003000 处的数据就不一样。</p>
 <h2 id="网络操作命令">5.5 网络操作命令</h2><p>uboot 是支持网络的，我们在移植 uboot 的时候一般都要调通网络功能，因为在移植 linux kernel 的时候需要使用到 uboot 的网络功能做调试。uboot 支持大量的网络相关命令，比如 dhcp、ping、nfs 和 tftpboot，接下来依次学习一下这几个和网络有关的命令。</p>
 <p>在使用 uboot 的网络功能之前先用网线将开发板的 ENET2 接口和电脑或者路由器连接起来，I.MX6U-ALPHA 开发板有两个网口：ENET1 和 ENET2，一定要连接 ENET2，不能连接错了，ENET2 接口如图所示。</p>
-<img src="/posts/90b9e97a/image-20210620182313644.png" alt="ENET2 网络接口" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620182313644.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="ENET2 网络接口" style="zoom:50%;">
 
 <p>建议开发板和主机 PC 都连接到同一个路由器上！最后设置表中所示的几个环境变量。</p>
 <table>
@@ -763,37 +723,37 @@
 <h3 id="ping-命令">5.5.1 ping 命令</h3><p>开发板的网络能否使用，是否可以和服务器(Ubuntu 主机)进行通信，通过 ping 命令就可以验证，直接 ping 服务器的 IP 地址即可，比如我的服务器 IP 地址为 192.168.1.253，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 192.168.1.253</span><br></pre></td></tr></table></figure>
 <p>结果如图所示</p>
-<img src="/posts/90b9e97a/image-20210620182910766.png" alt="ping 命令" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620182910766.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="ping 命令" style="zoom:50%;">
 
 <p>可以看出，192.168.1.253 这个主机存在，说明 ping 成功，uboot 的网络工作正常。</p>
 <blockquote>
 <p>注意！只能在 uboot 中 ping 其他的机器，其他机器不能 ping uboot，因为 uboot 没有对 ping命令做处理，如果用其他的机器 ping uboot 的话会失败！</p>
 </blockquote>
 <h3 id="dhcp-命令">5.5.2 dhcp 命令</h3><p>dhcp 用于从路由器获取 IP 地址，前提得开发连接到路由器上的，如果开发板是和电脑直连的，那么 dhcp 命令就会失效。直接输入 dhcp 命令即可通过路由器获取到 IP 地址，如图所示：</p>
-<img src="/posts/90b9e97a/image-20210620183208736.png" alt="dhcp 命令" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620183208736.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="dhcp 命令" style="zoom:50%;">
 
 <p>从上图可以看出，开发板通过 dhcp 获取到的 IP 地址为 192.168.1.137。同时在上图中可以看到“warning：no boot file name;”、“TFTP from server 192.168.1.1”这样的字样。这是因为 DHCP 不单单是获取 IP 地址，其还会通过 TFTP 来启动 linux 内核，输入“? dhcp”可查看 dhcp 命令详细的信息，如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210620183337213.png" alt="dhcp 命令使用查询" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620183337213.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="dhcp 命令使用查询" style="zoom:50%;">
 
 <h3 id="nfs-命令">5.5.3 nfs 命令</h3><p>nfs(Network File System)网络文件系统，通过 nfs 可以在计算机之间通过网络来分享资源，比如我们将 linux 镜像和设备树文件放到 Ubuntu 中，然后在 uboot 中使用 nfs 命令将 Ubuntu 中 的 linux 镜像和设备树下载到开发板的 DRAM 中。这样做的目的是为了方便调试 linux 镜像和设备树，也就是网络调试，通过网络调试是 Linux 开发中最常用的调试方法。原因是嵌入式 linux开发不像单片机开发，可以直接通过 JLINK 或 STLink 等仿真器将代码直接烧写到单片机内部的 flash 中，嵌入式 Linux 通常是烧写到 EMMC、NAND Flash、SPI Flash 等外置 flash 中，但是嵌入式 Linux 开发也没有 MDK，IAR 这样的 IDE，更没有烧写算法，因此不可能通过点击一个“download”按钮就将固件烧写到外部 flash 中。虽然半导体厂商一般都会提供一个烧写固件的软件，但是这个软件使用起来比较复杂，这个烧写软件一般用于量产的。其远没有 MDK、IAR的一键下载方便，在 Linux 内核调试阶段，如果用这个烧写软件的话将会非常浪费时间，而这个时候网络调试的优势就显现出来了，可以通过网络将编译好的 linux 镜像和设备树文件下载到 DRAM 中，然后就可以直接运行。</p>
 <p>我们一般使用 uboot 中的 nfs 命令将 Ubuntu 中的文件下载到开发板的 DRAM 中，在使用之前需要开启 Ubuntu 主机的 NFS 服务，并且要新建一个 NFS 使用的目录，以后所有要通过NFS 访问的文件都需要放到这个 NFS 目录中。Ubuntu 的 NFS 服务开启前文已经详细讲解过了，包括 NFS 文件目录的创建。我设置的/home/creekwater/linux/nfs 这个目录为我的 NFS 文件目录。uboot 中的 nfs 命令格式如下所示：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nfs [loadAddress] [[hostIPaddr:]bootfilename]</span><br></pre></td></tr></table></figure>
 <p>loadAddress 是要保存的 DRAM 地址，[[hostIPaddr:]bootfilename]是要下载的文件地址。这里我们将正点原子官方编译出来的 Linux 镜像文件 zImage 下载到开发板 DRAM 的 0x80800000这个地址处。正点原子编译出来的 zImage 文件已经放到了开发板光盘中，路径为：8、系统镜像-&gt;1、出厂系统镜像-&gt;2、kernel 镜像\linux-imx-4.1.15-2.1.0-gbfed875-v1.6 -&gt;zImage。将文件zImage 通 过 FileZilla 发送到 Ubuntu 中 的 NFS 目 录 下 ， 比 如 我 的 就 是 放 到/home/creekwater/linux/nfs 这个目录下，完成以后的 NFS 目录如图所示：</p>
-<img src="/posts/90b9e97a/image-20210620184356976.png" alt="NFS 目录中的 zImage 文件" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620184356976.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="NFS 目录中的 zImage 文件" style="zoom:50%;">
 
 <p>准备好以后就可以使用 nfs 命令来将 zImage 下载到开发板 DRAM 的 0X80800000 地址处，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nfs 80800000 192.168.1.253:&#x2F;home&#x2F;creekwater&#x2F;linux&#x2F;nfs&#x2F;zImage</span><br></pre></td></tr></table></figure>
 <p>命令中的“ 80800000 ” 表 示 zImage 保 存 地 址 ，“192.168.1.253:/home/creekwater/linux/nfs/zImage”表示 zImage 在 192.168.1.253 这个主机中，路径为/home/creekwater/linux/nfs/zImage。下载过程如图所示：</p>
-<img src="/posts/90b9e97a/image-20210620184910494.png" alt="nfs 命令下载 zImage 过程" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620184910494.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="nfs 命令下载 zImage 过程" style="zoom:50%;">
 
 <p>在上图中会以“#”提示下载过程，下载完成以后会提示下载的数据大小，这里下载的 6785272 字节(出厂系统在不断的更更新中，因此以实际的 zImage 大小为准)，而 zImage 的大小就是 6785272 字节，如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210620185346075.png" alt="zImage 大小" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620185346075.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="zImage 大小" style="zoom:50%;">
 
 <p>下载完成以后查看 0x80800000 地址处的数据，使用命令 md.b 来查看前 0x100 个字节的数据，如图所示：</p>
-<img src="/posts/90b9e97a/image-20210620185801053.png" alt="下载的数据" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620185801053.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="下载的数据" style="zoom:50%;">
 
 <p>在使用 winhex 软件来查看 zImage，检查一下前面的数据是否和上图的一致，结果如下图所示：</p>
-<img src="/posts/90b9e97a/image-20210620185849955.png" alt="winhex 查看 zImage" style="zoom:50%;">
+<img "" class="lazyload placeholder" data-original="/posts/90b9e97a/image-20210620185849955.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="winhex 查看 zImage" style="zoom:50%;">
 
 <p>可以看出两个图中的前 100 个字节的数据一致，说明 nfs 命令下载到的 zImage 是正确的。</p>
 <h3 id="tftp-命令">5.5.4 tftp 命令</h3><h2 id="EMMC和SD卡操作命令">5.6 EMMC和SD卡操作命令</h2><h3 id="mmc-info-命令">5.6.1 mmc info 命令</h3><h3 id="mmc-rescan-命令">5.6.2 mmc rescan 命令</h3><h3 id="mmc-list">5.6.3 mmc list</h3><h3 id="mmc-dev">5.6.4 mmc dev</h3><h3 id="mmc-part">5.6.5 mmc part</h3><h3 id="mmc-read">5.6.6 mmc read</h3><h3 id="mmc-write">5.6.7 mmc write</h3><h3 id="mmc-erase">5.6.8 mmc erase</h3><h2 id="FAT-格式文件系统操作命令">5.7 FAT 格式文件系统操作命令</h2><h3 id="fatinfo">5.7.1 fatinfo</h3><h3 id="fatls">5.7.2 fatls</h3><h3 id="fstype">5.7.3 fstype</h3><h3 id="fatload">5.7.4 fatload</h3><h3 id="fatwrite">5.7.5 fatwrite</h3><h2 id="EXT-格式文件系统操作命令">5.8 EXT 格式文件系统操作命令</h2><h2 id="NAND-操作指令">5.9 NAND 操作指令</h2><h3 id="nand-info">5.9.1 nand info</h3><h3 id="nand-device">5.9.2 nand device</h3><h3 id="nand-erase">5.9.3 nand erase</h3><h3 id="nand-write">5.9.4 nand write</h3><h3 id="nand-read">5.9.5 nand read</h3><h2 id="BOOT-操作命令">5.10 BOOT 操作命令</h2><h3 id="bootz">5.10.1 bootz</h3><h3 id="bootm">5.10.2 bootm</h3><h3 id="boot">5.10.3 boot</h3><h2 id="其他常用命令">5.11 其他常用命令</h2><h3 id="reset">5.11.1 reset</h3><h3 id="go">5.11.2 go</h3><h3 id="run">5.11.3 run</h3><h3 id="mtest">5.11.4 mtest</h3>
@@ -819,7 +779,7 @@
     </article>
     <!-- 上一篇文章和下一篇文章 -->
     
-      
+      <!-- 文章详情页的上一页和下一页 -->
 <div class="post-nav">
 
 
@@ -845,16 +805,17 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/5.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/12.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/6bcb34f8.html" class="post-nav-link">
+    <a href="/posts/f53accbe.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>IMX6ULL芯片简介</div>
+        <div>无人机地面站QT版</div>
       </div>
       <!-- <div class="content">
-        1 Cortex-A 处理器运行模型以前的 ARM 处理器有 7 中运行模型：User、FIQ、IRQ、Supervis
+        下载链接源代码
+
       </div> -->
     </a>
   </div>
@@ -953,7 +914,7 @@
     <!-- 分享 -->
     
       <!-- https://github.com/overtrue/share.js -->
-
+<!-- 文章详情页的分享 -->
 <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
 
 <script src="/js/shareJs/social-share.min.js"></script>
@@ -969,10 +930,20 @@
     
     
     <!-- 评论 -->
-      
-        <div id="myComment">
-          
-            <section id="comments" style="padding: 1em; margin: 15px auto;"
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <!-- 弹幕所需的css和js -->
+
+  <!-- 弹幕插件 -->
+  <link href="/js/danmu/barrager.css" rel="stylesheet">
+  <script src="/js/danmu/jquery.barrager.js"></script>
+
+<!-- 具体js，请前往valine.ejs查看 -->
+
+
+<section id="comments" style="padding: 1em; margin: 15px auto;"
 	class="animated bounceInUp">
 	<div id="vcomment" class="comment"></div>
 	<script src="/js/valine/av-min@3.0.4.js"></script>
@@ -1851,26 +1822,29 @@
 		box-shadow: none;
 	}
 </style>
-          
-        </div>
-      
+    
   </div>
 
-  
-    <div class="toc-aside">
-      <div class="toc-main">
-        <div class="toc-aside-title">
-          <i class="fa fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
-          <div class="toc-open-close">本文目录</div>
-        </div>
-        <div class="toc-content">
-          <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fa fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        <div class="toc-open-close">本文目录</div>
+      </div>
+      <div class="toc-content">
+        <link href="/js/tocbot/tocbot.css" rel="stylesheet">
 <script src="/js/tocbot/tocbot.min.js"></script>
 <div class="toc"></div>
 
 <script>
   if ($('.toc').length > 0) {
-    var headerEl = 'h1, h2, h3, h4, h5, h6',  //headers 
+    var headerEl = 'h2, h3, h4',  //headers 
       content = '.post-detail',//文章容器
       idArr = {};  //标题数组以确定是否增加索引id
       //add #id
@@ -1901,7 +1875,7 @@
       headingSelector: headerEl,
       scrollSmooth: true,
       scrollSmoothOffset: -80,
-      headingsOffset: 130,
+      headingsOffset: -($(window).height() * 0.4 - 45),
       positionFixedSelector: '.toc-main',
       positionFixedClass: 'is-position-fixed',
       fixedSidebarOffset: 'auto',
@@ -1912,8 +1886,8 @@
 
 <style>
 .is-position-fixed {
-  position:fixed !important;
-  top: 64px;
+  position:sticky !important;
+  top: 74px;
 }
 .toc-main ul {
   counter-reset: show-list;
@@ -1935,63 +1909,220 @@
   padding-left: 25px;
 }
 </style>
-        </div>
       </div>
     </div>
+  </div>
 
-    
-
-    <script>
-      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
-      let open = eval('' || 'true');
-      openOrCloseBtn.click(function() {
-        if (open === true) {
-          $(".toc-aside").css({'width': 0, 'padding': 0});
-          $(".toc-content").css({'width': 0});
-          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
-          $(".main-content").css({'width': '75%', 'margin': '10px auto'});
-          open = false;
-        } else {
-          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
-          $(".toc-content").css({'width': '300px'});
-          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
-          $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
-          open = true;
-        }
-      });
-    </script>
   
+
+  <script>
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open === true) {
+        $(".toc-aside").css({'width': 0, 'padding': 0});
+        $(".toc-content").css({'width': 0});
+        $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+        $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+        open = false;
+      } else {
+        $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+        $(".toc-content").css({'width': '300px'});
+        $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+        $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+        open = true;
+      }
+    });
+  </script>
+
+
+  <!-- 渲染issues标签里的内容 -->
+  <script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) return;
+    document.write('<script type="text/javascript" src="/js/issues/index.js"><\/script>');
+  };
+  loadIssuesJS();
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
 </div>
 
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;" :style="{'background-color': bgColor ? bgColor : 'transparent'}">
+    <transition-group tag="ul" :name="names">
+        <li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+            <img :src="image" class="bg-swiper-img">
+        </li>
+    </transition-group>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#appBgSwiper',
+        data: {
+            names: '' || 'fade' || 'fade', // translate-fade fade
+            mark: 0,
+            img: [],
+            bgColor: '',
+            time: null
+        },
+        methods: {   //添加方法
+            change(i, m) {
+                if (i > m) {
+                    // this.names = 'fade';
+                } else if (i < m) {
+                    // this.names = 'fade';
+                } else {
+                    return;
+                }
+                this.mark = i;
+            },
+            prev() {
+                // this.names = 'fade';
+                this.mark--;
+                if (this.mark === -1) {
+                    this.mark = 3;
+                    return
+                }
+            },
+            next() {
+                // this.names = 'fade';
+                this.mark++;
+                if (this.mark === this.img.length) {
+                    this.mark = 0;
+                    return
+                }
+            },
+            autoPlay() {
+                // this.names = 'fade';
+                this.mark++;
+                if (this.mark === this.img.length) {
+                    this.mark = 0;
+                    return
+                }
+            },
+            play() {
+                let bgImgDelay = '' || '180000'
+                let delay = parseInt(bgImgDelay) || 180000;
+                this.time = setInterval(this.autoPlay, delay);
+            },
+            enter() {
+                clearInterval(this.time);
+            },
+            leave() {
+                this.play();
+            }
+        },
+        created() {
+            this.play()
+        },
+        beforeDestroy() {
+            clearInterval(this.time);
+        },
+        mounted() {
+            let prop = ''|| '/medias/post_background.png';
+            let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://') 
+            if (isImg) {
+                let img = prop.split(',');
+                let configRoot = '/'
+                let arrImg = [];
+                img.forEach(el => {
+                    var Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+			        var objExp = new RegExp(Expression);
+
+                    if(objExp.test(el)) {
+                        // http or https
+                        arrImg.push(el);
+                    } else {
+                        // 非http or https开头
+                        // 本地文件
+                        let firstStr = el.charAt(0);
+                        if (firstStr == '/') {
+                            el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+                        }
+                        el = configRoot + el;
+                        arrImg.push(el);
+                    }
+                })
+                this.img = arrImg;
+            } else {
+                this.bgColor = prop;
+            }
+        }
+    })
+</script>
+
+<style>
+    .bg-swiper-box {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .bg-swiper-img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+</style>
 
     </main>
+
+    <!-- 页脚 -->
     <div class="footer bg-color">
-    <div class="footer-main">
-        <div class="link">
-            <a target="_blank" rel="noopener" href="https://github.com/flyghost/">
-                <i class="fa fa-github" aria-hidden="true"></i>
-            </a>
-            <a href="mailto:1307095684@qq.com">
-                <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            </a>
-            <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1307095684">
-                <i class="fa fa-qq" aria-hidden="true"></i>
-            </a>
-            <a href="/atom.xml" target="_blank">
-                <i class="fa fa-rss" aria-hidden="true"></i>
-            </a>
-        </div>
-        <div class="footer-copyright">
-            Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/flyghost">flyghost</a> | Powered by <a href="https://www.creekwater.cn">creekwater</a>
-        </div>
+  <div class="footer-main">
+    <div class="link">
+      
         
+          <a href="/atom.xml" class="social">
             
+              <i class="fa fa-rss" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a href="mailto:zhaoyang_wu@foxmail.com" class="social">
+            
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a target="_blank" rel="noopener" href="https://github.com/flyghost/" class="social">
+            
+              <i class="fa fa-github" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=892821534" class="social">
+            
+              <i class="fa fa-qq" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+    </div>
+    <div class="footer-copyright">
+      <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/flyghost">creekwater</a> | Powered by <a target="_blank" rel="noopener" href="https://github.com/flyghost">flyghost</a> </p>
+
+    </div>
+    <div class="footer-custom">
+      
+    </div>
+    <!-- 不蒜子统计 -->
+    
+      
   <!-- 不蒜子统计 -->
   <span id="busuanzi_container_site_pv">
-        <i class="fa fa-book" aria-hidden="true"></i>该页面总阅读量：<span id="busuanzi_value_page_pv"></span> 次
+        <i class="fa fa-book" aria-hidden="true"></i>本站总阅读量：<span id="busuanzi_value_page_pv"></span> 次
   </span>
   <span id="busuanzi_container_site_pv">
-        <i class="fa fa-eye" aria-hidden="true"></i>本站点击量：<span id="busuanzi_value_site_pv"></span> 次
+        <i class="fa fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
   </span>
   <span class="post-meta-divider">|</span>
   <span id="busuanzi_container_site_uv" style='display:none'>
@@ -1999,33 +2130,84 @@
   </span>
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-                
-    </div>
+    
+  </div>
 </div>
 
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fa fa-moon-o" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-moon-o" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
     
       <div class="goTop top-btn-color border-color">
   <i class="fa fa-arrow-up" aria-hidden="true"></i>
 </div>
 <script src="/js/goTop.js"></script>
     
-
+    <!-- 渲染左下角音乐播放器 -->
     
 
     <!-- 图片放大 -->
     
       <script src="/js/fancybox/jquery.fancybox.min.js"></script>
     
-
-    <script src="/js/wrapImage.js"></script>
     
+    <!-- 鼠标点击特效 -->
     <!-- 爱心点击 -->
-    
-       
-        <script src="/js/cursor/clicklove.js"></script> 
-      
-    
 
+	 
+		<script src="/js/cursor/clicklove.js"></script> 
+	
+
+
+
+    <!-- 百度解析 -->
     <!-- Baidu Analytics -->
 
     <!-- Baidu Push -->
@@ -2045,132 +2227,140 @@
 </script>
 
     
+    <!-- 背景彩带 -->
     <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
     
-      <script src="/js/aos/aos.js"></script>
-      <script>
-        // https://github.com/michalsnik/aos
-        const themeOffset = parseInt('120') || 120;
-        const themeDelay = parseInt('0')|| 0;
-        const themeDuration = parseInt('400') || 400;
-        const themeEasing = 'ease' || 'ease';
-        const themeOnce = eval('true') || false;
-        const themeMirror = eval('false') || false;
-        const themeAnchorPlacement = 'top-bottom' || 'top-bottom';
-        AOS.init({
-          // Global settings:
-          disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-          startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
-          initClassName: 'aos-init', // class applied after initialization
-          animatedClassName: 'aos-animate', // class applied on animation
-          useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-          disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-          debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-          throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-
-          // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-          offset: themeOffset, // offset (in px) from the original trigger point
-          delay: themeDelay, // values from 0 to 3000, with step 50ms
-          duration: themeDuration, // values from 0 to 3000, with step 50ms
-          easing: themeEasing, // default easing for AOS animations
-          once: themeOnce, // whether animation should happen only once - while scrolling down
-          mirror: themeMirror, // whether elements should animate out while scrolling past them
-          anchorPlacement: themeAnchorPlacement, // defines which position of the element regarding to window should trigger the animation
-
-        });
-      </script>
+    <!-- div滚动到显示区域的动画 -->
     
+  <script src="/js/aos/aos.js"></script>
+  <script>
+    // https://github.com/michalsnik/aos
+    const themeOffset = parseInt('120') || 120;
+    const themeDelay = parseInt('0') || 0;
+    const themeDuration = parseInt('400') || 400;
+    const themeEasing = 'ease' || 'ease';
+    const themeOnce = eval('true') || false;
+    const themeMirror = eval('false') || false;
+    const themeAnchorPlacement = 'top-bottom' || 'top-bottom';
+    AOS.init({
+      // Global settings:
+      disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+      startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+      initClassName: 'aos-init', // class applied after initialization
+      animatedClassName: 'aos-animate', // class applied on animation
+      useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+      disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+      debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+      throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: themeOffset, // offset (in px) from the original trigger point
+      delay: themeDelay, // values from 0 to 3000, with step 50ms
+      duration: themeDuration, // values from 0 to 3000, with step 50ms
+      easing: themeEasing, // default easing for AOS animations
+      once: themeOnce, // whether animation should happen only once - while scrolling down
+      mirror: themeMirror, // whether elements should animate out while scrolling past them
+      anchorPlacement: themeAnchorPlacement, // defines which position of the element regarding to window should trigger the animation
+
+    });
+  </script>
 
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
-<script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
-<div id="appCopy">
-</div>
-<script>
-  var vm = new Vue({
-    el: '#appCopy',
-    data: {
-    },
-    computed: {
-    },
-    mounted() {
-      const that = this;
-      //  监听 ctrl + c事件  
-      $(document).unbind('keypress').bind('keypress', function (e) {
-        if (e.ctrlKey && e.keyCode == 67) {
-          doSomething();
-          // 返回false, 防止重复触发copy事件  
-          return false;
-        }
-      })
-
-      // 鼠标右键的复制事件  
-      $(document).unbind('copy').bind('copy', function (e) {
-        doSomething();
-        // console.log('右键复制 监听成功');
-      });
-
-      function doSomething() {
-        that.$notify({
-          title: "成功",
-          content: "已复制，请遵守相关授权协议。",
-          type: 'success'
+    <!-- 复制提示 -->
+    
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
+  <script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        //  监听 ctrl + c事件  
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+            // 返回false, 防止重复触发copy事件  
+            return false;
+          }
         })
-        // console.log('ctrl + c 监听成功');  
-      }
-    },
-    methods: {
-    },
-    created() { }
-  })
-</script>
-    
+
+        // 鼠标右键的复制事件  
+        $(document).unbind('copy').bind('copy', function (e) {
+          doSomething();
+          // console.log('右键复制 监听成功');
+        });
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+          // console.log('ctrl + c 监听成功');  
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+
 
     <!-- 输入框打字特效 -->
-    
-      <script src="/js/activate-power-mode.js"></script>
-      <script>
-          POWERMODE.colorful = true;  // 打开随机颜色特效
-          POWERMODE.shake = false;    // 关闭输入框抖动
-          document.body.addEventListener('input', POWERMODE);//监听打字事件
-      </script>
-    
+    <!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
 
     <!-- markdown代码一键复制功能 -->
-    <script src="/js/clipboard/clipboard.min.js"></script>
-    <script>
-      !function (e, t, a) {
-        var copy = '复制';
-        /* code */
-        var initCopyCode = function(){
-          var copyHtml = '';
-          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
-          copyHtml += '<i class="fa fa-copy"></i><span>' + copy + '</span>';
-          copyHtml += '</button>';
-          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
-          $(".post-detail pre").not('.gutter pre').before(copyHtml);
-          new ClipboardJS('.btn-copy', {
-              target: function(trigger) {
-                  return trigger.nextElementSibling;
-              }
-          });
+    <!-- markdown代码一键复制功能 -->
+<script src="/js/clipboard/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var copy = '复制';
+    /* code */
+    var initCopyCode = function () {
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+      copyHtml += '<i class="fa fa-copy"></i><span>' + copy + '</span>';
+      copyHtml += '</button>';
+      $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+      $(".post-detail pre").not('.gutter pre').before(copyHtml);
+      new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+          return trigger.nextElementSibling;
         }
-        initCopyCode();
-      }(window, document);
-    </script>
-
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+    
+    <!-- 图片懒加载 -->
     <script src="/js/lazyload/lazyload@1.9.1.js"></script>
-    <script>
-      $(function() {
-        $("div.lazyload, img.lazyload, a.lazyload").lazyload(
-            {
-                effect: "fadeIn",
-                placeholder: "/medias/loading.gif"    //图片未加载出来时显示的占位图
-            }
-        );
-    });
-    </script>
+<script>
+  $(function () {
+    $("div.lazyload, img.lazyload, a.lazyload").lazyload(
+      {
+        effect: "fadeIn",
+        placeholder: "/medias/loading.gif"    //图片未加载出来时显示的占位图
+      }
+    );
+  });
+</script>
     
     <script src="/js/app.js"></script>
+
   </body>
 </html>
