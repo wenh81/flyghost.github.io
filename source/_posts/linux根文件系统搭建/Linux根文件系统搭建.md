@@ -3,7 +3,7 @@ title: Linux根文件系统搭建
 tags: ARM
 categories: ARM
 abbrlink: f9852f95
-date: 2021-07-11 00:00:00
+date: 2019-07-11 00:00:00
 ---
 
 # 简介

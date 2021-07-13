@@ -3,7 +3,7 @@ title: uboot
 tags: ARM
 categories: ARM
 abbrlink: 90b9e97a
-date: 2021-06-19 00:00:00
+date: 2019-06-19 00:00:00
 ---
 
 # U-Boot简介
