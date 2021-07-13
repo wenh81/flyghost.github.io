@@ -188,7 +188,7 @@ baiduPush: true
 # 文章目录
 toc:
   on: true # 是否显示
-  heading: h2, h3, h4
+  heading: h1, h2, h3, h4
   open: true # 是否展开，false则收缩
 
 # 音乐
