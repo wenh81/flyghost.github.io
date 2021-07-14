@@ -2,6 +2,7 @@
 title: uboot图形化配置
 tags: ARM
 categories: ARM
+abbrlink: 196c55f4
 date: 2019-07-05 00:00:00
 ---
 
