@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Halo博客搭建 | 灵溪驿站</title>
+  <title>uboot图形化配置 | 灵溪驿站</title>
 
   
     
@@ -511,14 +511,14 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/12.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/14.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="title-box">
     <span class="title">
-      Halo博客搭建
+      uboot图形化配置
     </span>
   </div>
   
@@ -535,7 +535,7 @@
       
       <div class="post-meta">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
-        <span class="post-time">2021-01-05</span>
+        <span class="post-time">2019-07-05</span>
       </div>
       
       <div class="post-tags-categories">
@@ -543,8 +543,8 @@
         <div class="tags">
           <i class="iconfont icontag"></i>
           
-            <a href="/tags/BLOG/" class="">
-              BLOG
+            <a href="/tags/ARM/" class="">
+              ARM
             </a>
           
         </div>
@@ -553,85 +553,74 @@
         <div class="categories">
           <i class="iconfont iconbookmark1"></i>
           
-            <a href="/categories/BLOG/" class="">
-              BLOG
+            <a href="/categories/ARM/" class="">
+              ARM
             </a>
           
         </div>
         
       </div>
       <div class="post-content">
-        <h1 id="halo博客搭建">1 halo博客搭建</h1><h2 id="1、介绍">1.1 1、介绍</h2><p>Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配置，它放在任何目录都是可行的。需要注意的是，Halo 的整个额外文件全部存放在 <code>~/.halo</code> 目录下，包括 <code>application.yaml（用户配置文件）</code>，<code>template/themes（主题目录）</code>，<code>upload（附件上传目录）</code>，<code>halo.db.mv（数据库文件）</code>。一定要保证 <code>~/.halo</code> 的存在，你博客的所有资料可都存在里面。所以你完全不需要担心安装包的安危，它仅仅是个服务而已。</p>
-<h2 id="2、安装OpenJDK11">1.2 2、安装OpenJDK11</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
-<h2 id="3、安装halo">1.3 3、安装halo</h2><ul>
-<li>新建路径</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir halo</span><br></pre></td></tr></table></figure>
-<ul>
-<li>下载最新的 Halo 安装包， 为版本号，不带 v，更多下载地址请访问 <a target="_blank" rel="noopener" href="https://halo.run/archives/download.html">https://halo.run/archives/download.html</a></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/halo-dev/halo/releases/download/v1.4.2/halo-1.4.2.jar -O halo-latest.jar</span><br></pre></td></tr></table></figure>
-<ul>
-<li>下载配置文件到 ~/.halo 目录</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o ~/.halo/application.yaml --create-dirs https://dl.halo.run/config/application-template.yaml</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改配置文件</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.halo/application.yaml</span><br></pre></td></tr></table></figure>
-<p>得到如下配置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8090</span>  <span class="comment"># 端口</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Response data gzip.</span></span><br><span class="line">  <span class="attr">compression:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># H2 数据库配置</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">org.h2.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:h2:file:~/.halo/db/halo</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">creekwater</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">yang0517</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># MySQL database configuration.</span></span><br><span class="line"><span class="comment">#    driver-class-name: com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="comment">#    url: jdbc:mysql://127.0.0.1:3306/halodb?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true</span></span><br><span class="line"><span class="comment">#    username: root</span></span><br><span class="line"><span class="comment">#    password: 123456</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># H2 database console configuration.</span></span><br><span class="line">  <span class="attr">h2:</span></span><br><span class="line">    <span class="attr">console:</span></span><br><span class="line">      <span class="attr">settings:</span></span><br><span class="line">        <span class="attr">web-allow-others:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/h2-console</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="attr">halo:</span></span><br><span class="line">  <span class="comment"># web后台路径 https://your-domain/&#123;admin-path&#125;</span></span><br><span class="line">  <span class="comment"># https://127.0.0.1/creekwater-admin</span></span><br><span class="line">  <span class="attr">admin-path:</span> <span class="string">creekwater-admin</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># memory or level</span></span><br><span class="line">  <span class="attr">cache:</span> <span class="string">memory</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>如果需要自定义端口，修改 <code>server</code> 节点下的 <code>port</code> 即可。</li>
-<li>默认使用的是 <code>H2 Database</code> 数据库，这是一种嵌入式的数据库，使用起来非常方便。需要注意的是，默认的用户名和密码为 <code>admin</code> 和 <code>123456</code>，这个是自定义的，最好将其修改，并妥善保存。</li>
-<li>如果需要使用 <code>MySQL</code> 数据库，需要将 <code>H2 Database</code> 的所有相关配置都注释掉，并取消 <code>MySQL</code> 的相关配置。另外，<code>MySQL</code> 的默认数据库名为 <code>halodb</code>，请自行配置 <code>MySQL</code> 并创建数据库，以及修改配置文件中的用户名和密码。</li>
-<li><code>h2</code> 节点为 <code>H2 Database</code> 的控制台配置，默认是关闭的，如需使用请将 <code>h2.console.settings.web-allow-others</code> 和 <code>h2.console.enabled</code> 设置为 <code>true</code>。控制台地址即为 <code>域名/h2-console</code>。注意：非紧急情况，不建议开启该配置。</li>
-<li><code>server.compression.enabled</code> 为 <code>Gzip</code> 功能配置，如有需要请设置为 <code>true</code>，需要注意的是，如果你使用 <code>Nginx</code> 或者 <code>Caddy</code> 进行反向代理的话，默认是有开启 <code>Gzip</code> 的，所以这里可以保持默认。</li>
-<li><code>halo.admin-path</code> 为后台管理的根路径，默认为 <code>admin</code>，如果你害怕别人猜出来默认的 <code>admin</code>（就算猜出来，对方什么都做不了），请自行设置。仅支持一级，且前后不带 <code>/</code>。</li>
-<li><code>halo.cache</code> 为系统缓存形式的配置，可选 <code>memory</code> 和 <code>level</code>，默认为 <code>memory</code>，将数据缓存到内存，使用该方式的话，重启应用会导致缓存清空。如果选择 <code>level</code>，则会将数据缓存到磁盘，重启不会清空缓存。如不知道如何选择，建议默认。</li>
-</ol>
+        <h1 id="配置体验">1 配置体验</h1><p>安装ncurses库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install libncurses5-dev</span><br></pre></td></tr></table></figure>
+<p>首先需要使用<code>make xxx_defconfig</code>进行默认配置，然后再使用<code>make menuconfig</code>来对uboot进一步配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mx6ull_alientek_emmc_defconfig</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>注意</p>
-<p>使用 MySQL 之前，必须要先新建一个 <code>halodb</code> 数据库，MySQL 版本需 5.7 以上。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database halodb <span class="type">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_bin;</span><br></pre></td></tr></table></figure>
+<p>在menuconfig界面中：</p>
+<p>按下Y：将当前选择的编译进uboot</p>
+<p>按下N：当前选择的不编译进uboot</p>
+<p>按下M：当前选择的编译为模块</p>
+<p>按下H或者？：显示当前选项的提示信息</p>
 </blockquote>
-<ul>
-<li>启动测试</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar halo-latest.jar</span><br></pre></td></tr></table></figure>
-<ul>
-<li>看到以下输出，说明启动成功</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">run.halo.app.listener.StartedListener    : Halo started at         http://127.0.0.1:8090</span><br><span class="line">run.halo.app.listener.StartedListener    : Halo admin started at   http://127.0.0.1:8090/admin</span><br><span class="line">run.halo.app.listener.StartedListener    : Halo has started successfully!</span><br></pre></td></tr></table></figure>
-<h2 id="4、配置halo开机自启动">1.4 4、配置halo开机自启动</h2><p>上面我们已经完成了 Halo 的整个配置和安装过程，接下来我们对其进行更完善的配置，比如：<code>需要开机自启？</code>，<code>更简单的启动方式？</code></p>
-<p>实现以上功能我们只需要新增一个配置文件即可，也就是使用 <code>Systemd</code> 来完成这些工作。</p>
-<ul>
-<li>下载 Halo 官方的 halo.service 模板</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -o /etc/systemd/system/halo.service --create-dirs https://dl.halo.run/config/halo.service</span><br></pre></td></tr></table></figure>
+<p>例如使能DNS</p>
+<p>“Command line interface —&gt;Network commands —&gt;选中dns</p>
+<p>编译烧录uboot</p>
+<p>设置dns服务器的IP地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setenv dnsip 114.114.114.114</span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
+<p>使用dns命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dns www.baidu.com</span><br></pre></td></tr></table></figure>
+<h1 id="原理">2 原理</h1><p>当输入 make menuconfig 以后会匹配到顶层 Makefile 的如下代码：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">%config: scripts_basic outputmakefile FORCE</span></span><br><span class="line"><span class="variable">$(Q)</span><span class="variable">$(MAKE)</span> <span class="variable">$(build)</span>=scripts/kconfig <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
+<p>其中 <code>build=-f ./scripts/Makefile.build obj</code></p>
+<p>所以第一行展开就是<code>@ make -f ./scripts/Makefile.build obj=scripts/kconfig menuconfig</code></p>
+<p>Makefile.build 会读取 scripts/kconfig/Makefile 中的内容，在 scripts/kconfig/Makefile 中可以找到如下代码：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">menuconfig: <span class="variable">$(obj)</span>/mconf</span></span><br><span class="line">						<span class="variable">$&lt;</span> <span class="variable">$(silent)</span> <span class="variable">$(Kconfig)</span></span><br></pre></td></tr></table></figure>
+<p>其中obj= scripts/kconfig，silent是设置静默编译的，在这里可以忽略不计，Kconfig=Kconfig，因此扩展以后就是：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">menuconfig: scripts/kconfig/mconf</span></span><br><span class="line">scripts/kconfig/mconf Kconfig</span><br></pre></td></tr></table></figure>
+<p>目标 menuconfig 依赖 scripts/kconfig/mconf，因此 scripts/kconfig/mconf.c 这个文件会被编译，生成 mconf 这个可执行文件。目标 menuconfig 对应的规则为 scripts/kconfig/mconf Kconfig，也就是说 mconf 会调用 uboot 根目录下的 Kconfig 文件开始构建图形配置界面。</p>
+<h1 id="Kconfig语法">3 Kconfig语法</h1><h2 id="mainmenu">3.1 mainmenu</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mainmenu <span class="string">&quot;U-Boot $UBOOTVERSION Configuration&quot;</span></span><br></pre></td></tr></table></figure>
+<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714142218204.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714142218204" style="zoom:50%;">
 
-<ul>
-<li>修改 halo.service</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/halo.service</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description&#x3D;Halo Service</span><br><span class="line">Documentation&#x3D;https:&#x2F;&#x2F;halo.run</span><br><span class="line">After&#x3D;network-online.target</span><br><span class="line">Wants&#x3D;network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User&#x3D;wzy</span><br><span class="line">Type&#x3D;simple</span><br><span class="line">ExecStart&#x3D;&#x2F;usr&#x2F;bin&#x2F;java -server -Xms256m -Xmx256m -jar YOUR_JAR_PATH</span><br><span class="line">ExecStop&#x3D;&#x2F;bin&#x2F;kill -s QUIT $MAINPID</span><br><span class="line">Restart&#x3D;always</span><br><span class="line">StandOutput&#x3D;syslog</span><br><span class="line"></span><br><span class="line">StandError&#x3D;inherit</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy&#x3D;multi-user.target</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-Xms256m：为 JVM 启动时分配的内存，请按照服务器的内存做适当调整，512 M 内存的服务器推荐设置为 128，1G 内存的服务器推荐设置为 256，默认为 256。</li>
-<li>-Xmx256m：为 JVM 运行过程中分配的最大内存，配置同上。</li>
-<li>YOUR_JAR_PATH：Halo 安装包的绝对路径，例如 <code>/www/wwwroot/halo-latest.jar</code>。</li>
-</ul>
-<blockquote>
-<p>-Xms256m：为 JVM 启动时分配的内存，请按照服务器的内存做适当调整，512 M 内存的服务器推荐设置为 128，1G 内存的服务器推荐设置为 256，默认为 256。</p>
-<p>-Xmx256m：为 JVM 运行过程中分配的最大内存，配置同上。</p>
-<p>YOUR_JAR_PATH：Halo 安装包的绝对路径，例如 <code>/www/wwwroot/halo-latest.jar</code>。</p>
-</blockquote>
-<p>提示</p>
-<ol>
-<li>如果你不是按照上面的方法安装的 JDK，请确保 <code>/usr/bin/java</code> 是正确无误的。</li>
-<li>systemd 中的所有路径均要写为绝对路径，另外，<code>~</code> 在 systemd 中也是无法被识别的，所以你不能写成类似 <code>~/halo-latest.jar</code> 这种路径。</li>
-<li>如何检验是否修改正确：把 ExecStart 中的命令拿出来执行一遍。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改 service 文件之后需要刷新 Systemd</span></span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使 Halo 开机自启</span></span><br><span class="line">sudo systemctl <span class="built_in">enable</span> halo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动 Halo</span></span><br><span class="line">sudo service halo start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启 Halo</span></span><br><span class="line">sudo service halo restart</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止 Halo</span></span><br><span class="line">sudo service halo stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Halo 的运行状态</span></span><br><span class="line">sudo service halo status</span><br></pre></td></tr></table></figure>
+<p>mainmenu用来配置主菜单名</p>
+<h2 id="source">3.2 source</h2><p>读取其他目录下的Kconfig</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source <span class="string">&quot;xxx/Kconfig&quot;</span> <span class="comment">//xxx 为具体的目录名，相对路径</span></span><br></pre></td></tr></table></figure>
+<h2 id="menu-endmenu条目">3.3 menu/endmenu条目</h2><p>menu 用于生成菜单，endmenu 就是菜单结束标志，这两个一般是成对出现的</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">menu <span class="string">&quot;General setup&quot;</span></span><br><span class="line"></span><br><span class="line">config LOCALVERSION</span><br><span class="line">	string <span class="string">&quot;Local version - append to U-Boot release&quot;</span></span><br><span class="line"></span><br><span class="line">config LOCALVERSION_AUTO</span><br><span class="line">	bool <span class="string">&quot;Automatically append version information to the version string&quot;</span></span><br><span class="line">	default y</span><br><span class="line"></span><br><span class="line">endmenu		<span class="comment"># General setup</span></span><br></pre></td></tr></table></figure>
+<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714143147031.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714143147031" style="zoom:50%;">
+
+<h2 id="变量类型">3.4 变量类型</h2><p>Bool:y/n 是否</p>
+<p>Tristate:y/m/n 是/模块/否</p>
+<p>String：字符串</p>
+<p>Help: 表示帮助信息</p>
+<p>Default：表示默认值</p>
+<h2 id="Depends-on和select">3.5 Depends on和select</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">config SYS_GENERIC_BOARD</span><br><span class="line">	bool</span><br><span class="line">	depends on HAVE_GENERIC_BOARD</span><br><span class="line"></span><br><span class="line">choice</span><br><span class="line">	prompt <span class="string">&quot;Architecture select&quot;</span></span><br><span class="line">	default SANDBOX</span><br><span class="line"></span><br><span class="line">config ARC</span><br><span class="line">	bool <span class="string">&quot;ARC architecture&quot;</span></span><br><span class="line">	select HAVE_PRIVATE_LIBGCC</span><br><span class="line">	select HAVE_GENERIC_BOARD</span><br><span class="line">	select SYS_GENERIC_BOARD</span><br><span class="line">	select SUPPORT_OF_CONTROL</span><br></pre></td></tr></table></figure>
+<p>Depends on 说明SYS_GENERIC_BOARD依赖于HAVE_GENERIC_BOARD</p>
+<p>select 表示ARC选中后，HAVE_PRIVATE_LIBGCC等也会被选中</p>
+<h2 id="choice-endchoice">3.6 choice/endchoice</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">choice</span><br><span class="line">		prompt <span class="string">&quot;Architecture select&quot;</span></span><br><span class="line">		default SANDBOX</span><br><span class="line"></span><br><span class="line">config ARC</span><br><span class="line">		bool <span class="string">&quot;ARC architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">config ARM</span><br><span class="line">		bool <span class="string">&quot;ARM architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">config AVR32</span><br><span class="line">		bool <span class="string">&quot;AVR32 architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">config BLACKFIN</span><br><span class="line">		bool <span class="string">&quot;Blackfin architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">config M68K</span><br><span class="line">		bool <span class="string">&quot;M68000 architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">endchoice</span><br></pre></td></tr></table></figure>
+<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714143855491.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714143855491" style="zoom:50%;">
+
+<p>定义一组可选项</p>
+<h2 id="menuconfig">3.7 menuconfig</h2><p>带有选项的菜单，只有EXPERT被选中了，里面的选项才会显示出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">menu &quot;General setup&quot;</span><br><span class="line"></span><br><span class="line">menuconfig EXPERT</span><br><span class="line">		bool &quot;Configure standard U-Boot features (expert users)&quot;</span><br><span class="line">		default y</span><br><span class="line">		</span><br><span class="line">if EXPERT</span><br><span class="line">		config SYS_MALLOC_CLEAR_ON_INIT</span><br><span class="line">		bool &quot;Init with zeros the memory reserved for malloc (slow)&quot;</span><br><span class="line">		default y</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">endmenu # General setup</span><br></pre></td></tr></table></figure>
+<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714144247011.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714144247011" style="zoom:50%;">
+
+<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714144257714.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714144257714" style="zoom:50%;">
+
+<h2 id="comment">3.8 comment</h2><p>用于图形化界面中显示注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config NAND_ARASAN</span><br><span class="line">	bool &quot;Configure Arasan Nand&quot;</span><br><span class="line">	</span><br><span class="line">comment &quot;Generic NAND options&quot;</span><br></pre></td></tr></table></figure>
+<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714144554386.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714144554386" style="zoom:50%;">
+
+
       </div>
       
         <div class="copyright">
@@ -641,7 +630,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/posts/4d966b64.html" target="_blank" title="Halo博客搭建">https://www.creekwater.cn/posts/4d966b64.html</a>
+    <a href="/posts/196c55f4.html" target="_blank" title="uboot图形化配置">https://www.creekwater.cn/posts/196c55f4.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -661,20 +650,18 @@
 
   
   <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/10f4aa60.html" class="post-nav-link">
+    <a href="/posts/f9852f95.html" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
-        <div>gdb组件分析</div>
+        <div>Linux根文件系统搭建</div>
       </div>
       
       <!-- <div class="content">
-        1 1、GDB RSP(GDB Remote Serial Protocol)
-信息格式：$数据#校验码
-
-多数信息使用
+        1 简介1.1 /bin 目录存放着系统需要的可执行文件，例如ls，mv等命令，该目录下所有用户都可以使用
+1.2 /d
       </div> -->
     </a>
   </div>
@@ -683,22 +670,16 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/14.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/3.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/f2ed0f51.html" class="post-nav-link">
+    <a href="/posts/54ee180f.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>hugo配置文件</div>
+        <div>uboot移植</div>
       </div>
       <!-- <div class="content">
-        1 author作者
-
-author = “creekwater”
-
-2 title文章的标题
-
-title = “hu
+        1 nxp uboot编译测试1.1 官方uboot编译123make ARCH=arm CROSS_COMPILE=a
       </div> -->
     </a>
   </div>
