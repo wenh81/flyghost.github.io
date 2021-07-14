@@ -308,7 +308,7 @@ EXPORT_SYMBOL(inet_sendmsg);
 
 
 
-# 5 UDP 协议层
+# UDP 协议层
 
 
 
@@ -316,7 +316,7 @@ EXPORT_SYMBOL(inet_sendmsg);
 
 这个函数定义在 [net/ipv4/udp.c](https://github.com/torvalds/linux/blob/v3.13/net/ipv4/udp.c#L845-L1088) ，函数非常长，我们分段来看。
 
-### 5.1.1 UDP corking（软木塞）
+### UDP corking（软木塞）
 
 在变量声明和基本错误检查之后，`udp_sendmsg` 所做的第一件事就是检查 socket 是否“ 塞住”了（corked）。 UDP corking 是一项优化技术，允许内核将多次数据累积成单个数据报发 送。在用户程序中有两种方法可以启用此选项：
 
@@ -352,7 +352,7 @@ int udp_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
   }
 ```
 
-### 5.1.2 获取目的 IP 地址和端口
+### 获取目的 IP 地址和端口
 
 接下来获取目标地址和端口，有两个可能的来源：
 
@@ -396,7 +396,7 @@ int udp_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 
 如果没有 `struct msghdr` 变量，内核函数到达 `udp_sendmsg` 函数时，会从 socket 本身检索 目标地址和端口，并将 socket 标记为“已连接”。
 
-### 5.1.3 Socket 发送：bookkeeping 和打时间戳
+### Socket 发送：bookkeeping 和打时间戳
 
 接下来，获取存储在 socket 上的源地址、设备索引（device index）和时间戳选项（例 如 `SOCK_TIMESTAMPING_TX_HARDWARE`, `SOCK_TIMESTAMPING_TX_SOFTWARE`, `SOCK_WIFI_STATUS`）：
 
@@ -408,7 +408,7 @@ ipc.oif = sk->sk_bound_dev_if;
 sock_tx_timestamp(sk, &ipc.tx_flags);
 ```
 
-### 5.1.4 辅助消息（Ancillary messages）
+### 辅助消息（Ancillary messages）
 
 除了发送或接收数据包之外，`sendmsg` 和 `recvmsg` 系统调用还允许用户设置或请求辅助数 据。用户程序可以通过将请求信息组织成 `struct msghdr` 类型变量来利用此辅助数据。一些辅 助数据类型记录在[IP man page](http://man7.org/linux/man-pages/man7/ip.7.html)中 。
 
@@ -432,7 +432,7 @@ if (msg->msg_controllen) {
 
 解析辅助消息的工作是由 `ip_cmsg_send` 完成的，定义在 [net/ipv4/ip_sockglue.c](https://github.com/torvalds/linux/blob/v3.13/net/ipv4/ip_sockglue.c#L190-L241) 。注意，传递一个未初始化的辅助数据，将会把这个 socket 标记为“未建立连接的”（译者注 ：因为从 5.1.2 的代码可以看出，有辅助消息时优先处理辅助消息，没有辅助消息才从 socket 里面拿信息）。
 
-### 5.1.5 设置自定义 IP 选项
+### 设置自定义 IP 选项
 
 接下来，`sendmsg` 将检查用户是否通过辅助消息设置了的任何自定义 IP 选项。如果设置了 ，将使用这些自定义值；如果没有，那就使用 socket 中（已经在用）的参数：
 
@@ -482,7 +482,7 @@ if (sock_flag(sk, SOCK_LOCALROUTE) ||
 }
 ```
 
-### 5.1.6 多播或单播（Multicast or unicast）
+### 多播或单播（Multicast or unicast）
 
 接下来代码开始处理 multicast。这有点复杂，因为用户可以通过 `IP_PKTINFO` 辅助消息 来指定发送包的源地址或设备号，如前所述。
 
@@ -504,7 +504,7 @@ if (ipv4_is_multicast(daddr)) {
         ipc.oif = inet->uc_index;
 ```
 
-### 5.1.7 路由
+### 路由
 
 现在开始路由！
 
@@ -560,7 +560,7 @@ if (connected)
         sk_dst_set(sk, dst_clone(&rt->dst));
 ```
 
-### 5.1.8 `MSG_CONFIRM`: 阻止 ARP 缓存过期
+### `MSG_CONFIRM`: 阻止 ARP 缓存过期
 
 如果调用 `send`, `sendto` 或 `sendmsg` 的时候指定了 `MSG_CONFIRM` 参数，UDP 协议层将会如下处理：
 
@@ -587,7 +587,7 @@ do_confirm:
 
 一旦 `do_confirm` 代码跳回到 `back_from_confirm`（或者之前就没有执行到 `do_confirm` ），代码接下来将处理 UDP cork 和 uncorked 情况。
 
-### 5.1.9 uncorked UDP sockets 快速路径：准备待发送数据
+### uncorked UDP sockets 快速路径：准备待发送数据
 
 如果不需要 corking，数据就可以封装到一个 `struct sk_buff` 实例中并传递给 `udp_send_skb`，离 IP 协议层更进了一步。这是通过调用 `ip_make_skb` 来完成的。
 
@@ -681,7 +681,7 @@ goto out;
 
 如果有错误，错误计数就会有相应增加。后面的“错误计数”部分会详细介绍。
 
-### 5.1.10 没有被 cork 的数据时的慢路径
+### 没有被 cork 的数据时的慢路径
 
 如果使用了 UDP corking，但之前没有数据被 cork，则慢路径开始：
 
@@ -782,7 +782,7 @@ if (!err)
 
 这就是内核如何处理 corked UDP sockets 的。
 
-### 5.1.11 Error accounting
+### Error accounting
 
 如果：
 
@@ -1543,7 +1543,7 @@ static int __dev_queue_xmit(struct sk_buff *skb, void *accel_priv)
 
 这会选择发送队列。本文后面会看到，一些网卡支持多发送队列。我们来看这是如何工作的。
 
-### 7.2.1 `netdev_pick_tx`
+###  `netdev_pick_tx`
 
 `netdev_pick_tx` 定义在[net/core/flow_dissector.c](https://github.com/torvalds/linux/blob/v3.13/net/core/flow_dissector.c#L397-L417):
 
@@ -1580,7 +1580,7 @@ struct netdev_queue *netdev_pick_tx(struct net_device *dev,
 
 一旦`__netdev_pick_tx` 确定了队列号，`skb_set_queue_mapping` 将缓存该值（稍后将在 流量控制代码中使用），`netdev_get_tx_queue` 将查找并返回指向该队列的指针。让我们 看一下`__netdev_pick_tx` 在返回`__dev_queue_xmit` 之前的工作原理。
 
-### 7.2.2 `__netdev_pick_tx`
+### `__netdev_pick_tx`
 
 我们来看内核如何选择 TX 队列。 [net/core/flow_dissector.c](https://github.com/torvalds/linux/blob/v3.13/net/core/flow_dissector.c#L375-L395):
 

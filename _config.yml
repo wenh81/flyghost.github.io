@@ -136,7 +136,7 @@ feed:
 
 # 正文标题添加序号
 heading_index:
-  enable: false
+  enable: true
   index_styles: "{1} {1} {1} {1} {1} {1}"
   connector: "."
   global_prefix: ""
