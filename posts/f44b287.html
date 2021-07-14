@@ -561,22 +561,22 @@
         
       </div>
       <div class="post-content">
-        <h1 id="配置终端使用代理"><a href="#配置终端使用代理" class="headerlink" title="配置终端使用代理"></a>配置终端使用代理</h1><h2 id="临时（只在该终端生效）"><a href="#临时（只在该终端生效）" class="headerlink" title="临时（只在该终端生效）"></a>临时（只在该终端生效）</h2><ul>
+        <h1 id="配置终端使用代理">1 配置终端使用代理</h1><h2 id="临时（只在该终端生效）">1.1 临时（只在该终端生效）</h2><ul>
 <li>第一种方法：走http<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=http://127.0.0.1:1087</span><br><span class="line">export https_proxy=http://127.0.0.1:1087</span><br></pre></td></tr></table></figure></li>
 <li>第二种方法：走socks<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=socks://127.0.0.1:1080</span><br><span class="line">export https_proxy=socks://127.0.0.1:1080</span><br></pre></td></tr></table></figure></li>
 <li>windows终端则将export改为set</li>
 </ul>
-<h2 id="永久（不建议）"><a href="#永久（不建议）" class="headerlink" title="永久（不建议）"></a>永久（不建议）</h2><p>省略。。。</p>
-<h1 id="设置apt使用代理"><a href="#设置apt使用代理" class="headerlink" title="设置apt使用代理"></a>设置apt使用代理</h1><h2 id="方法一：临时"><a href="#方法一：临时" class="headerlink" title="方法一：临时"></a>方法一：临时</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -o Acquire::http::proxy=&quot;http://127.0.0.1:1080/&quot; update</span><br></pre></td></tr></table></figure>
-<h2 id="方法二：临时，配置终端走代理，使得apt命令走代理"><a href="#方法二：临时，配置终端走代理，使得apt命令走代理" class="headerlink" title="方法二：临时，配置终端走代理，使得apt命令走代理"></a>方法二：临时，配置终端走代理，使得apt命令走代理</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=http://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<h2 id="永久（不建议）">1.2 永久（不建议）</h2><p>省略。。。</p>
+<h1 id="设置apt使用代理">2 设置apt使用代理</h1><h2 id="方法一：临时">2.1 方法一：临时</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -o Acquire::http::proxy=&quot;http://127.0.0.1:1080/&quot; update</span><br></pre></td></tr></table></figure>
+<h2 id="方法二：临时，配置终端走代理，使得apt命令走代理">2.2 方法二：临时，配置终端走代理，使得apt命令走代理</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=http://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
 <ul>
 <li>详细的配置可以看另一篇终端配置</li>
 </ul>
-<h2 id="方法三：永久（不推荐）"><a href="#方法三：永久（不推荐）" class="headerlink" title="方法三：永久（不推荐）"></a>方法三：永久（不推荐）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/apt.conf # 或者修改/etc/envrionment</span><br><span class="line"><span class="meta">#</span><span class="bash"> 增加如下命令</span></span><br><span class="line">Acquire::http::proxy &quot;http://127.0.0.1:1080/&quot;;</span><br><span class="line">Acquire::ftp::proxy &quot;ftp://127.0.0.1:1080/&quot;;</span><br><span class="line">Acquire::https::proxy &quot;https://127.0.0.1:1080/&quot;;</span><br></pre></td></tr></table></figure>
-<h1 id="设置git使用代理"><a href="#设置git使用代理" class="headerlink" title="设置git使用代理"></a>设置git使用代理</h1><h2 id="方法一：使用socks5协议"><a href="#方法一：使用socks5协议" class="headerlink" title="方法一：使用socks5协议"></a>方法一：使用socks5协议</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy socks5://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy socks5://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
-<h2 id="方法二：使用http协议"><a href="#方法二：使用http协议" class="headerlink" title="方法二：使用http协议"></a>方法二：使用http协议</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
-<h2 id="查看所有配置"><a href="#查看所有配置" class="headerlink" title="查看所有配置"></a>查看所有配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
-<h2 id="reset-代理设置"><a href="#reset-代理设置" class="headerlink" title="reset 代理设置"></a>reset 代理设置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+<h2 id="方法三：永久（不推荐）">2.3 方法三：永久（不推荐）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/apt.conf # 或者修改/etc/envrionment</span><br><span class="line"><span class="meta">#</span><span class="bash"> 增加如下命令</span></span><br><span class="line">Acquire::http::proxy &quot;http://127.0.0.1:1080/&quot;;</span><br><span class="line">Acquire::ftp::proxy &quot;ftp://127.0.0.1:1080/&quot;;</span><br><span class="line">Acquire::https::proxy &quot;https://127.0.0.1:1080/&quot;;</span><br></pre></td></tr></table></figure>
+<h1 id="设置git使用代理">3 设置git使用代理</h1><h2 id="方法一：使用socks5协议">3.1 方法一：使用socks5协议</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy socks5://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy socks5://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<h2 id="方法二：使用http协议">3.2 方法二：使用http协议</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<h2 id="查看所有配置">3.3 查看所有配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
+<h2 id="reset-代理设置">3.4 reset 代理设置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
 
       </div>
       
@@ -617,8 +617,8 @@
       </div>
       
       <!-- <div class="content">
-        littleFS功能
-Power-loss resilience 断电恢复能力 - littlefs设计用于处理随机电源
+        1 littleFS1.1 功能
+Power-loss resilience 断电恢复能力 - littlefs设计用于
       </div> -->
     </a>
   </div>
@@ -636,8 +636,8 @@ Power-loss resilience 断电恢复能力 - littlefs设计用于处理随机电�
         <div>Linux根文件系统搭建</div>
       </div>
       <!-- <div class="content">
-        简介/bin 目录存放着系统需要的可执行文件，例如ls，mv等命令，该目录下所有用户都可以使用
-/dev 目录devic
+        1 简介1.1 /bin 目录存放着系统需要的可执行文件，例如ls，mv等命令，该目录下所有用户都可以使用
+1.2 /d
       </div> -->
     </a>
   </div>
@@ -1724,9 +1724,9 @@ Power-loss resilience 断电恢复能力 - littlefs设计用于处理随机电�
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

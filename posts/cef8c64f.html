@@ -562,7 +562,7 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>BSS Coloring技术是802.11ax中引入，目的进一步优化空间复用（Spatial Reuse Parameter）。在前文讨论过关于BSS Coloring技术，但是关于如何基于BSS Coloring进行Spatial Reuse Parameter，还需要额外介绍Adaptive-CCA机制。本文就关于这两个问题做一个阐述。</p>
+<h1 id="序言">1 序言</h1><p>BSS Coloring技术是802.11ax中引入，目的进一步优化空间复用（Spatial Reuse Parameter）。在前文讨论过关于BSS Coloring技术，但是关于如何基于BSS Coloring进行Spatial Reuse Parameter，还需要额外介绍Adaptive-CCA机制。本文就关于这两个问题做一个阐述。</p>
 <p>本文参考自：</p>
 <ul>
 <li><a href="/books/Future-and-Indoor-Networks.pdf">Future Indoor Networks: The role of Wi-Fi and its evolution - nokia bell lab</a></li>
@@ -571,13 +571,13 @@
 <li><a href="/books/Draft_P802.11ax_D8.0.pdf">Draft P802.11ax_D8.0.pdf</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.wifi-professionals.com/2019/07/bss-colouring-or-spatial-reuse-802-11ax-aka-wifi6">BSS COLOURING OR SPATIAL REUSE (802.11AX AKA WIFI6)</a></li>
 </ul>
-<h1 id="SRP空间复用（Spatial-Reuse-Parameter）"><a href="#SRP空间复用（Spatial-Reuse-Parameter）" class="headerlink" title="SRP空间复用（Spatial Reuse Parameter）"></a>SRP空间复用（Spatial Reuse Parameter）</h1><p>在802.11ax中，基于BSS Coloring，我们可以区分出Inter-BSS和Intra-BSS。如果现在一个Inter-BSS的节点检测到信道是忙的，但是其知道这个信道不是自己BSS正在进行传输，那么其可以认为信道是idle状态，进而继续backoff。如果backoff到0，那么其可以进行传输。</p>
+<h1 id="SRP空间复用（Spatial-Reuse-Parameter）">2 SRP空间复用（Spatial Reuse Parameter）</h1><p>在802.11ax中，基于BSS Coloring，我们可以区分出Inter-BSS和Intra-BSS。如果现在一个Inter-BSS的节点检测到信道是忙的，但是其知道这个信道不是自己BSS正在进行传输，那么其可以认为信道是idle状态，进而继续backoff。如果backoff到0，那么其可以进行传输。</p>
 <p>![image-20210407163921854](802.11AX SRP空间复用和Adaptive-CCA/image-20210407163921854.png)</p>
 <p>如上图所示，假设一个BSS的AP发送了一个SR-enable trigger frame（协议中称为SRP PPDU），代表当前的AP是允许一个SRP传输的。目前我理解的SRP仅仅支持AP上行接收的情况。AP发送完SRP TF帧后，其执行自己BSS内的一次传输，比如说一次上行传输。此时，如果一个支持SRP技术的Inter-BSS STA，也就是其他BSS Color下的节点，收到该SRP TF帧后。其会采用adaptive-CCA机制进行信道检测。如果其在adaptive-CCA的阈值下（即OBSS_PD阈值）检测信道是idle的，那么其可以继续执行backoff的操作。当backoff到0以后，其就可以执行一次数据的传输。</p>
 <p>SR-enable的标志位应该是在PHY头部的HE-SIG-A1里面的Spatial Reuse field，这里面一共有4个field，可以设置disable SRP技术，也可以设置对应延迟或者具体的adaptive-CCA阈值等。</p>
 <p>另外需要注意的是，这里允许传输的inter-BSS STA的数据帧大小也是有限制的。在一开始AP发送的TF帧中，实际上是包含了duration参数设置，代表其上行接收PPDU过程所需要的时间。inter-BSS需要在该Duration时间内完成SRP空间复用的传输，这里可能又会应用到动态帧分片技术了。</p>
 <p>SRP技术实际上是一种利用捕获效应的空间复用技术，简单理解就是，如果当前AP的接收信号质量不错，不容易被干扰。那么此时就允许在该网络内，一个其他BSS的节点传输。由于本身我的信号强度够强，所以不会受到其他节点的干扰。该技术可以利用的核心机制就是adaptive-CCA机制，AP可以控制CCA的阈值，从而控制让部分节点（也就是不对自己产生干扰的节点）进行空间复用。</p>
-<h1 id="Adaptive-CCA（自适应CCA）"><a href="#Adaptive-CCA（自适应CCA）" class="headerlink" title="Adaptive-CCA（自适应CCA）"></a>Adaptive-CCA（自适应CCA）</h1><p><strong>CCA技术是</strong>802.11协议用来检测信道是否有数据包在传输的<strong>物理载波监听技术</strong>。</p>
+<h1 id="Adaptive-CCA（自适应CCA）">3 Adaptive-CCA（自适应CCA）</h1><p><strong>CCA技术是</strong>802.11协议用来检测信道是否有数据包在传输的<strong>物理载波监听技术</strong>。</p>
 <p>802.11ax除了传统的ED_Threshold和CS_Threshold，进一步引入了OBSS_PD这个参数。</p>
 <p>![Using Color Codes for Clear Channel Assessment](802.11AX SRP空间复用和Adaptive-CCA/image-20210407180033598.png)</p>
 <p>上面左图描述的是传统802.11的情况，其中CCA-Energy Detection对应到EDThreshold（-82 dBm），CCA-Signal Detection对应到CS_Threshold（-62 dBm）。右边描述的是802.11ax中的情况，我们可以看到起CCA_SD实际上一个新的阈值（协议命名是OBSS_PD），其高于原来的CS_Threshold（-62 dBm），这个阈值是自适应调节的，所以被称为Adaptive-CCA。该阈值的目的就是用来区分，目前CCA检测到的数据帧是不是本BSS域内的。<strong>按照SRP的规则，如果STA检测到该数据帧不是本BSS的，而且STA的信号强度是小于该Adaptive-CCA的，那么可以认为信道是idle，可以继续backoff</strong>。</p>
@@ -639,7 +639,7 @@
       
       <!-- <div class="content">
         [TOC]
-序言帧聚合（Frame Aggregation）是802.11中为了提升传输效率的一种方式，自802.11n
+1 序言帧聚合（Frame Aggregation）是802.11中为了提升传输效率的一种方式，自802.1
       </div> -->
     </a>
   </div>
@@ -658,10 +658,10 @@
       </div>
       <!-- <div class="content">
         [TOC]
-序言参考资料：
+1 序言参考资料：
 
 What Is BSS Coloring In 802.11ax?
-What is BSS
+What is B
       </div> -->
     </a>
   </div>
@@ -1748,9 +1748,9 @@ What is BSS
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

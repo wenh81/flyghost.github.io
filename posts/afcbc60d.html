@@ -561,7 +561,7 @@
         
       </div>
       <div class="post-content">
-        <h1 id="安装-Node-js和npm"><a href="#安装-Node-js和npm" class="headerlink" title="安装 Node.js和npm"></a>安装 Node.js和npm</h1><blockquote>
+        <h1 id="安装-Node-js和npm">1 安装 Node.js和npm</h1><blockquote>
 <p>sudo apt-get update<br>sudo apt-get install nodejs<br>sudo apt-get install npm</p>
 </blockquote>
 <p>如果报错,请更改软件源–<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/">清华大学开源软件源</a>,并更新</p>
@@ -570,7 +570,7 @@
 <p>nodejs -v<br>npm -v</p>
 </blockquote>
 <p>可以正常打印版本号说明,安装成功</p>
-<h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><p>创建博客所在目录</p>
+<h1 id="安装-Hexo">2 安装 Hexo</h1><p>创建博客所在目录</p>
 <blockquote>
 <p>mkdir hexo</p>
 </blockquote>
@@ -611,7 +611,7 @@
 <blockquote>
 <p>deploy:<br>type: git<br>repo: <a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=mailto:git@github.com">git@github.com</a>:mocorochio/<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://micorochio.github.io.git">micorochio.github.io.git</a><br>branch: master</p>
 </blockquote>
-<h1 id="三、Hexo-相关命令"><a href="#三、Hexo-相关命令" class="headerlink" title="三、Hexo 相关命令"></a>三、Hexo 相关命令</h1><p>新建文章(会在 hexo/source/_post 下生成对应.md 文件)</p>
+<h1 id="三、Hexo-相关命令">3 三、Hexo 相关命令</h1><p>新建文章(会在 hexo/source/_post 下生成对应.md 文件)</p>
 <blockquote>
 <p>hexo n “文章名称”</p>
 </blockquote>
@@ -627,27 +627,27 @@
 <blockquote>
 <p>hexo d</p>
 </blockquote>
-<h1 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h1><p>省略。。。</p>
-<h1 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h1><h3 id="下载静态网站"><a href="#下载静态网站" class="headerlink" title="下载静态网站"></a>下载静态网站</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /www</span><br><span class="line">cd /www</span><br><span class="line">git clone -b public https://github.com/flyghost/flyghost.github.io.git</span><br></pre></td></tr></table></figure>
+<h1 id="安装nginx">4 安装nginx</h1><p>省略。。。</p>
+<h1 id="部署网站">5 部署网站</h1><h3 id="下载静态网站">5.0.1 下载静态网站</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /www</span><br><span class="line">cd /www</span><br><span class="line">git clone -b public https://github.com/flyghost/flyghost.github.io.git</span><br></pre></td></tr></table></figure>
 <p>将<strong>flyghost</strong>改为你自己的用户名，由于我将静态网站发布到<strong>public</strong>分支，所以需要加上**<code>-b public</code>**</p>
-<h3 id="申请SSL证书"><a href="#申请SSL证书" class="headerlink" title="申请SSL证书"></a>申请SSL证书</h3><p>阿里云申请，省略。。。</p>
-<h3 id="下载SSL证书"><a href="#下载SSL证书" class="headerlink" title="下载SSL证书"></a>下载SSL证书</h3><p>将SSL证书放入**<code>/ssl/www.creekwater.cn/</code>**路径下</p>
-<h3 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如果刚安装的nginx，该路径下为空</span></span><br><span class="line">cd /etc/nginx/conf.d</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建一个配置文件</span></span><br><span class="line">vim www.creekwater.cn.conf</span><br></pre></td></tr></table></figure>
-<h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;                                              # http端口</span><br><span class="line">    server_name  www.creekwater.cn;                        # 改为自己的域名</span><br><span class="line">    rewrite ^(.*)$ https:<span class="comment">//$&#123;server_name&#125;$1 permanent;      # http重定向到https，可以实现所有访问都转到https</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    server_name www.creekwater.cn;     # 改为域名</span><br><span class="line">    listen 443 ssl;                     # 一定要改为443，因为https端口为443，同时开启SSL</span><br><span class="line"></span><br><span class="line">    ssl_certificate /ssl/www.creekwater.cn/www.creekwater.cn.pem;         # 改为自己申请得到的 crt 文件的名称</span><br><span class="line">    ssl_certificate_key /ssl/www.creekwater.cn/www.creekwater.cn.key;     # 改为自己申请得到的 key 文件的名称</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1<span class="number">.1</span> TLSv1<span class="number">.2</span>;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    root /www/flyghost.github.io;                                           # 静态网站路径，注意权限</span><br><span class="line">    index index.html;                                                       # 主页名字</span><br><span class="line">    location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|js|pdf|txt)&#123;</span><br><span class="line">        root /www/flyghost.github.io;                                       # 静态网站路径</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="重启nginx"><a href="#重启nginx" class="headerlink" title="重启nginx"></a>重启nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
-<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="解决图片显示和typora显示"><a href="#解决图片显示和typora显示" class="headerlink" title="解决图片显示和typora显示"></a>解决图片显示和typora显示</h2><p>安装hexo-asset-image，使用相对路径</p>
+<h3 id="申请SSL证书">5.0.2 申请SSL证书</h3><p>阿里云申请，省略。。。</p>
+<h3 id="下载SSL证书">5.0.3 下载SSL证书</h3><p>将SSL证书放入**<code>/ssl/www.creekwater.cn/</code>**路径下</p>
+<h3 id="配置nginx">5.0.4 配置nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如果刚安装的nginx，该路径下为空</span></span><br><span class="line">cd /etc/nginx/conf.d</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建一个配置文件</span></span><br><span class="line">vim www.creekwater.cn.conf</span><br></pre></td></tr></table></figure>
+<h3 id="编辑配置文件">5.0.5 编辑配置文件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;                                              # http端口</span><br><span class="line">    server_name  www.creekwater.cn;                        # 改为自己的域名</span><br><span class="line">    rewrite ^(.*)$ https:<span class="comment">//$&#123;server_name&#125;$1 permanent;      # http重定向到https，可以实现所有访问都转到https</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    server_name www.creekwater.cn;     # 改为域名</span><br><span class="line">    listen 443 ssl;                     # 一定要改为443，因为https端口为443，同时开启SSL</span><br><span class="line"></span><br><span class="line">    ssl_certificate /ssl/www.creekwater.cn/www.creekwater.cn.pem;         # 改为自己申请得到的 crt 文件的名称</span><br><span class="line">    ssl_certificate_key /ssl/www.creekwater.cn/www.creekwater.cn.key;     # 改为自己申请得到的 key 文件的名称</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1<span class="number">.1</span> TLSv1<span class="number">.2</span>;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    root /www/flyghost.github.io;                                           # 静态网站路径，注意权限</span><br><span class="line">    index index.html;                                                       # 主页名字</span><br><span class="line">    location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|js|pdf|txt)&#123;</span><br><span class="line">        root /www/flyghost.github.io;                                       # 静态网站路径</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="重启nginx">5.0.6 重启nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+<h1 id="常见问题">6 常见问题</h1><h2 id="解决图片显示和typora显示">6.1 解决图片显示和typora显示</h2><p>安装hexo-asset-image，使用相对路径</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-<h2 id="文章路径显示为固定的加密字符串"><a href="#文章路径显示为固定的加密字符串" class="headerlink" title="文章路径显示为固定的加密字符串"></a>文章路径显示为固定的加密字符串</h2><p>安装hexo-abbrlink</p>
+<h2 id="文章路径显示为固定的加密字符串">6.2 文章路径显示为固定的加密字符串</h2><p>安装hexo-abbrlink</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
 <p>在hexo根目录下的_config.yml中，修改为如下代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">permalink: posts&#x2F;:abbrlink.html</span><br><span class="line">abbrlink:</span><br><span class="line">  alg: crc32  # 算法：crc16(default) and crc32</span><br><span class="line">  rep: hex    # 进制：dec(default) and hex</span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: true # Set to false to remove trailing &#39;index.html&#39; from permalinks</span><br><span class="line">  trailing_html: true # Set to false to remove trailing &#39;.html&#39; from permalinks</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="hexo-abbrlink和hexo-asset-image冲突导致图片显示不出来"><a href="#hexo-abbrlink和hexo-asset-image冲突导致图片显示不出来" class="headerlink" title="hexo-abbrlink和hexo-asset-image冲突导致图片显示不出来"></a>hexo-abbrlink和hexo-asset-image冲突导致图片显示不出来</h2><ul>
+<h2 id="hexo-abbrlink和hexo-asset-image冲突导致图片显示不出来">6.3 hexo-abbrlink和hexo-asset-image冲突导致图片显示不出来</h2><ul>
 <li>打开<code>\node_modules\hexo-asset-image\index.js</code></li>
 <li>修改<code>var endPos = link.length-1;</code>为<code>var endPos = link.length-5;</code></li>
 </ul>
-<h2 id="添加PDF链接"><a href="#添加PDF链接" class="headerlink" title="添加PDF链接"></a>添加PDF链接</h2><ul>
+<h2 id="添加PDF链接">6.4 添加PDF链接</h2><ul>
 <li><pre><code>  npm install --save hexo-pdf
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 在source文件夹下新建一个books文件夹，并将PDF文件放入</span><br><span class="line"></span><br><span class="line">- 使用方法：在markdown文件中使用链接，譬如&#96;&#96;&#96;[Future-and-Indoor-Networks](&#x2F;books&#x2F;Future-and-Indoor-Networks.pdf)&#96;&#96;&#96;</span><br><span class="line"></span><br><span class="line">## 修改文稿后网页实时预览</span><br><span class="line"></span><br><span class="line">安装插件</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 npm install hexo-browsersync --save
@@ -695,7 +695,7 @@ npm install hexo-browsersync --save
       </div>
       
       <!-- <div class="content">
-        例程
+        1 例程
 
 
 文件
@@ -705,8 +705,6 @@ npm install hexo-browsersync --save
 
 example/protocals/https_mbedtls/
 mbedtls库用例
-
-
 
       </div> -->
     </a>
@@ -725,7 +723,7 @@ mbedtls库用例
         <div>MQTT协议简介及移植</div>
       </div>
       <!-- <div class="content">
-        MQTT协议MQTT协议简介MQTT协议全称是Message Queuing Telemetry Transport，翻
+        1 MQTT协议1.1 MQTT协议简介MQTT协议全称是Message Queuing Telemetry Trans
       </div> -->
     </a>
   </div>
@@ -1812,9 +1810,9 @@ mbedtls库用例
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

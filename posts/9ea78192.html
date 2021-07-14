@@ -561,8 +561,8 @@
         
       </div>
       <div class="post-content">
-        <h1 id="1-dport-panic-highint-hdl-S"><a href="#1-dport-panic-highint-hdl-S" class="headerlink" title="1. dport_panic_highint_hdl.S"></a>1. dport_panic_highint_hdl.S</h1><p>call4 panicHandler：传递(XtExcFrame *)frame</p>
-<h1 id="2-panic-handler"><a href="#2-panic-handler" class="headerlink" title="2. panic_handler"></a>2. panic_handler</h1><ul>
+        <h1 id="1-dport-panic-highint-hdl-S">1 1. dport_panic_highint_hdl.S</h1><p>call4 panicHandler：传递(XtExcFrame *)frame</p>
+<h1 id="2-panic-handler">2 2. panic_handler</h1><ul>
 <li><p>保存frame：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g_exc_frames[core_id] = frame</span><br></pre></td></tr></table></figure></li>
 <li><p>确保只有一个内核进入panic</p>
@@ -592,12 +592,12 @@
 <p>PANIC_RSN_INTWDT_CPU1                    </p>
 <p>PANIC_RSN_CACHEERR                          </p>
 </blockquote>
-<h1 id="3-frame-to-panic-info-异常信息转换"><a href="#3-frame-to-panic-info-异常信息转换" class="headerlink" title="3. frame_to_panic_info:异常信息转换"></a>3. frame_to_panic_info:异常信息转换</h1><ul>
+<h1 id="3-frame-to-panic-info-异常信息转换">3 3. frame_to_panic_info:异常信息转换</h1><ul>
 <li><p>初始化</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> core;                               <span class="comment">// 引发异常的核心</span></span><br><span class="line">  <span class="keyword">panic_exception_t</span> exception;            <span class="comment">// 引发异常的原因</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>* reason;                     <span class="comment">// 异常字符串</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>* description;                <span class="comment">// 异常的简短描述</span></span><br><span class="line">  <span class="keyword">panic_info_dump_fn_t</span> details;           <span class="comment">// 有关异常的更多信息</span></span><br><span class="line">  <span class="keyword">panic_info_dump_fn_t</span> state;             <span class="comment">// 处理器状态，通常是寄存器的内容</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">void</span>* addr;                       <span class="comment">// 触发异常的指令地址</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">void</span>* frame;                      <span class="comment">// 参考框架，直接从汇编传过来的</span></span><br><span class="line">  <span class="keyword">bool</span> pseudo_excause;                    <span class="comment">// 表示异常原因有特殊含义的标志</span></span><br><span class="line">&#125; <span class="keyword">panic_info_t</span>;</span><br><span class="line"></span><br><span class="line">info-&gt;core = cpu_hal_get_core_id();</span><br><span class="line">info-&gt;exception = PANIC_EXCEPTION_FAULT;</span><br><span class="line">info-&gt;details = <span class="literal">NULL</span>;   </span><br><span class="line">info-&gt;reason = <span class="string">&quot;Unknown&quot;</span>;</span><br><span class="line">info-&gt;pseudo_excause = pseudo_excause;    <span class="comment">//这里是true</span></span><br><span class="line"></span><br><span class="line">info-&gt;state = print_state;</span><br><span class="line">info-&gt;frame = frame;</span><br></pre></td></tr></table></figure></li>
 <li><p>异常信息格式转换</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (pseudo_excause) &#123;</span><br><span class="line">    panic_soc_fill_info(frame, info);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    panic_arch_fill_info(frame, info);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="3-1-panic-soc-fill-info：信息格式转换"><a href="#3-1-panic-soc-fill-info：信息格式转换" class="headerlink" title="3.1 panic_soc_fill_info：信息格式转换"></a>3.1 panic_soc_fill_info：信息格式转换</h2></li>
+<h2 id="3-1-panic-soc-fill-info：信息格式转换">3.1 3.1 panic_soc_fill_info：信息格式转换</h2></li>
 <li><p>CPU0看门狗引起的异常</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frame-&gt;exccause &#x3D;&#x3D; PANIC_RSN_INTWDT_CPU0</span><br></pre></td></tr></table></figure>
 
@@ -613,7 +613,7 @@
 
 <p>填充：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info-&gt;core =  esp_cache_err_get_cpuid();</span><br></pre></td></tr></table></figure>
-<h1 id="4-esp-panic-handler"><a href="#4-esp-panic-handler" class="headerlink" title="4. esp_panic_handler"></a>4. esp_panic_handler</h1></li>
+<h1 id="4-esp-panic-handler">4 4. esp_panic_handler</h1></li>
 <li><p>打印panic info的信息</p>
 </li>
 <li><p>如果panic看门狗未启动，则配置RTC看门狗</p>
@@ -627,8 +627,8 @@
 <li><p>设置重启原因，重启系统（或者关闭所有看门狗，进入死循环）</p>
 </li>
 </ul>
-<h1 id="5-默认打印，无关乎写入flash或者uart"><a href="#5-默认打印，无关乎写入flash或者uart" class="headerlink" title="5. 默认打印，无关乎写入flash或者uart"></a>5. 默认打印，无关乎写入flash或者uart</h1><h3 id="5-1-串口默认显示"><a href="#5-1-串口默认显示" class="headerlink" title="5.1 串口默认显示"></a>5.1 串口默认显示</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Guru Meditation Error of type StoreProhibited occurred on core  0. Exception was unhandled.</span><br><span class="line">Register dump:</span><br><span class="line">PC      : 0x400f360d  PS      : 0x00060330  A0      : 0x800dbf56  A1      : 0x3ffb7e00</span><br><span class="line">A2      : 0x3ffb136c  A3      : 0x00000005  A4      : 0x00000000  A5      : 0x00000000</span><br><span class="line">A6      : 0x00000000  A7      : 0x00000080  A8      : 0x00000000  A9      : 0x3ffb7dd0</span><br><span class="line">A10     : 0x00000003  A11     : 0x00060f23  A12     : 0x00060f20  A13     : 0x3ffba6d0</span><br><span class="line">A14     : 0x00000047  A15     : 0x0000000f  SAR     : 0x00000019  EXCCAUSE: 0x0000001d</span><br><span class="line">EXCVADDR: 0x00000000  LBEG    : 0x4000c46c  LEND    : 0x4000c477  LCOUNT  : 0x00000000</span><br><span class="line"></span><br><span class="line">Backtrace: 0x400f360d:0x3ffb7e00 0x400dbf56:0x3ffb7e20 0x400dbf5e:0x3ffb7e40 0x400dbf82:0x3ffb7e60 0x400d071d:0x3ffb7e90</span><br></pre></td></tr></table></figure>
-<h3 id="5-2-IDF监视器进行补充"><a href="#5-2-IDF监视器进行补充" class="headerlink" title="5.2 IDF监视器进行补充"></a>5.2 IDF监视器进行补充</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Guru Meditation Error of type StoreProhibited occurred on core  0. Exception was unhandled.</span><br><span class="line">Register dump:</span><br><span class="line">PC      : 0x400f360d  PS      : 0x00060330  A0      : 0x800dbf56  A1      : 0x3ffb7e00</span><br><span class="line">0x400f360d: do_something_to_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:57</span><br><span class="line">(inlined by) inner_dont_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:52</span><br><span class="line">A2      : 0x3ffb136c  A3      : 0x00000005  A4      : 0x00000000  A5      : 0x00000000</span><br><span class="line">A6      : 0x00000000  A7      : 0x00000080  A8      : 0x00000000  A9      : 0x3ffb7dd0</span><br><span class="line">A10     : 0x00000003  A11     : 0x00060f23  A12     : 0x00060f20  A13     : 0x3ffba6d0</span><br><span class="line">A14     : 0x00000047  A15     : 0x0000000f  SAR     : 0x00000019  EXCCAUSE: 0x0000001d</span><br><span class="line">EXCVADDR: 0x00000000  LBEG    : 0x4000c46c  LEND    : 0x4000c477  LCOUNT  : 0x00000000</span><br><span class="line"></span><br><span class="line">Backtrace: 0x400f360d:0x3ffb7e00 0x400dbf56:0x3ffb7e20 0x400dbf5e:0x3ffb7e40 0x400dbf82:0x3ffb7e60 0x400d071d:0x3ffb7e90</span><br><span class="line">0x400f360d: do_something_to_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:57</span><br><span class="line">(inlined by) inner_dont_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:52</span><br><span class="line">0x400dbf56: still_dont_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:47</span><br><span class="line">0x400dbf5e: dont_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:42</span><br><span class="line">0x400dbf82: app_main at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:33</span><br><span class="line">0x400d071d: main_task at /home/gus/esp/32/idf/components/esp32/./cpu_start.c:254</span><br></pre></td></tr></table></figure>
+<h1 id="5-默认打印，无关乎写入flash或者uart">5 5. 默认打印，无关乎写入flash或者uart</h1><h3 id="5-1-串口默认显示">5.0.1 5.1 串口默认显示</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Guru Meditation Error of type StoreProhibited occurred on core  0. Exception was unhandled.</span><br><span class="line">Register dump:</span><br><span class="line">PC      : 0x400f360d  PS      : 0x00060330  A0      : 0x800dbf56  A1      : 0x3ffb7e00</span><br><span class="line">A2      : 0x3ffb136c  A3      : 0x00000005  A4      : 0x00000000  A5      : 0x00000000</span><br><span class="line">A6      : 0x00000000  A7      : 0x00000080  A8      : 0x00000000  A9      : 0x3ffb7dd0</span><br><span class="line">A10     : 0x00000003  A11     : 0x00060f23  A12     : 0x00060f20  A13     : 0x3ffba6d0</span><br><span class="line">A14     : 0x00000047  A15     : 0x0000000f  SAR     : 0x00000019  EXCCAUSE: 0x0000001d</span><br><span class="line">EXCVADDR: 0x00000000  LBEG    : 0x4000c46c  LEND    : 0x4000c477  LCOUNT  : 0x00000000</span><br><span class="line"></span><br><span class="line">Backtrace: 0x400f360d:0x3ffb7e00 0x400dbf56:0x3ffb7e20 0x400dbf5e:0x3ffb7e40 0x400dbf82:0x3ffb7e60 0x400d071d:0x3ffb7e90</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-IDF监视器进行补充">5.0.2 5.2 IDF监视器进行补充</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Guru Meditation Error of type StoreProhibited occurred on core  0. Exception was unhandled.</span><br><span class="line">Register dump:</span><br><span class="line">PC      : 0x400f360d  PS      : 0x00060330  A0      : 0x800dbf56  A1      : 0x3ffb7e00</span><br><span class="line">0x400f360d: do_something_to_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:57</span><br><span class="line">(inlined by) inner_dont_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:52</span><br><span class="line">A2      : 0x3ffb136c  A3      : 0x00000005  A4      : 0x00000000  A5      : 0x00000000</span><br><span class="line">A6      : 0x00000000  A7      : 0x00000080  A8      : 0x00000000  A9      : 0x3ffb7dd0</span><br><span class="line">A10     : 0x00000003  A11     : 0x00060f23  A12     : 0x00060f20  A13     : 0x3ffba6d0</span><br><span class="line">A14     : 0x00000047  A15     : 0x0000000f  SAR     : 0x00000019  EXCCAUSE: 0x0000001d</span><br><span class="line">EXCVADDR: 0x00000000  LBEG    : 0x4000c46c  LEND    : 0x4000c477  LCOUNT  : 0x00000000</span><br><span class="line"></span><br><span class="line">Backtrace: 0x400f360d:0x3ffb7e00 0x400dbf56:0x3ffb7e20 0x400dbf5e:0x3ffb7e40 0x400dbf82:0x3ffb7e60 0x400d071d:0x3ffb7e90</span><br><span class="line">0x400f360d: do_something_to_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:57</span><br><span class="line">(inlined by) inner_dont_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:52</span><br><span class="line">0x400dbf56: still_dont_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:47</span><br><span class="line">0x400dbf5e: dont_crash at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:42</span><br><span class="line">0x400dbf82: app_main at /home/gus/esp/32/idf/examples/get-started/hello_world/main/./hello_world_main.c:33</span><br><span class="line">0x400d071d: main_task at /home/gus/esp/32/idf/components/esp32/./cpu_start.c:254</span><br></pre></td></tr></table></figure>
 
       </div>
       
@@ -662,17 +662,14 @@
     <div class="post-nav-img lazyload" data-original="/medias/12.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/4e4cdbae.html" class="post-nav-link">
+    <a href="/posts/337fc13d.html" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
-        <div>2、panic写入串口</div>
+        <div>linux常用命令汇总</div>
       </div>
       
       <!-- <div class="content">
-        elfhdr初始化，写到串口或者flash处理task reg，写入信息，并计算其长度
-获取当前任务索引
-
-判断当前任务
+        1 Ubuntu20设置python2为默认python12sudo rm /usr/bin/python sudo l
       </div> -->
     </a>
   </div>
@@ -681,16 +678,19 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/12.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/4461482.html" class="post-nav-link">
+    <a href="/posts/4e4cdbae.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>v2ray科学上网</div>
+        <div>2、panic写入串口</div>
       </div>
       <!-- <div class="content">
-        安装和更新 V2Ray12&#x2F;&#x2F; 安装可执行文件和 .dat 数据文件# bash &lt;(curl
+        1 elfhdr初始化，写到串口或者flash2 处理task reg，写入信息，并计算其长度
+获取当前任务索引
+
+判断
       </div> -->
     </a>
   </div>
@@ -1777,9 +1777,9 @@
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

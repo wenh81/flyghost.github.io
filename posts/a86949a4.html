@@ -562,16 +562,16 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1) 允许竞争的UORA; (2) 无竞争，完全是由AP分配的模式。</p>
+<h1 id="序言">1 序言</h1><p>前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1) 允许竞争的UORA; (2) 无竞争，完全是由AP分配的模式。</p>
 <p>无论在上行还是下行的OFDMA接入机制中，都可以简单概述成：先发送一个TF帧，AP会在这个TF帧中指定用户所占据的RU，或者指定特定的RU让用户做竞争接入。</p>
 <p>该TF帧会启用TXOP机制，换言之，它会设置信道在一定时间内为NAV状态，从而让AP获得更高等级的调度权。然而，一个基本问题就引发了，这个TXOP时间是怎么设置的，有没有什么限定？因此，本文简单讨论了这个一个问题，以及该问题所需要引入的新技术，动态分片技术。</p>
-<h1 id="UL-DL-OFDMA接入过程"><a href="#UL-DL-OFDMA接入过程" class="headerlink" title="UL/DL-OFDMA接入过程"></a>UL/DL-OFDMA接入过程</h1><p>首先回顾下在802.11ax中的UL-OFDMA过程，ax中的接入过程最简化可以为三个帧，TF，UP-OFDMA PPDU，MU-BlockACK，如下图所示：</p>
+<h1 id="UL-DL-OFDMA接入过程">2 UL/DL-OFDMA接入过程</h1><p>首先回顾下在802.11ax中的UL-OFDMA过程，ax中的接入过程最简化可以为三个帧，TF，UP-OFDMA PPDU，MU-BlockACK，如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="https://pic1.zhimg.com/80/v2-b6d66730777b25fec8f34ec1d4655dc4_720w.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <p>在首先发送的Trigger帧中，会开启一个TXOP时间，该时间内，所有的节点都被强制设置为NAV，即虚拟载波监听状态，无法主动的竞争信道。Trigger帧是一个触发传输的帧，其包含了节点上行传输所需要的设置信息，包含了MCS和传输功率控制，如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="https://pic4.zhimg.com/80/v2-bea350aff7d90031ca73c7d5a0b729df_720w.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <p>其中的User ID对应用户的AID，对应AID的用户会在该资源块RU上进行对应的上行传输，可以通过AID=STA来指定特定节点，也可通过AID=RA（具体可以是0，也可以是2045）来指定该RU用于随机接入。</p>
 <p>每一个RU才还被指定了MCS以及其对应的数据流数目，即SS Allocation，以及MCS，这是802.11协议中首次引入的机制，AP可以控制节点的发送速率。</p>
-<h1 id="UL-DL-OFDMA的TXOP时间设置"><a href="#UL-DL-OFDMA的TXOP时间设置" class="headerlink" title="UL/DL-OFDMA的TXOP时间设置"></a>UL/DL-OFDMA的TXOP时间设置</h1><p>TXOP机制是首次在802.11e中被引入，其允许“一次竞争，多次传输”。即在节点竞争胜利后，可以持续占用信道一段时间。标准的TXOP时间是和数据包的业务优先级AC有关的，并在802.11e中是给出了默认值，如下图所示（不同协议版本的TXOP时间设置不同）：</p>
+<h1 id="UL-DL-OFDMA的TXOP时间设置">3 UL/DL-OFDMA的TXOP时间设置</h1><p>TXOP机制是首次在802.11e中被引入，其允许“一次竞争，多次传输”。即在节点竞争胜利后，可以持续占用信道一段时间。标准的TXOP时间是和数据包的业务优先级AC有关的，并在802.11e中是给出了默认值，如下图所示（不同协议版本的TXOP时间设置不同）：</p>
 <p><img "" class="lazyload placeholder" data-original="https://pic3.zhimg.com/80/v2-2741ff864c97be812b9a03e06c7c9dee_720w.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="TXOP默认值"></p>
 <p>在802.11后期的发展中，TXOP成为一种机制。在一些其他用处下，比如802.11ax中的OFDMA接入过程，其TXOP的时间不是按照上图的默认机制，而是和传输数据包的大小有关。</p>
 <img "" class="lazyload placeholder" data-original="/posts/a86949a4/image-20210425151244812.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="Setting for single and multiple protection under enhanced distributed channel access (EDCA)" style="zoom:67%;">
@@ -588,7 +588,7 @@
 <li>通过BSR，BSRP机制，AP获取节点对应的buffer信息，确定数据包大小。</li>
 </ol>
 <p>基于以上两点，AP可以设置该传输所需要的PPDU时间。</p>
-<h1 id="动态帧分片（Dynamic-Fragmentation）"><a href="#动态帧分片（Dynamic-Fragmentation）" class="headerlink" title="动态帧分片（Dynamic Fragmentation）"></a>动态帧分片（Dynamic Fragmentation）</h1><p>除了基于BSR机制的上行传输机制外，还有一种基于随机接入的上行机制UORA。</p>
+<h1 id="动态帧分片（Dynamic-Fragmentation）">4 动态帧分片（Dynamic Fragmentation）</h1><p>除了基于BSR机制的上行传输机制外，还有一种基于随机接入的上行机制UORA。</p>
 <p>在UORA情况下，假设AP设置的时间为A。而节点上行传输所需要的时间为B。那么会分两种情况：</p>
 <ul>
 <li>如果A&gt;B，可以实现，但是效率低下，节点传输完自己数据包之后，需要padding，充填一些冗余数据，将时间填充满A。</li>
@@ -645,7 +645,7 @@
       
       <!-- <div class="content">
         [TOC]
-序言QTP（Quiet Time Period）是802.11ax中新引入的技术，而QP（Quiet Per
+1 序言QTP（Quiet Time Period）是802.11ax中新引入的技术，而QP（Quiet P
       </div> -->
     </a>
   </div>
@@ -664,7 +664,7 @@
       </div>
       <!-- <div class="content">
         [TOC]
-序言关于802.11协议的节能机制，包含了PSM，APSD，PSMP以及SMPS。在802.11ax中，为了
+1 序言关于802.11协议的节能机制，包含了PSM，APSD，PSMP以及SMPS。在802.11ax中，
       </div> -->
     </a>
   </div>
@@ -1751,9 +1751,9 @@
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

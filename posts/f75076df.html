@@ -561,13 +561,13 @@
         
       </div>
       <div class="post-content">
-        <h1 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h1><p><img "" class="lazyload placeholder" data-original="/posts/f75076df/image-20210430141137899.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="Element IDs"></p>
+        <h1 id="Element">1 Element</h1><p><img "" class="lazyload placeholder" data-original="/posts/f75076df/image-20210430141137899.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="Element IDs"></p>
 <p><img "" class="lazyload placeholder" data-original="/posts/f75076df/image-20210430141208379.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="Element IDs"></p>
-<h1 id="HE-Capabilities-element"><a href="#HE-Capabilities-element" class="headerlink" title="HE Capabilities element"></a>HE Capabilities element</h1><p>HE STA通过发送HE Capabilities element来声明它是HE STA。HE Capabilities element包含许多字段，用于通告HE STA的HE能力。</p>
+<h1 id="HE-Capabilities-element">2 HE Capabilities element</h1><p>HE STA通过发送HE Capabilities element来声明它是HE STA。HE Capabilities element包含许多字段，用于通告HE STA的HE能力。</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/f75076df/image-20210430141634639.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="HE Capabilities element format"></p>
 <p>Element ID:255</p>
 <p>Element ID Extension:35</p>
-<h2 id="HE-MAC-Capabilities-Information"><a href="#HE-MAC-Capabilities-Information" class="headerlink" title="HE MAC Capabilities Information"></a>HE MAC Capabilities Information</h2><p><img "" class="lazyload placeholder" data-original="/posts/f75076df/image-20210430142024674.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="HE MAC Capabilities Information field format"></p>
+<h2 id="HE-MAC-Capabilities-Information">2.1 HE MAC Capabilities Information</h2><p><img "" class="lazyload placeholder" data-original="/posts/f75076df/image-20210430142024674.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="HE MAC Capabilities Information field format"></p>
 <p><img "" class="lazyload placeholder" data-original="/posts/f75076df/image-20210430142035913.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="HE MAC Capabilities Information field format"></p>
 <table>
 <thead>
@@ -605,7 +605,7 @@
 <tr>
 <td>Minimum Fragment Size</td>
 <td>接收方STA支持的MSDU，A-MSDU（如果支持），MMPDU的第一个片段的最小帧主体（frame body）大小（以字节为单位）</td>
-<td>如果Dynamic Fragmentation Support字段大于0<br>0：没有最小帧主题大小<BR>1：最小帧主体大小为128字节<BR>2：最小帧主体大小为256字节<BR>3：最小帧主体大小为512字节<br>如果Dynamic Fragmentation Support等于0，则该字段保留。</BR></BR></BR></td>
+<td>如果Dynamic Fragmentation Support字段大于0<br>0：没有最小帧主题大小<br>1：最小帧主体大小为128字节<br>2：最小帧主体大小为256字节<br>3：最小帧主体大小为512字节<br>如果Dynamic Fragmentation Support等于0，则该字段保留。<br><br><br></td>
 </tr>
 <tr>
 <td>Trigger Frame MAC Padding Duration</td>
@@ -620,7 +620,7 @@
 <tr>
 <td>HE Link adaptation Support</td>
 <td>使用HLA Control子字段支持链路自适应</td>
-<td>如果+HTC-HE Support子字段为1：<br>0：如果STA不提供HE MFB，设置为0（无反馈）<br>2：如果STA可以接受和仅提供未经请求的HE MFB（未经请求），设置为2<br>3：如果STA能够响应HE MRQ接收并提供HE MFB，并且STA可以接受并提供未经请求的HE MFB，则设置为3（请求的和主动的）<br><br>ME MFB和ME MRQ分别是使用HLA控制子字段的MFB和MRQ<BR><BR>1：保留</BR></BR></td>
+<td>如果+HTC-HE Support子字段为1：<br>0：如果STA不提供HE MFB，设置为0（无反馈）<br>2：如果STA可以接受和仅提供未经请求的HE MFB（未经请求），设置为2<br>3：如果STA能够响应HE MRQ接收并提供HE MFB，并且STA可以接受并提供未经请求的HE MFB，则设置为3（请求的和主动的）<br><br>ME MFB和ME MRQ分别是使用HLA控制子字段的MFB和MRQ<br><br>1：保留<br><br></td>
 </tr>
 <tr>
 <td>All Ack Support</td>
@@ -630,27 +630,27 @@
 <tr>
 <td>TRS Support</td>
 <td>对于非AP STA，支持接收带有TRS Control子字段的帧</td>
-<td>一个非AP STA，设置+HTC-HE Support的子字段为1：<BR>1：如果STA支持接收带有TRS Control子字段<br>0：不支持<br>对于一个AP或者+HTC-HE Support子字段为0，该字段保留。</BR></td>
+<td>一个非AP STA，设置+HTC-HE Support的子字段为1：<br>1：如果STA支持接收带有TRS Control子字段<br>0：不支持<br>对于一个AP或者+HTC-HE Support子字段为0，该字段保留。<br></td>
 </tr>
 <tr>
 <td>BSR Support</td>
 <td>对于AP，表示是否支持接收带有BSR Control子字段的帧。<br>对于非AP的STA，表示是否支持生成带有BSR Control子字段的帧</td>
-<td>如果+HTC-HE Support子字段为1：<BR>1：如果STA支持BSR Control子字段功能<BR>0：不支持<BR>如果+HTC-HE Support子字段为0，则该字段保留</BR></BR></BR></td>
+<td>如果+HTC-HE Support子字段为1：<br>1：如果STA支持BSR Control子字段功能<br>0：不支持<br>如果+HTC-HE Support子字段为0，则该字段保留<br><br><br></td>
 </tr>
 <tr>
 <td>Broadcast TWT Support</td>
-<td>对于非AP STA，表示是否支持TWT调度的STA角色支持。<BR>对于AP，表示是否支持TWT调度AP的角色。</BR></td>
-<td>1：如果STA支持广播TWT功能<BR>0：其他</BR></td>
+<td>对于非AP STA，表示是否支持TWT调度的STA角色支持。<br>对于AP，表示是否支持TWT调度AP的角色。<br></td>
+<td>1：如果STA支持广播TWT功能<br>0：其他<br></td>
 </tr>
 <tr>
 <td>32-bit BA Bitmap Support</td>
 <td>是否支持接收一个Multi-STA Block Ack帧，该帧具有一个AID信息字段和32-bit Block Ack Bitmap子字段</td>
-<td>1：支持接收一个Multi-STA Block Ack帧，该帧具有一个AID信息字段和32-bit Block Ack Bitmap子字段<BR>0：不支持</BR></td>
+<td>1：支持接收一个Multi-STA Block Ack帧，该帧具有一个AID信息字段和32-bit Block Ack Bitmap子字段<br>0：不支持<br></td>
 </tr>
 <tr>
 <td>MU Cascading Support</td>
 <td>是否支持参与MU级联序列</td>
-<td>对于HE AP：<BR>1：表示AP能够在MU级联操作下传输一个按照MU级联操作规则构造的A-MPDU <br> 0：不支持<br>对于非AP HE STA：<br>1：表示非AP STA能够接收一个按照MU级联序列规则构造的A-MPDU<br>0：不支持</BR></td>
+<td>对于HE AP：<br>1：表示AP能够在MU级联操作下传输一个按照MU级联操作规则构造的A-MPDU <br> 0：不支持<br>对于非AP HE STA：<br>1：表示非AP STA能够接收一个按照MU级联序列规则构造的A-MPDU<br>0：不支持<br></td>
 </tr>
 <tr>
 <td>Ack-Enabled Aggregation Support</td>
@@ -813,7 +813,7 @@
       </div>
       
       <!-- <div class="content">
-        发包过程俯瞰本文将拿Intel I350网卡的 igb 驱动作为参考，网卡的 data sheet 这里可以下载 PDF
+        1 发包过程俯瞰本文将拿Intel I350网卡的 igb 驱动作为参考，网卡的 data sheet 这里可以下载 P
       </div> -->
     </a>
   </div>
@@ -831,7 +831,7 @@
         <div>HE信道访问26.2</div>
       </div>
       <!-- <div class="content">
-        基于TXOP持续时间的RTS / CTS在HE BSS中，RTS/CTS基于TXOP 持续时间（duration）或者P
+        1 基于TXOP持续时间的RTS / CTS在HE BSS中，RTS/CTS基于TXOP 持续时间（duration）或
       </div> -->
     </a>
   </div>

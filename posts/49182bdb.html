@@ -561,11 +561,11 @@
         
       </div>
       <div class="post-content">
-        <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>参考资料：</p>
+        <h1 id="序言">1 序言</h1><p>参考资料：</p>
 <p><a target="_blank" rel="noopener" href="https://www.ni.com/zh-cn/innovations/white-papers/16/introduction-to-802-11ax-high-efficiency-wireless.html">Introduction to 802.11ax High-Efficiency Wireless</a></p>
 <p><a target="_blank" rel="noopener" href="https://forum.huawei.com/enterprise/zh/forum.php?mod=viewthread&tid=639329">WLAN从入门到精通-WIFI6</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.extremenetworks.com/wifi6/what-is-80211ax/">What is 802.11ax (Wi-Fi 6)?</a></p>
-<h1 id="什么是wifi6"><a href="#什么是wifi6" class="headerlink" title="什么是wifi6"></a>什么是wifi6</h1><p>说起Wi-Fi 6，其实是Wi-Fi联盟对IEEE的最新一代无线局域网标准802.11ax的命名。<br>这里面讲到了2个组织IEEE和Wi-Fi联盟。</p>
+<h1 id="什么是wifi6">2 什么是wifi6</h1><p>说起Wi-Fi 6，其实是Wi-Fi联盟对IEEE的最新一代无线局域网标准802.11ax的命名。<br>这里面讲到了2个组织IEEE和Wi-Fi联盟。</p>
 <p>首先介绍一下电气和电子工程师协会IEEE（Institute of Electrical and Electronics Engineers）。</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/151355ph5nyjtdkb8frbxt.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="Institute of Electrical and Electronics Engineers"></p>
 <p>IEEE作为标准组织，通信人应该非常了解，有兴趣可以百度一下。在该组织制定的一系列标准中，通信人最熟悉802.3标准对应以太网，而属于无线局域网的就是802.11。早在1990年，IEEE就已经成了802.11工作组用来制定无线局域网的相关标准，并在1997年发布了第一个标准802.11-1997。之后的每4-5年，802.11标准就会升级换代一次，至今已有6代。</p>
@@ -575,11 +575,11 @@
 <p>我们现在熟悉的大部分手机厂商、部分运营商都是这个联盟的成员。<br>而我们常常说的Wi-Fi，实际上就是来自Wi-Fi联盟的商标。Wi-Fi联盟把符合802.11标准技术统一称为Wi-Fi。</p>
 <p>2018年，为了方便记忆和理解，Wi-Fi联盟终于决定抛弃之前802.11n、802.11ac等专业标准名称，仿照移动通信中代际3G、4G、5G的划分，将现有标准简化为数字命名。</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/151136t23q4r4mx21b2tq3.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="WiFi数字命名"></p>
-<h1 id="802-11ax简介"><a href="#802-11ax简介" class="headerlink" title="802.11ax简介"></a>802.11ax简介</h1><p>802.11ax是在802.11ac以后，无线局域网协议本身的进一步扩展，可以当做ac以后的一个直系版本。其初始的命名代号为HEW（High Efficiency WLAN ），该起始于2013年。</p>
+<h1 id="802-11ax简介">3 802.11ax简介</h1><p>802.11ax是在802.11ac以后，无线局域网协议本身的进一步扩展，可以当做ac以后的一个直系版本。其初始的命名代号为HEW（High Efficiency WLAN ），该起始于2013年。</p>
 <p>802.11ax的使用场景关注于密集用户环境（Dense User Environments），与之前的协议有所不同。根据香农定理<img "" class="lazyload placeholder" data-original="https://www.zhihu.com/equation?tex=C=Blog_%7B2%7D+%5Cleft(+1+SNR+%5Cright)+" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="香农定理">而言，当SNR不变的情况下（由于发送机总功率是固定的），只要适当的增加带宽，就可以获得更高的物理层吞吐量。所以802.11a/b/g/n/ac的演进，一般都是关注在单AP的网络中，提高物理层的吞吐量，以提高网络的整体速率。</p>
 <p>802.11ax的设计场景初始关注的就是密集环境，换言之，其初始设计思想就会和传统的802.11存在一定的区别。而且802.11ax的设计也并没有在当前802.11ac的160M带宽以上，新增更大的带宽（其实也是在2.4G和5G频谱资源下，无法找到更大带宽的信道）。所以协议命名的HEW，其关注的效率，也是希望更加有效的使用当前的频段资源，从而提供更高的实际网络速率。我们可以简单总结802.11ax的以下特点：</p>
-<h2 id="协议兼容性"><a href="#协议兼容性" class="headerlink" title="协议兼容性"></a>协议兼容性</h2><p>802.11ax要求与以往的802.11a/b/h/n/ac都进行兼容，这也证明了其是第二款同时能工作在2.4G和5G频段下的协议（802.11ac仅工作在5G频段）。故在其数据帧结构和MAC接入协议上，都需要兼容设计，以便于传统协议兼容。</p>
-<h2 id="更高的速率"><a href="#更高的速率" class="headerlink" title="更高的速率"></a>更高的速率</h2><p>过去每一代Wi-Fi的标准，一直致力于提升速率。</p>
+<h2 id="协议兼容性">3.1 协议兼容性</h2><p>802.11ax要求与以往的802.11a/b/h/n/ac都进行兼容，这也证明了其是第二款同时能工作在2.4G和5G频段下的协议（802.11ac仅工作在5G频段）。故在其数据帧结构和MAC接入协议上，都需要兼容设计，以便于传统协议兼容。</p>
+<h2 id="更高的速率">3.2 更高的速率</h2><p>过去每一代Wi-Fi的标准，一直致力于提升速率。</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/151155agcncgezdghaappp-7762481.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="WiFi不同版本的最高速率"></p>
 <p>经过20多年的发展，Wi-Fi 6（802.11ax）在160MHz信道宽度下，理论最大速率已经达到9.6Gbps，是802.11b的近900倍。</p>
 <p>而Wi-Fi 6速率的提升是因为采用了更高阶的1024-QAM、更多的子载波等技术。</p>
@@ -587,7 +587,7 @@
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/v2-23e7a0aea03ab5cf9979acfe80272789_720w.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="QAM-1024"></p>
 <p>  ② <strong>在相同带宽下，802.11ax采用点数更多的FFT</strong>（即原始的FFT的4倍大小）。FFT点数越多，说明其子载波数越多，以及子载波的带宽也就越小（带宽从312.5kHz降到78.125kHz。其对应的symbol时间也增加了4倍），从而可以覆盖更远的范围。（覆盖范围与相干带宽有关。只要信道的带宽小于相干带宽的话，那么就是平坦衰落，信号不会受到多径的影响。所以越小的信道带宽，可以覆盖更远的范围）</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/v2-693acb951a420a431164d2b9eac7c78b_720w.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="fft"></p>
-<h2 id="高并发"><a href="#高并发" class="headerlink" title="高并发"></a>高并发</h2><p>  ① <strong>引入上行MU-MIMO</strong>。</p>
+<h2 id="高并发">3.3 高并发</h2><p>  ① <strong>引入上行MU-MIMO</strong>。</p>
 <p>Wi-Fi 6引入了5G中的OFDMA和上行MU-MIMO等多用户技术，进一步提升了频谱利用率，使得Wi-Fi 6相比于Wi-Fi 5，并发用户数提升了<strong>4倍</strong>。</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/151218yltjwjnt116ry6gr.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="WiFi5和WiFi6的并发性"></p>
 <p>在802.11ac中，协议只规定了下行的MU-MIMO。上行还是单个节点独立传输的，而在802.11ax中，上下行都需要支持MU-MIMO。</p>
@@ -595,11 +595,11 @@
 <p>  ② <strong>引入OFDMA技术</strong>。802.11ax设计中参考了LTE中OFDMA的使用，可以让多个用户通过不同子载波资源同时接入信道，提高信道的利用率。不过因为802.11是一个分布式接入的场景，所以802.11ax中的OFDMA实际是比LTE中复杂度要低一些。</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/v2-8a40e3e461980dd315b5d08ce8d88894_720w.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="OFDMA"></p>
 <p>至于其中一些具体的介绍和一些其他的特性，建议参考NI的文章：<a target="_blank" rel="noopener" href="https://www.ni.com/zh-cn/innovations/white-papers/16/introduction-to-802-11ax-high-efficiency-wireless.html">Introduction to 802.11ax High-Efficiency Wireless</a>。</p>
-<h2 id="更好的节能性"><a href="#更好的节能性" class="headerlink" title="更好的节能性"></a>更好的节能性</h2><p>用以增加移动设备的续航能力</p>
+<h2 id="更好的节能性">3.4 更好的节能性</h2><p>用以增加移动设备的续航能力</p>
 <p>随着IoT设备广泛应用，除了提升终端速率外，Wi-Fi 6更是关注了终端的耗电情况。</p>
 <p>Wi-Fi 6采用TWT技术，按需唤醒终端Wi-Fi，加上20MHz-Only技术，使得终端的功耗降低**30%**。</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/151248d0fxmtavpramxrty.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="功耗对比"></p>
-<h2 id="降低时延"><a href="#降低时延" class="headerlink" title="降低时延"></a>降低时延</h2><p>在低时延场景，例如VR/AR-互动操作模拟、全景直播、互动式游戏、沉浸式会议、高清无线投屏等，Wi-Fi 5的30ms时延已经无法满足需求，而Wi-Fi因为引入了OFDMA和空间复用技术BSS Coloring，令时延降低至<strong>20ms</strong>。</p>
+<h2 id="降低时延">3.5 降低时延</h2><p>在低时延场景，例如VR/AR-互动操作模拟、全景直播、互动式游戏、沉浸式会议、高清无线投屏等，Wi-Fi 5的30ms时延已经无法满足需求，而Wi-Fi因为引入了OFDMA和空间复用技术BSS Coloring，令时延降低至<strong>20ms</strong>。</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/49182bdb/151234uza8ce4hd7mvz8ha.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="WiFi5和WiFi6时延"></p>
 
       </div>
@@ -642,9 +642,9 @@
       
       <!-- <div class="content">
         [TOC]
-序言参考资料：
+1 序言参考资料：
 What are OFDMA Resource Units in 802.11ax?
-Wi-
+W
       </div> -->
     </a>
   </div>
@@ -662,7 +662,7 @@ Wi-
         <div>IMX6ULL芯片简介</div>
       </div>
       <!-- <div class="content">
-        Cortex-A 处理器运行模型以前的 ARM 处理器有 7 中运行模型：User、FIQ、IRQ、Supervisor
+        1 Cortex-A 处理器运行模型以前的 ARM 处理器有 7 中运行模型：User、FIQ、IRQ、Supervis
       </div> -->
     </a>
   </div>
@@ -1749,9 +1749,9 @@ Wi-
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

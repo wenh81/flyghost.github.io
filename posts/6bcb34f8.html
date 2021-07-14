@@ -561,7 +561,7 @@
         
       </div>
       <div class="post-content">
-        <h1 id="Cortex-A-处理器运行模型"><a href="#Cortex-A-处理器运行模型" class="headerlink" title="Cortex-A 处理器运行模型"></a>Cortex-A 处理器运行模型</h1><p>以前的 ARM 处理器有 7 中运行模型：User、FIQ、IRQ、Supervisor(SVC)、Abort、Undef和 System，其中 User 是非特权模式，其余 6 中都是特权模式。但新的 Cortex-A 架构加入了TrustZone 安全扩展，所以就新加了一种运行模式：Monitor，新的处理器架构还支持虚拟化扩展，因此又加入了另一个运行模式：Hyp，所以 Cortex-A7 处理器有 9 种处理模式，如下表所示：</p>
+        <h1 id="Cortex-A-处理器运行模型">1 Cortex-A 处理器运行模型</h1><p>以前的 ARM 处理器有 7 中运行模型：User、FIQ、IRQ、Supervisor(SVC)、Abort、Undef和 System，其中 User 是非特权模式，其余 6 中都是特权模式。但新的 Cortex-A 架构加入了TrustZone 安全扩展，所以就新加了一种运行模式：Monitor，新的处理器架构还支持虚拟化扩展，因此又加入了另一个运行模式：Hyp，所以 Cortex-A7 处理器有 9 种处理模式，如下表所示：</p>
 <table>
 <thead>
 <tr>
@@ -608,7 +608,7 @@
 </tbody></table>
 <p>除了 User(USR)用户模式以外，其它 8 种运行模式都是特权模式。这几个运行模式可以通过软件进行任意切换，也可以通过中断或者异常来进行切换。大多数的程序都运行在用户模式，用户模式下是不能访问系统所有资源的，有些资源是受限的，要想访问这些受限的资源就必须进行模式切换。但是用户模式是不能直接进行切换的，用户模式下需要借助异常来完成模式切换，当要切换模式的时候，应用程序可以产生异常，在异常的处理过程中完成处理器模式切换。</p>
 <p>当中断或者异常发生以后，处理器就会进入到相应的异常模式种，每一种模式都有一组寄存器供异常处理程序使用，这样的目的是为了保证在进入异常模式以后，用户模式下的寄存器不会被破坏。</p>
-<h1 id="Cortex-A-寄存器组"><a href="#Cortex-A-寄存器组" class="headerlink" title="Cortex-A 寄存器组"></a>Cortex-A 寄存器组</h1><p>ARM 架构提供了 16 个 32 位的通用寄存器(R0<del>R15)供软件使用，前 15 个(R0</del>R14)可以用作通用的数据存储，R15 是程序计数器 PC，用来保存将要执行的指令。ARM 还提供了一个当前程序状态寄存器 CPSR 和一个备份程序状态寄存器 SPSR，SPSR 寄存器就是 CPSR 寄存器的备份。这 18 个寄存器如下所示：</p>
+<h1 id="Cortex-A-寄存器组">2 Cortex-A 寄存器组</h1><p>ARM 架构提供了 16 个 32 位的通用寄存器(R0<del>R15)供软件使用，前 15 个(R0</del>R14)可以用作通用的数据存储，R15 是程序计数器 PC，用来保存将要执行的指令。ARM 还提供了一个当前程序状态寄存器 CPSR 和一个备份程序状态寄存器 SPSR，SPSR 寄存器就是 CPSR 寄存器的备份。这 18 个寄存器如下所示：</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210614223245870.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210614223245870"></p>
 <p>每一种模式可见的寄存器包括 15 个通用寄存器(R0~R14)、一两个程序状态寄存器和一个程序计数器 PC。在这些寄存器中，有些是所有模式所共用的同一个物理寄存器，有一些是各模式自己所独立拥有的，各个模式所拥有的寄存器如下所示：</p>
 <img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210614223532481.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210614223532481" style="zoom:50%;">
@@ -617,12 +617,12 @@
 <p>①、34 个通用寄存器，包括 R15 程序计数器(PC)，这些寄存器都是 32 位的。</p>
 <p>②、8 个状态寄存器，包括 CPSR 和 SPSR。</p>
 <p>③、Hyp 模式下独有一个 ELR_Hyp 寄存器。</p>
-<h2 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h2><p>R0~R15 就是通用寄存器，通用寄存器可以分为以下三类：</p>
+<h2 id="通用寄存器">2.1 通用寄存器</h2><p>R0~R15 就是通用寄存器，通用寄存器可以分为以下三类：</p>
 <p>①、未备份寄存器，即 R0~R7。</p>
 <p>②、备份寄存器，即 R8~R14。</p>
 <p>③、程序计数器 PC，即 R15。</p>
-<h3 id="未备份寄存器-R0-R7"><a href="#未备份寄存器-R0-R7" class="headerlink" title="未备份寄存器 R0-R7"></a>未备份寄存器 R0-R7</h3><p>未备份寄存器指的是 R0~R7 这 8 个寄存器，因为在所有的处理器模式下这 8 个寄存器都是同一个物理寄存器，在不同的模式下，这 8 个寄存器中的数据就会被破坏。所以这 8 个寄存器并没有被用作特殊用途。</p>
-<h3 id="备份寄存器-R8-R14"><a href="#备份寄存器-R8-R14" class="headerlink" title="备份寄存器 R8-R14"></a>备份寄存器 R8-R14</h3><p>R8<del>R12 这 5 个寄存器有两种物理寄存器，在快速中断模式下(FIQ)它们对应着 Rx_fiq(x=8</del>12)物理寄存器，其他模式下对应着 Rx(8~12)物理寄存器。</p>
+<h3 id="未备份寄存器-R0-R7">2.1.1 未备份寄存器 R0-R7</h3><p>未备份寄存器指的是 R0~R7 这 8 个寄存器，因为在所有的处理器模式下这 8 个寄存器都是同一个物理寄存器，在不同的模式下，这 8 个寄存器中的数据就会被破坏。所以这 8 个寄存器并没有被用作特殊用途。</p>
+<h3 id="备份寄存器-R8-R14">2.1.2 备份寄存器 R8-R14</h3><p>R8<del>R12 这 5 个寄存器有两种物理寄存器，在快速中断模式下(FIQ)它们对应着 Rx_fiq(x=8</del>12)物理寄存器，其他模式下对应着 Rx(8~12)物理寄存器。</p>
 <p>FIQ 是快速中断模式，看名字就是知道这个中断模式要求快速执行！ FIQ 模式下中断处理程序可以使用 R8<del>R12寄存器，因为 FIQ 模式下的 R8</del>R12 是独立的，因此中断处理程序可以不用执行保存和恢复中断现场的指令，从而加速中断的执行过程。</p>
 <p>R13 一共有 8 个物理寄存器，其中一个是用户模式(User)和系统模式(Sys)共用的，剩下的 7 个分别对应 7 种不同的模式。R13 也叫做 SP，用来做为栈指针。基本上每种模式都有一个自己的 R13 物理寄存器，应用程序会初始化 R13，使其指向该模式专用的栈地址，这就是常说的初始化 SP 指针。</p>
 <p>R14 一共有 7 个物理寄存器，其中一个是用户模式(User)、系统模式(Sys)和超级监视模式(Hyp)所共有的，剩下的 6 个分别对应 6 种不同的模式。R14 也称为连接寄存器(LR)，LR 寄存器在 ARM 中主要用作如下两种用途：</p>
@@ -633,9 +633,9 @@
 <p>在子函数的最后面出栈即可：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">POP &#123;PC&#125;         @ 将上面压栈的 LR 寄存器数据出栈给 PC 寄存器，严格意义上来讲应该是将</span><br><span class="line">                 @ LR-4 赋给 PC，因为 3 级流水线，这里只是演示代码。</span><br></pre></td></tr></table></figure>
 <p>②、当异常发生以后，该异常模式对应的 R14 寄存器被设置成该异常模式将要返回的地址，R14 也可以当作普通寄存器使用。</p>
-<h3 id="程序计数器-R15-PC"><a href="#程序计数器-R15-PC" class="headerlink" title="程序计数器 R15/PC"></a>程序计数器 R15/PC</h3><p>程序计数器 R15 也叫做 PC，R15 保存着当前执行的指令地址值加 8 个字节，这是因为 ARM的流水线机制导致的。ARM 处理器 3 级流水线：取指-&gt;译码-&gt;执行，这三级流水线循环执行，比如当前正在执行第一条指令的同时也对第二条指令进行译码，第三条指令也同时被取出存放在 R15(PC)中。我们喜欢以当前正在执行的指令作为参考点，也就是以第一条指令为参考点，那么 R15(PC)中存放的就是第三条指令，换句话说就是 R15(PC)总是指向当前正在执行的指令地址再加上 2 条指令的地址。对于 32 位的 ARM 处理器，每条指令是 4 个字节，所以: </p>
+<h3 id="程序计数器-R15-PC">2.1.3 程序计数器 R15/PC</h3><p>程序计数器 R15 也叫做 PC，R15 保存着当前执行的指令地址值加 8 个字节，这是因为 ARM的流水线机制导致的。ARM 处理器 3 级流水线：取指-&gt;译码-&gt;执行，这三级流水线循环执行，比如当前正在执行第一条指令的同时也对第二条指令进行译码，第三条指令也同时被取出存放在 R15(PC)中。我们喜欢以当前正在执行的指令作为参考点，也就是以第一条指令为参考点，那么 R15(PC)中存放的就是第三条指令，换句话说就是 R15(PC)总是指向当前正在执行的指令地址再加上 2 条指令的地址。对于 32 位的 ARM 处理器，每条指令是 4 个字节，所以: </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">R15 (PC)值 &#x3D; 当前执行的程序位置 + 8 个字节。</span><br></pre></td></tr></table></figure>
-<h3 id="程序状态寄存器-CPSR"><a href="#程序状态寄存器-CPSR" class="headerlink" title="程序状态寄存器 CPSR"></a>程序状态寄存器 CPSR</h3><p>所有的处理器模式都共用一个 CPSR 物理寄存器，因此 CPSR 可以在任何模式下被访问。CPSR 是当前程序状态寄存器，该寄存器包含了条件标志位、中断禁止位、当前处理器模式标志等一些状态位以及一些控制位。所有的处理器模式都共用一个 CPSR 必然会导致冲突，为此，除了 User 和 Sys 这两个模式以外，其他 7 个模式每个都配备了一个专用的物理状态寄存器，叫做 SPSR(备份程序状态寄存器)，当特定的异常中断发生时，SPSR 寄存器用来保存当前程序状态寄存器(CPSR)的值，当异常退出以后可以用 SPSR 中保存的值来恢复 CPSR。</p>
+<h3 id="程序状态寄存器-CPSR">2.1.4 程序状态寄存器 CPSR</h3><p>所有的处理器模式都共用一个 CPSR 物理寄存器，因此 CPSR 可以在任何模式下被访问。CPSR 是当前程序状态寄存器，该寄存器包含了条件标志位、中断禁止位、当前处理器模式标志等一些状态位以及一些控制位。所有的处理器模式都共用一个 CPSR 必然会导致冲突，为此，除了 User 和 Sys 这两个模式以外，其他 7 个模式每个都配备了一个专用的物理状态寄存器，叫做 SPSR(备份程序状态寄存器)，当特定的异常中断发生时，SPSR 寄存器用来保存当前程序状态寄存器(CPSR)的值，当异常退出以后可以用 SPSR 中保存的值来恢复 CPSR。</p>
 <p>因为 User 和 Sys 这两个模式不是异常模式，所以并没有配备 SPSR，因此不能在 User 和 Sys 模式下访问 SPSR，会导致不可预知的结果。由于 SPSR 是 CPSR 的备份，因此 SPSR 和 CPSR 的寄存器结构相同，如下图所示：</p>
 <img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210615000837909.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="CPSR 寄存器" style="zoom: 33%;">
 
@@ -727,7 +727,7 @@
 <td>System(SYS)模式</td>
 </tr>
 </tbody></table>
-<h1 id="协处理器"><a href="#协处理器" class="headerlink" title="协处理器"></a>协处理器</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>参考资料：</p>
+<h1 id="协处理器">3 协处理器</h1><h2 id="引言">3.1 引言</h2><p>参考资料：</p>
 <p>关 于 CP15 协处理 器和其 相关寄存 器的详细 内容 请参考下 面两份文 档：<a href="/books/ARM_ArchitectureReference_Manual_ARMv7-A_and_ARMv7-R_edition.pdf">ARM ArchitectureReference Manual ARMv7-A and ARMv7-R edition.pdf</a>第 1469 页“B3.17 Oranization of the CP15 registers in a VMSA implementation”。<a href="/books/Cortex-A7_Technical_ReferenceManua.pdf">Cortex-A7 Technical ReferenceManua.pdf</a>第55 页“Capter 4 System Control”。</p>
 <p>CP15 协处理器一般用于存储系统管理，但是在中断中也会使用到，CP15 协处理器一共有16 个 32 位寄存器。CP15 协处理器的访问通过如下另个指令完成：</p>
 <p><strong>MRC:</strong> 将 CP15 协处理器中的寄存器数据读到 ARM 寄存器中。</p>
@@ -744,7 +744,7 @@
 <p>假如我们要将 CP15 中 C0 寄存器的值读取到 R0 寄存器中，那么就可以使用如下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MRC p15, 0, r0, c0, c0, 0</span><br></pre></td></tr></table></figure>
 <p>CP15 协处理器有 16 个 32 位寄存器，c0~c15，本章来看一下 c0、c1、c12 和 c15 这四个寄存器，因为我们本章实验要用到这四个寄存器，其他的寄存器大家参考上面的两个文档即可。</p>
-<h2 id="c0-寄存器"><a href="#c0-寄存器" class="headerlink" title="c0 寄存器"></a>c0 寄存器</h2><p>CP15 协处理器有 16 个 32 位寄存器，c0~c15，在使用 MRC 或者 MCR 指令访问这 16 个寄存器的时候，指令中的 CRn、opc1、CRm 和 opc2 通过不同的搭配，其得到的寄存器含义是不同的。比如 c0 在不同的搭配情况下含义如下图所示：</p>
+<h2 id="c0-寄存器">3.2 c0 寄存器</h2><p>CP15 协处理器有 16 个 32 位寄存器，c0~c15，在使用 MRC 或者 MCR 指令访问这 16 个寄存器的时候，指令中的 CRn、opc1、CRm 和 opc2 通过不同的搭配，其得到的寄存器含义是不同的。比如 c0 在不同的搭配情况下含义如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210616162344564.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210616162344564"></p>
 <p>当 MRC/MCR 指令中的 CRn=c0，opc1=0，CRm=c0，opc2=0 的时候就表示此时的 c0 就是 MIDR 寄存器，也就是主 ID 寄存器，这个也是 c0 的基本作用。对于 Cortex-A7内核来说，c0 作为 MDIR 寄存器的时候其含义如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210616162513612.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210616162513612"></p>
@@ -753,7 +753,7 @@
 <p><strong>bit19:16</strong>：架构代码，0XF，ARMv7 架构。</p>
 <p><strong>bit15:4</strong>：内核版本号，0XC07，Cortex-A7 MPCore 内核。</p>
 <p><strong>bit3:0</strong>：内核架构的次版本号，rnpn 中的 pn，比如 r0p1 中 p1 后面的 1 就是次版本号。</p>
-<h2 id="c1-寄存器"><a href="#c1-寄存器" class="headerlink" title="c1 寄存器"></a>c1 寄存器</h2><p>c1 寄存器同样通过不同的配置，其代表的含义也不同，如下图所示：</p>
+<h2 id="c1-寄存器">3.3 c1 寄存器</h2><p>c1 寄存器同样通过不同的配置，其代表的含义也不同，如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210616162726657.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210616162726657"></p>
 <p>当 MRC/MCR 指令中的 CRn=c1，opc1=0，CRm=c0，opc2=0 的时候就表示此时的 c1 就是 SCTLR 寄存器，也就是系统控制寄存器，这个是 c1 的基本作用。SCTLR 寄存器主要是完成控制功能的，比如使能或者禁止 MMU、I/D Cache 等，c1 作为 SCTLR 寄存器的时候其含义如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210616162818821.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210616162818821"></p>
@@ -770,11 +770,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MRC p15, 0, &lt;Rt&gt;, c1, c0, 0 ;读取 SCTLR 寄存器，数据保存到 Rt 中。</span><br><span class="line">MCR p15, 0, &lt;Rt&gt;, c1, c0, 0 ;将 Rt 中的数据写到 SCTLR(c1)寄存器中。</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="c12-寄存器"><a href="#c12-寄存器" class="headerlink" title="c12 寄存器"></a>c12 寄存器</h2><p>c12 寄存器通过不同的配置，其代表的含义也不同，如下图所示：</p>
+<h2 id="c12-寄存器">3.4 c12 寄存器</h2><p>c12 寄存器通过不同的配置，其代表的含义也不同，如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210616171056605.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210616171056605"></p>
 <p>在上图中当 MRC/MCR 指令中的 CRn=c12，opc1=0，CRm=c0，opc2=0 的时候就表示此时 c12 为 VBAR 寄存器，也就是向量表基地址寄存器。设置中断向量表偏移的时候就需要将新的中断向量表基地址写入 VBAR 中，比如在前面的例程中，代码链接的起始地址为0X87800000，而中断向量表肯定要放到最前面，也就是 0X87800000 这个地址处。所以就需要设置 VBAR 为 0X87800000，设置命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ldr r0, &#x3D;0X87800000          ; r0&#x3D;0X87800000</span><br><span class="line">MCR p15, 0, r0, c12, c0, 0   ;将 r0 里面的数据写入到 c12 中，即 c12&#x3D;0X87800000</span><br></pre></td></tr></table></figure>
-<h2 id="c15-寄存器"><a href="#c15-寄存器" class="headerlink" title="c15 寄存器"></a>c15 寄存器</h2><p>c15 寄存器也可以通过不同的配置得到不同的含义，参考文档<a href="/books/Cortex-A7_Technical_ReferenceManua.pdf">Cortex-A7 Technical ReferenceManua</a>第 68 页“4.2.16 c15 registers”，其配置如下图所示：</p>
+<h2 id="c15-寄存器">3.5 c15 寄存器</h2><p>c15 寄存器也可以通过不同的配置得到不同的含义，参考文档<a href="/books/Cortex-A7_Technical_ReferenceManua.pdf">Cortex-A7 Technical ReferenceManua</a>第 68 页“4.2.16 c15 registers”，其配置如下图所示：</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/6bcb34f8/image-20210616171714606.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210616171714606"></p>
 <p>在上图中，我们需要 c15 作为 CBAR 寄存器，因为 GIC 的基地址就保存在 CBAR 中，我们可以通过如下命令获取到 GIC 基地址：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MRC p15, 4, r1, c15, c0, 0 ; 获取 GIC 基础地址，基地址保存在 r1 中。</span><br></pre></td></tr></table></figure>
@@ -821,9 +821,9 @@
       </div>
       
       <!-- <div class="content">
-        序言参考资料：
+        1 序言参考资料：
 Introduction to 802.11ax High-Efficiency Wireless
-WL
+
       </div> -->
     </a>
   </div>
@@ -841,8 +841,8 @@ WL
         <div>汇编</div>
       </div>
       <!-- <div class="content">
-        汇编基本格式1label：instruction @ comment
-label 即标号，表示地址位置，有些指令前面可能
+        1 汇编基本格式1label：instruction @ comment
+label 即标号，表示地址位置，有些指令前面
       </div> -->
     </a>
   </div>
@@ -1929,9 +1929,9 @@ label 即标号，表示地址位置，有些指令前面可能
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

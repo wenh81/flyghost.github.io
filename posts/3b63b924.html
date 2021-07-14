@@ -562,13 +562,13 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>QTP（Quiet Time Period）是802.11ax中新引入的技术，而QP（Quiet Period）是802.11协议初始就有的一个技术，两者都是在802.11协议中比较冷门的一个技术。在笔者的认知中，这两个技术最大的用处就是为了兼容，毕竟是商业协议，各种场景都需要考虑到。所以本文仅仅做一个笔记记录下。</p>
-<h1 id="信道静默QP（Quiet-Period）"><a href="#信道静默QP（Quiet-Period）" class="headerlink" title="信道静默QP（Quiet Period）"></a>信道静默QP（Quiet Period）</h1><p>这里Quiet Period我们翻译成信道静默，这是参考802.11权威指南的翻译。我们知道802.11协议是工作在2.4GHz和5GHz频段的，这个频段在很多国家是有雷达设备也工作的。为了避免对雷达的干扰，802.11协议中采用了TPC和DFS两项技术。然而，究竟周边有没有雷达设备呢，这个时候实际上要802.11设备做一个探测的。</p>
+<h1 id="序言">1 序言</h1><p>QTP（Quiet Time Period）是802.11ax中新引入的技术，而QP（Quiet Period）是802.11协议初始就有的一个技术，两者都是在802.11协议中比较冷门的一个技术。在笔者的认知中，这两个技术最大的用处就是为了兼容，毕竟是商业协议，各种场景都需要考虑到。所以本文仅仅做一个笔记记录下。</p>
+<h1 id="信道静默QP（Quiet-Period）">2 信道静默QP（Quiet Period）</h1><p>这里Quiet Period我们翻译成信道静默，这是参考802.11权威指南的翻译。我们知道802.11协议是工作在2.4GHz和5GHz频段的，这个频段在很多国家是有雷达设备也工作的。为了避免对雷达的干扰，802.11协议中采用了TPC和DFS两项技术。然而，究竟周边有没有雷达设备呢，这个时候实际上要802.11设备做一个探测的。</p>
 <p>但是由于无线网络传输本身会影响探测结果。此时，我们就需要把整个网络静默一段时间，也就是不允许任何的数据包传输，让网络去检测周围有没有雷达信号。这个机制就是QP（Quite Period）机制。</p>
 <p>QP时间是一个周期的时间，该周期间隔是通过Beacon或者Probe Response中的Quiet Element元素进行安排的。而QP时间的保护是通过NAV机制来实现的，这里是通过Quiet Element来实现NAV，有点类似于CFP时间可以由CF Parameter Set里面元素设置的一样。</p>
 <p><img "" class="lazyload placeholder" data-original="https://pic2.zhimg.com/80/v2-df6ef2432bb63c077d4ec1572b8599a1_720w.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <p>Quiet Element的结构如上图所示，其中Quiet Period是静默期，代表了QP时间的间隔（单位为几个Beacon间隔，也就是TBTT时间），Quiet Duration为静默持续的Duration时间。Quiet Offset是一个时间偏移，一般而言，Quiet时间是紧接着Beacon开始的，停止时间就是Quiet Duration，然而该时间也可以向后延迟，那么延迟的时间就是Quiet offset。</p>
-<h1 id="静默时间QTP（Quiet-Time-Period）"><a href="#静默时间QTP（Quiet-Time-Period）" class="headerlink" title="静默时间QTP（Quiet Time Period）"></a>静默时间QTP（Quiet Time Period）</h1><p>Quiet Time Period（QTP）我们目前就直译成静默时间。该机制是802.11ax中新引入的，由于802.11ax需要兼容过往的工作模式，其中最主要的就是ad-hoc模式，其他还有相关的P2P，TLS模式等，这一系列通信模式我们成为STA-STA直接通信。STA-STA通信会对密集网络场景的性能造成影响。因此，为了避免STA-STA通信对密集网络的性能影响，我们需要做一个时间调度，所以才有了QTP这个设计。</p>
+<h1 id="静默时间QTP（Quiet-Time-Period）">3 静默时间QTP（Quiet Time Period）</h1><p>Quiet Time Period（QTP）我们目前就直译成静默时间。该机制是802.11ax中新引入的，由于802.11ax需要兼容过往的工作模式，其中最主要的就是ad-hoc模式，其他还有相关的P2P，TLS模式等，这一系列通信模式我们成为STA-STA直接通信。STA-STA通信会对密集网络场景的性能造成影响。因此，为了避免STA-STA通信对密集网络的性能影响，我们需要做一个时间调度，所以才有了QTP这个设计。</p>
 <p>QTP是一个兼容类型的设计，其是通过设置了一个NAV保护时间，该保护时间内，基础架构模式的节点都不会通信，把信道让给STA-STA类型的节点，实际上就是进行了时间分配，关于STA-STA模式和基础架构模式下的节点。</p>
 <p><img "" class="lazyload placeholder" data-original="https://pic3.zhimg.com/80/v2-9cae957acc5324833310b03918591b86_720w.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="img"></p>
 <p>参考：IEEE 802.11-16/1459r0</p>
@@ -621,7 +621,7 @@
       </div>
       <!-- <div class="content">
         [TOC]
-序言前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1) 允
+1 序言前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1)
       </div> -->
     </a>
   </div>
@@ -1708,9 +1708,9 @@
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

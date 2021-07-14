@@ -29,7 +29,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;QTP（Quiet Time Period）是802.11ax中新引入的技术，而QP（Quiet</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;QTP（Quiet Time Period）是802.11ax中新引入的技术，而QP（Quiet</summary>
         
       
     
@@ -55,7 +55,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1)</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;前面已经介绍过了UL/DL-OFDMA的接入机制。下行接入是AP分配的，上行接入过程包含两种：(1) 允许竞争的UORA; (2)</summary>
         
       
     
@@ -81,7 +81,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot;</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;关于802.11协议的节能机制，包含了PSM，APSD，PSMP以及SMPS。在802.11ax中，为了在速率提高的场景下，降低所花费的功耗，协议采用了一种新的节能机制TWT（Target Wake</summary>
         
       
     
@@ -107,7 +107,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot;</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;NAV是802.11中最基本的MAC层元素之一，在802.11协议中起着非常重要的功能，而且先行协议下，基本上所有的兼容性机制都围绕的NAV展开。在802.11ax中，引入了双重NAV技术（Dueling</summary>
         
       
     
@@ -133,7 +133,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;帧聚合（Frame</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;帧聚合（Frame</summary>
         
       
     
@@ -159,7 +159,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;BSS Coloring技术是802.11ax中引入，目的进一步优化空间复用（Spatial Reuse</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;BSS Coloring技术是802.11ax中引入，目的进一步优化空间复用（Spatial Reuse Parameter）。在前文讨论过关于BSS Coloring技术，但是关于如何基于BSS</summary>
         
       
     
@@ -185,9 +185,9 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
+&lt;li&gt;&lt;a href=&quot;https://www.extremenetworks.com/extreme-networks-blog/&quot;&gt;What Is BSS</summary>
         
       
     
@@ -213,7 +213,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot;</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1</summary>
         
       
     
@@ -239,7 +239,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot;</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1</summary>
         
       
     
@@ -265,7 +265,8 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot;</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;在介绍完802.11ax的信道接入以及其触发帧机制后，本文着重介绍下行OFDMA的接入机制（即DL-OFDMA）。&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;a</summary>
         
       
     
@@ -291,7 +292,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;**Operating Mode Indication (OMI)**是802.11ax</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;**Operating Mode Indication (OMI)**是802.11ax</summary>
         
       
     
@@ -317,7 +318,7 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot;</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1</summary>
         
       
     
@@ -343,7 +344,8 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+&lt;h1 id=&quot;简介&quot;&gt;1 简介&lt;/h1&gt;&lt;p&gt;MU-MIMO是基于多天线技术的，这个技术的物理层是多天线技术。多天线可以实现多种技术，不仅仅是MU-MIMO，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img &quot;&quot; class=&quot;lazyload</summary>
         
       
     
@@ -369,8 +371,8 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
+&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.extremenetworks.com/extreme-networks-blog/&quot;&gt;What are OFDMA Resource</summary>
         
       
     
@@ -395,7 +397,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
+    <summary type="html">&lt;h1 id=&quot;序言&quot;&gt;1 序言&lt;/h1&gt;&lt;p&gt;参考资料：&lt;/p&gt;
 &lt;p&gt;&lt;a</summary>
         
       
@@ -421,7 +423,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Cortex-A-处理器运行模型&quot;&gt;&lt;a href=&quot;#Cortex-A-处理器运行模型&quot; class=&quot;headerlink&quot; title=&quot;Cortex-A 处理器运行模型&quot;&gt;&lt;/a&gt;Cortex-A 处理器运行模型&lt;/h1&gt;&lt;p&gt;以前的 ARM 处理器有</summary>
+    <summary type="html">&lt;h1 id=&quot;Cortex-A-处理器运行模型&quot;&gt;1 Cortex-A 处理器运行模型&lt;/h1&gt;&lt;p&gt;以前的 ARM 处理器有 7 中运行模型：User、FIQ、IRQ、Supervisor(SVC)、Abort、Undef和 System，其中 User 是非特权模式，其余</summary>
         
       
     
@@ -446,7 +448,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;汇编基本格式&quot;&gt;&lt;a href=&quot;#汇编基本格式&quot; class=&quot;headerlink&quot; title=&quot;汇编基本格式&quot;&gt;&lt;/a&gt;汇编基本格式&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+    <summary type="html">&lt;h1 id=&quot;汇编基本格式&quot;&gt;1 汇编基本格式&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
         
       
     
@@ -464,14 +466,14 @@
     <link href="https://www.creekwater.cn/posts/ead4f553.html"/>
     <id>https://www.creekwater.cn/posts/ead4f553.html</id>
     <published>2021-05-09T16:00:00.000Z</published>
-    <updated>2021-07-11T14:43:30.000Z</updated>
+    <updated>2021-07-14T04:43:53.936Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;发包过程俯瞰&quot;&gt;&lt;a href=&quot;#发包过程俯瞰&quot; class=&quot;headerlink&quot; title=&quot;发包过程俯瞰&quot;&gt;&lt;/a&gt;发包过程俯瞰&lt;/h1&gt;&lt;p&gt;本文将拿&lt;strong&gt;Intel I350&lt;/strong&gt;网卡的 &lt;code&gt;igb&lt;/code&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;发包过程俯瞰&quot;&gt;1 发包过程俯瞰&lt;/h1&gt;&lt;p&gt;本文将拿&lt;strong&gt;Intel I350&lt;/strong&gt;网卡的 &lt;code&gt;igb&lt;/code&gt; 驱动作为参考，网卡的 data sheet 这里可以下载 &lt;a</summary>
         
       
     
@@ -496,7 +498,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Element&quot;&gt;&lt;a href=&quot;#Element&quot; class=&quot;headerlink&quot; title=&quot;Element&quot;&gt;&lt;/a&gt;Element&lt;/h1&gt;&lt;p&gt;&lt;img &quot;&quot; class=&quot;lazyload placeholder&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;Element&quot;&gt;1 Element&lt;/h1&gt;&lt;p&gt;&lt;img &quot;&quot; class=&quot;lazyload placeholder&quot; data-original=&quot;/posts/f75076df/image-20210430141137899.png&quot;</summary>
         
       
     
@@ -521,7 +523,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;基于TXOP持续时间的RTS-CTS&quot;&gt;&lt;a href=&quot;#基于TXOP持续时间的RTS-CTS&quot; class=&quot;headerlink&quot; title=&quot;基于TXOP持续时间的RTS / CTS&quot;&gt;&lt;/a&gt;基于TXOP持续时间的RTS /</summary>
+    <summary type="html">&lt;h1 id=&quot;基于TXOP持续时间的RTS-CTS&quot;&gt;1 基于TXOP持续时间的RTS / CTS&lt;/h1&gt;&lt;p&gt;在HE BSS中，RTS/CTS基于TXOP 持续时间（duration）或者PSDU长度，对于非AP HE STA，AP可以将其配置为基于TXOP</summary>
         
       
     

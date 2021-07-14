@@ -561,25 +561,25 @@
         
       </div>
       <div class="post-content">
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="bin-目录"><a href="#bin-目录" class="headerlink" title="/bin 目录"></a>/bin 目录</h2><p>存放着系统需要的可执行文件，例如<code>ls</code>，<code>mv</code>等命令，该目录下所有用户都可以使用</p>
-<h2 id="dev-目录"><a href="#dev-目录" class="headerlink" title="/dev 目录"></a>/dev 目录</h2><p>device 的缩写，该目录下存放的文件都是和设备有关的，都是设备文件</p>
-<h2 id="etc-目录"><a href="#etc-目录" class="headerlink" title="/etc 目录"></a>/etc 目录</h2><p>存放配置文件</p>
-<h2 id="lib-目录"><a href="#lib-目录" class="headerlink" title="/lib 目录"></a>/lib 目录</h2><p>存放着Linux所必须的库文件，是共享库</p>
-<h2 id="mnt-目录"><a href="#mnt-目录" class="headerlink" title="/mnt 目录"></a>/mnt 目录</h2><p>临时挂载目录，一般是空目录    </p>
-<h2 id="proc-目录"><a href="#proc-目录" class="headerlink" title="/proc 目录"></a>/proc 目录</h2><p>proc文件系统的挂载点，是个虚拟文件系统，里面的文件都是临时存在的，一般用来存储系统运行信息文件</p>
-<h2 id="usr-目录"><a href="#usr-目录" class="headerlink" title="/usr 目录"></a>/usr 目录</h2><p>不是user的缩写，而是 unix software resource的缩写，也就是Unix操作系统软件资源目录</p>
-<h2 id="var-目录"><a href="#var-目录" class="headerlink" title="/var 目录"></a>/var 目录</h2><p>存放一些可以改变的数据</p>
-<h2 id="sbin-目录"><a href="#sbin-目录" class="headerlink" title="/sbin 目录"></a>/sbin 目录</h2><p>存放一些可执行文件，<strong>只有管理员可以使用</strong>，主要用户系统管理</p>
-<h2 id="sys-目录"><a href="#sys-目录" class="headerlink" title="/sys 目录"></a>/sys 目录</h2><p>sysfs文件系统的挂载点，类似于proc文件系统的特殊文件系统，sysfs也是基于ram的文件系统，向用户提供详细的内核数据结构信息</p>
-<h2 id="opt"><a href="#opt" class="headerlink" title="/opt"></a>/opt</h2><p>可选的文件、软件存放区</p>
-<h1 id="BusyBox构建根文件系统"><a href="#BusyBox构建根文件系统" class="headerlink" title="BusyBox构建根文件系统"></a>BusyBox构建根文件系统</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p><a target="_blank" rel="noopener" href="https://busybox.net/">Https://busybox.net/</a></p>
-<h2 id="修改源码"><a href="#修改源码" class="headerlink" title="修改源码"></a>修改源码</h2><p>在NFS服务器中</p>
+        <h1 id="简介">1 简介</h1><h2 id="bin-目录">1.1 /bin 目录</h2><p>存放着系统需要的可执行文件，例如<code>ls</code>，<code>mv</code>等命令，该目录下所有用户都可以使用</p>
+<h2 id="dev-目录">1.2 /dev 目录</h2><p>device 的缩写，该目录下存放的文件都是和设备有关的，都是设备文件</p>
+<h2 id="etc-目录">1.3 /etc 目录</h2><p>存放配置文件</p>
+<h2 id="lib-目录">1.4 /lib 目录</h2><p>存放着Linux所必须的库文件，是共享库</p>
+<h2 id="mnt-目录">1.5 /mnt 目录</h2><p>临时挂载目录，一般是空目录    </p>
+<h2 id="proc-目录">1.6 /proc 目录</h2><p>proc文件系统的挂载点，是个虚拟文件系统，里面的文件都是临时存在的，一般用来存储系统运行信息文件</p>
+<h2 id="usr-目录">1.7 /usr 目录</h2><p>不是user的缩写，而是 unix software resource的缩写，也就是Unix操作系统软件资源目录</p>
+<h2 id="var-目录">1.8 /var 目录</h2><p>存放一些可以改变的数据</p>
+<h2 id="sbin-目录">1.9 /sbin 目录</h2><p>存放一些可执行文件，<strong>只有管理员可以使用</strong>，主要用户系统管理</p>
+<h2 id="sys-目录">1.10 /sys 目录</h2><p>sysfs文件系统的挂载点，类似于proc文件系统的特殊文件系统，sysfs也是基于ram的文件系统，向用户提供详细的内核数据结构信息</p>
+<h2 id="opt">1.11 /opt</h2><p>可选的文件、软件存放区</p>
+<h1 id="BusyBox构建根文件系统">2 BusyBox构建根文件系统</h1><h2 id="简介-1">2.1 简介</h2><p><a target="_blank" rel="noopener" href="https://busybox.net/">Https://busybox.net/</a></p>
+<h2 id="修改源码">2.2 修改源码</h2><p>在NFS服务器中</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir rootfs</span><br><span class="line">cd rootfs</span><br><span class="line">tar -vxjf busybox-1.29.0.tar.bz2</span><br></pre></td></tr></table></figure>
 <p>修改busybox的顶层Makefile，添加ARCH和CROSS_COMPILE的值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CROSS_COMPILE ?&#x3D; &#x2F;usr&#x2F;local&#x2F;arm&#x2F;gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf&#x2F;bin&#x2F;arm-linux-gnueabihf-</span><br><span class="line">ARCH ?&#x3D; arm</span><br></pre></td></tr></table></figure>
 <p>修改 busybox-1.29.0/libbb/printable_string.c，找到函数 printable_string</p>
 <p>修改libbb/unicode.c</p>
-<h2 id="配置busybox"><a href="#配置busybox" class="headerlink" title="配置busybox"></a>配置busybox</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make defconfig</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+<h2 id="配置busybox">2.3 配置busybox</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make defconfig</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Location-&gt;settings-&gt;build static binary(no shared libs)</li>
 <li>Location-&gt;settings-&gt;vi-style line editing commands</li>
@@ -587,11 +587,11 @@
 <li>Location-&gt;linux system utilities-&gt;mdev(16kb)</li>
 <li>Location-&gt;support-&gt;Check $LC_ALL, $LC_CTYPE and $LANG environment variables</li>
 </ul>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install CONFIG_PREFIX=/home/wzy/linux/nfs/rootfs # 输出路径</span><br></pre></td></tr></table></figure>
-<h2 id="根文件系统中添加lib库"><a href="#根文件系统中添加lib库" class="headerlink" title="根文件系统中添加lib库"></a>根文件系统中添加lib库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir lib</span><br><span class="line">cd /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/arm-linuxgnueabihf/libc/lib</span><br><span class="line">cp *so* *.a /home/wzy/linux/nfs/rootfs/lib/ -d</span><br><span class="line">cd /home/wzy/linux/nfs/rootfs/lib/</span><br><span class="line">rm ld-linux-armhf.so.3</span><br><span class="line">cd /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/arm-linuxgnueabihf/libc/lib</span><br><span class="line">cp ld-linux-armhf.so.3 /home/wzy/linux/nfs/rootfs/lib/</span><br><span class="line">cd /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/lib</span><br><span class="line">cp *so* *.a /home/wzy/linux/nfs/rootfs/lib/ -d</span><br></pre></td></tr></table></figure>
-<h2 id="根文件系统中urs-lib目录中添加库文件"><a href="#根文件系统中urs-lib目录中添加库文件" class="headerlink" title="根文件系统中urs/lib目录中添加库文件"></a>根文件系统中urs/lib目录中添加库文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/libc/usr/lib</span><br><span class="line">cp *so* *.a /home/wzy/linux/nfs/rootfs/usr/lib/ -d</span><br></pre></td></tr></table></figure>
-<h2 id="创建其他文件夹"><a href="#创建其他文件夹" class="headerlink" title="创建其他文件夹"></a>创建其他文件夹</h2><p>在根文件系统中创建其他文件夹，如 dev、proc、mnt、sys、tmp 和 root 等</p>
-<h2 id="根文件系统测试"><a href="#根文件系统测试" class="headerlink" title="根文件系统测试"></a>根文件系统测试</h2><p>由于使用NFS挂载根文件系统，所以需要设置<strong>uboot</strong>中的<strong>bootargs</strong>环境变量中的<strong>root</strong>值</p>
+<h2 id="编译">2.4 编译</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install CONFIG_PREFIX=/home/wzy/linux/nfs/rootfs # 输出路径</span><br></pre></td></tr></table></figure>
+<h2 id="根文件系统中添加lib库">2.5 根文件系统中添加lib库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir lib</span><br><span class="line">cd /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/arm-linuxgnueabihf/libc/lib</span><br><span class="line">cp *so* *.a /home/wzy/linux/nfs/rootfs/lib/ -d</span><br><span class="line">cd /home/wzy/linux/nfs/rootfs/lib/</span><br><span class="line">rm ld-linux-armhf.so.3</span><br><span class="line">cd /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/arm-linuxgnueabihf/libc/lib</span><br><span class="line">cp ld-linux-armhf.so.3 /home/wzy/linux/nfs/rootfs/lib/</span><br><span class="line">cd /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/lib</span><br><span class="line">cp *so* *.a /home/wzy/linux/nfs/rootfs/lib/ -d</span><br></pre></td></tr></table></figure>
+<h2 id="根文件系统中urs-lib目录中添加库文件">2.6 根文件系统中urs/lib目录中添加库文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/libc/usr/lib</span><br><span class="line">cp *so* *.a /home/wzy/linux/nfs/rootfs/usr/lib/ -d</span><br></pre></td></tr></table></figure>
+<h2 id="创建其他文件夹">2.7 创建其他文件夹</h2><p>在根文件系统中创建其他文件夹，如 dev、proc、mnt、sys、tmp 和 root 等</p>
+<h2 id="根文件系统测试">2.8 根文件系统测试</h2><p>由于使用NFS挂载根文件系统，所以需要设置<strong>uboot</strong>中的<strong>bootargs</strong>环境变量中的<strong>root</strong>值</p>
 <p>进入开发板的uboot命令行模式，输入命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setenv bootargs &#x27;console=ttymxc0,115200 root=/dev/nfs nfsroot=192.168.1.250:/home/wzy/linux/nfs/rootfs,proto=tcp rw ip=192.168.1.251:192.168.1.250:192.168.1.1:255.255.255.0::eth0:off&#x27; # 设置 bootargs</span><br><span class="line">saveenv # 保存环境变量</span><br></pre></td></tr></table></figure>
 <p>然后使用<strong>boot</strong>命令启动Linux内核</p>
@@ -603,11 +603,11 @@
 <p>proto=tcp rw：表示使用tcp协议，挂载的根文件系统为可读可写</p>
 <p>ip=192.168.1.251:192.168.1.250:192.168.1.1:255.255.255.0::eth0:off：开发板IP，服务器IP，网关，子网掩码，客户机名字（空着），设备名（网卡名），自动配置不使用（off）</p>
 </blockquote>
-<h2 id="创建-etc-init-d-rcS文件"><a href="#创建-etc-init-d-rcS文件" class="headerlink" title="创建/etc/init.d/rcS文件"></a>创建/etc/init.d/rcS文件</h2><p>在rcS中输入如下内容</p>
+<h2 id="创建-etc-init-d-rcS文件">2.9 创建/etc/init.d/rcS文件</h2><p>在rcS中输入如下内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</span><br><span class="line">LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/lib:/usr/lib</span><br><span class="line">runlevel=S</span><br><span class="line"><span class="built_in">umask</span> 022</span><br><span class="line"><span class="built_in">export</span> PATH LD_LIBRARY_PATH runlevel</span><br><span class="line"></span><br><span class="line">mount -a</span><br><span class="line">mkdir /dev/pts</span><br><span class="line">mount -t devpts devpts /dev/pts</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> /sbin/mdev &gt; /proc/sys/kernel/hotplug</span><br><span class="line">mdev -s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开机自启动</span></span><br><span class="line"><span class="built_in">cd</span> /usr/bin</span><br><span class="line">./lcd_always_on</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"></span><br><span class="line">vsftpd &amp;</span><br><span class="line">/sbin/sshd &amp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -f <span class="string">&quot;/var/lib/alsa/asound.state&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;ALSA: Restoring mixer setting......&quot;</span></span><br><span class="line">	/sbin/alsactl -f /var/lib/alsa/asound.state restore &amp;</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 <p>最后修改可执行权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 rcS</span><br></pre></td></tr></table></figure>
-<h2 id="创建-etc-fstab文件"><a href="#创建-etc-fstab文件" class="headerlink" title="创建/etc/fstab文件"></a>创建/etc/fstab文件</h2><p>创建/etc/fstab文件，并添加如下源码</p>
+<h2 id="创建-etc-fstab文件">2.10 创建/etc/fstab文件</h2><p>创建/etc/fstab文件，并添加如下源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&lt;file system&gt;		&lt;mount point&gt; 	&lt;type&gt;		&lt;options&gt;	&lt;dump&gt;	&lt;pass&gt;</span></span><br><span class="line">proc				/proc			proc		defaults	0		0</span><br><span class="line">tmpfs				/tmp			tmpfs		defaults	0		0</span><br><span class="line">sysfs				/sys			sysfs		defaults	0		0</span><br><span class="line">tmpfs				/dev			tmpfs		defaults	0		0</span><br></pre></td></tr></table></figure>
 <ul>
 <li>File system：要挂载的特殊设备，也可以是块设备，譬如/dev/sda</li>
@@ -617,7 +617,7 @@
 <li>dump：是否允许备份</li>
 <li>Pass：是否进行磁盘检查</li>
 </ul>
-<h2 id="创建-etc-inittab文件"><a href="#创建-etc-inittab文件" class="headerlink" title="创建/etc/inittab文件"></a>创建/etc/inittab文件</h2><p>inittab的详细内容可以参考busybox下的examples/inittab</p>
+<h2 id="创建-etc-inittab文件">2.11 创建/etc/inittab文件</h2><p>inittab的详细内容可以参考busybox下的examples/inittab</p>
 <p>init程序会读取/etc/inittab这个文件，改文件由若干台指令组成，以“:”分割的四个段组成，格式如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;id&gt;:&lt;runlevels&gt;:&lt;action&gt;:&lt;process&gt;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -668,11 +668,11 @@
 </tbody></table>
 <p>参考 busybox 的 examples/inittab 文件，创建一个/etc/inittab，输入如下内容</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">etc/inittab</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 系统运行以后运行这个rcS脚本</span></span><br><span class="line">::sysinit:/etc/init.d/rcS</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将console作为控制台终端</span></span><br><span class="line">console::askfirst:-/bin/sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启的话运行/sbin/init</span></span><br><span class="line">::restart:/sbin/init</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 按下ctrl+alt+del组合键的话就运行/sbin/reboot，所以该组合键可以重启系统</span></span><br><span class="line">::ctrlaltdel:/sbin/reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关机的时候执行/bin/umount，卸载各个文件系统</span></span><br><span class="line">::shutdown:/bin/umount -a -r</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关机的时候执行/sbin/swapoff，关闭交换分区</span></span><br><span class="line">::shutdown:/sbin/swapoff -a</span><br></pre></td></tr></table></figure>
-<h2 id="外网测试"><a href="#外网测试" class="headerlink" title="外网测试"></a>外网测试</h2><p>在 rootfs 中新建文件/etc/resolv.conf，然后在里面输入如下内容：</p>
+<h2 id="外网测试">2.12 外网测试</h2><p>在 rootfs 中新建文件/etc/resolv.conf，然后在里面输入如下内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nameserver 114.114.114.114</span><br><span class="line">nameserver 8.8.8.8</span><br></pre></td></tr></table></figure>
 <p>设置域名服务器，保存后重启开发板，ping百度可以成功</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
-<h2 id="测试软件"><a href="#测试软件" class="headerlink" title="测试软件"></a>测试软件</h2><p>在根文件系统中创建hello.c文件</p>
+<h2 id="测试软件">2.13 测试软件</h2><p>在根文件系统中创建hello.c文件</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;hello world!\r\n&quot;</span>);</span><br><span class="line">		sleep(<span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译代码</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arm-linux-gnueabihf-gcc hello.c -o hello</span><br></pre></td></tr></table></figure>
@@ -718,8 +718,8 @@
       </div>
       
       <!-- <div class="content">
-        配置终端使用代理临时（只在该终端生效）
-第一种方法：走http12export http_proxy=http://12
+        1 配置终端使用代理1.1 临时（只在该终端生效）
+第一种方法：走http12export http_proxy=htt
       </div> -->
     </a>
   </div>
@@ -737,7 +737,7 @@
         <div>uboot移植</div>
       </div>
       <!-- <div class="content">
-        nxp uboot编译测试官方uboot编译123make ARCH=arm CROSS_COMPILE=arm-lin
+        1 nxp uboot编译测试1.1 官方uboot编译123make ARCH=arm CROSS_COMPILE=a
       </div> -->
     </a>
   </div>
@@ -1824,9 +1824,9 @@
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

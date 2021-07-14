@@ -561,7 +561,7 @@
         
       </div>
       <div class="post-content">
-        <h1 id="1、GDB-RSP-GDB-Remote-Serial-Protocol"><a href="#1、GDB-RSP-GDB-Remote-Serial-Protocol" class="headerlink" title="1、GDB RSP(GDB Remote Serial Protocol)"></a>1、GDB RSP(GDB Remote Serial Protocol)</h1><ul>
+        <h1 id="1、GDB-RSP-GDB-Remote-Serial-Protocol">1 1、GDB RSP(GDB Remote Serial Protocol)</h1><ul>
 <li><p>信息格式：$数据#校验码</p>
 </li>
 <li><p>多数信息使用ASCII码，数据由一系列的ASCII码组成，校验码是由两个16进制数组成的单字节校验码</p>
@@ -569,7 +569,7 @@
 <li><p>接收方接收数据并校验，若正确则回应“＋”，否则回应“－”</p>
 </li>
 </ul>
-<h2 id="1-1、请求"><a href="#1-1、请求" class="headerlink" title="1.1、请求"></a>1.1、请求</h2><table>
+<h2 id="1-1、请求">1.1 1.1、请求</h2><table>
 <thead>
 <tr>
 <th align="center">命令</th>
@@ -609,7 +609,7 @@
 <td align="left">终止进程</td>
 </tr>
 </tbody></table>
-<h2 id="1-2、答复"><a href="#1-2、答复" class="headerlink" title="1.2、答复"></a>1.2、答复</h2><table>
+<h2 id="1-2、答复">1.2 1.2、答复</h2><table>
 <thead>
 <tr>
 <th align="center">命令</th>
@@ -645,10 +645,10 @@
 <td align="left">告诉GDB控制台输出（这也是唯一向GDB发出的命令）</td>
 </tr>
 </tbody></table>
-<h1 id="2、目标机上stub的实现"><a href="#2、目标机上stub的实现" class="headerlink" title="2、目标机上stub的实现"></a>2、目标机上stub的实现</h1><p>目标机上stub的基本功能是与主机GDB通信，实现读写内存、寄存器，stop、continue指令。主机GDB与目标机上stub通信的通用模型如图</p>
+<h1 id="2、目标机上stub的实现">2 2、目标机上stub的实现</h1><p>目标机上stub的基本功能是与主机GDB通信，实现读写内存、寄存器，stop、continue指令。主机GDB与目标机上stub通信的通用模型如图</p>
 <p><img "" class="lazyload placeholder" data-original="/posts/10f4aa60/GDB%E4%B8%8E%E7%9B%AE%E6%A0%87%E6%9C%BA%E4%B8%8Astub%E9%80%9A%E4%BF%A1%E7%9A%84%E9%80%9A%E7%94%A8%E6%A8%A1%E5%9E%8B.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="GDB与目标机上stub通信的通用模型.png"></p>
 <p><img "" class="lazyload placeholder" data-original="/posts/10f4aa60/jtag-debugging-overview_zh.jpg" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="jtag-debugging-overview_zh.jpg"></p>
-<h1 id="3、GDB-stub"><a href="#3、GDB-stub" class="headerlink" title="3、GDB stub"></a>3、GDB stub</h1><ul>
+<h1 id="3、GDB-stub">3 3、GDB stub</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/projectgus/openocd">OpenOCD support</a>：需要单独的jtag</li>
 <li>barebones GDB stub ：仅支持异常捕获，同时要想在smart.js平台之外使用它，需要其他的工作，并且不支持FreeRTOS</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/espressif/esp-gdbstub">esp GDB stub</a>：支持裸机和FreeRTOS </li>
@@ -683,17 +683,17 @@
 
   
   <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/12.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/4d966b64.html" class="post-nav-link">
+    <a href="/posts/308177ca.html" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
-        <div>Halo博客搭建</div>
+        <div>MQTT协议详解</div>
       </div>
       
       <!-- <div class="content">
-        halo博客搭建1、介绍Halo 的整个应用程序只有一个 Jar 包，且不包含用户的任何配置，它放在任何目录都是可行的。
+        1 第一章 概述 Introduction1.1 1.1 MQTT协议的组织结构 Organization of MQT
       </div> -->
     </a>
   </div>
@@ -702,22 +702,18 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/14.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/6.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/f2ed0f51.html" class="post-nav-link">
+    <a href="/posts/a93bf28c.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>hugo配置文件</div>
+        <div>Git大全</div>
       </div>
       <!-- <div class="content">
-        author作者
-
-author = “creekwater”
-
-title文章的标题
-
-title = “hugo配置
+        1 Git GUI 客户端Git 客户端下载（Windows）
+TortoiseGit 客户端下载（Windows）
+S
       </div> -->
     </a>
   </div>
@@ -1804,9 +1800,9 @@ title = “hugo配置
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

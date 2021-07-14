@@ -562,12 +562,12 @@
       </div>
       <div class="post-content">
         <p>[TOC]</p>
-<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>上文叙述了上行OFDMA接入机制。该机制的基本思想就是通过AP竞争，获得TXOP传输时间后，根据各个终端的缓存情况，进行RU资源的分配，当分配完成后，进行上行OFDMA的传输。在这个过程中，缓存情况的反馈可以通过AP询问的方式主动完成（即AP发送BSRP帧向终端请求），也可以进行非主动的反馈，本文就针对于非主动反馈缓存信息BSR（Buffer Status Reports）做一个介绍。</p>
+<h1 id="序言">1 序言</h1><p>上文叙述了上行OFDMA接入机制。该机制的基本思想就是通过AP竞争，获得TXOP传输时间后，根据各个终端的缓存情况，进行RU资源的分配，当分配完成后，进行上行OFDMA的传输。在这个过程中，缓存情况的反馈可以通过AP询问的方式主动完成（即AP发送BSRP帧向终端请求），也可以进行非主动的反馈，本文就针对于非主动反馈缓存信息BSR（Buffer Status Reports）做一个介绍。</p>
 <p>参考资料：</p>
 <ul>
 <li><a href="/books/Wi-Fi_6_FD_Extreme_Networks_Special_Edition.pdf">Wi-Fi_6_FD_Extreme_Networks_Special_Edition</a></li>
 </ul>
-<h1 id="非主动的BSR反馈"><a href="#非主动的BSR反馈" class="headerlink" title="非主动的BSR反馈"></a>非主动的BSR反馈</h1><p>在802.11ax中，UL-OFDMA一共有三次帧交换过程，一共包含了3个触发帧</p>
+<h1 id="非主动的BSR反馈">2 非主动的BSR反馈</h1><p>在802.11ax中，UL-OFDMA一共有三次帧交换过程，一共包含了3个触发帧</p>
 <ul>
 <li>Trigger #1：BSRP帧，用于请求终端的缓存情况</li>
 <li>Trigger #2：MU-RTS帧，用于兼容保护传统的802.11终端，以及分配RU资源</li>
@@ -622,10 +622,10 @@
       
       <!-- <div class="content">
         [TOC]
-序言参考资料：
+1 序言参考资料：
 
 What Is BSS Coloring In 802.11ax?
-What is BSS
+What is B
       </div> -->
     </a>
   </div>
@@ -644,7 +644,7 @@ What is BSS
       </div>
       <!-- <div class="content">
         [TOC]
-序言在802.11ax以前，协议仅仅支持过下行的多用户接入，比如说MU-MIMO技术（在802.11ac中仅
+1 序言在802.11ax以前，协议仅仅支持过下行的多用户接入，比如说MU-MIMO技术（在802.11ac
       </div> -->
     </a>
   </div>
@@ -1731,9 +1731,9 @@ What is BSS
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }

@@ -563,12 +563,12 @@
       <div class="post-content">
         <p><strong>参考资料</strong>：<a href="/books/Control_OBSS-PD_Sensitivity_Threshold_for_IEEE_802.11ax_BSS_Color.pdf">Control_OBSS-PD_Sensitivity_Threshold_for_IEEE_802.11ax_BSS_Color.pdf</a></p>
 <p><strong>摘要</strong>：IEEE 802.11ax空间重用（SR）是IEEE 802.11系列中的新类别，旨在提高密集部署中的频谱效率和网络性能。该修订中，主要的（也许是唯一的）SR技术是基本服务集（BSS）颜色。它旨在基于新定义的重叠BSS/前导检测（OBSS/PD）阈值和来自重叠BSS（OBSS）的接收信号强度只是（RSSI），增加特定区域中的并发传输数量。在本文中，提出了一种控制OBSS/PD灵敏度阈值（COST）算法，它基于相关接收者的干扰水平和RSSI。与提出的用来设置OBSS/PD动态灵敏度控制（DSC）算法相反，COST完全了解OBSS的任何变化，并且可以应用于任何IEEE 802.11ax节点。在各种情况下的仿真结果显示，与传统的BSS Color和DSC的保守固定OBSS/PD相比，吞吐量明显提高了57%。</p>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>与蜂窝技术类似，电气和电子工程师协会（IEEE）802.11无线局域网（WLAN）也在不断发展，以适应电信行业面临的快速变化和新的用户期望/需求。移动数据流量的指数增长，连接到互联网的设备数量，新用例以及用户需求是下一代网络的主要挑战。</p>
+<h1 id="介绍">1 介绍</h1><p>与蜂窝技术类似，电气和电子工程师协会（IEEE）802.11无线局域网（WLAN）也在不断发展，以适应电信行业面临的快速变化和新的用户期望/需求。移动数据流量的指数增长，连接到互联网的设备数量，新用例以及用户需求是下一代网络的主要挑战。</p>
 <p>由于WLAN技术所提供的成功和优势，预计它将在形成下一代网络中发挥关键作用。特别是，它是一种经济高效的解决方案，可以轻松部署（例如，公寓，办公室等），从而以高数据速率提供对Internet的访问。但是，由于干扰问题，计划外和不受管理的接入点（AP）部署会加剧网络性能。</p>
 <p>为了应对WLAN在2.4 GHz和5 GHz频段上将面临的需求和新挑战，IEEE 802.11ax于2014年推出，目前正在积极开发中。 预计将于2019年下半年完成。</p>
 <p>与之前的旨在提高链路吞吐量的目标相反，任务组802.11ax（TGax）致力于提高密集WLAN场景下的频谱效率和区域吞吐量，同时降低便携式设备的功耗。此外，此修正案将在可用时合并1至7 GHz之间的其他频带。</p>
 <p>向后兼容性是IEEE 802.11ax规范的主要要求之一，因为预计异构设备将以相同的频率运行。 迄今为止，此修订中引入的其他功能包括小型蜂窝网络的改进（更高的调制阶数，1024-QAM），多天线技术（下行链路/上行链路多用户多输入多路）。 输出（DL / UL MU-MIMO），有效利用信道资源（DL / UL正交频分多址（OFDMA）和空间复用（SR）技术。SR机制旨在增加给定区域内的并发传输次数，从而提高区域吞吐量和频谱效率。 通常，SR包括那些适合载波侦听或使用发射功率控制（TPC）的方案。 尽管已经针对无线网络对各种SR方案进行了广泛的研究，但是，IEEE 802.11h-2003仅对TPC的使用进行了标准化。 特别是，IEEE 802.11h-2003定义了区域中最大发射功率的规则。</p>
-<h1 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h1><p>IEEE 802.11是一种异步技术，该技术依赖于随机访问方法来授予访问权限并通过无线介质进行传输。它使用带冲突避免的载波侦听多路访问（CSMA / CA）协议，这意味着每个节点在传输之前都会感知信道。如果在信道上感测到的能量超过“清除信道评估”（CCA）阈值，则该信道将被识别为“忙”，并且将传输延迟。否则，将该信道声明为“空闲”，并且该节点继续进行帧传输。</p>
+<h1 id="相关工作">2 相关工作</h1><p>IEEE 802.11是一种异步技术，该技术依赖于随机访问方法来授予访问权限并通过无线介质进行传输。它使用带冲突避免的载波侦听多路访问（CSMA / CA）协议，这意味着每个节点在传输之前都会感知信道。如果在信道上感测到的能量超过“清除信道评估”（CCA）阈值，则该信道将被识别为“忙”，并且将传输延迟。否则，将该信道声明为“空闲”，并且该节点继续进行帧传输。</p>
 <p>从上面可以清楚地看出，传输的可能性与CCA阈值的值高度相关。低阈值导致较低的传输机会（较大的载波侦听范围），而激进的值可能导致较高的传输机会。类似于CCA阈值，发射功率的水平也会影响发射的可能性。特别地，高发射功率电平的使用使得传输可以被位于远处的节点检测到，这影响了它们的传输机会。</p>
 <p>已经遵循各种方法来调整CCA阈值。  [12]，[13]中提出的算法结合了IEEE 802.11k修正，以获取阈值调整所需的统计信息。此外，节点定期将其测量报告发送到AP，然后AP处理所有报告并通过信标广播此信息。在[14]，[15]中提出了一种用于调整CCA阈值的基于区域的方案，其中分别使用请求发送/清除发送（RTS / CTS）帧或无线控制器， 研究了用于定义节点所属区域的方法。</p>
 
@@ -611,7 +611,7 @@
       </div>
       
       <!-- <div class="content">
-        基于TXOP持续时间的RTS / CTS在HE BSS中，RTS/CTS基于TXOP 持续时间（duration）或者P
+        1 基于TXOP持续时间的RTS / CTS在HE BSS中，RTS/CTS基于TXOP 持续时间（duration）或
       </div> -->
     </a>
   </div>
@@ -620,18 +620,20 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/2.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/1.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/612878de.html" class="post-nav-link">
+    <a href="/posts/3ec6640a.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>CSS教程</div>
+        <div>CSS参考手册</div>
       </div>
       <!-- <div class="content">
-        CSS 教程CSS 是一种描述 HTML 文档样式的语言。
-CSS 描述应该如何显示 HTML 元素。
-本教程将从零起点
+        0.1 CSS 属性0.1.1 A
+
+
+align-content
+规定弹性容器内的行之间的对齐方式，当项目不使用所有可
       </div> -->
     </a>
   </div>
@@ -1718,9 +1720,9 @@ CSS 描述应该如何显示 HTML 元素。
 .toc > .toc-list {
   padding-left: 35px;
 }
-.toc>.toc-list li {
+/* .toc>.toc-list li {
   list-style: decimal;
-}
+} */
 .toc-list {
   padding-left: 25px;
 }
