@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>uboot图形化配置 | 灵溪驿站</title>
+  <title>Linux设备树 | 灵溪驿站</title>
 
   
     
@@ -511,14 +511,14 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/14.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/11.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="title-box">
     <span class="title">
-      uboot图形化配置
+      Linux设备树
     </span>
   </div>
   
@@ -535,7 +535,7 @@
       
       <div class="post-meta">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
-        <span class="post-time">2019-07-05</span>
+        <span class="post-time">2019-07-12</span>
       </div>
       
       <div class="post-tags-categories">
@@ -561,66 +561,7 @@
         
       </div>
       <div class="post-content">
-        <h1 id="配置体验">1 配置体验</h1><p>安装ncurses库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install libncurses5-dev</span><br></pre></td></tr></table></figure>
-<p>首先需要使用<code>make xxx_defconfig</code>进行默认配置，然后再使用<code>make menuconfig</code>来对uboot进一步配置。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mx6ull_alientek_emmc_defconfig</span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在menuconfig界面中：</p>
-<p>按下Y：将当前选择的编译进uboot</p>
-<p>按下N：当前选择的不编译进uboot</p>
-<p>按下M：当前选择的编译为模块</p>
-<p>按下H或者？：显示当前选项的提示信息</p>
-</blockquote>
-<p>例如使能DNS</p>
-<p>“Command line interface —&gt;Network commands —&gt;选中dns</p>
-<p>编译烧录uboot</p>
-<p>设置dns服务器的IP地址</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setenv dnsip 114.114.114.114</span><br><span class="line">saveenv</span><br></pre></td></tr></table></figure>
-<p>使用dns命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dns www.baidu.com</span><br></pre></td></tr></table></figure>
-<h1 id="原理">2 原理</h1><p>当输入 make menuconfig 以后会匹配到顶层 Makefile 的如下代码：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">%config: scripts_basic outputmakefile FORCE</span></span><br><span class="line"><span class="variable">$(Q)</span><span class="variable">$(MAKE)</span> <span class="variable">$(build)</span>=scripts/kconfig <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
-<p>其中 <code>build=-f ./scripts/Makefile.build obj</code></p>
-<p>所以第一行展开就是<code>@ make -f ./scripts/Makefile.build obj=scripts/kconfig menuconfig</code></p>
-<p>Makefile.build 会读取 scripts/kconfig/Makefile 中的内容，在 scripts/kconfig/Makefile 中可以找到如下代码：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">menuconfig: <span class="variable">$(obj)</span>/mconf</span></span><br><span class="line">						<span class="variable">$&lt;</span> <span class="variable">$(silent)</span> <span class="variable">$(Kconfig)</span></span><br></pre></td></tr></table></figure>
-<p>其中obj= scripts/kconfig，silent是设置静默编译的，在这里可以忽略不计，Kconfig=Kconfig，因此扩展以后就是：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">menuconfig: scripts/kconfig/mconf</span></span><br><span class="line">scripts/kconfig/mconf Kconfig</span><br></pre></td></tr></table></figure>
-<p>目标 menuconfig 依赖 scripts/kconfig/mconf，因此 scripts/kconfig/mconf.c 这个文件会被编译，生成 mconf 这个可执行文件。目标 menuconfig 对应的规则为 scripts/kconfig/mconf Kconfig，也就是说 mconf 会调用 uboot 根目录下的 Kconfig 文件开始构建图形配置界面。</p>
-<h1 id="Kconfig语法">3 Kconfig语法</h1><h2 id="mainmenu">3.1 mainmenu</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mainmenu <span class="string">&quot;U-Boot $UBOOTVERSION Configuration&quot;</span></span><br></pre></td></tr></table></figure>
-<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714142218204.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714142218204" style="zoom:50%;">
-
-<p>mainmenu用来配置主菜单名</p>
-<h2 id="source">3.2 source</h2><p>读取其他目录下的Kconfig</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source <span class="string">&quot;xxx/Kconfig&quot;</span> <span class="comment">//xxx 为具体的目录名，相对路径</span></span><br></pre></td></tr></table></figure>
-<h2 id="menu-endmenu条目">3.3 menu/endmenu条目</h2><p>menu 用于生成菜单，endmenu 就是菜单结束标志，这两个一般是成对出现的</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">menu <span class="string">&quot;General setup&quot;</span></span><br><span class="line"></span><br><span class="line">config LOCALVERSION</span><br><span class="line">	string <span class="string">&quot;Local version - append to U-Boot release&quot;</span></span><br><span class="line"></span><br><span class="line">config LOCALVERSION_AUTO</span><br><span class="line">	bool <span class="string">&quot;Automatically append version information to the version string&quot;</span></span><br><span class="line">	default y</span><br><span class="line"></span><br><span class="line">endmenu		<span class="comment"># General setup</span></span><br></pre></td></tr></table></figure>
-<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714143147031.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714143147031" style="zoom:50%;">
-
-<h2 id="变量类型">3.4 变量类型</h2><p>Bool:y/n 是否</p>
-<p>Tristate:y/m/n 是/模块/否</p>
-<p>String：字符串</p>
-<p>Help: 表示帮助信息</p>
-<p>Default：表示默认值</p>
-<h2 id="Depends-on和select">3.5 Depends on和select</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">config SYS_GENERIC_BOARD</span><br><span class="line">	bool</span><br><span class="line">	depends on HAVE_GENERIC_BOARD</span><br><span class="line"></span><br><span class="line">choice</span><br><span class="line">	prompt <span class="string">&quot;Architecture select&quot;</span></span><br><span class="line">	default SANDBOX</span><br><span class="line"></span><br><span class="line">config ARC</span><br><span class="line">	bool <span class="string">&quot;ARC architecture&quot;</span></span><br><span class="line">	select HAVE_PRIVATE_LIBGCC</span><br><span class="line">	select HAVE_GENERIC_BOARD</span><br><span class="line">	select SYS_GENERIC_BOARD</span><br><span class="line">	select SUPPORT_OF_CONTROL</span><br></pre></td></tr></table></figure>
-<p>Depends on 说明SYS_GENERIC_BOARD依赖于HAVE_GENERIC_BOARD</p>
-<p>select 表示ARC选中后，HAVE_PRIVATE_LIBGCC等也会被选中</p>
-<h2 id="choice-endchoice">3.6 choice/endchoice</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">choice</span><br><span class="line">		prompt <span class="string">&quot;Architecture select&quot;</span></span><br><span class="line">		default SANDBOX</span><br><span class="line"></span><br><span class="line">config ARC</span><br><span class="line">		bool <span class="string">&quot;ARC architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">config ARM</span><br><span class="line">		bool <span class="string">&quot;ARM architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">config AVR32</span><br><span class="line">		bool <span class="string">&quot;AVR32 architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">config BLACKFIN</span><br><span class="line">		bool <span class="string">&quot;Blackfin architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">config M68K</span><br><span class="line">		bool <span class="string">&quot;M68000 architecture&quot;</span></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">endchoice</span><br></pre></td></tr></table></figure>
-<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714143855491.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714143855491" style="zoom:50%;">
-
-<p>定义一组可选项</p>
-<h2 id="menuconfig">3.7 menuconfig</h2><p>带有选项的菜单，只有EXPERT被选中了，里面的选项才会显示出来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">menu &quot;General setup&quot;</span><br><span class="line"></span><br><span class="line">menuconfig EXPERT</span><br><span class="line">		bool &quot;Configure standard U-Boot features (expert users)&quot;</span><br><span class="line">		default y</span><br><span class="line">		</span><br><span class="line">if EXPERT</span><br><span class="line">		config SYS_MALLOC_CLEAR_ON_INIT</span><br><span class="line">		bool &quot;Init with zeros the memory reserved for malloc (slow)&quot;</span><br><span class="line">		default y</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">endmenu # General setup</span><br></pre></td></tr></table></figure>
-<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714144247011.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714144247011" style="zoom:50%;">
-
-<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714144257714.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714144257714" style="zoom:50%;">
-
-<h2 id="comment">3.8 comment</h2><p>用于图形化界面中显示注释</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config NAND_ARASAN</span><br><span class="line">	bool &quot;Configure Arasan Nand&quot;</span><br><span class="line">	</span><br><span class="line">comment &quot;Generic NAND options&quot;</span><br></pre></td></tr></table></figure>
-<img "" class="lazyload placeholder" data-original="/posts/196c55f4/image-20210714144554386.png" src="https://img10.360buyimg.com/ddimg/jfs/t1/157667/29/9156/134350/603c6445Ebbc9cabe/41219c5d36d45072.gif" alt="image-20210714144554386" style="zoom:50%;">
-
-
+        
       </div>
       
         <div class="copyright">
@@ -630,7 +571,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/posts/196c55f4.html" target="_blank" title="uboot图形化配置">https://www.creekwater.cn/posts/196c55f4.html</a>
+    <a href="/posts/e1ba271a.html" target="_blank" title="Linux设备树">https://www.creekwater.cn/posts/e1ba271a.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -650,18 +591,18 @@
 
   
   <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/9.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/11.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/e3a5220d.html" class="post-nav-link">
+    <a href="/posts/f44b287.html" class="post-nav-link">
       <div class="title">
         <i class="fa fa-angle-left"></i> 上一篇:
-        <div>Linux uboot移植</div>
+        <div>配置终端走代理</div>
       </div>
       
       <!-- <div class="content">
-        编译NXP官方uboot，烧入开发板
-1234567891011121314151617181920U-Boot 201
+        1 配置终端使用代理1.1 临时（只在该终端生效）
+第一种方法：走http12export http_proxy=htt
       </div> -->
     </a>
   </div>
@@ -670,16 +611,17 @@
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/3.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/posts/54ee180f.html" class="post-nav-link">
+    <a href="/posts/f9852f95.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>uboot移植</div>
+        <div>Linux根文件系统搭建</div>
       </div>
       <!-- <div class="content">
-        1 nxp uboot编译测试1.1 官方uboot编译123make ARCH=arm CROSS_COMPILE=a
+        1 简介1.1 /bin 目录存放着系统需要的可执行文件，例如ls，mv等命令，该目录下所有用户都可以使用
+1.2 /d
       </div> -->
     </a>
   </div>
