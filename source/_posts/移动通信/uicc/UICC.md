@@ -1,3 +1,9 @@
+---
+title: USIM介绍
+tags: 移动通信
+categories: 移动通信
+date: 2021-09-07 00:00:00
+---
 # 网络制式
 
 网络制式就是网络的类型，我国手机的网络制式有[CDMA手机](https://baike.baidu.com/item/CDMA手机)占用的CDMA 1X，800MHZ频段；
