@@ -109,7 +109,7 @@ theme: hexo-theme-bamboo-dev
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/flyghost/flyghost.github.io.git
+  repo: https://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@github.com/flyghost/flyghost.github.io.git
   branch: public
   
 # 全文搜索
